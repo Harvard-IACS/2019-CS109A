@@ -1,0 +1,40 @@
+{% extends 'components/base.html' %}
+
+
+{% block title %}{{ article.title }}{% endblock %}
+
+
+{% block content %}
+  {% if 'ipynb' in article.source_path %}
+    <div>
+      {% if article.tags|length > 0 %}
+      <div class="float-left">
+        <p>Key Word(s):
+        {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/pages/materials.html#{{ tag.name }}">{{ tag.name }}</a>{% if loop.index != loop.length %},{% endif %}
+        {% endfor %}
+        </p>
+      </div>
+      {% endif %}
+      <div class="float-right">
+        <a href="{{ GITHUB }}/blob/master/{{ article.source_path|original_content }}">
+          Download Notebook <i class="fas fa-download"></i>
+        </a>
+      </div>
+    </div>
+    <br />
+    <hr />
+  {% else %}
+    <h1>{{ article.title }}</h1>
+    {% if article.tags|length > 0 %}
+      <p>Key Word(s):
+      {% for tag in article.tags %}
+        <a href="{{ SITEURL }}/pages/materials.html#{{ tag.name }}">{{ tag.name }}</a>{% if loop.index != loop.length %},{% endif %}
+      {% endfor %}
+      </p>
+    {% endif %}
+    <br />
+    <hr />
+  {% endif %}
+  {{ article.content }}
+{% endblock %}

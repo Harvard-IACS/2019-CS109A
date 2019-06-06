@@ -1,0 +1,33 @@
+{% extends 'components/base.html' %}
+
+
+{% block title %}Search Results{% endblock %}
+
+
+{% block content %}
+<div class="entry-content">
+
+  <form>
+    <input type="text" size="60" id="tipue_search_input" readonly="readonly">
+  </form>
+
+  <br />
+  <br />
+  <div id="tipue_search_content"></div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+<script type="text/javascript" src="{{ SITEURL }}/tipuesearch_content.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/style/tipuesearch/tipuesearch_set.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/style/tipuesearch/tipuesearch.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+      $('#tipue_search_input').tipuesearch({ 'show': 8 });
+    });
+</script>
+{% endblock %}

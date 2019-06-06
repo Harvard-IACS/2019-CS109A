@@ -1,0 +1,23 @@
+{% extends 'components/base.html' %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% block content %}
+  <h1 class="category-title">{{ category }}</h1>
+  <br />
+  <hr />
+  <ul class="category-list">
+  {% for article in dates[::-1] %}
+    {% if ".md" in article.source_path %}
+    <li class="category-item">
+      <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+      {% if article.due %}
+        (Due: {{ article.due|strftime('%b. %d, %Y %H:%M') }})
+      {% else %}
+        ({{ article.date|strftime('%b. %d, %Y') }})
+      {% endif %}
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% endblock %}

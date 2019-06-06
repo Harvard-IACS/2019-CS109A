@@ -1,0 +1,41 @@
+{% extends 'components/base.html' %}
+
+
+{% block title %}Materials{% endblock %}
+
+
+{% block content %}
+  <section class="material-section">
+    <h2>Resources</h2>
+    <ul class="category-list">
+    {% for (category, article) in categories %}
+      {% if category.name != 'pages' %}
+        <li class="category-item">
+          <a href="{{ SITEURL }}/{{ category.url }}" class="text-capitalize">
+            {{ category.name }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </section>
+  <hr />
+  <section class="material-section">
+    <h2>Topics</h2>
+    {% for (tag, articles) in tags|sort %}
+      <h4 class="category-title--list" id="{{ tag.name }}">{{ tag.name }}</h4>
+      <ul class="category-list">
+        {% for article in articles %}
+        <li class="category-item">
+          <a href="{{ SITEURL }}/{{ article.url }}">
+            {{ article.title }}
+          </a>
+          {% if '.ipynb' in article.source_path %}
+            [Notebook]
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </section>
+{% endblock %}

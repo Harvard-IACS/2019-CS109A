@@ -1,0 +1,117 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+#content {
+  margin-top: 60px;
+  margin-bottom: 10vh;
+  min-height: 95vh;
+}
+
+.navbar {
+  background-color: #A51C30;
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+}
+
+.navbar .navbar-brand {
+  display: flex;
+}
+
+.navbar-brand .navbar-brand-logo {
+  max-width: 40px;
+  align-self: center;
+}
+
+.navbar-brand .course-title {
+  color: #ffffff;
+  align-self: center;
+  margin-bottom: 0;
+}
+
+.navbar .navbar-nav.ml-auto {
+  align-items: center;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #ffffff;
+}
+
+.input-group .form-control {
+  border: 0;
+}
+
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 90px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table thead {
+  color: #ffff;
+  background-color: #343a40;
+}
+
+.category-title {
+  text-transform: capitalize;
+}
+
+.category-title--list {
+  text-transform: capitalize;
+  margin-top: 15px;
+}
+
+.category-list {
+  list-style: none;
+}
+
+.category-list .category-item {
+  margin: 10px 0;
+}
+
+.material-section {
+  margin: 35px 0;
+}
+
+#tipue_search_input {
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  font-size: xx-large;
+  font-weight: 900;
+  font-family: inherit;
+}
+
+.tipue_search_content_title {
+  font-weight: 600;
+  font-size: x-large;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.tipue_search_content_url {
+  font: inherit;
+}
+
+.tipue_search_content_text {
+  font: inherit;
+}

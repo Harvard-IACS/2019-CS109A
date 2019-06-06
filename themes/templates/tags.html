@@ -1,0 +1,27 @@
+{% extends 'components/base.html' %}
+
+
+{% block title %}Topics{% endblock %}
+
+
+{% block content %}
+  <h1>Topics</h1>
+  <br />
+  <hr />
+
+  {% for (tag, articles) in tags %}
+    <h4>{{ tag.name }}</h4>
+    <ul class="category-list">
+      {% for article in articles %}
+      <li class="category-item">
+        <a href="{{ SITEURL }}/{{ article.url }}">
+          {{ article.title }}
+        </a>
+        {% if '.ipynb' in article.source_path %}
+          [Notebook]
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}
