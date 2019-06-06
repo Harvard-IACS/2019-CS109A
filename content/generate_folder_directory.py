@@ -43,8 +43,7 @@ class GenerateStructure:
                         "Author: " + '\n' +
                         "Slug: " + slug + str(i) + '\n' +
                         "Tages: ADD TAGS HERE" +
-                        '\n\n\n' + "## Slides"  + '\n' +
-                        "<!-- - [PDF | Lecture 1: Description]({attach}presentation/Lecture1_Data.pdf) -->")
+                        '\n\n\n' + "## Slides"  )
 
     # Create Lectures folders
     def create_lectures(self, directory, number_of_hw, folders):

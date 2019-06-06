@@ -1,18 +1,18 @@
 COURSE_NAME = 'CS109A'
 
-AUTHOR = 'Pavlos Protopapas'
+AUTHOR = 'Pavlos Protopapas, Kevin Rader'
 
-SITEURL = 'https://harvard-iacs.github.io/2019-CS109A'
+SITEURL = 'https://harvard-iacs.github.io/2018-CS109A'
 
-GITHUB = 'https://github.com/Harvard-IACS/2019-CS109A'
+GITHUB = 'https://github.com/Harvard-IACS/2018-CS109A'
 
-COLOR = '#A51C50'
+COLOR = '#8996A0'
 
 MENUITEMS = [
     ('Syllabus', 'pages/syllabus.html'),
     ('Schedule', 'pages/schedule.html'),
     ('Materials', 'pages/materials.html'),
-    ('GitHub', 'pages/github.html')
+    ('Sections', 'category/sections.html')
 ]
 
 PATH = 'content'
@@ -68,7 +68,7 @@ IGNORE_FILES = ['.ipynb_checkpoints', 'README.md', "*.html"]
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'sections', 'wiki', 'images', 'projects']
+STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'a-sections', 'sections', 'wiki', 'images', 'projects', 'slides', 'data']
 
 DIRECT_TEMPLATES = ['index', 'category', 'tags', 'search']
 
