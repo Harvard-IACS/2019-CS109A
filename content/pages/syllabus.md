@@ -107,7 +107,7 @@ There will be a final group project (2-4 students) due during Exams period.  See
 
 #### Recording
 
-Lectures and labs will be recorded and made available real time for DCE students and 24 hours later for in-campus students via Canvas.
+All learning instances—lectures, labs, and sections—will be recorded and made available in real time for DCE students and 24 hours later for on-campus students via Canvas.
 
 <hr>
 
