@@ -61,7 +61,7 @@ You are expected to have programming experience at the level of CS 50 or above, 
 
 The class consists of two weekly lectures. Lectures are held **Mon and Wed 1:30pm ‐ 2:45 pm** in Northwest Building (NW), Lecture Hall B-103 (tentative). 
 
-Attendance to lectures is mandatory for FAS students. DCE students can view the recorded lectures within 2 days. We will have in class quizzes to assess your understanding of the material and to help us identify gaps.
+Attendance to lectures is mandatory for FAS students. We will have in class quizzes to assess your understanding of the material and to help us identify gaps.
 
 
 #### Labs
@@ -78,6 +78,11 @@ Lectures and labs are supplemented by 1 hour sections led by teaching fellows. T
 a) **Standard Sections**: which will be a mix of review of material and practice problems similar to the HW 
 
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
+
+
+#### Video Recordings
+
+All learning instances—lectures, labs, and sections—will be recorded. DCE students can stream these events in real time with a TF monitoring the accompanying chat room. Recordings will then be made available to all students within 24 hours via Canvas.
 
 
 #### Instructor Office Hours
@@ -103,11 +108,6 @@ Quizzes will be taken at the end of class and the material will be based on what
 #### Final Project
 
 There will be a final group project (2-4 students) due during Exams period.  See Calendar for specific dates.
-
-
-#### Recording
-
-All learning instances—lectures, labs, and sections—will be recorded and made available in real time for DCE students and 24 hours later for on-campus students via Canvas.
 
 <hr>
 
@@ -149,7 +149,8 @@ Homework will be graded based on:
 
 The scale is 1-5.
 
-For more details, check out [The CS109A Grade](https://drive.google.com/open?id=1nI_MWoxtx4RUZd45ysUPD7tzmMqIajWz)
+For more details, check out [The CS109A Grade](files/The CS109A Grade.pdf)
+
 
 
 #### Questions on Graded Homework and Regrading Policy
