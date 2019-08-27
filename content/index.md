@@ -5,7 +5,7 @@ save_as: index.html
 
 <h5>
 Fall 2019 <br><br>
-<a href="https://iacs.seas.harvard.edu/people/pavlos-protopapas">Pavlos Protopapas</a> and <a href='https://statistics.fas.harvard.edu/people/kevin-rader'>Kevin A. Rader</a></h5>
+<a href="https://iacs.seas.harvard.edu/people/pavlos-protopapas">Pavlos Protopapas</a>,  <a href='https://statistics.fas.harvard.edu/people/kevin-rader'>Kevin A. Rader</a>, and <a href="https://iacs.seas.harvard.edu/people/chris-tanner">Chris Tanner</a></h5>
 
 <hr>
 
@@ -22,7 +22,7 @@ pre {
   border-radius: 6px;
   margin: 1em 0;
   padding: 5px;
-  white-space: pre-wrap;  
+  white-space: pre-wrap;
 }
 
 .containerMain {
@@ -76,7 +76,7 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 <pre>Course material can be viewed in the public <a href="https://github.com/Harvard-IACS/2019-CS109A/tree/master/content">GitHub repository</a>.</pre>
 
- 
+
 <div class="containerMain">
 <div class="containerA">
 <img src="https://harvard-iacs.github.io/2018-CS109A/images/CS109AImage.png"  style="width:250px"/>
