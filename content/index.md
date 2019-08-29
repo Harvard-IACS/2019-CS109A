@@ -63,9 +63,9 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 <hr>
 
-<strong>Lectures: Mon </strong> and <strong>Wed</strong> 1:30‐2:45 pm in Harvard Northwest Building, NW B-103 (tentative)
+<strong>Lectures: Mon </strong> and <strong>Wed</strong> 1:30‐2:45 pm in Harvard Northwest Building, NW B-103
 <br/>
-<strong>Labs</strong>: <strong>Thur</strong> 4:30-6:00 pm and <strong>Fri</strong> 10:30-11:45 am in Pierce 301 (tentative)		 (content is identical, students should only attend one)
+<strong>Labs</strong>: <strong>Thur</strong> 4:30-5:45 pm in Pierce 301
 </br>
 <strong>Head TFs</strong>: Chris Gumb <strong> - DCE Head TF</strong>: Sol Girouard
 </br>
@@ -90,8 +90,8 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 <pre><span style="color: #993300;"><strong>ADVANCED SECTIONS<br /></strong></span>Cover a different topic each week and are required for 209a students.<br /></pre>
 
-<pre><span style="color: #993300;"><strong>Instructor Office Hours</strong></span><br /><span style="color: #000000;"><strong>Pavlos</strong>: TBA</span><br /><span style="color: #999999;"><span style="color: #000000;"><strong>Kevin</strong>: TBA</span>
-<span style="color: #000000;"><strong>Chris</strong>: TBA</span>
+<pre><span style="color: #993300;"><strong>Instructor Office Hours</strong></span><br /><span style="color: #000000;"><strong>Pavlos</strong>: Monday 3-5 pm, IACS Lobby</span><br /><span style="color: #999999;"><span style="color: #000000;"><strong>Kevin</strong>: Monday 3-5 pm, IACS Lobby</span>
+<span style="color: #000000;"><strong>Chris</strong>: Wednesday 3-4 pm, IACS Lobby</span>
 </pre>
 
 </div>
