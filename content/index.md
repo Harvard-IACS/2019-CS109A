@@ -40,6 +40,8 @@ pre {
     flex: 3;
   }
 </style>
+<p><strong>Lab Leaders:</strong> Chris Tanner and Eleni Kaxiras</p>
+<hr>
 
 <p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks (a detailed schedule will be made available soon). You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data:
 <br/><br/>
