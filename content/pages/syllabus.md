@@ -91,22 +91,24 @@ All learning instances—lectures, labs, and sections—will be recorded. DCE st
 
 #### Instructor Office Hours
 
-**Pavlos**: Monday 3-5pm, IACS lobby
+**Pavlos & Kevin**: Monday 3-5pm, IACS lobby
 
-**Kevin**: Monday 3-5pm, IACS lobby
-
-**Chris**: Wednesday 3-4pm, IACS lobby
+**Chris**: Wednesday 3-4pm, Maxwell-Dworkin B125
 
 #### Assignments
 
 There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week and some of them in two weeks. You have the option to work and submit in pairs for all the assignments **except **two which you will do individually. You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud (_details on this to come_).
 
-AC209a students will have additional homework content for most assignments.
+On weeks with new assignments they will be released by Wednesday 1:30 pm.
+
+Standard assignments are graded out of 5 points.
+
+AC209a students will have additional homework content for most assignments worth 1 point.
 
 
 #### Quizzes
 
-Quizzes will be taken at the end of class and the material will be based on what was discussed in lecture. DCE students will have 72 hours to complete the quizzes.
+Quizzes will be taken at the end of class and the material will be based on what was discussed in lecture; there will be no AC209a content in the quizzes. DCE students' quizzes will not count toward their final grade.
 
 50% of the quizzes will be dropped from your grade.
 
@@ -114,6 +116,15 @@ Quizzes will be taken at the end of class and the material will be based on what
 #### Final Project
 
 There will be a final group project (2-4 students) due during Exams period.  See Calendar for specific dates.
+
+#### Participation
+Students as expected to be actively engaged with the course. This includes:
+
+1. attending lectures
+2. making use of resources such as office hours, labs, and sections
+3. participating in the Ed discussion forum — both through asking thoughtful questions and by answering the questions of others
+
+DCE students will not be penalized for the inability to attend lectures, labs, etc. live.
 
 <hr>
 
@@ -199,12 +210,13 @@ Your final score for the course will be computed using the following weights:
 
 
 
-|Assignment|Final Grade Weight|
-|-----|-----|
-|Homework| 50%|
-|Quizzes|  10%|
-|Project|  40%|
-|**Total**|  **100%**|
+| Assignment    | Final Grade Weight |
+|---------------|--------------------|
+| Homework      | 56%                |
+| Quizzes       | 10%                |
+| Project       | 31%                |
+| Participation | 3%                 |
+| **Total**     | **100%**           |
 
 </br>
 
