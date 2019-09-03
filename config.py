@@ -4,7 +4,7 @@ AUTHOR = 'Pavlos Protopapas, Kevin Rader, Chris Tanner'
 
 SITEURL = 'https://harvard-iacs.github.io/2018-CS109A'
 
-GITHUB = 'https://github.com/Harvard-IACS/2018-CS109A'
+GITHUB = 'https://github.com/Harvard-IACS/2019-CS109A'
 
 COLOR = '#8996A0'
 
@@ -12,6 +12,7 @@ MENUITEMS = [
     ('Syllabus', 'pages/syllabus.html'),
     ('Schedule', 'pages/schedule.html'),
     ('Materials', 'pages/materials.html'),
+    ('Ed', 'pages/ed.html'),
     ('Lecture Videos', 'pages/lecture_videos.html')
 #    ('Sections', 'category/sections.html')
 ]
