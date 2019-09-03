@@ -81,8 +81,13 @@ Lectures and labs are supplemented by 1 hour sections led by teaching fellows. T
 
 a) **Standard Sections**: which will be a mix of review of material and practice problems similar to the HW
 
+Standard Sections are held **Mon 4:30-5:45 pm in Science Center 110** and **Fri 10:30-11:45 am at 1 Story St. Room 306**
+
+The material covered on Monday and Friday is identical.
+
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
 
+Advanced Sections are held **Weds 4-5:15 pm at 1 Story St. Room 306**
 
 #### Video Recordings
 
