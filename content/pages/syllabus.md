@@ -171,7 +171,7 @@ Homework will be graded based on:
 
 The scale is 1-5.
 
-For more details, check out [The CS109A Grade](files/The CS109A Grade.pdf)
+For more details, check out [The CS109A Grade](https://canvas.harvard.edu/files/8212857/download?download_frd=1)
 
 
 
