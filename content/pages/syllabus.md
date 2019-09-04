@@ -85,7 +85,7 @@ Standard Sections are held **Fri 10:30-11:45 am at 1 Story St. Room 306** and **
 
 **Note:** Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
-The material covered on Monday and Friday is identical.
+The material covered on Friday and Monday is identical.
 
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
 
@@ -219,13 +219,15 @@ Your final score for the course will be computed using the following weights:
 
 
 
-| Assignment    | Final Grade Weight |
-|---------------|--------------------|
-| Homework      | 56%                |
-| Quizzes       | 10%                |
-| Project       | 31%                |
-| Participation | 3%                 |
-| **Total**     | **100%**           |
+| Assignment              | Final Grade Weight |
+|-------------------------|--------------------|
+| Homework0               | 1%                 |
+| Paired Homework (6)     | 39%                |
+| Individual Homework (2) | 17 %               |
+| Quizzes                 | 10%                |
+| Project                 | 30%                |
+| Participation           | 3%                 |
+| **Total**               | **100%**           |
 
 </br>
 
