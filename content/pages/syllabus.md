@@ -81,9 +81,9 @@ Lectures and labs are supplemented by 1 hour sections led by teaching fellows. T
 
 a) **Standard Sections**: which will be a mix of review of material and practice problems similar to the HW
 
-Standard Sections are held **Mon 4:30-5:45 pm in Science Center 110** and **Fri 10:30-11:45 am at 1 Story St. Room 306**
+Standard Sections are held **Fri 10:30-11:45 am at 1 Story St. Room 306** and **Mon 4:30-5:45 pm in Science Center 110**
 
-**Note:** Sections are not held every week. Consult the course schedule for exact dates.
+**Note:** Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
 The material covered on Monday and Friday is identical.
 
@@ -91,7 +91,7 @@ b) **Advanced Sections** which will cover advanced topics like the mathematical 
 
 Advanced Sections are held **Weds 4-5:15 pm at 1 Story St. Room 306**
 
-**Note:** Advanced Sections are not held every week. Consult the course schedule for exact dates.
+**Note:** Advanced Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
 #### Video Recordings
 
