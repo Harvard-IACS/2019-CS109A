@@ -198,7 +198,7 @@ We encourage you to talk and discuss the assignments with your fellow students (
 
 #### Late Day Policy
 
-Homework is due on Tuesdays.  There are no late days.
+Homework is due on Wednesdays.  There are no late days.
 
 
 #### Communication from Staff to Students
