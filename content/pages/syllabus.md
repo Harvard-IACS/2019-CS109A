@@ -81,17 +81,17 @@ Lectures and labs are supplemented by 1 hour sections led by teaching fellows. T
 
 a) **Standard Sections**: which will be a mix of review of material and practice problems similar to the HW
 
-Standard Sections are held **Mon 4:30-5:45 pm in Science Center 110** and **Fri 10:30-11:45 am at 1 Story St. Room 306**
+Standard Sections are held **Fri 10:30-11:45 am at 1 Story St. Room 306** and **Mon 4:30-5:45 pm in Science Center 110**
 
-**Note:** Sections are not held every week. Consult the course schedule for exact dates.
+**Note:** Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
-The material covered on Monday and Friday is identical.
+The material covered on Friday and Monday is identical.
 
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
 
 Advanced Sections are held **Weds 4-5:15 pm at 1 Story St. Room 306**
 
-**Note:** Advanced Sections are not held every week. Consult the course schedule for exact dates.
+**Note:** Advanced Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
 #### Video Recordings
 
@@ -198,7 +198,7 @@ We encourage you to talk and discuss the assignments with your fellow students (
 
 #### Late Day Policy
 
-Homework is due on Tuesdays.  There are no late days.
+Homework is due on Wednesdays.  There are no late days.
 
 
 #### Communication from Staff to Students
@@ -219,13 +219,15 @@ Your final score for the course will be computed using the following weights:
 
 
 
-| Assignment    | Final Grade Weight |
-|---------------|--------------------|
-| Homework      | 56%                |
-| Quizzes       | 10%                |
-| Project       | 31%                |
-| Participation | 3%                 |
-| **Total**     | **100%**           |
+| Assignment              | Final Grade Weight |
+|-------------------------|--------------------|
+| Homework0               | 1%                 |
+| Paired Homework (6)     | 39%                |
+| Individual Homework (2) | 17 %               |
+| Quizzes                 | 10%                |
+| Project                 | 30%                |
+| Participation           | 3%                 |
+| **Total**               | **100%**           |
 
 </br>
 

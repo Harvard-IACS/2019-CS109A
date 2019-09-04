@@ -64,6 +64,8 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 
 <hr>
+<span style="color: #993300;"><strong>Announcement:</strong></span> <a href="https://canvas.harvard.edu/courses/61942/assignments/306006">HW0</a> is now available.
+<br/>
 
 <strong>Lectures: Mon </strong> and <strong>Wed</strong> 1:30‐2:45 pm in Harvard Northwest Building, NW B-103
 <br/>
