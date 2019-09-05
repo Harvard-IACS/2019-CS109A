@@ -4,7 +4,7 @@ dependencies:
   - anaconda
   - seaborn
   - pip
-  - nympy                           
+  - numpy                           
   - pandas=0.24.1
   - pip:
     - tensorflow
