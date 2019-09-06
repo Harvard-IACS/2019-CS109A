@@ -237,10 +237,21 @@ Your final score for the course will be computed using the following weights:
 We will be using Jupyter Notebooks, Python 3, and various python modules. You can access the notebook viewer either on your own machine by installing the [Anaconda platform (Links to an external site)](https://docs.continuum.io/anaconda/) which includes Jupyter/IPython as well all packages that will be required for the course, or by using the SEAS JupyterHub from Canvas. Details in class.
 
 
-#### Accommodations for students with disabilities
+#### Accommodations for Students with Disabilities
 
 Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the [Accessible Education Office](http://www.aeo.fas.harvard.edu/) (AEO) and speak with Kevin by the end of the third week of the term: Friday, September 15.  Failure to do so may result in us being unable to respond in a timely manner. All discussions will remain confidential.
 
+#### Diversity and Inclusion Statement
+
+Data Science, like many fields of science, has historically only been represented by a small sliver of the population. This is despite some of the early computer scientist pioneers being women (see <a href="https://en.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> and <a href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a> for two examples). Recent initiatives have attempted to overcome some barriers to entry: <a href="https://www.madewithcode.com">Made /w Code</a>.
+
+We would like to attempt to discuss diversity in data science from time to time where appropriate and possible. Please contact us (in person or electronically) or submit anonymous feedback if you have any suggestions to improve the diversity of the course materials. Furthermore, we would like to create a learning environment for our students that supports a diversity of thoughts, perspectives and experiences, and honors your identities (including race, gender, class, sexuality, religion, ability, etc.) To help accomplish this:If you have a name and/or set of pronouns that differ from those that appear in your official Harvard records, please let us know!
+
+If you feel like your performance in the class is being impacted by your experiences outside of class, please don’t hesitate to come and talk with us. We want to be a resource for you. Remember that you can also submit anonymous feedback (which will lead to me making a general announcement to the class, if necessary to address your concerns). If you prefer to speak with someone outside of the course, you may find helpful resources at the Harvard Office of Diversity and Inclusion.
+
+We (like many people) are still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please talk to us about it. (Again, anonymous feedback is always an option.)
+
+As a participant in course discussions, you should also strive to honor the diversity of your classmates.
 
 #### Academic Honesty
 
