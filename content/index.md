@@ -115,7 +115,12 @@ Cover a different topic each week and are required for 209a students.<br /></pre
 <br/>
 
 <div>
-<pre><strong><span style="color: #993300;">TF Office Hours </span></strong><strong><span style="color: #993300;"><br /></span></strong>A weekly schedule will be made available soon.</a></pre>
+<pre><strong><span style="color: #993300;">TF Office Hours </span></strong><strong><span style="color: #993300;"></span></strong>
+<strong>Monday:</strong> 6-9 pm
+<strong>Tuesday:</strong> 4-8:30 pm
+<strong>Wednesday:</strong> 4-6:30 pm
+TF Hours are held in the IACS lobby.
+<strong>Note:</strong> Monday & Tuesday the first 1/2 hour of OH will be in the Maxwell-Dworkin main lobby before moving into the IACS lobby.</pre>
 
 <p>Please be aware, that we will not publicly release the homework assignments this year. If you want to follow the course online without registering, you can use the assignments from 2013 and 2014, available at the links below. Additionally, the material from 2015 is also available.</p>
 
