@@ -24,4 +24,4 @@ pre {
 }
 </style>
 
-The course calendar can be accessed <a target="_blank" rel="noopener noreferrer" href="http://bit.ly/2019-CS109a-Calendar">here</a>
+<iframe id="myFrame" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRnQlFeYNC7PYdTkO6DcNVAsX_vGMxuqS172VQ5tTxb4FtFsugZjDxvNtfnKWfiuSobYfSMfg_SqRFX/pubhtml?gid=1044683774&amp;single=true&amp;widget=true&amp;headers=false" width="1300px" height="800px"></iframe>
