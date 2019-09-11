@@ -217,16 +217,29 @@ Instructions for turning in assignments will be posted when the semester starts.
 
 Your final score for the course will be computed using the following weights:
 
+<span style="color:red">**Non-Extension Students**</span>
 
+| Assignment                     | Final Grade Weight |
+|--------------------------------|--------------------|
+| Homework0                      | 1%                 |
+| Paired Homework (6)            | 39%                |
+| Individual Homework (2)        | 17 %               |
+| Quizzes                        | 10%                |
+| Project                        | 30%                |
+| Participation                  | 3%                 |
+| **Total**                      | **100%**           |
+
+</br>
+
+<span style="color:red">**Extension Students**</span>
 
 | Assignment              | Final Grade Weight |
 |-------------------------|--------------------|
 | Homework0               | 1%                 |
-| Paired Homework (6)     | 39%                |
-| Individual Homework (2) | 17 %               |
-| Quizzes                 | 10%                |
-| Project                 | 30%                |
-| Participation           | 3%                 |
+| Paired Homework (6)     | 43%                |
+| Individual Homework (2) | 19 %               |
+| Project                 | 33%                |
+| Participation           | 4%                 |
 | **Total**               | **100%**           |
 
 </br>
