@@ -1,9 +1,17 @@
-Title: Lecture 3:
+Title: Lecture 3: Pandas and Web Scraping
 Category: lectures
-Date: 2019-06-06
-Author: 
+Date: 2019-09-11
+Author: Chris Tanner
 Slug: lecture3
-Tages: ADD TAGS HERE
+Tages: EDA, exploratory data analysis, pandas, scraping, web scraping, dataframe
 
 
 ## Slides
+- [Lecture 3: Pandas and Web Scraping [pptx]]({attach}presentation/Lecture3_Pandas_and_Scraping.pptx )
+- [Lecture 3: Pandas and Web Scraping [pdf]]({attach}presentation/Lecture3_Pandas_and_Scraping.pdf )
+
+## Lecture Notebook
+
+- [Lecture 3: Pandas Tutorial]({filename}presentation/Lecture3_Notebook.ipynb)
+
+<hr>
