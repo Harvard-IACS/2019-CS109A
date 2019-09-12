@@ -14,9 +14,10 @@ MENUITEMS = [
     ('Weekly Schedule', 'pages/weekly.html'),
     ('Full Schedule', 'pages/schedule.html'),
     ('Materials', 'pages/materials.html'),
-    ('Lecture Videos', 'pages/lecture_videos.html'),
+    ('Videos', 'pages/lecture_videos.html'),
     ('Ed', 'pages/ed.html'),
-    ('Projects', 'pages/projects.html')
+    ('Projects', 'pages/projects.html'),
+    ('Resources', 'pages/resources.html')
 
 #    ('Sections', 'category/sections.html')
 ]
