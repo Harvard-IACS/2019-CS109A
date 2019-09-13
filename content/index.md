@@ -96,7 +96,7 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 Cover the material presented in class. Both standard sections are identical.<br /></span></pre>
 
 <pre><span style="color: #993300;"><strong>ADVANCED SECTIONS</strong></span>
-<strong>Wednesday 9/18</strong> 4-5:15 pm 1 Story St. Room 306
+<strong>Wednesday 9/18</strong> 4:30-5:45 pm Sever Hall 113
 Cover a different topic each week and are required for 209a students.<br /></pre>
 
 <pre><span style="color: #993300;"><strong>Instructor Office Hours</strong></span><br /><span style="color: #000000;"><strong>Pavlos & Kevin</strong>: Monday 3-5 pm, IACS Lobby</span>
