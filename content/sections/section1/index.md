@@ -1,9 +1,11 @@
-Title: Sections 1:
-Category: section
-Date: 2019-06-06
-Author: 
+Title: S-Section 01: Introduction to Web Scraping
+Category: sections
 Slug: section1
-Tages: ADD TAGS HERE
+Author: Marios Matthaiakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven
+Date: 2019-09-13
+Tags:  data scraping, beautifulsoup, pandas, matplotlib
 
+## Jupyter Notebooks
 
-## Slides
+- [S-Section 1: Introduction to Web Scraping]({filename}notebook/cs109a_section_1.ipynb)
+
