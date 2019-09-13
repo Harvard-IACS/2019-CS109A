@@ -24,5 +24,5 @@ pre {
 }
 </style>
 
-
+Select full calendar or weekly schedule tab from the spreadsheet below.
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSthAhkXOYLTgVwxq0qLSLQD7aDRrnGpKhwsLJpRn7Epc7VIexC5FrQxRHOMzpm5UqveeVcAAWvNH8q/pubhtml?widget=true&amp;headers=false" width="1200px" height="550px"></iframe>
