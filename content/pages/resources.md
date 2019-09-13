@@ -23,5 +23,7 @@ pre {
     height: 300px;
 }
 </style>
-
-[FAQ](https://canvas.harvard.edu/courses/61942/files/8449361/download "FAQ")
++ [GitHub Repo](https://github.com/Harvard-IACS/2019-CS109A/tree/master/content "GitHub Repo")
++ [Ed](https://canvas.harvard.edu/courses/61942/modules/items/547499 "Ed")
++ [Setting up Anaconda & Git for Windows](https://canvas.harvard.edu/files/8459362/download?download_frd=1 "Setting up Anaconda and Git for Windows")
++ [Forking a Repo](https://canvas.harvard.edu/files/8459353/download?download_frd=1 "Forking a Repo")

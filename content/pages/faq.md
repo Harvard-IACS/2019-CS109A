@@ -1,6 +1,6 @@
-Title: Ed
-Slug: ed
-Date: 2019-09-03
+Title: FAQ
+Slug: faq
+Date: 2019-09-12
 
 <style>
 pre {
@@ -23,5 +23,4 @@ pre {
     height: 300px;
 }
 </style>
-
-The Ed platform can be accessed [here](https://canvas.harvard.edu/courses/61942/modules/items/547499 "Ed")
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vRd6cTKjDvd01jeRz6aHnsyn84KIqAgxY09cDnRI5l2HuTLXReejBEjRU0vBvoZ7g/pub?embedded=true" width=700 height=600></iframe>

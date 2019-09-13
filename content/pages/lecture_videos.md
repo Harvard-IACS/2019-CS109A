@@ -1,6 +1,6 @@
-Title: Lecture Videos
-Slug: lecture_videos
-Date: 2019-09-03
+Title: Videos
+Slug: videos
+Date: 2019-09-13
 
 <style>
 pre {
