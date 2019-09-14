@@ -198,7 +198,7 @@ We encourage you to talk and discuss the assignments with your fellow students (
 
 #### Late Day Policy
 
-Homework is due on Wednesdays.  There are no late days.
+Homework is due on Wednesdays.  There are no late days. <span style="color:red">**Late submissions will not be accepted.**</span>
 
 
 #### Communication from Staff to Students
