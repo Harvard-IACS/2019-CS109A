@@ -3,7 +3,7 @@ Category: lectures
 Date: 2019-09-11
 Author: Chris Tanner
 Slug: lecture3
-Tages: EDA, exploratory data analysis, pandas, scraping, web scraping, dataframe
+Tags: EDA, exploratory data analysis, pandas, scraping, web scraping, dataframe
 
 
 ## Slides
