@@ -24,10 +24,11 @@ pre {
 }
 </style>
 
-# CS 109A, STAT 121A, AC 209A, CSCI E-109A
 
 
-# Introduction to Data Science
+
+# Introduction to Data Science 
+### CS 109A, STAT 121A, AC 209A, CSCI E-109A
 
 
 ## Syllabus - Fall 2019
@@ -89,7 +90,7 @@ The material covered on Friday and Monday is identical.
 
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
 
-Advanced Sections are held **Weds 4-5:15 pm at 1 Story St. Room 306**
+Advanced Sections are held **Weds 4:30-5:45 pm at Sever Room 113**
 
 **Note:** Advanced Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
