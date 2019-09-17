@@ -113,9 +113,9 @@ You have the option to work and submit in pairs for all the assignments **except
 
 You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud.
 
-<a href="https://canvas.harvard.edu/courses/61942/modules/items/562895" target="_blank">Instructions for Setting up Your Environment</a>
+[Instructions for Setting up Your Environment](https://canvas.harvard.edu/courses/61942/modules/items/562895 "Instructions for Setting up Your Environment")
 
-<a href="https://canvas.harvard.edu/courses/61942/modules/items/562896" target="_blank">Instructions for Using JupyterHub</a>
+[Instructions for Using JupyterHub](https://canvas.harvard.edu/courses/61942/modules/items/562896" "Instructions for Using JupyterHub")
 
 On weeks with new assignments they will be released by Wednesday 3 pm.
 
