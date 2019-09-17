@@ -218,8 +218,7 @@ Class announcements will be through **Canvas**. All homework and quizzes will be
 
 #### Submitting an assignment
 
-Instructions for turning in assignments will be posted when the semester starts.
-
+Please consult [Homework Policies & Submission Instructions](https://canvas.harvard.edu/courses/61942/pages/homework-policies-and-submission-instructions?module_item_id=566849 "Homework Policies & Submission Instructions")
 
 #### Course Grade
 
