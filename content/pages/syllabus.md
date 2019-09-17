@@ -27,7 +27,7 @@ pre {
 
 
 
-# Introduction to Data Science 
+# Introduction to Data Science
 ### CS 109A, STAT 121A, AC 209A, CSCI E-109A
 
 
@@ -107,9 +107,17 @@ All learning instances—lectures, labs, and sections—will be recorded. DCE st
 
 #### Assignments
 
-There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week and some of them in two weeks. You have the option to work and submit in pairs for all the assignments **except **two which you will do individually. You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud (_details on this to come_).
+There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week (1, 2, 5, 8) and some of them in two weeks (3, 4, 6, 7).
 
-On weeks with new assignments they will be released by Wednesday 1:30 pm.
+You have the option to work and submit in pairs for all the assignments **except** HW4 and HW7 which you will do individually.
+
+You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud.
+
+<a href="https://canvas.harvard.edu/courses/61942/modules/items/562895" target="_blank">Instructions for Setting up Your Environment</a>
+
+<a href="https://canvas.harvard.edu/courses/61942/modules/items/562896" target="_blank">Instructions for Using JupyterHub</a>
+
+On weeks with new assignments they will be released by Wednesday 3 pm.
 
 Standard assignments are graded out of 5 points.
 
