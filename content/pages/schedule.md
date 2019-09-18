@@ -17,7 +17,7 @@ Date: 2019-09-18
 |10|[Lecture 17: Boosting Methods & Stacking]({filename}/lectures/lecture17/index.md)|[Lecture 18: Neural Networks I - Perceptron, Back Propagation, SGD]({filename}/lectures/lecture18/index.md)|No Advanced Section|[Lab 10: Intro to Neural Networks & Keras]({filename}/labs/lab10/index.md)|No Assignment|
 |11|[Lecture 19: Neural Networks II - NN as Function Approximation; Design Choices]({filename}/lectures/lecture19/index.md)|[Lecture 20: Neural Networks III - Dropout & Regularization]({filename}/lectures/lecture20/index.md)|Advanced Section 5: Decision Trees & Ensemble Methods|[Lab 11: Dropout]({filename}/labs/lab11/index.md)|R:HW7 (individual) -  D:HW6|
 |12|[Lecture 21: Neural Networks IV - Solvers]({filename}/lectures/lecture21/index.md)|[Lecture 22: Visulization for Model Interpretation]({filename}/lectures/lecture22/index.md)|Advanced Section 6: SGD|[Lab 12: VIZ]({filename}/labs/lab12/index.md)|No Assignment|
-|13|[Lecture 23: Experimental Design & Testing I]({filename}/lectures/lecture23/index.md)|No Lecture (Thanksgiving)|Advanced Section 9: Support Vector Machines|No Lab|R:HW8 - D:HW7 *[Due on Tuesday]*|
-|14|[Lecture 24: Experimental Design & Testing II]({filename}/lectures/lecture24/index.md)||No Advanced Section|[Lab 13: Experimental Design]({filename}/labs/lab13/index.md)|D:HW8|
+|13|[Lecture 23: Experimental Design & Testing I]({filename}/lectures/lecture23/index.md)|No Lecture (Thanksgiving)||No Lab|R:HW8 - D:HW7 *[Due on Tuesday]*|
+|14|[Lecture 24: Experimental Design & Testing II]({filename}/lectures/lecture24/index.md)|||[Lab 13: Experimental Design]({filename}/labs/lab13/index.md)|D:HW8|
 |15|||Reading Period|||
 |16|||Finals Week|||
