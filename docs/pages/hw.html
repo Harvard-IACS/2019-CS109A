@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../style/css/hiacs.css">
+
+    <title>CS109A - Homework Policies & Submission Instructions</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="..">
+      <img class="navbar-brand-logo" src="../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+  <h1>Homework Policies & Submission Instructions</h1>
+  <br />
+  <hr />
+  <style>
+pre {
+  background-color: #F5F5F5;
+  display: block;
+  font-family: monospace;
+  font-size: 14px;
+  white-space: pre;
+  border-color: #999999;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  margin: 1em 0;
+  padding: 5px;
+  white-space: pre-wrap;
+}
+.containerMain {
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+</style>
+
+<h5><em>V. September 16, 2019</em></h5>
+<h2>General Policies</h2>
+<h3>Colaboration</h3>
+<p>Except for <strong>HW4</strong> and <strong>HW7</strong> which will be done by each student <strong>individually</strong>, you're allowed and <strong>encouraged</strong> to work with <strong>a fellow student</strong> on the homework. This does not mean that you are to divide and conquer. In the spirit of learning and getting the most out of this course and out of collaborating with your peer, you should solve each problem on your own, compare with your partner, and decide on a
+common solution.</p>
+<h3>Importing Libraries</h3>
+<p>As much as possible, try and stick to the hints and functions we import at the top of the homework, as those are the ideas and tools the class supports and is aiming to teach. And if a problem specifies a particular library you're required to use that library, and possibly others from the import list. You are allowed to use other libraries such as
+seaborn.</p>
+<p><strong>Late Submissions will not be accepted</strong></p>
+<p>Extensions are provided only for medical reasons with a doctor's note.</p>
+<p>If there are issues, send an email to the <strong>Helpline</strong>.</p>
+<h2>Submitting HW</h2>
+<p>Homework assignments will be done in Python in the Jupyter Notebook environment. When you are finished editing your notebook, <strong>re-run all the cells to make sure they work</strong>.</p>
+<p>Normally, you need only submit the <strong>.ipynb file</strong> with one caveat:</p>
+<p>If your notebook references other files such as images which are necessary for interpreting your work, they must be uploaded as well.</p>
+<p>You may also choose to "attach" the images to the notebook itself. See the section on markdown attachments under "other additions" <a href="https://jupyter-notebook.readthedocs.io/en/stable/changelog.html#release-5-0-0">here</a> for details.</p>
+<h3>File Naming Convention</h3>
+<p>Name your file as follows: cs109a_hw#_?09_submit.ipynb (replace the # with the number of the assignment and replace ? with 1 or 2 depending if you are submitting the 109 or 209 hw). <strong>Do not</strong> <strong>include your name</strong> in the paper or the filename as we are doing anonymous grading.</p>
+<h3>Making a HW Group in Canvas</h3>
+<p><strong>DO NOT</strong> make new groups. Look for an empty group among the <strong>pre-made</strong> groups for each assignment and join it. Follow instructions below.</p>
+<ol>
+<li>
+<p>Click "People" in the navbar</p>
+</li>
+<li>
+<p>Click the "Groups" tab</p>
+</li>
+<li>
+<p>Type in the search box: "HW#" (replace # with the homework number, e.g. HW3) then wait a long time for the groups to load</p>
+</li>
+<li>
+<p>Choose an empty group and have both members in your pair click "Join". Again, this must be done <strong>before</strong> you submit and <strong>before</strong> the homework deadline. If you haven't joined a group before the homework deadline, we will assume you are working alone.</p>
+</li>
+<li>
+<p>Groups <strong>do not</strong> persist across assignments. You need to make a group for every assignment.</p>
+</li>
+</ol>
+<p><strong>Warning: If you are submitting in a pair: both members must join a Canvas group BEFORE they submit and BEFORE the homework deadline, whichever is earlier. If your group is not in place when you submit or if you submit after the assignment deadline, then you are submitting alone. This is a Canvas limitation.</strong></p>
+<p><a href="https://youtu.be/p58ZOItZ6ho">Making a HW Group in Canvas Video</a></p>
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
