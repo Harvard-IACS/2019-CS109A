@@ -1,0 +1,1 @@
+bikeshare.groupby('month').mean()
