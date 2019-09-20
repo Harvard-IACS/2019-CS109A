@@ -1,0 +1,15 @@
+name: cs109a
+dependencies:
+  - python=3.7
+  - anaconda
+  - seaborn
+  - pip
+  - numpy
+  - pandas=0.24.1
+  - matplotlib
+  - pip:
+    - beautifulsoup4
+    - tensorflow
+    - keras
+    - requests==2.21.0
+

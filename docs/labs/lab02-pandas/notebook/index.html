@@ -1,0 +1,5199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../../style/css/hiacs.css">
+
+    <title>CS109A - Lab 02: More Pandas</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../../..">
+      <img class="navbar-brand-logo" src="../../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+    <div>
+      <div class="float-left">
+        <p>Key Word(s):
+          <a href="../../../pages/materials.html#Pandas">Pandas</a>        </p>
+      </div>
+      <div class="float-right">
+        <a href="https://github.com/Harvard-IACS/2019-CS109A/blob/master/content/labs/lab02/cs109a_lab2_more_pandas.ipynb">
+          Download Notebook <i class="fas fa-download"></i>
+        </a>
+      </div>
+    </div>
+    <br />
+    <hr />
+  <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Lab-2:-Pandas-and-Web-Scraping-with-Beautiful-Soup">Lab 2: Pandas and Web Scraping with Beautiful Soup<a class="anchor-link" href="#Lab-2:-Pandas-and-Web-Scraping-with-Beautiful-Soup">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Lab Instructors:</strong> Chris Tanner and Eleni Kaxiras <br>
+<strong>Authors:</strong> Rahul Dave, David Sondak, Will Claybaugh, Pavlos Protopapas, Chris Tanner, Eleni Kaxiras</p>
+<hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="k">def</span> <span class="nf">css_styling</span><span class="p">():</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../../styles/cs109.css"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+<span class="n">css_styling</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<style>
+blockquote { background: #AEDE94; }
+h1 { 
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+h2 { 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+
+div.exercise {
+	background-color: #ffcccc;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+}
+div.theme {
+	background-color: #DDDDDD;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 18pt;
+}
+div.gc { 
+	background-color: #AEDE94;
+	border-color: #E9967A; 	 
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 12pt;
+}
+p.q1 { 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+header {
+   padding-top: 35px;
+    padding-bottom: 35px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+</style>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><ol start="0">
+<li> Learning Goals </li>
+<li> Loading and Cleaning with Pandas</li>
+<li> Parsing and Completing the Dataframe  </li>
+<li> Grouping </li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>About 6,000 odd "best books" were fetched and parsed from <a href="https://www.goodreads.com">Goodreads</a>. The "bestness" of these books came from a proprietary formula used by Goodreads and published as a list on their web site.</p>
+<p>We parsed the page for each book and saved data from all these pages in a tabular format as a CSV file. In this lab we'll clean and further parse the data.  We'll then do some exploratory data analysis to answer questions about these best books and popular genres.</p>
+<p>By the end of this lab, you should be able to:</p>
+<ul>
+<li>Load and systematically address missing values, ancoded as <code>NaN</code> values in our data set, for example, by removing observations associated with these values.</li>
+<li>Parse columns in the dataframe to create new dataframe columns.</li>
+<li>Use groupby to aggregate data on a particular feature column, such as author.</li>
+</ul>
+<p><em>This lab corresponds to lectures #1, #2, and #3 and maps on to homework #1 and further.</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Basic-EDA-workflow">Basic EDA workflow<a class="anchor-link" href="#Basic-EDA-workflow">¶</a></h3><p>(From the lecture, repeated here for convenience).</p>
+<p>The basic workflow is as follows:</p>
+<ol>
+<li><strong>Build</strong> a DataFrame from the data (ideally, put all data in this object)</li>
+<li><strong>Clean</strong> the DataFrame. It should have the following properties:<ul>
+<li>Each row describes a single object</li>
+<li>Each column describes a property of that object</li>
+<li>Columns are numeric whenever appropriate</li>
+<li>Columns contain atomic properties that cannot be further decomposed</li>
+</ul>
+</li>
+<li>Explore <strong>global properties</strong>. Use histograms, scatter plots, and aggregation functions to summarize the data.</li>
+<li>Explore <strong>group properties</strong>. Use groupby and small multiples to compare subsets of the data.</li>
+</ol>
+<p>This process transforms your data into a format which is easier to work with, gives you a basic overview of the data's properties, and likely generates several questions for you to followup in subsequent analysis.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-1:-Loading-and-Cleaning-with-Pandas">Part 1: Loading and Cleaning with Pandas<a class="anchor-link" href="#Part-1:-Loading-and-Cleaning-with-Pandas">¶</a></h2><p>Read in the <code>goodreads.csv</code> file, examine the data, and do any necessary data cleaning.</p>
+<p>Here is a description of the columns (in order) present in this csv file:</p>
+<pre><code>rating: the average rating on a 1-5 scale achieved by the book
+review_count: the number of Goodreads users who reviewed this book
+isbn: the ISBN code for the book
+booktype: an internal Goodreads identifier for the book
+author_url: the Goodreads (relative) URL for the author of the book
+year: the year the book was published
+genre_urls: a string with '|' separated relative URLS of Goodreads genre pages
+dir: a directory identifier internal to the scraping code
+rating_count: the number of ratings for this book (this is different from the number of reviews)
+name: the name of the book</code></pre>
+<p>Let us see what issues we find with the data and resolve them.</p>
+<hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After loading appropriate libraries</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cleaning:-Reading-in-the-data">Cleaning: Reading in the data<a class="anchor-link" href="#Cleaning:-Reading-in-the-data">¶</a></h3><p>We read in and clean the data from <code>goodreads.csv</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Read the data into a dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/goodreads.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
+
+<span class="c1">#Examine the first few rows of the dataframe</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>4.40</th>
+<th>136455</th>
+<th>0439023483</th>
+<th>good_reads:book</th>
+<th>https://www.goodreads.com/author/show/153394.Suzanne_Collins</th>
+<th>2008</th>
+<th>/genres/young-adult|/genres/science-fiction|/genres/dystopia|/genres/fantasy|/genres/science-fiction|/genres/romance|/genres/adventure|/genres/book-club|/genres/young-adult|/genres/teen|/genres/apocalyptic|/genres/post-apocalyptic|/genres/action</th>
+<th>dir01/2767052-the-hunger-games.html</th>
+<th>2958974</th>
+<th>The Hunger Games (The Hunger Games, #1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4.41</td>
+<td>16648</td>
+<td>0439358078</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1077326....</td>
+<td>2003.0</td>
+<td>/genres/fantasy|/genres/young-adult|/genres/fi...</td>
+<td>dir01/2.Harry_Potter_and_the_Order_of_the_Phoe...</td>
+<td>1284478</td>
+<td>Harry Potter and the Order of the Phoenix (Har...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>3.56</td>
+<td>85746</td>
+<td>0316015849</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/941441.S...</td>
+<td>2005.0</td>
+<td>/genres/young-adult|/genres/fantasy|/genres/ro...</td>
+<td>dir01/41865.Twilight.html</td>
+<td>2579564</td>
+<td>Twilight (Twilight, #1)</td>
+</tr>
+<tr>
+<th>2</th>
+<td>4.23</td>
+<td>47906</td>
+<td>0061120081</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1825.Har...</td>
+<td>1960.0</td>
+<td>/genres/classics|/genres/fiction|/genres/histo...</td>
+<td>dir01/2657.To_Kill_a_Mockingbird.html</td>
+<td>2078123</td>
+<td>To Kill a Mockingbird</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.23</td>
+<td>34772</td>
+<td>0679783261</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1265.Jan...</td>
+<td>1813.0</td>
+<td>/genres/classics|/genres/fiction|/genres/roman...</td>
+<td>dir01/1885.Pride_and_Prejudice.html</td>
+<td>1388992</td>
+<td>Pride and Prejudice</td>
+</tr>
+<tr>
+<th>4</th>
+<td>4.25</td>
+<td>12363</td>
+<td>0446675539</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/11081.Ma...</td>
+<td>1936.0</td>
+<td>/genres/classics|/genres/historical-fiction|/g...</td>
+<td>dir01/18405.Gone_with_the_Wind.html</td>
+<td>645470</td>
+<td>Gone with the Wind</td>
+</tr>
+<tr>
+<th>5</th>
+<td>4.22</td>
+<td>7205</td>
+<td>0066238501</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1069006....</td>
+<td>1949.0</td>
+<td>/genres/classics|/genres/young-adult|/genres/c...</td>
+<td>dir01/11127.The_Chronicles_of_Narnia.html</td>
+<td>286677</td>
+<td>The Chronicles of Narnia (Chronicles of Narnia...</td>
+</tr>
+<tr>
+<th>6</th>
+<td>4.38</td>
+<td>10902</td>
+<td>0060256656</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/435477.S...</td>
+<td>1964.0</td>
+<td>/genres/childrens|/genres/young-adult|/genres/...</td>
+<td>dir01/370493.The_Giving_Tree.html</td>
+<td>502891</td>
+<td>The Giving Tree</td>
+</tr>
+<tr>
+<th>7</th>
+<td>3.79</td>
+<td>20670</td>
+<td>0452284244</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/3706.Geo...</td>
+<td>1945.0</td>
+<td>/genres/classics|/genres/fiction|/genres/scien...</td>
+<td>dir01/7613.Animal_Farm.html</td>
+<td>1364879</td>
+<td>Animal Farm</td>
+</tr>
+<tr>
+<th>8</th>
+<td>4.18</td>
+<td>12302</td>
+<td>0345391802</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/4.Dougla...</td>
+<td>1979.0</td>
+<td>/genres/science-fiction|/genres/humor|/genres/...</td>
+<td>dir01/11.The_Hitchhiker_s_Guide_to_the_Galaxy....</td>
+<td>724713</td>
+<td>The Hitchhiker's Guide to the Galaxy (Hitchhik...</td>
+</tr>
+<tr>
+<th>9</th>
+<td>4.03</td>
+<td>20937</td>
+<td>0739326228</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/614.Arth...</td>
+<td>1997.0</td>
+<td>/genres/fiction|/genres/historical-fiction|/ge...</td>
+<td>dir01/930.Memoirs_of_a_Geisha.html</td>
+<td>1042679</td>
+<td>Memoirs of a Geisha</td>
+</tr>
+<tr>
+<th>10</th>
+<td>3.72</td>
+<td>34959</td>
+<td>0307277674</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/630.Dan_...</td>
+<td>2003.0</td>
+<td>/genres/mystery|/genres/thriller|/genres/suspe...</td>
+<td>dir01/968.The_Da_Vinci_Code.html</td>
+<td>1220657</td>
+<td>The Da Vinci Code (Robert Langdon, #2)</td>
+</tr>
+<tr>
+<th>11</th>
+<td>4.36</td>
+<td>69524</td>
+<td>0375831002</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/11466.Ma...</td>
+<td>2005.0</td>
+<td>/genres/historical-fiction|/genres/young-adult...</td>
+<td>dir01/19063.The_Book_Thief.html</td>
+<td>675431</td>
+<td>The Book Thief</td>
+</tr>
+<tr>
+<th>12</th>
+<td>4.05</td>
+<td>5516</td>
+<td>0451527747</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/8164.Lew...</td>
+<td>1865.0</td>
+<td>/genres/classics|/genres/childrens|/genres/you...</td>
+<td>dir01/24213.Alice_s_Adventures_in_Wonderland_T...</td>
+<td>301702</td>
+<td>Alice's Adventures in Wonderland & Through the...</td>
+</tr>
+<tr>
+<th>13</th>
+<td>3.72</td>
+<td>10156</td>
+<td>0743477111</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/947.Will...</td>
+<td>1597.0</td>
+<td>/genres/classics|/genres/plays|/genres/fiction...</td>
+<td>dir01/18135.Romeo_and_Juliet.html</td>
+<td>1211146</td>
+<td>Romeo and Juliet</td>
+</tr>
+<tr>
+<th>14</th>
+<td>4.09</td>
+<td>10082</td>
+<td>0451525264</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/13661.Vi...</td>
+<td>1862.0</td>
+<td>/genres/classics|/genres/historical-fiction|/g...</td>
+<td>dir01/24280.Les_Mis_rables.html</td>
+<td>418004</td>
+<td>Les MisÃ©rables</td>
+</tr>
+<tr>
+<th>15</th>
+<td>3.92</td>
+<td>38061</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/498072.A...</td>
+<td>2003.0</td>
+<td>/genres/fiction|/genres/romance|/genres/fantas...</td>
+<td>dir01/18619684-the-time-traveler-s-wife.html</td>
+<td>927254</td>
+<td>The Time Traveler's Wife</td>
+</tr>
+<tr>
+<th>16</th>
+<td>4.58</td>
+<td>1314</td>
+<td>0345538374</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/656983.J...</td>
+<td>1973.0</td>
+<td>/genres/fantasy|/genres/classics|/genres/scien...</td>
+<td>dir01/30.J_R_R_Tolkien_4_Book_Boxed_Set.html</td>
+<td>68495</td>
+<td>J.R.R. Tolkien 4-Book Boxed Set</td>
+</tr>
+<tr>
+<th>17</th>
+<td>3.60</td>
+<td>18039</td>
+<td>0140283331</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/306.Will...</td>
+<td>1954.0</td>
+<td>/genres/classics|/genres/academic|/genres/scho...</td>
+<td>dir01/7624.Lord_of_the_Flies.html</td>
+<td>1232126</td>
+<td>Lord of the Flies</td>
+</tr>
+<tr>
+<th>18</th>
+<td>4.28</td>
+<td>30815</td>
+<td>0812550706</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/589.Orso...</td>
+<td>1985.0</td>
+<td>/genres/science-fiction|/genres/young-adult|/g...</td>
+<td>dir01/375802.Ender_s_Game.html</td>
+<td>624730</td>
+<td>Ender's Game (The Ender Quintet, #1)</td>
+</tr>
+<tr>
+<th>19</th>
+<td>4.02</td>
+<td>11942</td>
+<td>0375751513</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/3565.Osc...</td>
+<td>1890.0</td>
+<td>/genres/classics|/genres/fiction|/genres/horro...</td>
+<td>dir01/5297.The_Picture_of_Dorian_Gray.html</td>
+<td>409478</td>
+<td>The Picture of Dorian Gray</td>
+</tr>
+<tr>
+<th>20</th>
+<td>4.14</td>
+<td>8681</td>
+<td>0143058142</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/3137322....</td>
+<td>1866.0</td>
+<td>/genres/classics|/genres/cultural|/genres/russ...</td>
+<td>dir01/7144.Crime_and_Punishment.html</td>
+<td>294297</td>
+<td>Crime and Punishment</td>
+</tr>
+<tr>
+<th>21</th>
+<td>4.11</td>
+<td>8897</td>
+<td>0064410935</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/988142.E...</td>
+<td>1952.0</td>
+<td>/genres/childrens|/genres/fiction|/genres/clas...</td>
+<td>dir01/24178.Charlotte_s_Web.html</td>
+<td>662707</td>
+<td>Charlotte's Web</td>
+</tr>
+<tr>
+<th>22</th>
+<td>4.20</td>
+<td>8678</td>
+<td>0451528824</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/5350.L_M...</td>
+<td>1908.0</td>
+<td>/genres/fiction|/genres/young-adult|/genres/cl...</td>
+<td>dir01/8127.Anne_of_Green_Gables.html</td>
+<td>393594</td>
+<td>Anne of Green Gables (Anne of Green Gables, #1)</td>
+</tr>
+<tr>
+<th>23</th>
+<td>3.75</td>
+<td>36955</td>
+<td>0061122416</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/566.Paul...</td>
+<td>1988.0</td>
+<td>/genres/fiction|/genres/classics|/genres/fanta...</td>
+<td>dir01/865.The_Alchemist.html</td>
+<td>876518</td>
+<td>The Alchemist</td>
+</tr>
+<tr>
+<th>24</th>
+<td>3.94</td>
+<td>18581</td>
+<td>0007491565</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1630.Ray...</td>
+<td>1953.0</td>
+<td>/genres/classics|/genres/fiction|/genres/scien...</td>
+<td>dir01/17470674-fahrenheit-451.html</td>
+<td>783133</td>
+<td>Fahrenheit 451</td>
+</tr>
+<tr>
+<th>25</th>
+<td>4.43</td>
+<td>112279</td>
+<td>0525478817</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1406384....</td>
+<td>2012.0</td>
+<td>/genres/young-adult|/genres/book-club|/genres/...</td>
+<td>dir01/11870085-the-fault-in-our-stars.html</td>
+<td>1150626</td>
+<td>The Fault in Our Stars</td>
+</tr>
+<tr>
+<th>26</th>
+<td>3.79</td>
+<td>15833</td>
+<td>0142000671</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/585.John...</td>
+<td>1937.0</td>
+<td>/genres/fiction|/genres/classics|/genres/acade...</td>
+<td>dir01/890.Of_Mice_and_Men.html</td>
+<td>1070755</td>
+<td>Of Mice and Men</td>
+</tr>
+<tr>
+<th>27</th>
+<td>4.04</td>
+<td>13214</td>
+<td>0440498058</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/106.Made...</td>
+<td>1962.0</td>
+<td>/genres/fantasy|/genres/young-adult|/genres/cl...</td>
+<td>dir01/18131.A_Wrinkle_in_Time.html</td>
+<td>420001</td>
+<td>A Wrinkle in Time (A Wrinkle in Time Quintet, #1)</td>
+</tr>
+<tr>
+<th>28</th>
+<td>3.94</td>
+<td>11736</td>
+<td>0393970124</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/6988.Bra...</td>
+<td>1897.0</td>
+<td>/genres/classics|/genres/horror|/genres/fictio...</td>
+<td>dir01/17245.Dracula.html</td>
+<td>429079</td>
+<td>Dracula</td>
+</tr>
+<tr>
+<th>29</th>
+<td>4.24</td>
+<td>10614</td>
+<td>0345418263</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/12521.Wi...</td>
+<td>1973.0</td>
+<td>/genres/fantasy|/genres/classics|/genres/roman...</td>
+<td>dir01/21787.The_Princess_Bride.html</td>
+<td>457219</td>
+<td>The Princess Bride</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>5969</th>
+<td>3.97</td>
+<td>182</td>
+<td>0399151311</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/33987.La...</td>
+<td>1985.0</td>
+<td>/genres/romance|/genres/romance|/genres/contem...</td>
+<td>dir60/572626.Separate_Beds.html</td>
+<td>3544</td>
+<td>Separate Beds</td>
+</tr>
+<tr>
+<th>5970</th>
+<td>4.24</td>
+<td>72</td>
+<td>0413748308</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/29185.Sa...</td>
+<td>2000.0</td>
+<td>/genres/plays|/genres/drama|/genres/plays|/gen...</td>
+<td>dir60/146548.4_48_Psychosis.html</td>
+<td>1016</td>
+<td>4.48 Psychosis</td>
+</tr>
+<tr>
+<th>5971</th>
+<td>4.19</td>
+<td>1670</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/4586597....</td>
+<td>2011.0</td>
+<td>/genres/romance|/genres/romance|/genres/contem...</td>
+<td>dir60/12351649-perfection.html</td>
+<td>35197</td>
+<td>Perfection (Neighbor from Hell, #2)</td>
+</tr>
+<tr>
+<th>5972</th>
+<td>4.17</td>
+<td>789</td>
+<td>1401324290</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/4627059....</td>
+<td>2011.0</td>
+<td>/genres/biography|/genres/animals|/genres/auto...</td>
+<td>dir60/10393675-until-tuesday.html</td>
+<td>4685</td>
+<td>Until Tuesday</td>
+</tr>
+<tr>
+<th>5973</th>
+<td>3.99</td>
+<td>2944</td>
+<td>0425267040</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/24978.Ma...</td>
+<td>2013.0</td>
+<td>/genres/romance|/genres/adult-fiction|/genres/...</td>
+<td>dir60/16033902-rush.html</td>
+<td>41287</td>
+<td>Rush (Breathless, #1)</td>
+</tr>
+<tr>
+<th>5974</th>
+<td>4.07</td>
+<td>10585</td>
+<td>0061950726</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/157146.C...</td>
+<td>2013.0</td>
+<td>/genres/historical-fiction|/genres/book-club|/...</td>
+<td>dir60/15818107-orphan-train.html</td>
+<td>76606</td>
+<td>Orphan Train</td>
+</tr>
+<tr>
+<th>5975</th>
+<td>4.23</td>
+<td>1185</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/5160667....</td>
+<td>2014.0</td>
+<td>/genres/romance|/genres/science-fiction|/genre...</td>
+<td>dir60/20504754-transcendence.html</td>
+<td>4942</td>
+<td>Transcendence</td>
+</tr>
+<tr>
+<th>5976</th>
+<td>4.03</td>
+<td>218</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/5769580....</td>
+<td>1987.0</td>
+<td>/genres/fiction|/genres/novels|/genres/literat...</td>
+<td>dir60/5948927.html</td>
+<td>1607</td>
+<td>Ø§ÙØªÙÙ</td>
+</tr>
+<tr>
+<th>5977</th>
+<td>3.99</td>
+<td>27</td>
+<td>1853408360</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/851161.K...</td>
+<td>2005.0</td>
+<td>/genres/young-adult|/genres/romance|/genres/co...</td>
+<td>dir60/2274992.Tessa_in_Love.html</td>
+<td>294</td>
+<td>Tessa in Love</td>
+</tr>
+<tr>
+<th>5978</th>
+<td>2.77</td>
+<td>800</td>
+<td>0060988649</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/7025.Gre...</td>
+<td>2001.0</td>
+<td>/genres/fantasy|/genres/fiction|/genres/myster...</td>
+<td>dir60/24929.Lost.html</td>
+<td>11128</td>
+<td>Lost</td>
+</tr>
+<tr>
+<th>5979</th>
+<td>3.84</td>
+<td>165</td>
+<td>0571207995</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/16865.Ti...</td>
+<td>1977.0</td>
+<td>/genres/fiction|/genres/cultural|/genres/canad...</td>
+<td>dir60/29898.The_Wars.html</td>
+<td>4160</td>
+<td>The Wars</td>
+</tr>
+<tr>
+<th>5980</th>
+<td>3.36</td>
+<td>1693</td>
+<td>0312424442</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/3083854....</td>
+<td>2003.0</td>
+<td>/genres/fiction|/genres/novels|/genres/contemp...</td>
+<td>dir60/231.I_am_Charlotte_Simmons.html</td>
+<td>17743</td>
+<td>I am Charlotte Simmons</td>
+</tr>
+<tr>
+<th>5981</th>
+<td>4.09</td>
+<td>362</td>
+<td>1407103946</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/81096.Ch...</td>
+<td>2009.0</td>
+<td>/genres/fantasy|/genres/horror|/genres/young-a...</td>
+<td>dir60/6364017-malice.html</td>
+<td>2013</td>
+<td>Malice (Malice, #1)</td>
+</tr>
+<tr>
+<th>5982</th>
+<td>4.23</td>
+<td>137</td>
+<td>1582430438</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/8567.Wen...</td>
+<td>1974.0</td>
+<td>/genres/fiction|/genres/novels|/genres/literat...</td>
+<td>dir60/227274.The_Memory_of_Old_Jack.html</td>
+<td>1085</td>
+<td>The Memory of Old Jack</td>
+</tr>
+<tr>
+<th>5983</th>
+<td>4.02</td>
+<td>531</td>
+<td>0575085150</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/81096.Ch...</td>
+<td>2009.0</td>
+<td>/genres/science-fiction|/genres/steampunk|/gen...</td>
+<td>dir60/6285903-retribution-falls.html</td>
+<td>3878</td>
+<td>Retribution Falls (Tales of the Ketty Jay, #1)</td>
+</tr>
+<tr>
+<th>5984</th>
+<td>3.61</td>
+<td>109</td>
+<td>1401360106</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/183537.K...</td>
+<td>2005.0</td>
+<td>/genres/fiction|/genres/young-adult|/genres/bo...</td>
+<td>dir60/319403.Pigtopia.html</td>
+<td>529</td>
+<td>Pigtopia</td>
+</tr>
+<tr>
+<th>5985</th>
+<td>4.06</td>
+<td>954</td>
+<td>1606840584</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/2891503....</td>
+<td>2010.0</td>
+<td>/genres/young-adult|/genres/fantasy|/genres/pa...</td>
+<td>dir60/7831742-the-lost-saint.html</td>
+<td>12690</td>
+<td>The Lost Saint (The Dark Divine, #2)</td>
+</tr>
+<tr>
+<th>5986</th>
+<td>4.26</td>
+<td>477</td>
+<td>0517548233</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/2062.Hen...</td>
+<td>1946.0</td>
+<td>/genres/economics|/genres/non-fiction|/genres/...</td>
+<td>dir60/3028.Economics_in_One_Lesson.html</td>
+<td>5767</td>
+<td>Economics in One Lesson</td>
+</tr>
+<tr>
+<th>5987</th>
+<td>4.34</td>
+<td>93</td>
+<td>0575070706</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/58.Frank...</td>
+<td>1977.0</td>
+<td>/genres/science-fiction|/genres/fantasy|/genre...</td>
+<td>dir60/53764.The_Great_Dune_Trilogy.html</td>
+<td>41378</td>
+<td>The Great Dune Trilogy</td>
+</tr>
+<tr>
+<th>5988</th>
+<td>3.36</td>
+<td>192</td>
+<td>842534607X</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/3493970....</td>
+<td>2011.0</td>
+<td>/genres/european-literature|/genres/spanish-li...</td>
+<td>dir60/10832326-si-t-me-dices-ven-lo-dejo-todo-...</td>
+<td>1914</td>
+<td>Si tÃº me dices ven lo dejo todo... pero dime ven</td>
+</tr>
+<tr>
+<th>5989</th>
+<td>4.12</td>
+<td>1150</td>
+<td>0140143459</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/776.Mich...</td>
+<td>1989.0</td>
+<td>/genres/non-fiction|/genres/economics|/genres/...</td>
+<td>dir60/1171.Liar_s_Poker.html</td>
+<td>32637</td>
+<td>Liar's Poker</td>
+</tr>
+<tr>
+<th>5990</th>
+<td>4.20</td>
+<td>650</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1112683._</td>
+<td>2009.0</td>
+<td>/genres/novels|/genres/fiction|/genres/religio...</td>
+<td>dir60/6976667.html</td>
+<td>2899</td>
+<td>Ø£ÙÙØ§Ø­ ÙØ¯Ø³Ø±</td>
+</tr>
+<tr>
+<th>5991</th>
+<td>3.89</td>
+<td>132</td>
+<td>1400303400</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/5544.Fra...</td>
+<td>2002.0</td>
+<td>/genres/christian-fiction|/genres/christian|/g...</td>
+<td>dir60/65686.Nightmare_Academy.html</td>
+<td>3531</td>
+<td>Nightmare Academy (Veritas Project, #2)</td>
+</tr>
+<tr>
+<th>5992</th>
+<td>4.09</td>
+<td>1256</td>
+<td>0345515501</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/18149.Te...</td>
+<td>2011.0</td>
+<td>/genres/mystery|/genres/mystery|/genres/crime|...</td>
+<td>dir60/9578677-the-silent-girl.html</td>
+<td>16312</td>
+<td>The Silent Girl (Rizzoli & Isles, #9)</td>
+</tr>
+<tr>
+<th>5993</th>
+<td>4.37</td>
+<td>28</td>
+<td>0393062260</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/62157.Ro...</td>
+<td>2007.0</td>
+<td>/genres/poetry|/genres/religion|/genres/christ...</td>
+<td>dir60/1251125.The_Book_of_Psalms.html</td>
+<td>242</td>
+<td>The Book of Psalms</td>
+</tr>
+<tr>
+<th>5994</th>
+<td>4.17</td>
+<td>2226</td>
+<td>0767913736</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/44565.Ca...</td>
+<td>2005.0</td>
+<td>/genres/history|/genres/non-fiction|/genres/bi...</td>
+<td>dir60/78508.The_River_of_Doubt.html</td>
+<td>16618</td>
+<td>The River of Doubt</td>
+</tr>
+<tr>
+<th>5995</th>
+<td>3.99</td>
+<td>775</td>
+<td>1416909427</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/151371.J...</td>
+<td>2006.0</td>
+<td>/genres/young-adult|/genres/realistic-fiction|...</td>
+<td>dir60/259068.Shug.html</td>
+<td>6179</td>
+<td>Shug</td>
+</tr>
+<tr>
+<th>5996</th>
+<td>3.78</td>
+<td>540</td>
+<td>1620612321</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/5761314....</td>
+<td>2012.0</td>
+<td>/genres/contemporary|/genres/romance|/genres/y...</td>
+<td>dir60/13503247-flawed.html</td>
+<td>2971</td>
+<td>Flawed</td>
+</tr>
+<tr>
+<th>5997</th>
+<td>3.91</td>
+<td>281</td>
+<td>NaN</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1201952....</td>
+<td>2006.0</td>
+<td>/genres/religion|/genres/islam|/genres/religio...</td>
+<td>dir60/2750008.html</td>
+<td>3083</td>
+<td>Ø£Ø³Ø¹Ø¯ Ø§ÙØ±Ø£Ø© ÙÙ Ø§ÙØ¹Ø§ÙÙ</td>
+</tr>
+<tr>
+<th>5998</th>
+<td>4.35</td>
+<td>61</td>
+<td>0786929081</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1023510....</td>
+<td>2001.0</td>
+<td>/genres/fiction|/genres/fantasy|/genres/magic|...</td>
+<td>dir60/66677.Legacy_of_the_Drow_Collector_s_Edi...</td>
+<td>3982</td>
+<td>Legacy of the Drow Collector's Edition (Legacy...</td>
+</tr>
+</tbody>
+</table>
+<p>5999 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Oh dear. That does not quite seem to be right. We are missing the column names. We need to add these in! But what are they?</p>
+<p>Here is a list of them in order:</p>
+<p><code>["rating", 'review_count', 'isbn', 'booktype','author_url', 'year', 'genre_urls', 'dir','rating_count', 'name']</code></p>
+<p><div class="exercise"><b>Exercise</b></div>
+Use these to load the dataframe properly! And then "head" the dataframe... (you will need to look at the read_csv docs)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/goodreads.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">"rating"</span><span class="p">,</span> <span class="s1">'review_count'</span><span class="p">,</span> <span class="s1">'isbn'</span><span class="p">,</span> <span class="s1">'booktype'</span><span class="p">,</span><span class="s1">'author_url'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">,</span> <span class="s1">'genre_urls'</span><span class="p">,</span> <span class="s1">'dir'</span><span class="p">,</span><span class="s1">'rating_count'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1">#Examine the first few rows of the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>genre_urls</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4.40</td>
+<td>136455</td>
+<td>0439023483</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/153394.S...</td>
+<td>2008.0</td>
+<td>/genres/young-adult|/genres/science-fiction|/g...</td>
+<td>dir01/2767052-the-hunger-games.html</td>
+<td>2958974</td>
+<td>The Hunger Games (The Hunger Games, #1)</td>
+</tr>
+<tr>
+<th>1</th>
+<td>4.41</td>
+<td>16648</td>
+<td>0439358078</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1077326....</td>
+<td>2003.0</td>
+<td>/genres/fantasy|/genres/young-adult|/genres/fi...</td>
+<td>dir01/2.Harry_Potter_and_the_Order_of_the_Phoe...</td>
+<td>1284478</td>
+<td>Harry Potter and the Order of the Phoenix (Har...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3.56</td>
+<td>85746</td>
+<td>0316015849</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/941441.S...</td>
+<td>2005.0</td>
+<td>/genres/young-adult|/genres/fantasy|/genres/ro...</td>
+<td>dir01/41865.Twilight.html</td>
+<td>2579564</td>
+<td>Twilight (Twilight, #1)</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.23</td>
+<td>47906</td>
+<td>0061120081</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1825.Har...</td>
+<td>1960.0</td>
+<td>/genres/classics|/genres/fiction|/genres/histo...</td>
+<td>dir01/2657.To_Kill_a_Mockingbird.html</td>
+<td>2078123</td>
+<td>To Kill a Mockingbird</td>
+</tr>
+<tr>
+<th>4</th>
+<td>4.23</td>
+<td>34772</td>
+<td>0679783261</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1265.Jan...</td>
+<td>1813.0</td>
+<td>/genres/classics|/genres/fiction|/genres/roman...</td>
+<td>dir01/1885.Pride_and_Prejudice.html</td>
+<td>1388992</td>
+<td>Pride and Prejudice</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cleaning:-Examing-the-dataframe---quick-checks">Cleaning: Examing the dataframe - quick checks<a class="anchor-link" href="#Cleaning:-Examing-the-dataframe---quick-checks">¶</a></h3><p>We should examine the dataframe to get a overall sense of the content.</p>
+<p><div class="exercise"><b>Exercise</b></div>
+Lets check the types of the columns. What do you find?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="c1">####### </span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="c1">####### </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>rating          float64
+review_count     object
+isbn             object
+booktype         object
+author_url       object
+year            float64
+genre_urls       object
+dir              object
+rating_count     object
+name             object
+dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>your answer here</em></p>
+<p>Notice that <code>review_count</code> and <code>rating_counts</code> are objects instead of ints, and the <code>year</code> is a float!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are a couple more quick sanity checks to perform on the dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(6000, 10)
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index(['rating', 'review_count', 'isbn', 'booktype', 'author_url', 'year', 'genre_urls', 'dir', 'rating_count', 'name'], dtype='object')</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cleaning:-Examining-the-dataframe---a-deeper-look">Cleaning: Examining the dataframe - a deeper look<a class="anchor-link" href="#Cleaning:-Examining-the-dataframe---a-deeper-look">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Beyond performing checking some quick general properties of the data frame and looking at the first $n$ rows, we can dig a bit deeper into the values being stored. If you haven't already, check to see if there are any missing values in the data frame.</p>
+<p>Let's see for a column which seemed OK to us.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Get a sense of how many missing values there are in the dataframe.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">review_count</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">isbn</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">booktype</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">author_url</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">genre_urls</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">dir</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">rating_count</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2
+0
+475
+0
+0
+7
+62
+0
+0
+0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Try to locate where the missing values occur</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>genre_urls</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>3643</th>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>dir37/9658936-harry-potter.html</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<th>5282</th>
+<td>NaN</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>dir53/113138.The_Winner.html</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How does <code>pandas</code> or <code>numpy</code> handle missing values when we try to compute with data sets that include them?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll now check if any of the other suspicious columns have missing values.  Let's look at <code>year</code> and <code>review_count</code> first.</p>
+<p>One thing you can do is to try and convert to the type you expect the column to be. If something goes wrong, it likely means your data are bad.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets test for missing data:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>(6000, 10)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cleaning:-Dealing-with-Missing-Values">Cleaning: Dealing with Missing Values<a class="anchor-link" href="#Cleaning:-Dealing-with-Missing-Values">¶</a></h3><p>How should we interpret 'missing' or 'invalid' values in the data (hint: look at where these values occur)? One approach is to simply exclude them from the dataframe. Is this appropriate for all 'missing' or 'invalid' values?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Treat the missing or invalid values in your dataframe</span>
+<span class="c1">####### </span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok so we have done some cleaning. What do things look like now? Notice the float has not yet changed.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>rating          float64
+review_count     object
+isbn             object
+booktype         object
+author_url       object
+year            float64
+genre_urls       object
+dir              object
+rating_count     object
+name             object
+dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">isnull</span><span class="p">()))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># We removed seven rows</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>(5993, 10)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Ok so lets fix those types. Convert them to ints. If the type conversion fails, we now know we have further problems.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rating_count</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">rating_count</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">review_count</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">review_count</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once you do this, we seem to be good on these columns (no errors in conversion). Lets look:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>rating          float64
+review_count      int64
+isbn             object
+booktype         object
+author_url       object
+year              int64
+genre_urls       object
+dir              object
+rating_count      int64
+name             object
+dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sweet!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some of the other colums that should be strings have NaN.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">genre_urls</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">'genre_urls'</span><span class="p">]</span><span class="o">=</span><span class="s2">""</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isbn</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">'isbn'</span><span class="p">]</span><span class="o">=</span><span class="s2">""</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-2:-Parsing-and-Completing-the-Data-Frame">Part 2: Parsing and Completing the Data Frame<a class="anchor-link" href="#Part-2:-Parsing-and-Completing-the-Data-Frame">¶</a></h2><p>We will parse the <code>author</code> column from the author_url and <code>genres</code> column from the genre_urls. Keep the <code>genres</code> column as a string separated by '|'.</p>
+<p>We will use panda's <code>map</code> to assign new columns to the dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Examine an example <code>author_url</code> and reason about which sequence of string operations must be performed in order to isolate the author's name.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Get the first author_url</span>
+<span class="n">test_string</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">author_url</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">test_string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>'https://www.goodreads.com/author/show/153394.Suzanne_Collins'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Test out some string operations to isolate the author name</span>
+
+<span class="n">test_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[17]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>'Suzanne_Collins'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Lets wrap the above code into a function which we will then use</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Write a function that accepts an author url and returns the author's name based on your experimentation above</span>
+<span class="k">def</span> <span class="nf">get_author</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="c1"># your code here</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">1</span><span class="p">:][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">####### </span>
+    <span class="k">return</span> <span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Apply the get_author function to the 'author_url' column using '.map' </span>
+<span class="c1">#and add a new column 'author' to store the names</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'author'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">author_url</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">get_author</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">author</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    Suzanne_Collins
+1        J_K_Rowling
+2    Stephenie_Meyer
+3         Harper_Lee
+4        Jane_Austen
+Name: author, dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Now parse out the genres from <code>genre_url</code>.</p>
+<p>This is a little more complicated because there be more than one genre.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">genre_urls</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[20]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    /genres/young-adult|/genres/science-fiction|/g...
+1    /genres/fantasy|/genres/young-adult|/genres/fi...
+2    /genres/young-adult|/genres/fantasy|/genres/ro...
+3    /genres/classics|/genres/fiction|/genres/histo...
+4    /genres/classics|/genres/fiction|/genres/roman...
+Name: genre_urls, dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="c1">#Examine some examples of genre_urls</span>
+
+<span class="c1">#Test out some string operations to isolate the genre name</span>
+<span class="n">test_genre_string</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">genre_urls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">genres</span><span class="o">=</span><span class="n">test_genre_string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">genres</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">genres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>young-adult
+science-fiction
+dystopia
+fantasy
+science-fiction
+romance
+adventure
+book-club
+young-adult
+teen
+apocalyptic
+post-apocalyptic
+action
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Write a function that accepts a genre url and returns the genre name based on your experimentation above</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_and_join_genres</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="c1"># your code here</span>
+    <span class="n">genres</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">)</span>
+    <span class="n">genres</span><span class="o">=</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">genres</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">"|"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">genres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Test your function</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">split_and_join_genres</span><span class="p">(</span><span class="s2">"/genres/young-adult|/genres/science-fiction"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[23]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>'young-adult|science-fiction'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">split_and_join_genres</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[24]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>''</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Use map again to create a new "genres" column</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'genres'</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">genre_urls</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">split_and_join_genres</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[25]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>genre_urls</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+<th>author</th>
+<th>genres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4.40</td>
+<td>136455</td>
+<td>0439023483</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/153394.S...</td>
+<td>2008</td>
+<td>/genres/young-adult|/genres/science-fiction|/g...</td>
+<td>dir01/2767052-the-hunger-games.html</td>
+<td>2958974</td>
+<td>The Hunger Games (The Hunger Games, #1)</td>
+<td>Suzanne_Collins</td>
+<td>young-adult|science-fiction|dystopia|fantasy|s...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>4.41</td>
+<td>16648</td>
+<td>0439358078</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1077326....</td>
+<td>2003</td>
+<td>/genres/fantasy|/genres/young-adult|/genres/fi...</td>
+<td>dir01/2.Harry_Potter_and_the_Order_of_the_Phoe...</td>
+<td>1284478</td>
+<td>Harry Potter and the Order of the Phoenix (Har...</td>
+<td>J_K_Rowling</td>
+<td>fantasy|young-adult|fiction|fantasy|magic|chil...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3.56</td>
+<td>85746</td>
+<td>0316015849</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/941441.S...</td>
+<td>2005</td>
+<td>/genres/young-adult|/genres/fantasy|/genres/ro...</td>
+<td>dir01/41865.Twilight.html</td>
+<td>2579564</td>
+<td>Twilight (Twilight, #1)</td>
+<td>Stephenie_Meyer</td>
+<td>young-adult|fantasy|romance|paranormal|vampire...</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.23</td>
+<td>47906</td>
+<td>0061120081</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1825.Har...</td>
+<td>1960</td>
+<td>/genres/classics|/genres/fiction|/genres/histo...</td>
+<td>dir01/2657.To_Kill_a_Mockingbird.html</td>
+<td>2078123</td>
+<td>To Kill a Mockingbird</td>
+<td>Harper_Lee</td>
+<td>classics|fiction|historical-fiction|academic|s...</td>
+</tr>
+<tr>
+<th>4</th>
+<td>4.23</td>
+<td>34772</td>
+<td>0679783261</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1265.Jan...</td>
+<td>1813</td>
+<td>/genres/classics|/genres/fiction|/genres/roman...</td>
+<td>dir01/1885.Pride_and_Prejudice.html</td>
+<td>1388992</td>
+<td>Pride and Prejudice</td>
+<td>Jane_Austen</td>
+<td>classics|fiction|romance|historical-fiction|li...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, let's pick an author at random so we can see the results of the transformations.  Scroll to see the <code>author</code> and <code>genre</code> columns that we added to the dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">author</span> <span class="o">==</span> <span class="s2">"Marguerite_Yourcenar"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[26]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>genre_urls</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+<th>author</th>
+<th>genres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1014</th>
+<td>4.23</td>
+<td>483</td>
+<td>0374529264</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/7732.Mar...</td>
+<td>1951</td>
+<td>/genres/historical-fiction|/genres/fiction|/ge...</td>
+<td>dir11/12172.Memoirs_of_Hadrian.html</td>
+<td>6258</td>
+<td>Memoirs of Hadrian</td>
+<td>Marguerite_Yourcenar</td>
+<td>historical-fiction|fiction|cultural|france|cla...</td>
+</tr>
+<tr>
+<th>5620</th>
+<td>4.11</td>
+<td>74</td>
+<td>2070367983</td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/7732.Mar...</td>
+<td>1968</td>
+<td>/genres/fiction|/genres/historical-fiction|/ge...</td>
+<td>dir57/953435.L_uvre_au_noir.html</td>
+<td>1601</td>
+<td>L'Åuvre au noir</td>
+<td>Marguerite_Yourcenar</td>
+<td>fiction|historical-fiction|cultural|france|eur...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us delete the <code>genre_urls</code> column.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s1">'genre_urls'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And then save the dataframe out!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"data/cleaned-goodreads.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-3:-Grouping">Part 3: Grouping<a class="anchor-link" href="#Part-3:-Grouping">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It appears that some books were written in negative years!  Print out the observations that correspond to negative years.  What do you notice about these books?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o"><</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="c1">#These are books written before the Common Era (BCE, equivalent to BC).</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[30]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>47                               The Odyssey
+246                    The Iliad/The Odyssey
+455                             The Republic
+596                               The Aeneid
+629                              Oedipus Rex
+674                           The Art of War
+746                        The Bhagavad Gita
+777                                 Antigone
+1233                       The Oedipus Cycle
+1397                          Aesop's Fables
+1398                   The Epic of Gilgamesh
+1428                                   Medea
+1815                            The Oresteia
+1882         The Trial and Death of Socrates
+2078    The History of the Peloponnesian War
+2527                           The Histories
+3133                          Complete Works
+3274                  The Nicomachean Ethics
+3757                              Lysistrata
+4402                           The Symposium
+4475                                 Apology
+5367                          Five Dialogues
+Name: name, dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can determine the "best book" by year! For this we use Panda's <code>groupby()</code>. <code>Groupby()</code> allows grouping a dataframe by any (usually categorical) variable. Would it make sense to ever groupby integer variables? Floating point variables?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfgb_author</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'author'</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">dfgb_author</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[31]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>pandas.core.groupby.generic.DataFrameGroupBy</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Perhaps we want the number of books each author wrote</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfgb_author</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[32]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+<th>genres</th>
+</tr>
+<tr>
+<th>author</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>A_A_Milne</th>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<th>A_G_Howard</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_J_Cronin</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_J_Jacobs</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_J_Salt</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_Meredith_Walters</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>A_N_Roquelaure</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>A_S_Byatt</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_S_King</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>A_id_al_Qarni</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Abbi_Glines</th>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+</tr>
+<tr>
+<th>Abdul_Rahman_Munif</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Abigail_Gibbs</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Abigail_Roux</th>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<th>Abigail_Thomas</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Abolqasem_Ferdowsi</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Abraham_Verghese</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Abul_Hasan_Ali_Nadwi</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adam_Hochschild</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adam_Johnson</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adam_Levin</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adam_Rex</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adam_Smith</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Addison_Moore</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adeline_Yen_Mah</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adolf_Hitler</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Adolfo_Bioy_Casares</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Aeschylus</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Aesop</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Agatha_Christie</th>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>William_Strunk_Jr_</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>William_Styron</th>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<th>William_Wharton</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>William_Wordsworth</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Willow_Aster</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Wilson_Rawls</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Winston_Groom</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Witold_Gombrowicz</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Wm_Paul_Young</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Woody_Allen</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Wu_Cheng_en</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yamamoto_Tsunetomo</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yana_Toboso</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yann_Martel</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Yasunari_Kawabata</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yevgeny_Zamyatin</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Young_Kim</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yuehai_Xiao</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yukio_Mishima</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Yukito_Kishiro</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Yvonne_Woon</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Zack_Love</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Zadie_Smith</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>Zilpha_Keatley_Snyder</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>Zora_Neale_Hurston</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>_</th>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+<td>42</td>
+</tr>
+<tr>
+<th>_gota_Krist_f</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>_mile_Zola</th>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<th>_ric_Emmanuel_Schmitt</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th>_sne_Seierstad</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>2645 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lots of useless info there. One column should suffice</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise:">Exercise:<a class="anchor-link" href="#Exercise:">¶</a></h3><ul>
+<li><p>Group the dataframe by <code>author</code>. Include the following columns: <code>rating</code>, <code>name</code>, <code>author</code>. For the aggregation of the <code>name</code> column which includes the names of the books create a list with the strings containing the name of each book. Make sure that the way you aggregate the rest of the columns make sense!</p>
+</li>
+<li><p>Create a new column with number of books for each author and find the most prolific author!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">###### Before we start : what do we do about these titles where 'name' is unreadable? Try different encodings?</span>
+<span class="n">auth_name</span> <span class="o">=</span> <span class="s1">'A_id_al_Qarni'</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">author</span> <span class="o">==</span> <span class="n">auth_name</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[33]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rating</th>
+<th>review_count</th>
+<th>isbn</th>
+<th>booktype</th>
+<th>author_url</th>
+<th>year</th>
+<th>dir</th>
+<th>rating_count</th>
+<th>name</th>
+<th>author</th>
+<th>genres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2213</th>
+<td>4.19</td>
+<td>1169</td>
+<td></td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1201952....</td>
+<td>2003</td>
+<td>dir23/2750180.html</td>
+<td>15781</td>
+<td>ÙØ§ ØªØ­Ø²Ù</td>
+<td>A_id_al_Qarni</td>
+<td>religion|religion|islam|self-help|non-fiction|...</td>
+</tr>
+<tr>
+<th>5998</th>
+<td>3.91</td>
+<td>281</td>
+<td></td>
+<td>good_reads:book</td>
+<td>https://www.goodreads.com/author/show/1201952....</td>
+<td>2006</td>
+<td>dir60/2750008.html</td>
+<td>3083</td>
+<td>Ø£Ø³Ø¹Ø¯ Ø§ÙØ±Ø£Ø© ÙÙ Ø§ÙØ¹Ø§ÙÙ</td>
+<td>A_id_al_Qarni</td>
+<td>religion|islam|religion|self-help|spirituality...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">author</span> <span class="o">==</span> <span class="n">auth_name</span><span class="p">]</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'UTF-16'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[34]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>b'\xff\xfe\xd9\x00\x84\x00\xd8\x00\xa7\x00 \x00\xd8\x00\xaa\x00\xd8\x00\xad\x00\xd8\x00\xb2\x00\xd9\x00\x86\x00'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># let's examine the columns we have</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[35]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>Index(['rating', 'review_count', 'isbn', 'booktype', 'author_url', 'year', 'dir', 'rating_count', 'name', 'author', 'genres'], dtype='object')</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Create the GroupBy table</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="n">authors</span><span class="p">[[</span><span class="s1">'rating'</span><span class="p">,</span><span class="s1">'name'</span><span class="p">,</span><span class="s1">'author'</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'author'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'rating'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                                    <span class="s1">'name'</span> <span class="p">:</span> <span class="s1">'|'</span><span class="o">.</span><span class="n">join</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">authors</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[37]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>author</th>
+<th>rating</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A_A_Milne</td>
+<td>4.365</td>
+<td>Winnie-the-Pooh|The House at Pooh Corner|The H...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A_G_Howard</td>
+<td>4.020</td>
+<td>Splintered (Splintered, #1)</td>
+</tr>
+<tr>
+<th>2</th>
+<td>A_J_Cronin</td>
+<td>4.220</td>
+<td>The Keys of the Kingdom</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A_J_Jacobs</td>
+<td>3.750</td>
+<td>The Year of Living Biblically</td>
+</tr>
+<tr>
+<th>4</th>
+<td>A_J_Salt</td>
+<td>4.940</td>
+<td>Nik Nassa & the Mark of Destiny</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># split the column string and make a list of string book names</span>
+<span class="n">authors</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">)</span>
+<span class="n">authors</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[38]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>author</th>
+<th>rating</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A_A_Milne</td>
+<td>4.365</td>
+<td>[Winnie-the-Pooh, The House at Pooh Corner, Th...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A_G_Howard</td>
+<td>4.020</td>
+<td>[Splintered (Splintered, #1)]</td>
+</tr>
+<tr>
+<th>2</th>
+<td>A_J_Cronin</td>
+<td>4.220</td>
+<td>[The Keys of the Kingdom]</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A_J_Jacobs</td>
+<td>3.750</td>
+<td>[The Year of Living Biblically]</td>
+</tr>
+<tr>
+<th>4</th>
+<td>A_J_Salt</td>
+<td>4.940</td>
+<td>[Nik Nassa & the Mark of Destiny]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># count the books - create new column</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">authors</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[39]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">authors</span><span class="p">[</span><span class="s1">'num_books'</span><span class="p">]</span> <span class="o">=</span> <span class="n">authors</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="n">authors</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[40]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>author</th>
+<th>rating</th>
+<th>name</th>
+<th>num_books</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A_A_Milne</td>
+<td>4.365000</td>
+<td>[Winnie-the-Pooh, The House at Pooh Corner, Th...</td>
+<td>6</td>
+</tr>
+<tr>
+<th>1</th>
+<td>A_G_Howard</td>
+<td>4.020000</td>
+<td>[Splintered (Splintered, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>A_J_Cronin</td>
+<td>4.220000</td>
+<td>[The Keys of the Kingdom]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A_J_Jacobs</td>
+<td>3.750000</td>
+<td>[The Year of Living Biblically]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>4</th>
+<td>A_J_Salt</td>
+<td>4.940000</td>
+<td>[Nik Nassa & the Mark of Destiny]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>5</th>
+<td>A_Meredith_Walters</td>
+<td>4.150000</td>
+<td>[Find You in the Dark (Find You in the Dark, #...</td>
+<td>2</td>
+</tr>
+<tr>
+<th>6</th>
+<td>A_N_Roquelaure</td>
+<td>3.450000</td>
+<td>[Beauty's Punishment (Sleeping Beauty, #2), Th...</td>
+<td>2</td>
+</tr>
+<tr>
+<th>7</th>
+<td>A_S_Byatt</td>
+<td>3.860000</td>
+<td>[Possession]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>8</th>
+<td>A_S_King</td>
+<td>3.930000</td>
+<td>[Please Ignore Vera Dietz]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>9</th>
+<td>A_id_al_Qarni</td>
+<td>4.050000</td>
+<td>[ÙØ§ ØªØ­Ø²Ù, Ø£Ø³Ø¹Ø¯ Ø§ÙØ±Ø£Ø© ÙÙ Ø§ÙØ...</td>
+<td>2</td>
+</tr>
+<tr>
+<th>10</th>
+<td>Abbi_Glines</td>
+<td>4.179286</td>
+<td>[Fallen Too Far (Too Far, #1), Existence (Exis...</td>
+<td>14</td>
+</tr>
+<tr>
+<th>11</th>
+<td>Abdul_Rahman_Munif</td>
+<td>4.030000</td>
+<td>[Ø§ÙØªÙÙ]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>12</th>
+<td>Abigail_Gibbs</td>
+<td>3.820000</td>
+<td>[Dinner With a Vampire (Dark Heroine, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>13</th>
+<td>Abigail_Roux</td>
+<td>4.470000</td>
+<td>[Cut & Run (Cut & Run, #1), Fish & Chips (Cut ...</td>
+<td>4</td>
+</tr>
+<tr>
+<th>14</th>
+<td>Abigail_Thomas</td>
+<td>3.680000</td>
+<td>[A Three Dog Life]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>15</th>
+<td>Abolqasem_Ferdowsi</td>
+<td>4.520000</td>
+<td>[Shahnameh]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>16</th>
+<td>Abraham_Verghese</td>
+<td>4.260000</td>
+<td>[Cutting for Stone]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>17</th>
+<td>Abul_Hasan_Ali_Nadwi</td>
+<td>4.150000</td>
+<td>[ÙØ§Ø°Ø§ Ø®Ø³Ø± Ø§ÙØ¹Ø§ÙÙ Ø¨Ø§ÙØ­Ø·Ø§Ø· Ø...</td>
+<td>1</td>
+</tr>
+<tr>
+<th>18</th>
+<td>Adam_Hochschild</td>
+<td>4.140000</td>
+<td>[King Leopold's Ghost]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>19</th>
+<td>Adam_Johnson</td>
+<td>4.030000</td>
+<td>[The Orphan Master's Son]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>20</th>
+<td>Adam_Levin</td>
+<td>4.040000</td>
+<td>[The Instructions]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>21</th>
+<td>Adam_Rex</td>
+<td>4.140000</td>
+<td>[The True Meaning of Smekday]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>22</th>
+<td>Adam_Smith</td>
+<td>3.820000</td>
+<td>[The Wealth of Nations]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>23</th>
+<td>Addison_Moore</td>
+<td>3.780000</td>
+<td>[Ethereal (Celestra, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>24</th>
+<td>Adeline_Yen_Mah</td>
+<td>4.010000</td>
+<td>[Chinese Cinderella]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>25</th>
+<td>Adolf_Hitler</td>
+<td>2.970000</td>
+<td>[Mein Kampf]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>26</th>
+<td>Adolfo_Bioy_Casares</td>
+<td>4.060000</td>
+<td>[The Invention of Morel]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>27</th>
+<td>Aeschylus</td>
+<td>3.960000</td>
+<td>[The Oresteia]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>28</th>
+<td>Aesop</td>
+<td>4.030000</td>
+<td>[Aesop's Fables]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>29</th>
+<td>Agatha_Christie</td>
+<td>3.977273</td>
+<td>[And Then There Were None, Murder on the Orien...</td>
+<td>11</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>2615</th>
+<td>William_Strunk_Jr_</td>
+<td>4.170000</td>
+<td>[The Elements of Style]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2616</th>
+<td>William_Styron</td>
+<td>4.043333</td>
+<td>[Sophie's Choice, The Confessions of Nat Turne...</td>
+<td>3</td>
+</tr>
+<tr>
+<th>2617</th>
+<td>William_Wharton</td>
+<td>4.090000</td>
+<td>[Birdy, A Midnight Clear]</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2618</th>
+<td>William_Wordsworth</td>
+<td>3.920000</td>
+<td>[Lyrical Ballads]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2619</th>
+<td>Willow_Aster</td>
+<td>4.140000</td>
+<td>[True Love Story]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2620</th>
+<td>Wilson_Rawls</td>
+<td>3.990000</td>
+<td>[Where the Red Fern Grows, Summer of the Monkeys]</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2621</th>
+<td>Winston_Groom</td>
+<td>3.970000</td>
+<td>[Forrest Gump (Forrest Gump, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2622</th>
+<td>Witold_Gombrowicz</td>
+<td>3.975000</td>
+<td>[Ferdydurke, Cosmos]</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2623</th>
+<td>Wm_Paul_Young</td>
+<td>3.660000</td>
+<td>[The Shack]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2624</th>
+<td>Woody_Allen</td>
+<td>4.030000</td>
+<td>[Without Feathers]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2625</th>
+<td>Wu_Cheng_en</td>
+<td>4.040000</td>
+<td>[Monkey]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2626</th>
+<td>Yamamoto_Tsunetomo</td>
+<td>4.090000</td>
+<td>[Hagakure]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2627</th>
+<td>Yana_Toboso</td>
+<td>4.340000</td>
+<td>[Black Butler, Vol. 01 (Black Butler, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2628</th>
+<td>Yann_Martel</td>
+<td>3.470000</td>
+<td>[Life of Pi, Beatrice and Virgil]</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2629</th>
+<td>Yasunari_Kawabata</td>
+<td>3.740000</td>
+<td>[Snow Country]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2630</th>
+<td>Yevgeny_Zamyatin</td>
+<td>3.970000</td>
+<td>[We]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2631</th>
+<td>Young_Kim</td>
+<td>3.660000</td>
+<td>[Twilight (Twilight: The Graphic Novel, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2632</th>
+<td>Yuehai_Xiao</td>
+<td>4.560000</td>
+<td>[Crossing the Seas]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2633</th>
+<td>Yukio_Mishima</td>
+<td>4.030000</td>
+<td>[The Sailor Who Fell from Grace with the Sea, ...</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2634</th>
+<td>Yukito_Kishiro</td>
+<td>4.150000</td>
+<td>[Battle Angel Alita, Volume 01]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2635</th>
+<td>Yvonne_Woon</td>
+<td>3.950000</td>
+<td>[Dead Beautiful (Dead Beautiful, #1)]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2636</th>
+<td>Zack_Love</td>
+<td>3.550000</td>
+<td>[Sex in the Title]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2637</th>
+<td>Zadie_Smith</td>
+<td>3.655000</td>
+<td>[White Teeth, On Beauty]</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2638</th>
+<td>Zilpha_Keatley_Snyder</td>
+<td>4.110000</td>
+<td>[The Changeling]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2639</th>
+<td>Zora_Neale_Hurston</td>
+<td>3.820000</td>
+<td>[Their Eyes Were Watching God]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2640</th>
+<td>_</td>
+<td>3.988095</td>
+<td>[Ø¹Ø²Ø§Ø²ÙÙ, Ø«ÙØ§Ø«ÙØ© ØºØ±ÙØ§Ø·Ø©, ØªØ±...</td>
+<td>42</td>
+</tr>
+<tr>
+<th>2641</th>
+<td>_gota_Krist_f</td>
+<td>4.340000</td>
+<td>[The Notebook, The Proof, The Third Lie]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2642</th>
+<td>_mile_Zola</td>
+<td>3.990000</td>
+<td>[Germinal (Les Rougon-Macquart, #13), L'Assomm...</td>
+<td>4</td>
+</tr>
+<tr>
+<th>2643</th>
+<td>_ric_Emmanuel_Schmitt</td>
+<td>4.160000</td>
+<td>[Oscar et la dame rose]</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2644</th>
+<td>_sne_Seierstad</td>
+<td>3.740000</td>
+<td>[The Bookseller of Kabul]</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>2645 rows × 4 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># sort for more prolific</span>
+<span class="n">authors</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'num_books'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[41]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>author                                            Stephen_King
+rating                                                 3.91875
+name         [The Stand, The Shining (The Shining #1), It, ...
+num_books                                                   56
+Name: 2349, dtype: object</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Winner-is-Stephen-King-with-56-books!-OMG!!!">Winner is Stephen King with 56 books! OMG!!!<a class="anchor-link" href="#Winner-is-Stephen-King-with-56-books!-OMG!!!">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Perhaps you want more detailed info...</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfgb_author</span><span class="p">[[</span><span class="s1">'rating'</span><span class="p">,</span> <span class="s1">'rating_count'</span><span class="p">,</span> <span class="s1">'review_count'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can also access a <code>groupby</code> dictionary style.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ratingdict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">author</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">dfgb_author</span><span class="p">:</span>
+    <span class="n">ratingdict</span><span class="p">[</span><span class="n">author</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">'rating'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">subset</span><span class="p">[</span><span class="s1">'rating'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">ratingdict</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="exercise"><b>Exercise</b></div><p>Lets get the best-rated book(s) for every year in our dataframe.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Using .groupby, we can divide the dataframe into subsets by the values of 'year'.</span>
+<span class="c1">#We can then iterate over these subsets</span>
+<span class="c1"># your code here</span>
+<span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'year'</span><span class="p">):</span>
+    <span class="c1">#Find the best book of the year</span>
+
+    <span class="n">bestbook</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="o">.</span><span class="n">rating</span> <span class="o">==</span> <span class="n">subset</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+    <span class="k">if</span> <span class="n">bestbook</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">></span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">bestbook</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bestbook</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">bestbook</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bestbook</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
