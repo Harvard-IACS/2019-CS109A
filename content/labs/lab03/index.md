@@ -1,6 +1,6 @@
-Title: Lab 03: Matplotlib, Simple Linear Regression, kNN, array reshape 
+Title: Lab 3: Matplotlib, Simple Linear Regression, kNN, array reshape 
 Category: labs
-Slug: lab3
+Slug: lab-3
 Author: David Sontag, Pavlos Protopapas, Chris Tanner, and Eleni Kaxiras
 Date: 2019-09-19
 Tags:  Matplotlib, Simple Linear Regression, kNN, array reshape, sklearn, statsmodels
