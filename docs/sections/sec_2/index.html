@@ -1381,7 +1381,6 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">,</span><span class="s1">'atemp'</span><span class="p">])</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">new</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">],</span><span class="s1">'-b'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'A - Temp'</span><span class="p">)</span>
@@ -1614,7 +1613,6 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <span class="c1"># disregarding the input features, would get a R^2 score of 1.</span>
 <span class="n">r2_train</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">train_data</span><span class="p">[[</span><span class="s1">'temp'</span><span class="p">]],</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">])</span>
 <span class="n">r2_test</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test_data</span><span class="p">[[</span><span class="s1">'temp'</span><span class="p">]],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">])</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Test Data:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN on training set:"</span><span class="p">,</span> <span class="n">r2_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN on testing set: "</span><span class="p">,</span> <span class="n">r2_test</span><span class="p">)</span>
@@ -1824,6 +1822,15 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol7.py'</span>
+<span class="c1"># Confidence Interval using Stats Model Summary</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="mf">0.05</span> 
+<span class="n">intervals</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">thresh</span><span class="p">)</span>
+
+<span class="c1"># Renaming column names</span>
+<span class="n">first_col</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">thresh</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">"%"</span>
+<span class="n">second_col</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">thresh</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">"%"</span>
+<span class="n">intervals</span> <span class="o">=</span> <span class="n">intervals</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="n">first_col</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">second_col</span><span class="p">})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
