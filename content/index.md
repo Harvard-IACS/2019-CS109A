@@ -43,7 +43,7 @@ pre {
 <p><strong>Lab Leaders:</strong> Chris Tanner and Eleni Kaxiras</p>
 <hr>
 
-<p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks (a detailed schedule will be made available soon). You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data:
+<p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks. You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data:
 <br/><br/>
 
 1. data collection ‐ data wrangling, cleaning, and sampling to get a suitable data set <br>
@@ -91,12 +91,12 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 <pre>
 <span style="color: #993300;"><strong>STANDARD SECTIONS</strong></span>
-<strong>Friday 9/13</strong> 10:30-11:45 am 1 Story St. Room 306
-<strong>Monday 9/16</strong> 4:30-5:45 pm Science Center 110
+<strong>Friday 9/20</strong> 10:30-11:45 am 1 Story St. Room 306
+<strong>Monday 9/23</strong> 4:30-5:45 pm Science Center 110
 Cover the material presented in class. Both standard sections are identical.<br /></span></pre>
 
 <pre><span style="color: #993300;"><strong>ADVANCED SECTIONS</strong></span>
-<strong>Wednesday 9/18</strong> 4:30-5:45 pm Sever Hall 113
+<strong>Wednesday 9/25</strong> 4:30-5:45 pm Maxwell Dworkin G115
 Cover a different topic each week and are required for 209a students.<br /></pre>
 
 <pre><span style="color: #993300;"><strong>Instructor Office Hours</strong></span><br /><span style="color: #000000;"><strong>Pavlos & Kevin</strong>: Monday 3-5 pm, IACS Lobby</span>

@@ -1,17 +1,17 @@
-Week,Lecture (Mon),Lecture (Wed),Lab (Thu),Advanced Section (Wed),Assignment (R:Released Tue - D:Due Wed),
-1.00,,Lecture 1: What is Data Science?,"Lab 1: Intro to Python (numpy, graphing libraries, program structure, Jupyter Notebook)",,R:HW0,
-2.00,"Lecture 2: Data, Stats, and Visualization",Lecture 3: Pandas and Scraping,"Lab 2: Python: sklearn, matplotlib",,R:HW1 - D:HW0,
-3.00,Lecture 4: kNN Regression and Linear Regression,Lecture 5: Bootstrap and Confidence Intervals,Lab 3: Scikit-learn for Simple Linear Regression,Advanced Section 1: Linear Algebra and Hypothesis Testing,R:HW2 - D:HW1,
-4.00,Lecture 6: Cross-Validation & Model Selection,Lecture 7: Regularization: Ridge & Lasso,Lab 4: Multiple Linear Regression and Cross Validation,Advanced Section 2: Regularization Methods and Their Justifications,R:HW3 - D:HW2,
-5.00,Lecture 8: EDA,Lecture 9:  Visualization for Communication,Lab 5: Matplotlib & Seaborn,No Advanced Section,No Assignment,
-6.00,Lecture 10: kNN Classification & Logistic Regression I,Lecture 11: Loistic Regression II,Lab 6: Logistic Regression,Advanced Section 3: Generalized Linear Models,R:HW4 - D:HW3,
-7.00,No Lecture (Holiday),"Lecture 12: Dealing with Missing Data, Imputation",Lab 7: KNN Classification & Imputation,No Advanced Section,No Assignment,
-8.00,Lecture 13:  EthiCS,Lecture 14: PCA,Lab 8: PCA,Advanced Section 4: PCA,R:HW5 - D:HW4,
-9.00,Lecture 15: Classification Trees,"Lecture 16: Regression Trees, Bagging, & Random Forest",Lab 9: Random Forests and Boosting,No Advanced Section,R:HW6 - D:HW5,
-10.00,Lecture 17: Boosting Methods & Stacking,"Lecture 18: Neural Networks I - Perceptron, Back Propagation, SGD",Lab 10: Intro to Neural Networks & Keras,No Advanced Section,No Assignment,
-11.00,Lecture 19: Neural Networks II - NN as Function Approximation; Design Choices,Lecture 20: Neural Networks III - Dropout & Regularization,Lab 11: Dropout,Advanced Section 5: Decision Trees & Ensemble Methods,R:HW7(individual) D:HW6,
-12.00,Lecture 21: Neural Networks IV - Solvers,Lecture 22: Visulization for Model Interpretation,Lab 12: VIZ,Advanced Section 6: SGD,No Assignment,
-13.00,Lecture 23: Experimental Design & Testing I,No Lecture (Thanksgiving),No Lab,Advanced Section 9: Support Vector Machines,R:HW8 - D:HW7 *[Due on Tuesday]*,
-14.00,Lecture 24: Experimental Design & Testing II,,Lab 13: Experimental Design,No Advanced Section,D:HW8,
-15.00,,,Reading Period,,,
-16.00,,,Finals Week,,,
+Week,Lecture (Mon),Lecture (Wed),Lab (Thu),Advanced Section (Wed),Assignment (R:Released Tue - D:Due Wed)
+1,,Lecture 1: What is Data Science?,"Lab 1: Intro to Python (numpy, graphing libraries, program structure, Jupyter Notebook)",,R:HW0
+2,"Lecture 2: Data, Stats, and Visualization",Lecture 3: Pandas and Scraping,"Lab 2: Python: sklearn, matplotlib",,R:HW1 - D:HW0
+3,Lecture 4: Introduction to Regression amd kNN Regression ,"Lecture 5: Linnear Regression, Bootstrap and Confidence Intervals",Lab 3: Scikit-learn for Simple Linear Regression,Advanced Section 1:: Linear Algebra and Hypothesis Testing,R:HW2 - D:HW1
+4,Lecture 6: Cross-Validation & Model Selection,Lecture 7: Regularization: Ridge & Lasso,Lab 4: Multiple Linear Regression and Cross Validation,Advanced Section 2: Regularization Methods and Their Justifications,R:HW3 - D:HW2
+5,Lecture 8: EDA,Lecture 9: Visualization for Communication,Lab 5: Matplotlib & Seaborn,No Advanced Section,No Assignment
+6,Lecture 10: kNN Classification & Logistic Regression I,Lecture 11: Loistic Regression II,Lab 6: Logistic Regression,Advanced Section 3: Generalized Linear Models,R:HW4 (individual) - D:HW3
+7,No Lecture (Holiday),"Lecture 12: Dealing with Missing Data, Imputation",Lab 7: KNN Classification & Imputation,No Advanced Section,No Assignment
+8,Lecture 13:  EthiCS,Lecture 14: PCA,Lab 8: PCA,Advanced Section 4: PCA,R:HW5 - D:HW4
+9,Lecture 15: Classification Trees,"Lecture 16: Regression Trees, Bagging, & Random Forest",Lab 9: Random Forests and Boosting,No Advanced Section,R:HW6 - D:HW5
+10,Lecture 17: Boosting Methods & Stacking,"Lecture 18: Neural Networks I - Perceptron, Back Propagation, SGD",Lab 10: Intro to Neural Networks & Keras,No Advanced Section,No Assignment
+11,Lecture 19: Neural Networks II - NN as Function Approximation; Design Choices,Lecture 20: Neural Networks III - Dropout & Regularization,Lab 11: Dropout,Advanced Section 5: Decision Trees & Ensemble Methods,R:HW7 (individual) -  D:HW6
+12,Lecture 21: Neural Networks IV - Solvers,Lecture 22: Visulization for Model Interpretation,Lab 12: VIZ,Advanced Section 6: SGD,No Assignment
+13,Lecture 23: Experimental Design & Testing I,No Lecture (Thanksgiving),No Lab,,R:HW8 - D:HW7 *[Due on Tuesday]*
+14,Lecture 24: Experimental Design & Testing II,,Lab 13: Experimental Design,,D:HW8
+15,,,,Reading Period,
+16,,,,Finals Week,

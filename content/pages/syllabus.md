@@ -24,10 +24,11 @@ pre {
 }
 </style>
 
-# CS 109A, STAT 121A, AC 209A, CSCI E-109A
+
 
 
 # Introduction to Data Science
+### CS 109A, STAT 121A, AC 209A, CSCI E-109A
 
 
 ## Syllabus - Fall 2019
@@ -89,7 +90,7 @@ The material covered on Friday and Monday is identical.
 
 b) **Advanced Sections** which will cover advanced topics like the mathematical underpinnings of the methods seen in lecture and lab and extensions of those methods.  The material covered in the Advanced Sections is **required **for all AC 209A students.
 
-Advanced Sections are held **Weds 4-5:15 pm at 1 Story St. Room 306**
+Advanced Sections are held **Weds 4:30-5:45 pm at Maxwell Dworkin G115**
 
 **Note:** Advanced Sections are not held every week. Consult the <a href="https://canvas.harvard.edu/courses/61942/pages/calendar">course calendar</a> for exact dates.
 
@@ -106,9 +107,17 @@ All learning instances—lectures, labs, and sections—will be recorded. DCE st
 
 #### Assignments
 
-There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week and some of them in two weeks. You have the option to work and submit in pairs for all the assignments **except **two which you will do individually. You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud (_details on this to come_).
+There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week (1, 2, 5, 8) and some of them in two weeks (3, 4, 6, 7).
 
-On weeks with new assignments they will be released by Wednesday 1:30 pm.
+You have the option to work and submit in pairs for all the assignments **except** HW4 and HW7 which you will do individually.
+
+You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud.
+
+[Instructions for Setting up Your Environment](https://canvas.harvard.edu/courses/61942/modules/items/562895 "Instructions for Setting up Your Environment")
+
+[Instructions for Using JupyterHub](https://canvas.harvard.edu/courses/61942/modules/items/562896" "Instructions for Using JupyterHub")
+
+On weeks with new assignments they will be released by Wednesday 3 pm.
 
 Standard assignments are graded out of 5 points.
 
@@ -180,25 +189,24 @@ Homework will be graded based on:
 
 The scale is 1-5.
 
-For more details, check out [The CS109A Grade](https://canvas.harvard.edu/files/8212857/download?download_frd=1).
+For more details, check out [The CS109A Grade](https://canvas.harvard.edu/files/8463173/download?download_frd=://canvas.harvard.edu/files/8463173/download?download_frd=1).
 
 
 
 #### Questions on Graded Homework and Regrading Policy
 
-We take great care in making sure all homework assignments are graded properly. However, if you feel that your assignment was not fairly graded you may:
-Contact the grader by emailing the helpline with subject line "Regrade HW1: Grader=johnsmith"  within **48 hours of the grade release**.
-If still unhappy with the initial response, then submit a reason via email to the Helpline with subject line "Regrade HW1: Second request" within 2 days of receiving the initial response.  Note: once regrading is done, you may receive a grade that is higher or lower than the initial grade.
+We take great care in making sure all homework assignments are graded properly. However, if you find that your assignment has grading oversights/errors you may: Contact the grader by emailing the helpline with subject line “Regrade HW1: Grader=johnsmith”  within 48 hours of the grade release (the grader’s name can be found at the end of your notebook). If still unsatisfied with first regrading outcome, you may submit a reason via email to the Helpline with subject line “Regrade HW1: Second request” within 2 days of receiving the initial regarding response.
 
+NOTE: once regrading is done, you may receive a grade that could be lower than the initial grade.
 
 #### Collaboration Policy
 
-We encourage you to talk and discuss the assignments with your fellow students (and on Piazza), but you are not allowed to look at any other student’s assignment or code outside of your pair.  Discussion is encouraged; copying is not allowed. Please refer to the Academic Honesty section in [The CS109A Grade](https://canvas.harvard.edu/files/8212857/download?download_frd=1).
+We encourage you to talk and discuss the assignments with your fellow students (and on Piazza), but you are not allowed to look at any other student’s assignment or code outside of your pair.  Discussion is encouraged; copying is not allowed. Please refer to the Academic Honesty section in [The CS109A Grade](https://canvas.harvard.edu/files/8463173/download?download_frd=1 "The CS109A Grade").
 
 
 #### Late Day Policy
 
-Homework is due on Wednesdays.  There are no late days.
+Homework is due on Wednesdays.  There are no late days. <span style="color:red">**Late submissions will not be accepted.**</span>
 
 
 #### Communication from Staff to Students
@@ -210,8 +218,7 @@ Class announcements will be through **Canvas**. All homework and quizzes will be
 
 #### Submitting an assignment
 
-Instructions for turning in assignments will be posted when the semester starts.
-
+Please consult [Homework Policies & Submission Instructions](https://canvas.harvard.edu/courses/61942/pages/homework-policies-and-submission-instructions?module_item_id=566849 "Homework Policies & Submission Instructions")
 
 #### Course Grade
 
@@ -272,4 +279,4 @@ Ethical behavior is an important trait of a Data Scientist, from ethically handl
 
 As a student your best guidelines are to be reasonable and fair. We encourage teamwork for problem sets and allow submission in pairs for most problem sets, but you should not split the homework and you should work on all the problems together.
 
-For more detailed expectations, please refer to the Academic Honesty section in [The CS109A Grade](https://canvas.harvard.edu/files/8212857/download?download_frd=1).
+For more detailed expectations, please refer to the Academic Honesty section in [The CS109A Grade](https://canvas.harvard.edu/files/8463173/download?download_frd=1).

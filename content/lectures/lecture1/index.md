@@ -3,7 +3,7 @@ Category: lectures
 Date: 2019-09-04
 Author: Pavlos Protopapas
 Slug: lecture1
-Tages: Introduction, data science process, logistics
+Tags: Introduction, data science process, logistics
 
 
 
