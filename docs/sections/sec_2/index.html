@@ -84,20 +84,32 @@
   </div><!-- .container -->
 </nav>
     <main id="content" class="container">
-    <div>
-      <div class="float-left">
-        <p>Key Word(s):
-          <a href="../../pages/materials.html#knn k-Nearest Neighbors (kNN)">knn k-Nearest Neighbors (kNN)</a>,          <a href="../../pages/materials.html#linear regression">linear regression</a>,          <a href="../../pages/materials.html#sklearn">sklearn</a>,          <a href="../../pages/materials.html#statsmodels">statsmodels</a>,          <a href="../../pages/materials.html#confidence intervals">confidence intervals</a>,          <a href="../../pages/materials.html#training and testing data splitting">training and testing data splitting</a>        </p>
-      </div>
-      <div class="float-right">
-        <a href="https://github.com/Harvard-IACS/2019-CS109A/blob/master/content/sections/section2/notebook/cs109a_section_2.ipynb">
-          Download Notebook <i class="fas fa-download"></i>
-        </a>
-      </div>
-    </div>
-    <br />
-    <hr />
-  <style type="text/css">/*!
+ <div>
+  <div class="float-left">
+    <p>
+      Key Word(s):       <a href="../../pages/materials.html#knn k-Nearest Neighbors (kNN)"
+        >knn k-Nearest Neighbors (kNN)</a
+      >,       <a href="../../pages/materials.html#linear regression"
+        >linear regression</a
+      >,       <a href="../../pages/materials.html#sklearn"
+        >sklearn</a
+      >,       <a href="../../pages/materials.html#statsmodels"
+        >statsmodels</a
+      >,       <a href="../../pages/materials.html#confidence intervals"
+        >confidence intervals</a
+      >,       <a href="../../pages/materials.html#training and testing data splitting"
+        >training and testing data splitting</a
+      >     </p>
+  </div>
+  <div class="float-right">
+    <a href="../../sections/section2/notebook/cs109a_section_2.ipynb">
+      Download Notebook <i class="fas fa-download"></i>
+    </a>
+  </div>
+</div>
+<br />
+<hr />
+ <style type="text/css">/*!
 *
 * IPython notebook
 *
@@ -1073,12 +1085,12 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-2:-kNN-and-Linear-Regression">Standard Section 2: kNN and Linear Regression<a class="anchor-link" href="#Standard-Section-2:-kNN-and-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
-<hr style="height:2px">
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-2:-kNN-and-Linear-Regression">Standard Section 2: kNN and Linear Regression<a class="anchor-link" href="#Standard-Section-2:-kNN-and-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<hr style="height:2px" />
 </div>
 </div>
 </div>
@@ -1541,9 +1553,9 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="kNN-Regression">kNN Regression<a class="anchor-link" href="#kNN-Regression">¶</a></h1><p><img alt="knn" src="../fig/knn_1.png">
-<img alt="knn" src="../fig/knn_2.png">
-<img alt="knn" src="../fig/knn_3.png"></p>
+<h1 id="kNN-Regression">kNN Regression<a class="anchor-link" href="#kNN-Regression">¶</a></h1><p><img alt="knn" src="../fig/knn_1.png" />
+<img alt="knn" src="../fig/knn_2.png" />
+<img alt="knn" src="../fig/knn_3.png" /></p>
 <h2 id="Using-sklearn-to-implement-kNN:">Using sklearn to implement kNN:<a class="anchor-link" href="#Using-sklearn-to-implement-kNN:">¶</a></h2>
 </div>
 </div>
@@ -1662,7 +1674,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Linear-Regression">Linear Regression<a class="anchor-link" href="#Linear-Regression">¶</a></h1><p><img alt="linear regression" src="../fig/linear_regression.png"></p>
+<h1 id="Linear-Regression">Linear Regression<a class="anchor-link" href="#Linear-Regression">¶</a></h1><p><img alt="linear regression" src="../fig/linear_regression.png" /></p>
 </div>
 </div>
 </div>
@@ -1800,7 +1812,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Confidence-Intervals">Confidence Intervals<a class="anchor-link" href="#Confidence-Intervals">¶</a></h3><p>In Data Science, a confidence interval (CI) is a type of interval estimate, computed from the statistics of the observed data, that might contain the true value of an unknown population parameter. Simply speaking, a Confidence Interval is a range of values we are fairly sure our true value lies in.</p>
 <p>It is important to remind ourselves here that Confidence Intervals belong to a parameter and not a statistic. Thus, they represent the window in which the true value exists for the entire population when all we have is a sample.</p>
-<p><img alt="ci" src="../fig/confidence_intervals.png"></p>
+<p><img alt="ci" src="../fig/confidence_intervals.png" /></p>
 <p><strong>See if you can implement a 95% confidence interval using statsmodels</strong></p>
 </div>
 </div>
@@ -1848,8 +1860,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr>
+<hr />
+<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr />
 </div>
 </div>
 </div>
@@ -2119,7 +2131,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 </div>
 </div>
 </div>
@@ -2152,8 +2164,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-
-    </main>
+     </main>
 
 <footer class="footer">
   <div class="container">
