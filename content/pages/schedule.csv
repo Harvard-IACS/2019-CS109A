@@ -2,7 +2,7 @@ Week,Lecture (Mon),Lecture (Wed),Lab (Thu),Advanced Section (Wed),Assignment (R:
 1,,Lecture 1: What is Data Science?,"Lab 1: Intro to Python (numpy, graphing libraries, program structure, Jupyter Notebook)",,R:HW0
 2,"Lecture 2: Data, Stats, and Visualization",Lecture 3: Pandas and Scraping,"Lab 2: Python: sklearn, matplotlib",,R:HW1 - D:HW0
 3,Lecture 4: Introduction to Regression amd kNN Regression ,"Lecture 5: Linnear Regression, Bootstrap and Confidence Intervals",Lab 3: Scikit-learn for Simple Linear Regression,Advanced Section 1:: Linear Algebra and Hypothesis Testing,R:HW2 - D:HW1
-4,Lecture 6: Cross-Validation & Model Selection,Lecture 7: Regularization: Ridge & Lasso,Lab 4: Multiple Linear Regression and Cross Validation,Advanced Section 2: Regularization Methods and Their Justifications,R:HW3 - D:HW2
+4,Lecture 6: Multi and Poly Regression,Lecture 7: Regularization: Ridge & Lasso,Lab 4: Multiple Linear Regression and Cross Validation,Advanced Section 2: Regularization Methods and Their Justifications,R:HW3 - D:HW2
 5,Lecture 8: EDA,Lecture 9: Visualization for Communication,Lab 5: Matplotlib & Seaborn,No Advanced Section,No Assignment
 6,Lecture 10: kNN Classification & Logistic Regression I,Lecture 11: Loistic Regression II,Lab 6: Logistic Regression,Advanced Section 3: Generalized Linear Models,R:HW4 (individual) - D:HW3
 7,No Lecture (Holiday),"Lecture 12: Dealing with Missing Data, Imputation",Lab 7: KNN Classification & Imputation,No Advanced Section,No Assignment
