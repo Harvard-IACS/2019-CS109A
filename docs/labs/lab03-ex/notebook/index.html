@@ -1085,14 +1085,22 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A/STAT121A/AC209A/CSCIE109A  Introduction to Data Science</h1>
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A  Introduction to Data Science</h1>
 <h2 id="Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">Lab 3: plotting, K-NN Regression, Simple Linear Regression<a class="anchor-link" href="#Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
 <strong>Fall 2019</strong><br>
 <strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br></p>
 <p><strong>Material prepared by</strong>: David Sondak, Will Claybaugh, Pavlos Protopapas, and Eleni Kaxiras.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="-Extended-Edition"><font color="red"> Extended Edition</font><a class="anchor-link" href="#-Extended-Edition">¶</a></h2><p>Same as the one done in class with the following additions/clarifications:</p>
 <ul>
 <li>I added another example to illustrate the difference between <code>.iloc</code> and <code>.loc</code> in <code>pandas</code> -- > <a href="#iloc">here</a></li>
+<li>I added some notes on why we are adding a constant in our linear regression model --> <a href="#constant">here</a></li>
 <li>How to run the solutions: Uncomment the following line and run the cell:</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="c1"># %load solutions/knn_regression.py</span>
@@ -2384,6 +2392,37 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <p>Our goal  is to show how to implement simple linear regression with these packages.  For an important sanity check, we compare the $\beta$ values from <code>statsmodels</code> and <code>sklearn</code> to the $\beta$ values that we found from above with our own implementation.</p>
 <p>For the purposes of this lab, <code>statsmodels</code> and <code>sklearn</code> do the same thing.  More generally though, <code>statsmodels</code> tends to be easier for inference [finding the values of the slope and intercept and dicussing uncertainty in those values], whereas <code>sklearn</code> has machine-learning algorithms and is better for prediction [guessing y values for a given x value]. (Note that both packages make the same guesses, it's just a question of which activity they provide more support for.</p>
 <p><strong>Note:</strong> <code>statsmodels</code> and <code>sklearn</code> are different packages!  Unless we specify otherwise, you can use either one.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a class="anchor" id="constant"></a></p>
+<h3 id="Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">Why do we need to add a constant in our simple linear regression model?<a class="anchor-link" href="#Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">¶</a></h3><p>Let's say we a data set of two obsevations with one predictor and one response variable each. We would then have the following two equations if we run a simple linear regression model. $$y_1=\beta_0 + \beta_1*x_1$$ $$y_2=\beta_0 + \beta_1*x_2$$ <br> For simplicity and calculation efficiency we want to "absorb" the constant $b_0$ into an array with $b_1$ so we have only multiplication. To do this we introduce the constant ${x_1}^0=1$<br>$$y_1=\beta_0*{x_1}^0 + \beta_1*x_1$$ $$y_2=\beta_0 * {x_1}^0 + \beta_1*x_2$$ <br> That becomes: 
+$$y_1=\beta_0*1 + \beta_1*x_1$$ $$y_2=\beta_0 * 1 + \beta_1*x_2$$<br></p>
+<p>In matrix notation:</p>
+<p>$$
+\left [
+\begin{array}{c}
+y_1 \\ y_2 \\
+\end{array}
+\right] =
+\left [
+\begin{array}{cc}
+1& x_1 \\ 1 & x_2 \\
+\end{array}
+\right] 
+\cdot
+\left [
+\begin{array}{c}
+\beta_0 \\ \beta_1 \\
+\end{array}
+\right]
+$$</p>
+<p><br><br></p>
+<p><code>sklearn</code> adds the constant for us where in <code>statsmodels</code> we need to explicitly add it using <code>sm.add_constant</code></p>
 </div>
 </div>
 </div>
