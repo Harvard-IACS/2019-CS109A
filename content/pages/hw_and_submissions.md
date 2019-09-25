@@ -38,14 +38,13 @@ common solution.
 As much as possible, try and stick to the hints and functions we import at the top of the homework, as those are the ideas and tools the class supports and is aiming to teach. And if a problem specifies a particular library you're required to use that library, and possibly others from the import list. You are allowed to use other libraries such as
 seaborn.
 
-**`Late Submissions will not be accepted`**
+## Submitting HW
+
+**`Late Submissions will not be accepted.`**
 
 Extensions are provided only for medical reasons with a doctor's note.
 
 If there are issues, send an email to the **Helpline**.
-
-
-## Submitting HW
 
 Homework assignments will be done in Python in the Jupyter Notebook environment. When you are finished editing your notebook, **re-run all the cells to make sure they work**.
 
