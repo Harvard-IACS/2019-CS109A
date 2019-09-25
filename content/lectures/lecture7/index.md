@@ -8,8 +8,8 @@ Tags: Regularization, LASSO, Ridge, Model Selection
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture7_ModeLSelectionRegularization.pptx)
-- [PPTX]({attach}presentation/Lecture7_ModeLSelectionRegularization.pdf)
+- [PDF]({attach}presentation/Lecture7_ModeLSelectionRegularization.pdf)
+- [PPTX]({attach}presentation/Lecture7_ModeLSelectionRegularization.pptx)
 
 ### Sections
 <!--- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
