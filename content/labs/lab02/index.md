@@ -2,7 +2,7 @@ Title: Lab 2:
 Category: labs
 Date: 2019-09-12
 Author: Chris Tanner
-Slug: lab2
+Slug: lab02
 Tags: web scraping, website scraping, scraping, beautiful soup, requests, crawl
 
 ## Jupyter Notebooks

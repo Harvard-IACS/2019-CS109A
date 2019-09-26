@@ -1,9 +1,16 @@
-Title: Lecture 7:
+Title: Lecture 7: Model Selection and Regularization
 Category: lectures
-Date: 2019-06-06
-Author: 
 Slug: lecture7
-Tages: ADD TAGS HERE
+Author: Pavlos Protopapas
+Date: 2019-9-25
+Tags: Regularization, LASSO, Ridge, Model Selection
 
 
-## Slides
+### Slides
+
+- [PDF]({attach}presentation/Lecture7_ModeLSelectionRegularization.pdf)
+- [PPTX]({attach}presentation/Lecture7_ModeLSelectionRegularization.pptx)
+
+### Sections
+<!--- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
+- [Section 4 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb) -->

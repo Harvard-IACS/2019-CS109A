@@ -1,9 +1,12 @@
-Title: Lecture 6:
+Title: Lecture 6: Multiple Linear Regression, Polynomial Regression
 Category: lectures
-Date: 2019-06-06
-Author: 
 Slug: lecture6
-Tages: ADD TAGS HERE
+Author: Pavlos Protopapas
+Date: 2019-09-23
+Tags: Multiple Linear Regression, Regression, Polynomial Regression, Qualitative Predictors, Collinearity, Hypothesis Testing, Overfitting, Collinearity, Categorical Predictors, Interaction Terms
+### Slides
+
+- [PDF]({attach}presentation/Lecture6_MultiAndPolyReg.pdf)
+- [PPTX]({attach}presentation/Lecture6_MultiAndPolyReg.pptx)
 
 
-## Slides

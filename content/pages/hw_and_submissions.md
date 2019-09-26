@@ -24,7 +24,7 @@ pre {
 }
 </style>
 
-##### *V. September 16, 2019*
+##### *V. September 25, 2019*
 
 ## General Policies
 
@@ -38,14 +38,13 @@ common solution.
 As much as possible, try and stick to the hints and functions we import at the top of the homework, as those are the ideas and tools the class supports and is aiming to teach. And if a problem specifies a particular library you're required to use that library, and possibly others from the import list. You are allowed to use other libraries such as
 seaborn.
 
-**Late Submissions will not be accepted**
+## Submitting HW
+
+**`Late Submissions will not be accepted.`**
 
 Extensions are provided only for medical reasons with a doctor's note.
 
 If there are issues, send an email to the **Helpline**.
-
-
-## Submitting HW
 
 Homework assignments will be done in Python in the Jupyter Notebook environment. When you are finished editing your notebook, **re-run all the cells to make sure they work**.
 
@@ -55,27 +54,31 @@ If your notebook references other files such as images which are necessary for i
 
 You may also choose to "attach" the images to the notebook itself. See the section on markdown attachments under "other additions" [here](https://jupyter-notebook.readthedocs.io/en/stable/changelog.html#release-5-0-0) for details.
 
+**Please do not submit .zip or .rar files.**
+
 
 ### File Naming Convention
 
-Name your file as follows: cs109a_hw#_?09_submit.ipynb (replace the # with the number of the assignment and replace ? with 1 or 2 depending if you are submitting the 109 or 209 hw). **Do not** **include your name** in the paper or the filename as we are doing anonymous grading.
+**Do not** **include your name** in the paper or the filename as we try to keep grading as anonymous as possible.
 
 
 ### Making a HW Group in Canvas
 
-**DO NOT** make new groups. Look for an empty group among the **pre-made** groups for each assignment and join it. Follow instructions below.
+**`DO NOT`** join a group if you are submitting the assignment alone.
+
+**`DO NOT`** make new groups. Look for an empty group among the **pre-made** groups for each assignment and join it. Follow instructions below.
 
 1. Click "People" in the navbar
 
 2. Click the "Groups" tab
 
-3.  Type in the search box: "HW\#" (replace \# with the homework number, e.g. HW3) then wait a long time for the groups to load
+3.  Type in the search box: "HW\#" (replace \# with the homework number, e.g. HW3)
 
 4. Choose an empty group and have both members in your pair click "Join". Again, this must be done **before** you submit and **before** the homework deadline. If you haven't joined a group before the homework deadline, we will assume you are working alone.
 
 5.  Groups **do not** persist across assignments. You need to make a group for every assignment.
 
-**Warning: If you are submitting in a pair: both members must join a Canvas group BEFORE they submit and BEFORE the homework deadline, whichever is earlier. If your group is not in place when you submit or if you submit after the assignment deadline, then you are submitting alone. This is a Canvas limitation.**
+**`Warning: If you are submitting in a pair: both members must join a Canvas group BEFORE they submit and BEFORE the homework deadline, whichever is earlier. If your group is not in place when you submit or if you submit after the assignment deadline, then you are submitting alone. This is a Canvas limitation.`**
 
 
 [Making a HW Group in Canvas Video](https://youtu.be/p58ZOItZ6ho)

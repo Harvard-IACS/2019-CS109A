@@ -1,0 +1,7 @@
+plt.figure(figsize=[6,4])
+plt.plot(bikeshare.groupby('month').mean()['count'],'-ob')
+plt.xlabel('Month')
+plt.ylabel('Count')
+plt.title('Bikeshare Rental Count as a function of Month')
+plt.xlim([0,13])
+plt.show()

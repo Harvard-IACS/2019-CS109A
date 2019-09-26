@@ -81,7 +81,7 @@ DIRECT_TEMPLATES = ['index', 'category', 'tags', 'search']
 import re
 
 JINJA_FILTERS = {
-    'original_content': lambda x: re.search(r"content/.*", x).group(0)
+    'original_content': lambda x: re.search(r"content/(.*)", x).group(1)
 }
 
 USE_FOLDER_AS_CATEGORY = False

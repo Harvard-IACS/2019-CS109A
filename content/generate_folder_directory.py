@@ -156,7 +156,7 @@ class GenerateStructure:
                 for fold in folders:
                     self.create_directory(directory_a_section, fold)
 
-                self.create_index(directory_a_section, "Advanced Sections ", "a-section",  "a-section", i)
+                self.create_index(directory_a_section, "Advanced Sections ", "a-sections",  "a-sections", i)
 
             else:
                 print("The directory : '", directory + "Advanced Sections" + str(i), "' already exist.")
