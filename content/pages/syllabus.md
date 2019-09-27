@@ -195,7 +195,7 @@ For more details, check out [The CS109A Grade](https://canvas.harvard.edu/files/
 
 #### Questions on Graded Homework and Regrading Policy
 
-We take great care in making sure all homework assignments are graded properly. However, if you find that your assignment has grading oversights/errors you may: Contact the grader by emailing the helpline with subject line “Regrade HW1: Grader=johnsmith”  within 48 hours of the grade release (the grader’s name can be found at the end of your notebook). If still unsatisfied with first regrading outcome, you may submit a reason via email to the Helpline with subject line “Regrade HW1: Second request” within 2 days of receiving the initial regarding response.
+We take great care in making sure all homework assignments are graded properly. However, if you find that your assignment has grading oversights/errors you may: Email the helpline with subject line “Regrade HW1: Grader=johnsmith”  within 48 hours of the grade release (the grader’s name can be found at the end of your notebook). If still unsatisfied with first regrading outcome, you may submit a reason via email to the Helpline with subject line “Regrade HW1: Second request” within 2 days of receiving the initial regarding response.
 
 NOTE: once regrading is done, you may receive a grade that could be lower than the initial grade.
 
