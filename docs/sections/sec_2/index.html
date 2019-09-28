@@ -1085,12 +1085,12 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-2:-kNN-and-Linear-Regression">Standard Section 2: kNN and Linear Regression<a class="anchor-link" href="#Standard-Section-2:-kNN-and-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
-<hr style="height:2px">
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-2:-kNN-and-Linear-Regression">Standard Section 2: kNN and Linear Regression<a class="anchor-link" href="#Standard-Section-2:-kNN-and-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<hr style="height:2px" />
 </div>
 </div>
 </div>
@@ -1099,7 +1099,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1139,7 +1139,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Matrices, Dataframe and Plotting Operations</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Matrices, Dataframe and Plotting Operations</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -1209,7 +1209,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/bikeshare.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Unnamed: 0'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/bikeshare.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Unnamed: 0'</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Dataset:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
@@ -1222,7 +1222,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1241,7 +1241,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1252,7 +1252,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol1.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol1.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1271,7 +1271,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1282,7 +1282,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol2.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol2.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1301,7 +1301,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1312,7 +1312,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol3.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol3.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1339,7 +1339,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting</span>
 <span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">new</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">],</span><span class="s1">'-b'</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1373,7 +1373,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1392,7 +1392,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">,</span><span class="s1">'atemp'</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">,</span><span class="s1">'atemp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">new</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">],</span><span class="s1">'-b'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'A - Temp'</span><span class="p">)</span>
@@ -1424,7 +1424,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1435,7 +1435,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol4.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol4.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1454,7 +1454,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">188</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">188</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1473,7 +1473,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol4.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol4.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1508,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
 <span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1532,7 +1532,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1543,7 +1543,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol5.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol5.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1553,9 +1553,9 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="kNN-Regression">kNN Regression<a class="anchor-link" href="#kNN-Regression">¶</a></h1><p><img alt="knn" src="../fig/knn_1.png">
-<img alt="knn" src="../fig/knn_2.png">
-<img alt="knn" src="../fig/knn_3.png"></p>
+<h1 id="kNN-Regression">kNN Regression<a class="anchor-link" href="#kNN-Regression">¶</a></h1><p><img alt="knn" src="../fig/knn_1.png" />
+<img alt="knn" src="../fig/knn_2.png" />
+<img alt="knn" src="../fig/knn_3.png" /></p>
 <h2 id="Using-sklearn-to-implement-kNN:">Using sklearn to implement kNN:<a class="anchor-link" href="#Using-sklearn-to-implement-kNN:">¶</a></h2>
 </div>
 </div>
@@ -1605,7 +1605,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsRegressor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsRegressor</span>
 
 <span class="c1"># Set kNN parameter:</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1638,7 +1638,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># SubPlots</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># SubPlots</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'Data'</span> <span class="p">)</span>
@@ -1674,7 +1674,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Linear-Regression">Linear Regression<a class="anchor-link" href="#Linear-Regression">¶</a></h1><p><img alt="linear regression" src="../fig/linear_regression.png"></p>
+<h1 id="Linear-Regression">Linear Regression<a class="anchor-link" href="#Linear-Regression">¶</a></h1><p><img alt="linear regression" src="../fig/linear_regression.png" /></p>
 </div>
 </div>
 </div>
@@ -1691,7 +1691,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">statsmodels.api</span> <span class="k">import</span> <span class="n">OLS</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
@@ -1722,7 +1722,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1733,7 +1733,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol6.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol6.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1744,7 +1744,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting our model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting our model</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
@@ -1775,7 +1775,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Metrics, Performance Evaluation and Helpful functions</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Metrics, Performance Evaluation and Helpful functions</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
 
@@ -1800,7 +1800,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1812,7 +1812,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Confidence-Intervals">Confidence Intervals<a class="anchor-link" href="#Confidence-Intervals">¶</a></h3><p>In Data Science, a confidence interval (CI) is a type of interval estimate, computed from the statistics of the observed data, that might contain the true value of an unknown population parameter. Simply speaking, a Confidence Interval is a range of values we are fairly sure our true value lies in.</p>
 <p>It is important to remind ourselves here that Confidence Intervals belong to a parameter and not a statistic. Thus, they represent the window in which the true value exists for the entire population when all we have is a sample.</p>
-<p><img alt="ci" src="../fig/confidence_intervals.png"></p>
+<p><img alt="ci" src="../fig/confidence_intervals.png" /></p>
 <p><strong>See if you can implement a 95% confidence interval using statsmodels</strong></p>
 </div>
 </div>
@@ -1822,7 +1822,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1833,7 +1833,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol7.py'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load '../solutions/sol7.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1851,8 +1851,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr>
+<hr />
+<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr />
 </div>
 </div>
 </div>
@@ -1869,7 +1869,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Function to Split data into Train and Test Set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Function to Split data into Train and Test Set</span>
 <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     
     <span class="c1">#Calculate Length of Dataset</span>
@@ -1900,7 +1900,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Split data using defined function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Split data using defined function</span>
 <span class="n">train_data_manual</span><span class="p">,</span> <span class="n">test_data_manual</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Training set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_data_manual</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Testing set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data_manual</span><span class="p">))</span>
@@ -1914,7 +1914,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Check that the ratio between test and train sets is right</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Check that the ratio between test and train sets is right</span>
 <span class="n">test_data_manual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">test_data_manual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">train_data_manual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1942,7 +1942,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#kNN Algorithm</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#kNN Algorithm</span>
 <span class="k">def</span> <span class="nf">knn_algorithm</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     
     <span class="c1">#Create any empty list to store our predictions in</span>
@@ -1999,7 +1999,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Run the kNN function </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Run the kNN function </span>
 
 <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">predicted_knn</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
@@ -2022,7 +2022,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Test predictions in comparison to true value of test set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test predictions in comparison to true value of test set</span>
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">true</span><span class="p">):</span>
     
     <span class="c1">#Find the squared error:</span>
@@ -2051,7 +2051,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Test Data:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Test Data:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN test:"</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predicted_knn</span><span class="p">,</span> <span class="n">test_data</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2063,7 +2063,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">predicted_knn_train</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predicted_knn_train</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN train:"</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predicted_knn_train</span><span class="p">,</span> <span class="n">train_data</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2092,7 +2092,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">x_train_ca</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">x_train_ca</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="c1">#Find the squared error:</span>
@@ -2122,7 +2122,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 </div>
 </div>
 </div>
