@@ -1,6 +1,6 @@
 Title: Projects
 Slug: projects
-Date: 2019-09-03
+Date: 2019-10-01
 
 <style>
 pre {
@@ -24,4 +24,14 @@ pre {
 }
 </style>
 
-More material coming soon!
+[Project Guidelines]({attach}../projects/ProjectGuidelines.pdf)
+
+
+At end of the semester, students gather in small groups (max 4 per group) and apply what they have learned. Students may choose from one of the following projects:
+
+- Project 1 | Measuring our Environment: Introducing Physical Sensors (details soon!)
+- [Project 2 | Predicting the Midterm Election]({attach}../projects/MidtermElections.pdf)
+- [Project 3 | Predicting Types of Crime]({attach}../projects/Predicting_Types_of_Crime.pdf)
+- [Project 4 | Spotify Playlist Generation]({attach}../projects/Spotify.pdf)
+- Project 5 | Trump Tweets and Market Volatility (details soon!)
+
