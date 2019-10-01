@@ -9,5 +9,8 @@ Tags: Ridge regression, LASSO
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture8a_Regularization.pdf)
-- [PPTX]({attach}presentation/Lecture8a_Regularization.pptx)
+- [Regularizationn PDF]({attach}presentation/Lecture8a_Regularization.pdf)
+- [Regularizationn  PPTX]({attach}presentation/Lecture8a_Regularization.pptx)
+
+- [EDA PDF]({attach}presentation/Lecture8b_EDA.pdf)
+- [EDA  PPTX]({attach}presentation/Lecture8b_EDA.pptx)
