@@ -27,8 +27,6 @@ pre {
 [Project Guidelines]({attach}../projects/ProjectGuidelines.pdf)
 
 
-At end of the semester, students gather in small groups (max 4 per group) and apply what they have learned. Students may choose from one of the following projects:
-
 - Project 1 | Measuring our Environment: Introducing Physical Sensors (details soon!)
 - [Project 2 | Predicting the Midterm Election]({attach}../projects/MidtermElections.pdf)
 - [Project 3 | Predicting Types of Crime]({attach}../projects/Predicting_Types_of_Crime.pdf)
