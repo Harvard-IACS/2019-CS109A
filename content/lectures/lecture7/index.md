@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture7
 Author: Pavlos Protopapas
 Date: 2019-9-25
-Tags: Regularization, LASSO, Ridge, Model Selection
+Tags: Cross Validation, Model Selection
 
 
 ### Slides

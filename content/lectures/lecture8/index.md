@@ -1,9 +1,13 @@
-Title: Lecture 8:
+Title: Lecture 8:Regularization and EDA
 Category: lectures
-Date: 2019-06-06
-Author: 
+Date: 2019-09-30
+Author: Pavlos Protopapas
 Slug: lecture8
-Tages: ADD TAGS HERE
+Tags: Ridge regression, LASSO
 
 
-## Slides
+
+### Slides
+
+- [PDF]({attach}presentation/Lecture8a_Regularization.pdf)
+- [PPTX]({attach}presentation/Lecture8a_Regularization.pptx)
