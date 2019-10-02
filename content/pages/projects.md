@@ -27,9 +27,9 @@ pre {
 [Project Guidelines]({attach}../projects/ProjectGuidelines.pdf)
 
 
-- Project A | Measuring our Environment: Introducing Physical Sensors (details soon!)
+- [Project A | Measuring our Environment: Introducing Physical Sensors]({attach}../projects/Measuring_Environment.pdf)
 - [Project B | Predicting the Midterm Election]({attach}../projects/MidtermElections.pdf)
 - [Project C | Predicting Types of Crime]({attach}../projects/Predicting_Types_of_Crime.pdf)
 - [Project D | Spotify Playlist Generation]({attach}../projects/Spotify.pdf)
-- Project E | Trump Tweets and Market Volatility (details soon!)
+- [Project E | Trump Tweets and Market Volatility]({attach}../projects/Trump_Tweets.pdf)
 
