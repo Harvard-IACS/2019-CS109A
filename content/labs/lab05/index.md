@@ -1,9 +1,18 @@
-Title: Lab 5:
+Title: Lab 5: Exploratory Data Analysis, seaborn, more Plotting
 Category: labs
-Date: 2019-06-06
-Author: 
-Slug: lab5
-Tages: ADD TAGS HERE
+Slug: lab05
+Author: Eleni Kaxiras
+Date: 2019-10-03
+Tags: matplotlib, seaborn, plots, pandas
 
 
-## Slides
+## Jupyter Notebooks
+
+- [Lab 5: Exploratory Data Analysis, seaborn, more Plotting]({filename}notebook/cs109a_lab5_EDA_plotting.ipynb)
+- [Lab 5: Exploratory Data Analysis, seaborn, more Plotting]({filename}notebook/cs109a_lab5_EDA_plotting_solutions.ipynb)
+
+
+
+
+
+
