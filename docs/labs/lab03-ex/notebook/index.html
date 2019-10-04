@@ -1085,10 +1085,10 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A  Introduction to Data Science</h1>
-<h2 id="Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">Lab 3: plotting, K-NN Regression, Simple Linear Regression<a class="anchor-link" href="#Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br></p>
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px" /> CS109A  Introduction to Data Science</h1>
+<h2 id="Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">Lab 3: plotting, K-NN Regression, Simple Linear Regression<a class="anchor-link" href="#Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br /></p>
 <p><strong>Material prepared by</strong>: David Sondak, Will Claybaugh, Pavlos Protopapas, and Eleni Kaxiras.</p>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ h6:hover .anchor-link {
 <div class="highlight"><pre><span></span><span class="c1"># %load solutions/knn_regression.py</span>
 </pre></div>
 <p>This will bring up the code in the cell but WILL NOT RUN it. You need to run the cell again in order to actually run the code</p>
-<hr>
+<hr />
 </div>
 </div>
 </div>
@@ -1416,9 +1416,9 @@ header {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays can be sliced, and can be iterated over with loops.  Below is a schematic illustrating slicing two-dimensional arrays.</p>
-<p><img alt="Drawing" src="../images/2dindex_v2.png" style="width: 500px;"></p>
-<p>Notice that the list slicing syntax still works!<br>
-<code>array[2:,3]</code> says "in the array, get rows 2 through the end, column 3]"<br>
+<p><img alt="Drawing" src="../images/2dindex_v2.png" style="width: 500px;" /></p>
+<p>Notice that the list slicing syntax still works!<br />
+<code>array[2:,3]</code> says "in the array, get rows 2 through the end, column 3]"<br />
 <code>array[3,:]</code> says "in the array, get row 3, all columns".</p>
 </div>
 </div>
@@ -1557,8 +1557,8 @@ header {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="second-bullet"></a></p>
-<h2 id="2---Plotting-with-matplotlib-and-beyond">2 - Plotting with matplotlib and beyond<a class="anchor-link" href="#2---Plotting-with-matplotlib-and-beyond">¶</a></h2><p><br>
-<img src="https://imgs.xkcd.com/comics/convincing.png" style="float: center"></p>
+<h2 id="2---Plotting-with-matplotlib-and-beyond">2 - Plotting with matplotlib and beyond<a class="anchor-link" href="#2---Plotting-with-matplotlib-and-beyond">¶</a></h2><p><br />
+<img src="https://imgs.xkcd.com/comics/convincing.png" style="float: center" /></p>
 <p><code>matplotlib</code> is a very powerful <code>python</code> library for making scientific plots.</p>
 <p>We will not focus too much on the internal aspects of <code>matplotlib</code> in today's lab. There are many excellent tutorials out there for <code>matplotlib</code>.  For example,</p>
 <ul>
@@ -1841,7 +1841,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <li>Put a legend on your figure</li>
 </ul>
 <p>Here's an example of a figure:
-<img alt="" src="../images/nice_plots.png"></p>
+<img alt="" src="../images/nice_plots.png" /></p>
 </div>
 </div>
 </div>
@@ -2400,8 +2400,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="constant"></a></p>
-<h3 id="Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">Why do we need to add a constant in our simple linear regression model?<a class="anchor-link" href="#Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">¶</a></h3><p>Let's say we a data set of two obsevations with one predictor and one response variable each. We would then have the following two equations if we run a simple linear regression model. $$y_1=\beta_0 + \beta_1*x_1$$ $$y_2=\beta_0 + \beta_1*x_2$$ <br> For simplicity and calculation efficiency we want to "absorb" the constant $b_0$ into an array with $b_1$ so we have only multiplication. To do this we introduce the constant ${x}^0=1$<br>$$y_1=\beta_0*{x_1}^0 + \beta_1*x_1$$ $$y_2=\beta_0 * {x_2}^0 + \beta_1*x_2$$ <br> That becomes: 
-$$y_1=\beta_0*1 + \beta_1*x_1$$ $$y_2=\beta_0 * 1 + \beta_1*x_2$$<br></p>
+<h3 id="Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">Why do we need to add a constant in our simple linear regression model?<a class="anchor-link" href="#Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">¶</a></h3><p>Let's say we a data set of two obsevations with one predictor and one response variable each. We would then have the following two equations if we run a simple linear regression model. $$y_1=\beta_0 + \beta_1*x_1$$ $$y_2=\beta_0 + \beta_1*x_2$$ <br /> For simplicity and calculation efficiency we want to "absorb" the constant $b_0$ into an array with $b_1$ so we have only multiplication. To do this we introduce the constant ${x}^0=1$<br />$$y_1=\beta_0*{x_1}^0 + \beta_1*x_1$$ $$y_2=\beta_0 * {x_2}^0 + \beta_1*x_2$$ <br /> That becomes: 
+$$y_1=\beta_0*1 + \beta_1*x_1$$ $$y_2=\beta_0 * 1 + \beta_1*x_2$$<br /></p>
 <p>In matrix notation:</p>
 <p>$$
 \left [
@@ -2421,7 +2421,7 @@ y_1 \\ y_2 \\
 \end{array}
 \right]
 $$</p>
-<p><br><br></p>
+<p><br /><br /></p>
 <p><code>sklearn</code> adds the constant for us where in <code>statsmodels</code> we need to explicitly add it using <code>sm.add_constant</code></p>
 </div>
 </div>
@@ -2572,7 +2572,7 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="" src="../images/featurematrix.png"></p>
+<p><img alt="" src="../images/featurematrix.png" /></p>
 <!--![](../images/sklearn2.jpg)-->
 </div>
 </div>
@@ -2730,7 +2730,7 @@ $$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Use slicing to get the same vector <code>y_train</code></p>
-<hr>
+<hr />
 </div>
 </div>
 </div>
