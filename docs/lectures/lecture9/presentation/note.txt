@@ -1,0 +1,5 @@
+The powerpoint (Lecture9_Visualization.pptx) contains the entire lecture in .pptx format.
+
+When converted to .PDF format, the filesize is too large for GitHub, so I split the slides into two halves:
+- Lecture9a_Visualization.pdf
+- Lecture9b_Visualization.pdf
