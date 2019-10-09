@@ -1,4 +1,4 @@
-Title: Lecture 11:
+Title: Lecture 11: Logistic Regression 2
 Category: lectures
 Date: 2019-10-09
 Author: Kevin Rader

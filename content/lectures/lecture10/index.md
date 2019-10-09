@@ -1,4 +1,4 @@
-Title: Lecture 10:
+Title: Lecture 10: Logistic Regression
 Category: lectures
 Date: 2019-10-07
 Author: Kevin Rader
