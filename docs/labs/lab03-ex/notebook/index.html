@@ -114,9 +114,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -195,12 +310,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -213,27 +336,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -429,7 +564,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -439,11 +576,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -691,6 +841,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -729,7 +882,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -851,6 +1004,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -867,16 +1024,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -892,6 +1057,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -942,8 +1112,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1082,8 +1259,7 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A  Introduction to Data Science</h1>
 <h2 id="Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">Lab 3: plotting, K-NN Regression, Simple Linear Regression<a class="anchor-link" href="#Lab-3:-plotting,-K-NN-Regression,-Simple-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1094,8 +1270,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="-Extended-Edition"><font color="red"> Extended Edition</font><a class="anchor-link" href="#-Extended-Edition">¶</a></h2><p>Same as the one done in class with the following additions/clarifications:</p>
 <ul>
@@ -1115,7 +1290,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1195,8 +1370,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>By the end of this lab, you should be able to:</p>
 <ul>
@@ -1210,8 +1384,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><h4 id="-HIGHLIGHTS-FROM-PRE-LAB-"><font color="red"> HIGHLIGHTS FROM PRE-LAB </font><a class="anchor-link" href="#-HIGHLIGHTS-FROM-PRE-LAB-">¶</a></h4><ul>
 <li><a href="#first-bullet">1 - Review of numpy</a></li>
@@ -1231,7 +1404,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
@@ -1256,7 +1429,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use this as a variable to load solutions: %load PATHTOSOLUTIONS/exercise1.py. It will be substituted in the code</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Use this as a variable to load solutions: %load PATHTOSOLUTIONS/exercise1.py. It will be substituted in the code</span>
 <span class="c1"># so do not worry if it disappears after you run the cell.</span>
 <span class="n">PATHTOSOLUTIONS</span> <span class="o">=</span> <span class="s1">'solutions'</span>
 </pre></div>
@@ -1265,8 +1438,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="first-bullet"></a></p>
 <h2 id="1---Review-of--the--numpy-Python-library">1 - Review of  the  <code>numpy</code> Python library<a class="anchor-link" href="#1---Review-of--the--numpy-Python-library">¶</a></h2><p>In lab1 we learned about the <code>numpy</code> library <a href="http://www.numpy.org/">(documentation)</a> and its fast array structure, called the <code>numpy array</code>.</p>
@@ -1278,7 +1450,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import numpy</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># import numpy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -1290,7 +1462,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make an array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make an array</span>
 <span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">])</span>
 <span class="n">my_array</span>
 </pre></div>
@@ -1303,7 +1475,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of my array: </span><span class="si">{my_array.size}</span><span class="s1">, or length of my array: {len(my_array)}'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Size of my array: </span><span class="si">{my_array.size}</span><span class="s1">, or length of my array: {len(my_array)}'</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="s1">'Shape of my array: </span><span class="si">{my_array.shape}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1311,8 +1483,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Notice-the-way-the-shape-appears-in-numpy-arrays">Notice the way the shape appears in numpy arrays<a class="anchor-link" href="#Notice-the-way-the-shape-appears-in-numpy-arrays">¶</a></h4><ul>
 <li>For a 1D array, .shape returns a tuple with 1 element (n,)</li>
@@ -1327,7 +1498,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How to reshape a 1D array to a 2D</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># How to reshape a 1D array to a 2D</span>
 <span class="n">my_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1335,8 +1506,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays support the same operations as lists! Below we slice and iterate.</p>
 </div>
@@ -1347,7 +1517,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"array[2:4]:"</span><span class="p">,</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># A slice of the array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"array[2:4]:"</span><span class="p">,</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># A slice of the array</span>
 
 <span class="c1"># Iterate over the array</span>
 <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">my_array</span><span class="p">:</span>
@@ -1358,8 +1528,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Remember <code>numpy</code> gains a lot of its efficiency from being <strong>strongly typed</strong> (all elements are of the same type, such as integer or floating point). If the elements of an array are of a different type, <code>numpy</code> will force them into the same type (the longest in terms of bytes)</p>
 </div>
@@ -1370,7 +1539,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="s1">'eleni'</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="s1">'eleni'</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="mf">2.3</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="s1">'eleni'</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">mixed</span> <span class="c1"># all elements will become strings</span>
 </pre></div>
@@ -1379,8 +1548,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we push ahead to two-dimensional arrays and begin to dive into some of the deeper aspects of <code>numpy</code>.</p>
 </div>
@@ -1391,7 +1559,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a 2d-array by handing a list of lists</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create a 2d-array by handing a list of lists</span>
 <span class="n">my_array2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
                         <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
                         <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span> 
@@ -1404,16 +1572,14 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Array-Slicing-(a-reminder...)">Array Slicing (a reminder...)<a class="anchor-link" href="#Array-Slicing-(a-reminder...)">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays can be sliced, and can be iterated over with loops.  Below is a schematic illustrating slicing two-dimensional arrays.</p>
 <p><img alt="Drawing" src="../images/2dindex_v2.png" style="width: 500px;"></p>
@@ -1424,8 +1590,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="iloc"></a></p>
 <h3 id="Pandas-Slicing-(a-reminder...)">Pandas Slicing (a reminder...)<a class="anchor-link" href="#Pandas-Slicing-(a-reminder...)">¶</a></h3><p><code>.iloc</code> is by position (position is unique), <code>.loc</code> is by label (label is not unique)</p>
@@ -1437,7 +1602,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import cast dataframe </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># import cast dataframe </span>
 <span class="n">cast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/cast.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf_8'</span><span class="p">)</span>
 <span class="n">cast</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1450,7 +1615,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get me rows 10 to 13 (python slicing style : exclusive of end) </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get me rows 10 to 13 (python slicing style : exclusive of end) </span>
 <span class="n">cast</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1462,7 +1627,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get me columns 0 to 2 but all rows - use head()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get me columns 0 to 2 but all rows - use head()</span>
 <span class="n">cast</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1474,7 +1639,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get me rows 10 to 13 AND only columns 0 to 2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get me rows 10 to 13 AND only columns 0 to 2</span>
 <span class="n">cast</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1486,7 +1651,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># COMPARE: get me rows 10 to 13 (pandas slicing style : inclusive of end)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># COMPARE: get me rows 10 to 13 (pandas slicing style : inclusive of end)</span>
 <span class="n">cast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1498,7 +1663,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># give me columns 'year' and 'type' by label but only for rows 5 to 10</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># give me columns 'year' and 'type' by label but only for rows 5 to 10</span>
 <span class="n">cast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">,[</span><span class="s1">'year'</span><span class="p">,</span><span class="s1">'type'</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1506,8 +1671,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Another-example-of-positioning-with-.iloc-and-loc">Another example of positioning with <code>.iloc</code> and <code>loc</code><a class="anchor-link" href="#Another-example-of-positioning-with-.iloc-and-loc">¶</a></h4><p>Look at the following data frame. It is a bad example because we have duplicate values for the index but that is legal in pandas. It's just a bad practice and we are doing it to illustrate the difference between positioning with <code>.iloc</code> and <code>loc</code>. To keep rows unique, though, internally, <code>pandas</code> has its own index which in this dataframe runs from <code>0</code> to <code>2</code>.</p>
 </div>
@@ -1518,7 +1682,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'Z'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'Z'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">]</span>
 <span class="n">famous</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Elton'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'singer'</span><span class="p">,</span> <span class="s1">'Candle in the wind'</span><span class="p">,</span> <span class="s1">'male'</span><span class="p">],</span>
                   <span class="s1">'Maraie'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'actress'</span> <span class="p">,</span> <span class="s1">'Do not know'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">],</span>
                   <span class="s1">'num'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)},</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
@@ -1533,7 +1697,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># accessing elements by label can bring up duplicates!!</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># accessing elements by label can bring up duplicates!!</span>
 <span class="n">famous</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'A'</span><span class="p">]</span>  <span class="c1"># since we want all rows is the same as famous.loc['A',:]</span>
 </pre></div>
 </div>
@@ -1545,7 +1709,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># accessing elements by position is unique - brings up only one row</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># accessing elements by position is unique - brings up only one row</span>
 <span class="n">famous</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1553,8 +1717,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="second-bullet"></a></p>
 <h2 id="2---Plotting-with-matplotlib-and-beyond">2 - Plotting with matplotlib and beyond<a class="anchor-link" href="#2---Plotting-with-matplotlib-and-beyond">¶</a></h2><p><br>
@@ -1583,16 +1746,14 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First, let's generate some data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Let's-plot-some-functions">Let's plot some functions<a class="anchor-link" href="#Let's-plot-some-functions">¶</a></h4><p>We will use the following three functions to make some plots:</p>
 <ul>
@@ -1629,7 +1790,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-></span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">""" Compute logistic function</span>
@@ -1671,8 +1832,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's make some plots.  First, let's just warm up and plot the logistic function.</p>
 </div>
@@ -1683,7 +1843,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Equally spaced grid of 100 pts between -5 and 5</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Equally spaced grid of 100 pts between -5 and 5</span>
 
 <span class="n">f</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="c1"># Generate data</span>
 </pre></div>
@@ -1696,7 +1856,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'f'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Logistic Function'</span><span class="p">)</span>
@@ -1707,8 +1867,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Figures-with-subplots">Figures with subplots<a class="anchor-link" href="#Figures-with-subplots">¶</a></h4><p>Let's start thinking about the plots as objects. We have the <code>figure</code> object which is like a matrix of smaller plots named <code>axes</code>. You can use array notation when handling it.</p>
 </div>
@@ -1719,7 +1878,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Get figure and axes objects</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Get figure and axes objects</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="c1"># Make a plot</span>
 
@@ -1736,8 +1895,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wow, it's <em>exactly</em> the same plot!  Notice, however, the use of <code>ax.set_xlabel()</code> instead of <code>plt.xlabel()</code>.  The difference is tiny, but you should be aware of it.  I will use this plotting syntax from now on.</p>
 <p>What else do we need to do to make this figure better?  Here are some options:</p>
@@ -1757,7 +1915,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
 
 <span class="c1"># Make line plot</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -1777,8 +1935,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice:</p>
 <ul>
@@ -1790,8 +1947,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The only thing remaining to do is to change the $x$ limits.  Clearly these should go from $-5$ to $5$.</p>
 </div>
@@ -1802,7 +1958,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fig.savefig('logistic.png')</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#fig.savefig('logistic.png')</span>
 
 <span class="c1"># Put this in a markdown cell and uncomment this to check what you saved.</span>
 <span class="c1"># ![](../images/logistic.png)</span>
@@ -1812,8 +1968,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Resources">Resources<a class="anchor-link" href="#Resources">¶</a></h4><p>If you want to see all the styles available, please take a look at the documentation.</p>
 <ul>
@@ -1831,8 +1986,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Do the following:</p>
 <ul>
@@ -1850,7 +2004,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 
 <span class="c1"># First get the data</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -1890,8 +2044,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>These figures look nice in the plot and it makes sense for comparison. Now let's put the 3 different figures in separate plots.</p>
 <ul>
@@ -1905,7 +2058,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1916,15 +2069,14 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/three_subplots.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/three_subplots.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><ul>
 <li>Make a grid of 2 x 3 separate plots, 3 will be empty. Just plot the functions and do not worry about cosmetics. We just want you ro see the functionality.</li>
@@ -1937,7 +2089,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1948,33 +2100,29 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load</span> solutions/six_subplots.py
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load</span> solutions/six_subplots.py
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="third-bullet"></a></p>
 <h2 id="3---Simple-Linear-Regression">3 - Simple Linear Regression<a class="anchor-link" href="#3---Simple-Linear-Regression">¶</a></h2><p>Linear regression and its many extensions are a workhorse of the statistics and data science community, both in application and as a reference point for other models. Most of the major concepts in machine learning can be and often are discussed in terms of various linear regression models. Thus, this section will introduce you to building and fitting linear regression models and some of the process behind it, so that you can 1) fit models to data you encounter 2) experiment with different kinds of linear regression and observe their effects 3) see some of the technology that makes regression models work.</p>
 <h3 id="Linear-regression-with-a-toy-dataset">Linear regression with a toy dataset<a class="anchor-link" href="#Linear-regression-with-a-toy-dataset">¶</a></h3><p>We first examine a toy problem, focusing our efforts on fitting a linear model to a small dataset with three observations.  Each observation consists of one predictor $x_i$ and one response $y_i$ for $i = 1, 2, 3$,</p>
-<p>\begin{align*}
+\begin{align*}
 (x , y) = \{(x_1, y_1), (x_2, y_2), (x_3, y_3)\}.
-\end{align*}</p>
-<p>To be very concrete, let's set the values of the predictors and responses.</p>
-<p>\begin{equation*}
+\end{align*}<p>To be very concrete, let's set the values of the predictors and responses.</p>
+\begin{equation*}
 (x , y) = \{(1, 2), (2, 2), (3, 4)\}
-\end{equation*}</p>
-<p>There is no line of the form $\beta_0 + \beta_1 x = y$ that passes through all three observations, since the data are not collinear. Thus our aim is to find the line that best fits these observations in the <em>least-squares sense</em>, as discussed in lecture.</p>
+\end{equation*}<p>There is no line of the form $\beta_0 + \beta_1 x = y$ that passes through all three observations, since the data are not collinear. Thus our aim is to find the line that best fits these observations in the <em>least-squares sense</em>, as discussed in lecture.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise (for home)</b></div><ul>
 <li>Make two numpy arrays out of this data, x_train and y_train</li>
@@ -1991,7 +2139,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2002,7 +2150,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># solution</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># solution</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
@@ -2016,7 +2164,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2027,7 +2175,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -2039,7 +2187,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/simple_scatterplot.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/simple_scatterplot.py</span>
 <span class="c1"># Make a simple scatterplot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 
@@ -2055,7 +2203,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/nice_scatterplot.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/nice_scatterplot.py</span>
 <span class="k">def</span> <span class="nf">nice_scatterplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
     <span class="c1"># font size</span>
     <span class="n">f_size</span> <span class="o">=</span> <span class="mi">18</span>
@@ -2098,8 +2246,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Formulae">Formulae<a class="anchor-link" href="#Formulae">¶</a></h4><p>Linear regression is special among the models we study because it can be solved explicitly. While most other models (and even some advanced versions of linear regression) must be solved itteratively, linear regression has a formula where you can simply plug in the data.</p>
 <p>For the single predictor case it is:
@@ -2112,16 +2259,25 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Building-a-model-from-scratch">Building a model from scratch<a class="anchor-link" href="#Building-a-model-from-scratch">¶</a></h3><p>In this part, we will solve the equations for simple linear regression and find the best fit solution to our toy problem.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The snippets of code below implement the linear regression equations on the observed predictors and responses, which we'll call the training data set.  Let's walk through the code.</p>
 <p>We have to reshape our arrrays to 2D. We will see later why.</p>
@@ -2129,8 +2285,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><ul>
 <li>make an array with shape (2,3)</li>
@@ -2144,7 +2299,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2155,7 +2310,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#solution</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#solution</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
 <span class="n">xxx</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">xxx</span><span class="o">.</span><span class="n">shape</span>
@@ -2169,7 +2324,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reshape to be a proper 2D array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Reshape to be a proper 2D array</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -2184,7 +2339,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># first, compute means</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># first, compute means</span>
 <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">x_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
 
@@ -2199,8 +2354,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Why the empty brackets? (The numerator and denominator are scalars, as expected.)</li>
@@ -2213,7 +2367,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#slope beta1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#slope beta1</span>
 <span class="n">beta_1</span> <span class="o">=</span> <span class="n">numerator</span><span class="o">/</span><span class="n">denominator</span>
 
 <span class="c1">#intercept beta0</span>
@@ -2227,8 +2381,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Turn the code from the above cells into a function called <code>simple_linear_regression_fit</code>, that inputs the training data and returns <code>beta0</code> and <code>beta1</code>.</p>
 <p>To do this, copy and paste the code from the above cells below and adjust the code as needed, so that the training data becomes the input and the betas become the output.</p>
@@ -2245,7 +2398,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2256,7 +2409,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/simple_linear_regression_fit.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/simple_linear_regression_fit.py</span>
 <span class="k">def</span> <span class="nf">simple_linear_regression_fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-></span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">"""</span>
 <span class="sd">    Inputs:</span>
@@ -2297,8 +2450,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Let's run this function and see the coefficients</li>
@@ -2311,7 +2463,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 
 <span class="n">betas</span> <span class="o">=</span> <span class="n">simple_linear_regression_fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -2326,8 +2478,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><ul>
 <li>Do the values of <code>beta0</code> and <code>beta1</code> seem reasonable?</li>
@@ -2342,7 +2493,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2353,7 +2504,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/best_fit_scatterplot.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/best_fit_scatterplot.py</span>
 <span class="n">fig_scat</span><span class="p">,</span> <span class="n">ax_scat</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Plot best-fit line</span>
@@ -2372,16 +2523,14 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The values of <code>beta0</code> and <code>beta1</code> seem roughly reasonable.  They capture the positive correlation.  The line does appear to be trying to get as close as possible to all the points.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="fourth-bullet"></a></p>
 <h2 id="4---Building-a-model-with-statsmodels-and-sklearn">4 - Building a model with <code>statsmodels</code> and <code>sklearn</code><a class="anchor-link" href="#4---Building-a-model-with-statsmodels-and-sklearn">¶</a></h2><p>Now that we can concretely fit the training data from scratch, let's learn two <code>python</code> packages to do it all for us:</p>
@@ -2396,14 +2545,13 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="constant"></a></p>
 <h3 id="Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">Why do we need to add a constant in our simple linear regression model?<a class="anchor-link" href="#Why-do-we-need-to-add-a-constant-in-our-simple-linear-regression-model?">¶</a></h3><p>Let's say we a data set of two obsevations with one predictor and one response variable each. We would then have the following two equations if we run a simple linear regression model. $$y_1=\beta_0 + \beta_1*x_1$$ $$y_2=\beta_0 + \beta_1*x_2$$ <br> For simplicity and calculation efficiency we want to "absorb" the constant $b_0$ into an array with $b_1$ so we have only multiplication. To do this we introduce the constant ${x}^0=1$<br>$$y_1=\beta_0*{x_1}^0 + \beta_1*x_1$$ $$y_2=\beta_0 * {x_2}^0 + \beta_1*x_2$$ <br> That becomes: 
 $$y_1=\beta_0*1 + \beta_1*x_1$$ $$y_2=\beta_0 * 1 + \beta_1*x_2$$<br></p>
 <p>In matrix notation:</p>
-<p>$$
+$$
 \left [
 \begin{array}{c}
 y_1 \\ y_2 \\
@@ -2420,15 +2568,13 @@ y_1 \\ y_2 \\
 \beta_0 \\ \beta_1 \\
 \end{array}
 \right]
-$$</p>
-<p><br><br></p>
+$$<p><br><br></p>
 <p><code>sklearn</code> adds the constant for us where in <code>statsmodels</code> we need to explicitly add it using <code>sm.add_constant</code></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below is the code for <code>statsmodels</code>.  <code>Statsmodels</code> does not by default include the column of ones in the $X$ matrix, so we include it manually with <code>sm.add_constant</code>.</p>
 </div>
@@ -2439,7 +2585,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 </pre></div>
 </div>
 </div>
@@ -2450,7 +2596,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create the X matrix by appending a column of ones to x_train</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create the X matrix by appending a column of ones to x_train</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
 
 <span class="c1"># this is the same matrix as in our scratch problem!</span>
@@ -2473,8 +2619,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Besides the beta parameters, <code>results_sm</code> contains a ton of other potentially useful information.</p>
 </div>
@@ -2485,7 +2630,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">results_sm</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -2494,8 +2639,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's turn our attention to the <code>sklearn</code> library.</p>
 </div>
@@ -2506,7 +2650,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
 </pre></div>
 </div>
 </div>
@@ -2517,7 +2661,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># build the least squares model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># build the least squares model</span>
 <span class="n">toyregr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># save regression info (parameters, etc) in results_skl</span>
@@ -2534,24 +2678,21 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We should feel pretty good about ourselves now, and we're ready to move on to a real problem!</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="The-scikit-learn-library-and-the-shape-of-things">The <code>scikit-learn</code> library and the shape of things<a class="anchor-link" href="#The-scikit-learn-library-and-the-shape-of-things">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Before diving into a "real" problem, let's discuss more of the details of <code>sklearn</code>.</p>
 <p><code>Scikit-learn</code> is the main <code>Python</code> machine learning library. It consists of many learners which can learn models from data, as well as a lot of utility functions such as <code>train_test_split()</code>.</p>
@@ -2569,8 +2710,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="" src="../images/featurematrix.png"></p>
 <!--![](../images/sklearn2.jpg)-->
@@ -2578,8 +2718,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Practice-with-sklearn-and-a-real-dataset">Practice with <code>sklearn</code> and a real dataset<a class="anchor-link" href="#Practice-with-sklearn-and-a-real-dataset">¶</a></h3><p>We begin by loading up the <code>mtcars</code> dataset. This data was extracted from the 1974 Motor Trend US magazine, and comprises of fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). We will load this data to a dataframe with 32 observations on 11 (numeric) variables. Here is an explanation of the features:</p>
 <ul>
@@ -2603,7 +2742,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1">#load mtcars</span>
 <span class="n">dfcars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/mtcars.csv"</span><span class="p">)</span>
@@ -2618,7 +2757,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fix the column title </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fix the column title </span>
 <span class="n">dfcars</span> <span class="o">=</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"Unnamed: 0"</span><span class="p">:</span><span class="s2">"car name"</span><span class="p">})</span>
 <span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2631,15 +2770,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Searching-for-values:-how-many-cars-have-4-gears?">Searching for values: how many cars have 4 gears?<a class="anchor-link" href="#Searching-for-values:-how-many-cars-have-4-gears?">¶</a></h4>
 </div>
@@ -2650,15 +2788,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dfcars</span><span class="p">[</span><span class="n">dfcars</span><span class="o">.</span><span class="n">gear</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">'car name'</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'first'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dfcars</span><span class="p">[</span><span class="n">dfcars</span><span class="o">.</span><span class="n">gear</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">'car name'</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'first'</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, let's split the dataset into a training set and test set.</p>
 </div>
@@ -2669,7 +2806,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split into training set and testing set</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># split into training set and testing set</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
 <span class="c1">#set random_state to get the same split every time</span>
@@ -2684,7 +2821,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># testing set is around 20% of the total data; training set is around 80%</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># testing set is around 20% of the total data; training set is around 80%</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Shape of full dataset is: </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Shape of training dataset is: </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">traindf</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Shape of test dataset is: </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">testdf</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
@@ -2694,8 +2831,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we have training and test data.  We still need to select a predictor and a response from this dataset.  Keep in mind that we need to choose the predictor and response from both the training and test set.  You will do this in the exercises below.  However, we provide some starter code for you to get things going.</p>
 </div>
@@ -2706,7 +2842,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">traindf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">traindf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2717,7 +2853,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extract the response variable that we're interested in</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Extract the response variable that we're interested in</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">traindf</span><span class="o">.</span><span class="n">mpg</span>
 <span class="n">y_train</span>
 </pre></div>
@@ -2726,8 +2862,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Use slicing to get the same vector <code>y_train</code></p>
 <hr>
@@ -2735,8 +2870,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, notice the shape of <code>y_train</code>.</p>
 </div>
@@ -2747,15 +2881,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Array-reshape">Array reshape<a class="anchor-link" href="#Array-reshape">¶</a></h3><p>This is a 1D array as should be the case with the <strong>Y</strong> array.  Remember, <code>sklearn</code> requires a 2D array only for the predictor array.  You will have to pay close attention to this in the exercises later. <code>Sklearn</code> doesn't care too much about the shape of <code>y_train</code>.</p>
 <p>The whole reason we went through that whole process was to show you how to reshape your data into the correct format.</p>
@@ -2764,8 +2897,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="fifth-bullet"></a></p>
 <h2 id="5---Example:-Simple-linear-regression-with-automobile-data">5 - Example: Simple linear regression with automobile data<a class="anchor-link" href="#5---Example:-Simple-linear-regression-with-automobile-data">¶</a></h2><p>We will now use <code>sklearn</code> to predict automobile mileage per gallon (mpg) and evaluate these predictions. We already loaded the data and split them into a training set and a test set.</p>
@@ -2773,16 +2905,14 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We need to choose the variables that we think will be good predictors for the dependent variable <code>mpg</code>. </p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise in pairs</b></div><ul>
 <li>Pick one variable to use as a predictor for simple linear regression.  Discuss your reasons with the person next to you.  </li>
@@ -2797,7 +2927,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_wt</span> <span class="o">=</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_wt</span> <span class="o">=</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span>
 <span class="n">x_wt</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -2809,7 +2939,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2820,15 +2950,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/cars_simple_EDA.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/cars_simple_EDA.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><ul>
 <li>Use <code>sklearn</code> to fit the training data using simple linear regression.</li>
@@ -2844,7 +2973,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span>
 
@@ -2862,7 +2991,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">traindf</span><span class="p">,</span> <span class="n">testdf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dfcars</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">traindf</span><span class="p">,</span> <span class="n">testdf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dfcars</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traindf</span><span class="o">.</span><span class="n">mpg</span><span class="p">)</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traindf</span><span class="o">.</span><span class="n">wt</span><span class="p">)</span>
@@ -2877,7 +3006,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">testdf</span><span class="o">.</span><span class="n">mpg</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">testdf</span><span class="o">.</span><span class="n">mpg</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">testdf</span><span class="o">.</span><span class="n">wt</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -2890,7 +3019,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's take another look at our data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let's take another look at our data</span>
 <span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2902,7 +3031,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># And out train and test sets </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># And out train and test sets </span>
 <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -2914,7 +3043,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2925,7 +3054,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#create linear model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#create linear model</span>
 <span class="n">regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1">#fit linear model</span>
@@ -2945,7 +3074,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">predicted_y</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
@@ -2961,7 +3090,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted_y</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
 <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span> <span class="c1"># 45 degree line</span>
@@ -2978,8 +3107,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a class="anchor" id="sixth-bullet"></a></p>
 <h2 id="6---$k$-nearest-neighbors">6 - $k$-nearest neighbors<a class="anchor-link" href="#6---$k$-nearest-neighbors">¶</a></h2>
@@ -2987,8 +3115,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that you're familiar with <code>sklearn</code>, you're ready to do a KNN regression.</p>
 <p>Sklearn's regressor is called <code>sklearn.neighbors.KNeighborsRegressor</code>. Its main parameter is the <code>number of nearest neighbors</code>. There are other parameters such as the distance metric (default for 2 order is the Euclidean distance). For a list of all the parameters see the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html">Sklearn kNN Regressor Documentation</a>.</p>
@@ -3001,7 +3128,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the library</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import the library</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsRegressor</span>
 </pre></div>
 </div>
@@ -3013,7 +3140,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set number of neighbors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Set number of neighbors</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">knnreg</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
@@ -3026,7 +3153,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the regressor - make sure your numpy arrays are the right shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the regressor - make sure your numpy arrays are the right shape</span>
 <span class="n">knnreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the outcome on the train set using R^2</span>
@@ -3044,15 +3171,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">knnreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">knnreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Calculate and print the $R^{2}$ score on the test set</p>
 </div>
@@ -3063,15 +3189,14 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Not so good? Lets vary the number of neighbors and see what we get.</p>
 </div>
@@ -3082,7 +3207,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Make our lives easy by storing the different regressors in a dictionary</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Make our lives easy by storing the different regressors in a dictionary</span>
 <span class="n">regdict</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="c1"># Make our lives easier by entering the k values from a list</span>
@@ -3103,8 +3228,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's plot all the k values in same plot.</p>
 </div>
@@ -3115,7 +3239,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"data"</span><span class="p">)</span>
 
@@ -3133,16 +3257,14 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Explain what you see in the graph. <strong>Hint</strong> Notice how the $1$-NN goes through every point on the training set but utterly fails elsewhere.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets look at the scores on the training set.</p>
 </div>
@@ -3153,7 +3275,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="c1"># Grid of k's</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="c1"># Grid of k's</span>
 <span class="n">scores_train</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># R2 scores</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
     <span class="c1"># Create KNN model</span>
@@ -3177,8 +3299,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><ul>
 <li>Why do we get a perfect $R^2$ at k=1 for the training set?</li>
@@ -3193,7 +3314,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -3204,7 +3325,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/knn_regression.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/knn_regression.py</span>
 </pre></div>
 </div>
 </div>
@@ -3215,7 +3336,7 @@ $$</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># solution to previous exercise</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># solution to previous exercise</span>
 <span class="n">r2_test</span> <span class="o">=</span> <span class="n">knnreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'kNN model with </span><span class="si">{k}</span><span class="s1"> neighbors gives R^2 on the test set: </span><span class="si">{r2_test:.5}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>

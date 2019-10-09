@@ -1,4 +1,4 @@
-Title: Lecture 9:
+Title: Lecture 9: Visualization for Communication
 Category: lectures
 Date: 2019-10-02
 Author: Chris Tanner
