@@ -1,9 +1,12 @@
 Title: Lecture 9:
 Category: lectures
-Date: 2019-06-06
-Author: 
+Date: 2019-10-02
+Author: Chris Tanner
 Slug: lecture9
-Tages: ADD TAGS HERE
+Tags: eda, visualization, communication
 
+### Slides
 
-## Slides
+- [Visualization PDF (1 of 2)]({attach}presentation/Lecture9a_Visualization.pdf)
+- [Visualization PDF (2 of 2)]({attach}presentation/Lecture9b_Visualization.pdf)
+- [Visualization PPTX]({attach}presentation/Lecture9_Visualization.pptx)
