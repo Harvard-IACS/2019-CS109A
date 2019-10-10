@@ -64,6 +64,10 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 
 <hr>
+<span style="color: #993300;"><strong>Helpline:</strong></span> <a href="mailto:cs109a2019@gmail.com">cs109a2019@gmail.com</a>
+<br/>
+
+<hr>
 <span style="color: #993300;"><strong>Announcement:</strong></span> <a href="https://canvas.harvard.edu/courses/61942/assignments/306006">HW0</a> is now available.
 <br/>
 

@@ -1,6 +1,6 @@
 Title: Schedule
 Slug: schedule
-Date: 2019-10-09
+Date: 2019-10-10
 
 
 |Week|Lecture (Mon)|Lecture (Wed)|Lab (Thu)|Advanced Section (Wed)|Assignment (R:Released Tue - D:Due Wed)|
