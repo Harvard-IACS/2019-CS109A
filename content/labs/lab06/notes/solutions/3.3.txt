@@ -1,0 +1,1 @@
+print('But, a trivial model that guesses the most likely class also does really well on the test set, too.')
