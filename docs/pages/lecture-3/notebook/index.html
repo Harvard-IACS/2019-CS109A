@@ -1091,7 +1091,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
 <span class="k">def</span> <span class="nf">css_styling</span><span class="p">():</span>
@@ -1230,7 +1230,7 @@ Popularity: The higher the value, the more popular the song is.</code></pre>
 <div class="prompt input_prompt">In [174]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">"fig/top50_screenshot.png"</span><span class="p">)</span> <span class="c1"># sample of the data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">"fig/top50_screenshot.png"</span><span class="p">)</span> <span class="c1"># sample of the data</span>
 </pre></div>
 </div>
 </div>
@@ -1260,7 +1260,7 @@ Popularity: The higher the value, the more popular the song is.</code></pre>
 <div class="prompt input_prompt">In [183]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../data/top50.csv"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../data/top50.csv"</span><span class="p">)</span>
 <span class="n">column_names</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># puts names in a list</span>
 <span class="n">cleaned_column_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">]</span> <span class="c1"># removes the extraneous quotes</span>
 <span class="n">cleaned_column_names</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"ID"</span><span class="p">)</span>
@@ -1293,7 +1293,7 @@ Popularity: The higher the value, the more popular the song is.</code></pre>
 <div class="prompt input_prompt">In [184]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">song</span><span class="p">[</span><span class="s2">"Length"</span><span class="p">])</span> <span class="o">></span> <span class="mi">240</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">song</span><span class="p">[</span><span class="s2">"ArtistName"</span><span class="p">],</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">song</span><span class="p">[</span><span class="s2">"TrackName"</span><span class="p">],</span> <span class="s2">"is"</span><span class="p">,</span> <span class="n">song</span><span class="p">[</span><span class="s2">"Length"</span><span class="p">],</span><span class="s2">"seconds long"</span><span class="p">)</span>
 </pre></div>
@@ -1331,7 +1331,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [383]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">max_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">max_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">most_populars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">song</span><span class="p">[</span><span class="s2">"Popularity"</span><span class="p">])</span> <span class="o">></span> <span class="n">max_score</span><span class="p">:</span>
@@ -1358,7 +1358,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [186]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This gets tricky. How would you do it?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This gets tricky. How would you do it?</span>
 </pre></div>
 </div>
 </div>
@@ -1377,7 +1377,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [187]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># you would need to iterate through every single value and check</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># you would need to iterate through every single value and check</span>
 <span class="c1"># that's O(N*M), where N is the # of rows, and M is the # of columns.</span>
 <span class="c1"># NOTE: what if you wished to impute any given non-value with the column's mean?</span>
 <span class="c1">#       you would need another N checks</span>
@@ -1419,7 +1419,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1444,7 +1444,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># we don't always need to specify the encoding, but this particular</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we don't always need to specify the encoding, but this particular</span>
 <span class="c1"># file has special characters that we need to handle</span>
 <span class="n">top50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/top50.csv"</span><span class="p">)</span>
 </pre></div>
@@ -1473,7 +1473,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [381]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">top50</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">top50</span>
 </pre></div>
 </div>
 </div>
@@ -1492,7 +1492,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [380]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.head(3) # first 3 rows</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.head(3) # first 3 rows</span>
 <span class="c1">#top50.tail(3)) # last 3 rows</span>
 </pre></div>
 </div>
@@ -1512,7 +1512,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [379]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.columns</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.columns</span>
 </pre></div>
 </div>
 </div>
@@ -1531,7 +1531,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [378]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#len(top50.columns)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#len(top50.columns)</span>
 </pre></div>
 </div>
 </div>
@@ -1550,7 +1550,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [377]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.describe()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.describe()</span>
 </pre></div>
 </div>
 </div>
@@ -1570,7 +1570,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [376]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.dtypes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -1599,7 +1599,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [374]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50["Length"]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50["Length"]</span>
 </pre></div>
 </div>
 </div>
@@ -1618,7 +1618,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [373]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.Length</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.Length</span>
 </pre></div>
 </div>
 </div>
@@ -1637,7 +1637,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [372]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].max()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].max()</span>
 </pre></div>
 </div>
 </div>
@@ -1648,7 +1648,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [371]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].min()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].min()</span>
 </pre></div>
 </div>
 </div>
@@ -1667,7 +1667,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [370]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].idxmax()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].idxmax()</span>
 </pre></div>
 </div>
 </div>
@@ -1678,7 +1678,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [369]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].idxmin()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'].idxmin()</span>
 </pre></div>
 </div>
 </div>
@@ -1697,7 +1697,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [368]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'] > 240</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50['Length'] > 240</span>
 </pre></div>
 </div>
 </div>
@@ -1724,7 +1724,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [367]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># single scalar label</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># single scalar label</span>
 <span class="c1">#top50.loc[0] # prints the (unnamed) row that has a label of 0 (the 1st row)</span>
 </pre></div>
 </div>
@@ -1736,7 +1736,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [366]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># list of labels</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># list of labels</span>
 <span class="c1">#top50.loc[[0,2]] # prints the (unnamed) rows that have the labels of 0 and 2 (the 1st and 3rd rows)</span>
 </pre></div>
 </div>
@@ -1748,7 +1748,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [365]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># a slice of the dataframe, based on the passed-in booleans;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a slice of the dataframe, based on the passed-in booleans;</span>
 <span class="c1"># picture it's like a filter overlaying the DataFrame, and the filter</span>
 <span class="c1"># dictates which values will be emitted/make it through to us</span>
 
@@ -1772,7 +1772,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [364]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.loc[top50['Length'] > 240][['ArtistName', 'TrackName', 'Length']]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.loc[top50['Length'] > 240][['ArtistName', 'TrackName', 'Length']]</span>
 </pre></div>
 </div>
 </div>
@@ -1792,7 +1792,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="c1"># FEEL FREE TO WORK WITH A NEIGHBOR</span>
 <span class="n">top50</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Popularity'</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
 </pre></div>
@@ -1814,7 +1814,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [314]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.sort_values("Popularity", ascending=False)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.sort_values("Popularity", ascending=False)</span>
 </pre></div>
 </div>
 </div>
@@ -1834,7 +1834,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [363]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[5:6] # prints all columns for the 6th row</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[5:6] # prints all columns for the 6th row</span>
 </pre></div>
 </div>
 </div>
@@ -1845,7 +1845,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [316]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[:,2] # prints all rows for the 3rd column</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[:,2] # prints all rows for the 3rd column</span>
 </pre></div>
 </div>
 </div>
@@ -1856,7 +1856,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [317]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[[0,2,3], [2,1]] # prints the 1st, 3rd, and 4th rows of the 3rd and 2nd columns (artist and track)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50.iloc[[0,2,3], [2,1]] # prints the 1st, 3rd, and 4th rows of the 3rd and 2nd columns (artist and track)</span>
 </pre></div>
 </div>
 </div>
@@ -1891,7 +1891,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [319]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50[top50.ArtistName.isnull()] # returns an empty DataFrame</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50[top50.ArtistName.isnull()] # returns an empty DataFrame</span>
 </pre></div>
 </div>
 </div>
@@ -1902,7 +1902,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [329]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#top50[top50.ArtistName.notnull()] # returns the complete DataFrame since there are no null Artists</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#top50[top50.ArtistName.notnull()] # returns the complete DataFrame since there are no null Artists</span>
 </pre></div>
 </div>
 </div>
@@ -1928,7 +1928,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [362]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Image("fig/maluma.png") # sample of the data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Image("fig/maluma.png") # sample of the data</span>
 </pre></div>
 </div>
 </div>
@@ -1953,7 +1953,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [360]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">grouped_df</span> <span class="o">=</span> <span class="n">top50</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Genre'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grouped_df</span> <span class="o">=</span> <span class="n">top50</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Genre'</span><span class="p">)</span>
 <span class="c1">#for key, item in grouped_df:</span>
 <span class="c1">#    print("Genre:", key, "(", len(grouped_df.get_group(key)), "items):", grouped_df.get_group(key), "\n\n")</span>
 </pre></div>
@@ -1981,7 +1981,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [357]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">explicit_lyrics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/spotify_aux.csv"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">explicit_lyrics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/spotify_aux.csv"</span><span class="p">)</span>
 <span class="c1">#explicit_lyrics</span>
 </pre></div>
 </div>
@@ -2003,7 +2003,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [356]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 'on='' specifies the column used as the shared key</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 'on='' specifies the column used as the shared key</span>
 <span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">explicit_lyrics</span><span class="p">,</span> <span class="n">top50</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'TrackName'</span><span class="p">)</span>
 <span class="c1">#df_combined</span>
 </pre></div>
@@ -2024,7 +2024,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [355]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">explicit_lyrics</span><span class="p">[[</span><span class="s1">'TrackName'</span><span class="p">,</span> <span class="s1">'ExplicitLanguage'</span><span class="p">]],</span> <span class="n">top50</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'TrackName'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">explicit_lyrics</span><span class="p">[[</span><span class="s1">'TrackName'</span><span class="p">,</span> <span class="s1">'ExplicitLanguage'</span><span class="p">]],</span> <span class="n">top50</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'TrackName'</span><span class="p">)</span>
 <span class="c1">#df_combined</span>
 </pre></div>
 </div>
@@ -2060,7 +2060,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [242]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">scatter_plot</span> <span class="o">=</span> <span class="n">top50</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Danceability'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Popularity'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'DarkBlue'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scatter_plot</span> <span class="o">=</span> <span class="n">top50</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Danceability'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Popularity'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'DarkBlue'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2069,7 +2069,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea">
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,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DJWVlUhJScGHH36IF1980bxfcXExxo8fL8rrR86PRYCcXmBgIM6ePYtdu3Zh/Pjx2LlzJw4ePIjq6mocPXoUwO21c+677z7s2LED69atw1/+8hfodDocPnwYe/bswc6dO7F//3707t0b27ZtwzfffIPc3Fxs374dubm5mDNnjvlyTWvPAwC9e/c2L5OxZMmSZi8P3UmpVOKNN95Anz59kJGRgcmTJ+Po0aO4fv06AGDnzp3my0ZE7cXLQeT0FAoFOnXqhEWLFuHYsWPYvHkzKioqcOXKFWg0GvN+DZdjgoODUV9fD41Gg+PHj2PMmDHo2rUrAOCVV14BAKxZswYXLlxo9Mv3xo0buH79epvPk5ycDADo27cvHnroIXz33XftyqdHjx546qmnkJeXh/Hjx6OwsBB//vOf7+3FIdljESCn9/3336Nv37544YUXYDQaERMTg6eeegqXLl1qtGSyh4cHgP8t0SsIApRKZaMle2tqalBTUwOTyYSEhAQsWrQIAGAymXDlyhV07doV6enprT6Pi8v/TsAFQYCra/vfhtOmTcOKFSvg6uqKqKgodO7cud1jEAG8HERO7vz589i4cSNmz56NwsJCpKWlITY2FgqFAiUlJc2u036nP/7xjzh06BBqa2sBAOvXr8fWrVvx5JNP4u9//zuuXLkCAMjKysIzzzwDAG0+z969ewEAp0+fxoULF9C/f/8281AqldDr9eavw8LC4OLigoyMDPOZBdG94JkAOZW6ujokJCQAuP0Xt4eHB1544QU89dRTSE9PR1paGrp27QpPT0888cQTqKysbHW84cOH46effjL/on344Yfx+uuvw9vbG88++yxmz54NhUIBb29vbNiwAQqFos3nqaqqwvjx46FQKPDuu++iW7dubeb1yCOPQKlUIikpCdnZ2VAoFEhMTMTnn3+ORx99tAOvGMkdVxElckAGgwHz58/HuHHjEBsba+9wyIHxchCRg/npp58QERGBzp07S36Nf5I+ngkQEckYzwSIiGSMRYCISMZYBIiIZIxFgIhIxlgEiIhkjEWAiEjG/h9OhPNZAt5xlAAAAABJRU5ErkJggg==
 ">
 </div>
@@ -2092,7 +2092,7 @@ Lunay - Soltera - Remix is 266 seconds long
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="n">top50</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Length'</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 </pre></div>
 </div>
@@ -2136,7 +2136,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [334]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="n">top50</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"Length"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2156,7 +2156,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [343]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="n">top50</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"Length"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="s1">'Length'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2176,7 +2176,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="c1">#print(top50['Genre'].isnull())</span>
 <span class="k">def</span> <span class="nf">contains_nulls</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -2212,7 +2212,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Genre'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -2242,7 +2242,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="n">top50</span><span class="p">[(</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Danceability'</span><span class="p">]</span> <span class="o">></span> <span class="mi">80</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Popularity'</span><span class="p">]</span> <span class="o">></span> <span class="mi">86</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -2377,7 +2377,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 <span class="n">avg_speed</span> <span class="o">=</span> <span class="n">top50</span><span class="p">[</span><span class="s1">'BeatsPerMinute'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">avg_popularity</span> <span class="o">=</span> <span class="n">top50</span><span class="p">[</span><span class="s1">'Popularity'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">top50</span><span class="p">[(</span><span class="n">top50</span><span class="p">[</span><span class="s1">'BeatsPerMinute'</span><span class="p">]</span> <span class="o">></span> <span class="n">avg_speed</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">top50</span><span class="p">[</span><span class="s1">'Popularity'</span><span class="p">]</span> <span class="o">></span> <span class="n">avg_popularity</span><span class="p">)]</span>
@@ -2667,7 +2667,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 </pre></div>
 </div>
 </div>
@@ -2686,7 +2686,7 @@ Name: 21, dtype: object</pre>
 <div class="prompt input_prompt">In [354]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [TODO] TO BE FILLED IN DURING CLASS PARTICIPATION</span>
 </pre></div>
 </div>
 </div>
