@@ -6,6 +6,14 @@ Slug: a-section3
 Tages: GLM
 
 
+## Notes
+- [Advanced Section: Generalized Linear Models: Notes [pdf]]({attach}notes/a-sec3-GLM_notes.pdf )
+
 ## Slides
- [Advanced Section: GLM [pdf]]({attach}presentation/Adv_Section3_GLMs.pdf )
-- [Advanced Section: GLM [pptx]]({attach}presentation/Adv_Section3_GLMs.pptx )
+- [Advanced Section: Generalized Linear Models [pdf]]({attach}presentation/Adv_Section3_GLMs.pdf )
+- [Advanced Section: Generalized Linear Models [pptx]]({attach}presentation/Adv_Section3_GLMs.pptx )
+
+## Notebook
+- [Advanced Section: Generalized Linear Models: Demo Notebook [ipynb]]({filename}notebook/a_sec3_GLM.ipynb )
+- [Advanced Section: Generalized Linear Models: Demo Data [ipynb]]({filename}notebook/Challenger.csv )
+
