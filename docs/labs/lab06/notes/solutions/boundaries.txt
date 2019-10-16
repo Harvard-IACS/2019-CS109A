@@ -1,0 +1,5 @@
+
+1. The boundary tips towards vertical
+2. The boundary is in the same place as it was originally, but is squished together. The model is much more certain about how to predict points a given distance from the boundary
+3. It shifts the boundary, perpendicular to its current orientation
+4. Including squared terms allows quadratic decision boundaries, and the interraction term allows hyperbolic boundaries
