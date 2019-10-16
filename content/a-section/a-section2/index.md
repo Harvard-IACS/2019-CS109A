@@ -1,4 +1,4 @@
-Title: Advanced Section 2:
+Title: Advanced Section 2: Regularization
 Category: A-section
 Date: 2019-9-25
 Author: Pavlos Protopapas, Robbert Struyven
