@@ -1,9 +1,9 @@
-Title: Advanced Section 3: GLMS
+Title: Advanced Section 3: Generalized Linear Models
 Category: A-section
 Date: 2019-10-09
 Author: Nick Stern
 Slug: a-section3
-Tages: GLM
+Tags: GLM
 
 
 ## Notes
