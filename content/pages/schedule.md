@@ -1,12 +1,12 @@
 Title: Schedule
 Slug: schedule
-Date: 2019-10-16
+Date: 2019-10-18
 
 
 |Week|Lecture (Mon)|Lecture (Wed)|Lab (Thu)|Advanced Section (Wed)|Assignment (R:Released Tue - D:Due Wed)|
 |-----|-----|-----|-----|-----|-----|
 |1||[Lecture 1: What is Data Science?]({filename}/lectures/lecture1/index.md)|[Lab 1: Intro to Python (numpy, graphing libraries, program structure, Jupyter Notebook)]({filename}/labs/lab01/index.md)||R:HW0|
-|2|[Lecture 2: Data, Stats, and Visualization]({filename}/lectures/lecture2/index.md)|[Lecture 3: Pandas and Scraping]({filename}/lectures/lecture3/index.md~)|[Lab 2: Python: sklearn, matplotlib]({filename}/labs/lab02/index.md~)||R:HW1 - D:HW0|
+|2|[Lecture 2: Data, Stats, and Visualization]({filename}/lectures/lecture2/index.md)|[Lecture 3: Pandas and Scraping]({filename}/lectures/lecture3/index.md)|[Lab 2: Python: sklearn, matplotlib]({filename}/labs/lab02/index.md)||R:HW1 - D:HW0|
 |3|[Lecture 4: Introduction to Regression amd kNN Regression ]({filename}/lectures/lecture4/index.md)|[Lecture 5: Linnear Regression, Bootstrap and Confidence Intervals]({filename}/lectures/lecture5/index.md)|[Lab 3: Scikit-learn for Simple Linear Regression]({filename}/labs/lab03/index.md)|[Advanced Section 1: Linear Algebra and Hypothesis Testing]({filename}/a-section/a-sec1/index.md)|R:HW2 - D:HW1|
 |4|[Lecture 6: Multi and Poly Regression]({filename}/lectures/lecture6/index.md)|[Lecture 7: Model selection and Cross Validation]({filename}/lectures/lecture7/index.md)|[Lab 4: Multiple Linear Regression and Cross Validation]({filename}/labs/lab04/index.md)|[Advanced Section 2: Regularization Methods and Their Justifications]({filename}/a-section/a-section2/index.md)|R:HW3 - D:HW2|
 |5|[Lecture 8: Regularization and EDA]({filename}/lectures/lecture8/index.md)|[Lecture 9: Visualization for Communication]({filename}/lectures/lecture9/index.md)|[Lab 5: Matplotlib & Seaborn]({filename}/labs/lab05/index.md)|No Advanced Section|No Assignment|

@@ -1,0 +1,1570 @@
+"id","health","partyid","age","sex","sexornt","educ","marital","race","income"
+1,"good","rep",43,"male","bisexual/other",14,"never married","white",NA
+2,"excellent","dem",74,"female","hetero",10,"no longer married","white",NA
+5,"excellent","rep",71,"male","hetero",18,"no longer married","black",NA
+6,"good","dem",67,"female","bisexual/other",16,"no longer married","white",NA
+7,"good","dem",59,"female","bisexual/other",13,"no longer married","black",18.75
+8,"excellent","rep",43,"male","hetero",12,"never married","white",37.5
+11,"excellent","rep",59,"male","bisexual/other",19,"no longer married","white",120
+13,"poor","dem",61,"female","bisexual/other",13,"no longer married","white",NA
+14,"excellent","dem",44,"male","hetero",16,"married","black",100
+16,"good","other",75,"female","bisexual/other",12,"no longer married","white",11.25
+18,"excellent","other",30,"female","bisexual/other",16,"married","white",NA
+19,"excellent","dem",40,"female","hetero",20,"no longer married","white",67.5
+21,"excellent","rep",34,"female","bisexual/other",15,"married","white",37.5
+22,"good","rep",29,"female","hetero",14,"never married","other",NA
+24,"excellent","dem",37,"male","bisexual/other",12,"never married","white",45
+25,"good","rep",56,"female","bisexual/other",16,"married","white",18.75
+26,"excellent","rep",82,"male","bisexual/other",8,"no longer married","white",NA
+27,"good","dem",68,"female","bisexual/other",12,"no longer married","white",37.5
+28,"excellent","dem",42,"female","bisexual/other",9,"never married","black",NA
+30,"excellent","rep",20,"male","hetero",14,"never married","white",13.75
+32,"fair","rep",89,"male","bisexual/other",8,"married","white",NA
+34,"fair","dem",56,"female","bisexual/other",16,"no longer married","white",120
+36,"excellent","rep",65,"male","bisexual/other",18,"married","white",100
+37,"fair","dem",71,"female","bisexual/other",20,"no longer married","white",NA
+38,"good","dem",34,"male","bisexual/other",20,"never married","white",45
+40,"good","other",50,"female","bisexual/other",12,NA,"black",NA
+42,"good","dem",52,"male","bisexual/other",12,"never married","white",37.5
+44,"excellent","dem",60,"male","hetero",18,"married","other",NA
+45,"excellent","dem",62,"female","hetero",16,"no longer married","white",67.5
+50,"good","dem",67,"female","bisexual/other",16,"no longer married","white",NA
+51,"excellent","other",22,"male","hetero",14,"never married","white",NA
+52,"good","dem",42,"female","bisexual/other",12,"no longer married","white",27.5
+54,"good","other",33,"female","hetero",18,"married","other",55
+56,"fair","rep",55,"male","hetero",14,"no longer married","white",140
+58,"good","dem",45,"female","bisexual/other",14,"never married","black",9
+59,"fair","dem",23,"male","bisexual/other",11,"never married","white",67.5
+61,"fair","dem",27,"female","bisexual/other",13,"married","black",3.5
+63,"good","dem",41,"female","bisexual/other",16,"never married","black",55
+64,"excellent","dem",64,"female","bisexual/other",13,"no longer married","black",NA
+66,"excellent","dem",79,"male","bisexual/other",20,"no longer married","black",NA
+67,"fair","dem",34,"male","bisexual/other",14,"married","white",55
+68,"good","dem",59,"female","hetero",14,"no longer married","black",NA
+69,"excellent","dem",32,"female","bisexual/other",19,"never married","black",140
+73,"good","other",28,"female","bisexual/other",16,"married","other",NA
+74,"good","dem",42,"female","bisexual/other",20,"married","white",32.5
+75,"fair","other",21,"male","hetero",14,"never married","white",7.5
+76,"excellent","other",33,"female","bisexual/other",14,"never married","black",37.5
+77,"excellent","other",37,"female","hetero",16,"married","white",140
+79,"good","other",47,"female","bisexual/other",14,"married","other",NA
+81,"good","dem",71,"female","bisexual/other",16,"married","black",NA
+82,"good","dem",42,"female","bisexual/other",12,"married","black",NA
+84,"excellent","dem",40,"female","bisexual/other",13,"married","white",45
+85,"good","rep",70,"male","hetero",12,"no longer married","white",21.25
+88,"good","dem",46,"male","hetero",16,"married","white",200
+92,"excellent","dem",77,"female","bisexual/other",19,"married","white",18.75
+95,"fair","dem",30,"female","bisexual/other",16,"never married","black",100
+96,"fair","dem",22,"male","hetero",14,"never married","black",NA
+97,"good","dem",69,"female","hetero",13,"married","black",NA
+98,"good","dem",45,"male","bisexual/other",16,"no longer married","black",55
+99,"excellent","dem",32,"female","bisexual/other",12,"married","other",NA
+100,"good","rep",60,"female","hetero",4,"no longer married","white",NA
+101,"fair","rep",48,"male","bisexual/other",12,"no longer married","other",55
+102,"poor","dem",81,"female","bisexual/other",12,"no longer married","other",NA
+103,"excellent","dem",50,"male","hetero",18,"married","other",120
+104,"fair","rep",78,"female","hetero",14,"married","white",NA
+106,"good","rep",60,"male","bisexual/other",14,"never married","white",100
+109,"good","other",54,"female","hetero",16,"married","white",NA
+111,"good","dem",55,"female","hetero",14,"no longer married","white",100
+116,"good","other",35,"male","bisexual/other",17,"married","white",NA
+118,"fair","other",42,"female","hetero",14,"married","white",NA
+119,"excellent","rep",48,"female","hetero",13,"married","white",13.75
+120,"good","rep",32,"male","bisexual/other",13,"never married","white",45
+121,"good","rep",56,"female","hetero",12,"married","white",NA
+122,"good","other",61,"female","bisexual/other",12,"married","white",45
+123,"good","dem",76,"female","bisexual/other",16,"no longer married","white",11.25
+124,"good","dem",59,"female","hetero",16,"married","white",32.5
+125,"good","dem",69,"male","bisexual/other",16,"never married","white",32.5
+127,"good","rep",68,"female","bisexual/other",20,"married","white",82.5
+128,"excellent","dem",39,"female","hetero",16,"never married","white",NA
+129,"good","dem",38,"male","bisexual/other",18,"married","white",45
+130,"good","dem",39,"female","hetero",18,"never married","white",160
+132,"excellent","dem",41,"female","bisexual/other",20,"married","white",NA
+134,"fair","dem",69,"male","hetero",15,"married","white",160
+137,"fair","other",33,"male","bisexual/other",16,"never married","other",9
+138,"excellent","other",35,"female","hetero",16,"married","other",45
+140,"good","rep",25,"female","bisexual/other",15,"never married","white",11.25
+141,"good","rep",55,"male","hetero",14,"no longer married","white",45
+143,"fair","other",49,"male","bisexual/other",11,"no longer married","other",NA
+146,"fair","rep",19,"male","bisexual/other",12,"never married","black",NA
+149,"good","other",28,"male","bisexual/other",14,"never married","white",NA
+151,"good","dem",39,"female","hetero",16,"never married","black",67.5
+152,"good","dem",77,"female","hetero",13,"no longer married","black",NA
+154,"fair","other",46,"female","hetero",16,"no longer married","other",18.75
+156,"good","dem",35,"female","hetero",11,"married","other",2
+157,"fair","rep",58,"female","bisexual/other",12,"no longer married","white",27.5
+158,"fair","other",20,"female","bisexual/other",14,"never married","other",6.5
+160,"fair","other",51,"female","bisexual/other",2,"no longer married","white",13.75
+161,"excellent","dem",18,"female","hetero",11,"never married","other",NA
+163,"good","dem",41,"female","bisexual/other",12,"married","other",37.5
+164,"fair","dem",51,"female","hetero",15,"married","other",NA
+165,"good","other",41,"female","bisexual/other",6,"married","white",NA
+167,"fair","dem",43,"male","bisexual/other",9,"never married","white",NA
+168,"good","other",53,"male","bisexual/other",16,"never married","other",NA
+169,"poor","dem",46,"male","hetero",18,"never married","white",55
+170,"good","dem",36,"male","bisexual/other",13,"married","white",55
+171,"fair","rep",19,"male","hetero",12,"never married","white",7.5
+173,"good","rep",60,"female","hetero",13,"no longer married","white",45
+175,"excellent","dem",36,"male","hetero",20,"married","white",200
+177,"good","dem",42,"female","bisexual/other",18,"married","white",160
+178,"good","rep",61,"male","hetero",14,"no longer married","white",140
+180,"good","other",52,"male","bisexual/other",14,"never married","white",NA
+183,"fair","dem",36,"male","bisexual/other",20,"never married","white",67.5
+185,"excellent","dem",46,"male","bisexual/other",16,"no longer married","other",140
+186,"excellent","dem",21,"female","hetero",14,"never married","white",2
+188,"poor","dem",46,"male","bisexual/other",16,"married","other",100
+189,"good","other",21,"female","hetero",14,"never married","white",NA
+191,"good","rep",53,"male","hetero",12,"no longer married","other",120
+192,"good","rep",74,"female","hetero",18,"no longer married","white",NA
+194,"poor","rep",36,"female","bisexual/other",16,"married","other",55
+196,"good","rep",60,"male","bisexual/other",16,"never married","white",100
+198,"fair","dem",69,"male","bisexual/other",12,"married","white",23.75
+199,"excellent","dem",38,"female","hetero",16,"married","white",67.5
+200,"good","rep",48,"female","bisexual/other",14,"married","white",11.25
+201,"fair","rep",30,"male","bisexual/other",16,"never married","other",82.5
+202,"excellent","dem",29,"male","bisexual/other",13,"never married","white",140
+203,"good","dem",68,"female","hetero",16,"married","white",NA
+204,"fair","dem",64,"female","bisexual/other",13,"married","white",NA
+205,"good","other",43,"male","hetero",16,"married","other",NA
+207,"fair","rep",47,"male","bisexual/other",12,"married","white",55
+209,"good","dem",50,"male","hetero",16,"married","white",NA
+211,"excellent","dem",75,"male","hetero",14,"no longer married","white",NA
+213,"poor","dem",77,"female","bisexual/other",10,"no longer married","white",NA
+215,"excellent","rep",62,"female","hetero",12,"married","white",NA
+216,"good","dem",30,"female","bisexual/other",15,"married","white",18.75
+217,"poor","dem",70,"female","hetero",7,"no longer married","other",NA
+219,"good","dem",44,"female","bisexual/other",12,"no longer married","other",NA
+220,"good","other",33,"female","hetero",12,"married","white",37.5
+221,"good","rep",34,"female","hetero",19,"married","white",82.5
+222,"fair","dem",46,"female","hetero",16,"married","white",NA
+223,"excellent","dem",51,"male","bisexual/other",12,"married","white",NA
+224,"fair","dem",28,"male","hetero",14,"never married","black",37.5
+225,"excellent","dem",74,"male","bisexual/other",16,"no longer married","other",9
+227,"good","dem",49,"male","bisexual/other",11,"married","other",18.75
+228,"fair","dem",28,"female","hetero",17,"never married","white",37.5
+231,"excellent","rep",51,"female","hetero",15,"no longer married","other",9
+233,"good","other",44,"male","hetero",17,"married","black",NA
+234,"good","rep",33,"female","bisexual/other",12,"married","white",NA
+235,"fair","rep",29,"male","hetero",12,"married","white",37.5
+237,"good","rep",62,"female","bisexual/other",10,"no longer married","white",32.5
+238,"good","rep",88,"female","hetero",12,"no longer married","white",NA
+240,"excellent","other",28,"female","bisexual/other",13,"married","white",NA
+241,"good","rep",58,"female","hetero",14,"married","white",37.5
+242,"good","other",26,"male","hetero",13,"never married","white",45
+244,"good","other",30,"female","bisexual/other",13,"married","white",37.5
+246,"good","dem",24,"female","bisexual/other",12,"never married","other",NA
+247,"good","other",29,"male","hetero",12,"never married","other",45
+248,"poor","rep",70,"male","hetero",13,"no longer married","white",NA
+249,"good","rep",34,"male","hetero",16,"never married","white",NA
+250,"good","rep",66,"male","bisexual/other",12,"married","white",NA
+251,"good","rep",84,"female","hetero",12,"no longer married","white",NA
+255,"fair","dem",88,"male","bisexual/other",10,"no longer married","black",NA
+256,"excellent","other",80,"female","bisexual/other",1,"no longer married","other",NA
+257,"fair","rep",36,"male","hetero",12,"never married","other",32.5
+258,"good","dem",33,"female","bisexual/other",16,"never married","white",NA
+259,"good","rep",81,"male","bisexual/other",16,"no longer married","white",NA
+261,"excellent","dem",69,"female","bisexual/other",16,"married","white",NA
+262,"excellent","dem",26,"male","bisexual/other",16,"never married","white",13.75
+265,"good","rep",61,"female","bisexual/other",16,"married","white",32.5
+267,"good","dem",58,"male","hetero",16,"no longer married","white",82.5
+269,"good","dem",36,"male","hetero",16,"never married","black",67.5
+270,"fair","dem",27,"female","bisexual/other",12,"never married","white",37.5
+271,"good","dem",51,"male","bisexual/other",12,"never married","other",45
+272,"excellent","dem",48,"male","bisexual/other",18,"married","white",NA
+273,"good","dem",29,"female","hetero",14,"never married","white",18.75
+274,"good","dem",65,"female","bisexual/other",19,"no longer married","white",13.75
+275,"good","dem",67,"female","bisexual/other",16,"never married","white",55
+277,"good","dem",45,"male","hetero",18,"married","white",200
+278,"excellent","dem",36,"female","hetero",15,"no longer married","white",13.75
+279,"excellent","other",60,"male","hetero",12,"married","white",100
+281,"excellent","rep",52,"female","bisexual/other",12,"no longer married","white",67.5
+282,"good","dem",34,"male","hetero",13,"married","white",37.5
+284,"good","rep",63,"male","bisexual/other",12,"married","white",120
+285,"good","dem",71,"female","hetero",16,"no longer married","white",NA
+287,"good","rep",65,"female","hetero",18,"no longer married","white",140
+288,"good","rep",39,"female","bisexual/other",15,"never married","white",45
+290,"fair","dem",83,"female","bisexual/other",12,"no longer married","white",NA
+291,"excellent","rep",59,"male","hetero",17,"no longer married","white",120
+292,"good","other",63,"female","hetero",19,"married","white",NA
+294,"fair","rep",50,"male","bisexual/other",12,"no longer married","white",45
+295,"good","other",18,"female","bisexual/other",11,"never married","white",NA
+296,"good","dem",45,"female","bisexual/other",16,"married","white",55
+298,"good","dem",39,"male","bisexual/other",20,"never married","black",NA
+299,"excellent","dem",31,"female","bisexual/other",20,"never married","white",67.5
+300,"excellent","other",44,"female","hetero",16,"never married","black",82.5
+302,"excellent","rep",56,"female","hetero",13,"married","white",32.5
+303,"good","dem",37,"male","bisexual/other",12,"married","white",82.5
+305,"good","rep",69,"male","hetero",14,"married","white",4.5
+306,"fair","other",34,"male","bisexual/other",12,"no longer married","other",55
+307,"good","rep",25,"male","hetero",17,"never married","white",NA
+308,"good","other",33,"male","hetero",8,"never married","other",NA
+310,"excellent","rep",57,"male","hetero",16,"married","white",200
+311,"good","other",77,"male","bisexual/other",14,"no longer married","white",NA
+312,"fair","dem",29,"male","bisexual/other",16,"never married","other",100
+313,"excellent","dem",58,"male","hetero",18,"no longer married","white",200
+314,"good","dem",42,"male","hetero",20,"married","white",120
+315,"excellent","dem",65,"male","bisexual/other",13,"no longer married","white",55
+316,"fair","rep",25,"female","bisexual/other",16,"never married","black",32.5
+317,"excellent","rep",76,"male","bisexual/other",19,"married","white",NA
+320,"excellent","dem",51,"male","bisexual/other",12,"married","black",67.5
+321,"fair","rep",78,"female","hetero",14,"married","white",NA
+322,"good","dem",53,"male","bisexual/other",12,"married","black",9
+323,"good","dem",83,"male","bisexual/other",11,"married","black",NA
+324,"fair","dem",58,"female","hetero",7,"never married","black",NA
+327,"poor","dem",86,"male","bisexual/other",12,"no longer married","black",NA
+328,"fair","dem",70,"female","bisexual/other",14,"no longer married","other",NA
+330,"excellent","dem",24,"female","hetero",16,"never married","black",4.5
+332,"good","dem",34,"female","hetero",16,"married","white",120
+335,"excellent","rep",70,"male","bisexual/other",18,"married","white",67.5
+336,"good","rep",71,"male","bisexual/other",12,"married","white",NA
+338,"excellent","dem",54,"male","hetero",16,"married","white",200
+339,"good","dem",40,"female","hetero",16,"married","white",140
+341,"fair","rep",60,"male","hetero",20,"no longer married","white",140
+342,"good","other",72,"male","bisexual/other",16,"married","white",3.5
+343,"excellent","other",35,"female","hetero",16,"married","black",140
+345,"excellent","dem",28,"female","bisexual/other",14,"married","black",27.5
+346,"good","dem",77,"female","hetero",13,"no longer married","white",NA
+348,"poor","dem",67,"female","bisexual/other",12,"no longer married","white",NA
+349,"fair","dem",53,"female","bisexual/other",12,"never married","black",NA
+350,"fair","dem",37,"female","hetero",15,"married","black",0.5
+352,"good","other",35,"female","bisexual/other",12,"married","black",11.25
+353,"good","rep",60,"female","hetero",20,"married","white",NA
+354,"fair","dem",68,"male","bisexual/other",16,"married","other",120
+355,"excellent","dem",43,"male","bisexual/other",20,"married","white",120
+356,"excellent","dem",36,"female","hetero",12,"married","other",NA
+357,"good","dem",34,"female","bisexual/other",9,"never married","black",9
+359,"excellent","rep",52,"male","bisexual/other",14,"never married","white",82.5
+360,"fair","rep",70,"male","bisexual/other",12,"no longer married","white",55
+362,"excellent","other",61,"female","bisexual/other",13,"married","white",NA
+364,"excellent","rep",40,"female","bisexual/other",16,"no longer married","white",32.5
+365,"fair","rep",44,"male","hetero",17,"no longer married","white",82.5
+366,"good","dem",67,"female","hetero",6,"no longer married","black",NA
+367,"excellent","dem",70,"female","bisexual/other",16,"never married","white",140
+368,"good","dem",27,"female","bisexual/other",16,"never married","white",82.5
+370,"good","rep",61,"male","bisexual/other",16,"married","white",200
+371,"good","rep",30,"male","bisexual/other",16,"never married","white",200
+372,"excellent","dem",38,"male","hetero",16,"married","white",100
+373,"excellent","dem",27,"female","bisexual/other",16,"never married","white",82.5
+375,"excellent","rep",45,"male","bisexual/other",16,"no longer married","white",32.5
+376,"fair","dem",68,"female","hetero",14,"married","white",55
+378,"fair","other",77,"female","bisexual/other",14,"no longer married","white",NA
+379,"good","rep",78,"female","bisexual/other",16,"no longer married","white",NA
+382,"fair","rep",89,"female","hetero",12,"no longer married","white",NA
+383,"good","dem",75,"female","bisexual/other",19,"no longer married","white",NA
+384,"fair","dem",48,"male","hetero",15,"married","other",37.5
+385,"excellent","dem",48,"female","bisexual/other",16,"married","white",100
+386,"excellent","dem",41,"female","bisexual/other",16,"never married","white",55
+388,"good","other",29,"female","bisexual/other",20,"never married","white",37.5
+389,"fair","dem",38,"male","bisexual/other",14,"married","black",NA
+391,"poor","other",55,"female","bisexual/other",13,"no longer married","other",NA
+393,"fair","dem",18,"female","bisexual/other",9,"never married","black",NA
+394,"good","dem",24,"female","hetero",17,"never married","other",NA
+395,"good","dem",34,"male","bisexual/other",0,"married","white",82.5
+396,"excellent","rep",77,"female","hetero",16,"married","white",NA
+399,"fair","dem",70,"male","bisexual/other",12,"no longer married","white",27.5
+400,"excellent","other",71,"female","bisexual/other",16,"married","white",NA
+403,"excellent","other",20,"female","hetero",12,"never married","white",2
+405,"good","rep",29,"female","bisexual/other",12,"never married","white",NA
+407,"excellent","dem",36,"female","bisexual/other",11,"never married","white",NA
+410,"fair","rep",53,"male","bisexual/other",13,"married","white",45
+412,"fair","dem",39,"female","bisexual/other",10,"no longer married","white",NA
+413,"good","other",57,"male","bisexual/other",14,"married","white",NA
+416,"good","dem",32,"male","bisexual/other",16,"married","white",200
+417,"excellent","other",46,"male","hetero",13,"no longer married","white",55
+418,"good","other",41,"male","hetero",12,"no longer married","white",45
+420,"good","dem",49,"female","bisexual/other",16,"no longer married","white",55
+422,"good","dem",59,"female","hetero",14,"married","white",82.5
+424,"fair","dem",27,"female","hetero",13,"never married","other",NA
+426,"excellent","rep",74,"female","hetero",20,"married","white",6.5
+428,"fair","dem",44,"male","bisexual/other",20,"married","other",200
+430,"fair","dem",42,"female","bisexual/other",12,"married","other",45
+431,"excellent","dem",65,"female","hetero",16,"no longer married","white",140
+432,"excellent","rep",36,"male","bisexual/other",16,"married","white",200
+435,"good","dem",89,"male","bisexual/other",5,"no longer married","white",NA
+436,"excellent","other",40,"female","bisexual/other",16,"married","other",NA
+437,"excellent","dem",88,"female","bisexual/other",12,"no longer married","white",NA
+438,"fair","rep",59,"female","hetero",16,"married","white",9
+440,"good","rep",31,"female","hetero",14,"never married","black",37.5
+441,"good","dem",31,"male","hetero",18,"married","other",23.75
+442,"fair","dem",35,"female","hetero",16,"married","white",55
+444,"excellent","dem",48,"female","bisexual/other",12,"married","other",NA
+445,"good","other",24,"female","bisexual/other",12,"married","black",NA
+447,"fair","dem",37,"female","hetero",16,"never married","other",32.5
+448,"good","dem",34,"female","bisexual/other",16,"never married","black",160
+449,"fair","dem",89,"female","bisexual/other",12,"no longer married","white",NA
+451,"excellent","dem",46,"male","bisexual/other",12,"never married","black",55
+452,"good","dem",29,"female","bisexual/other",17,"married","white",32.5
+454,"excellent","dem",33,"female","hetero",16,"never married","white",55
+455,"excellent","dem",46,"female","bisexual/other",18,"no longer married","black",100
+456,"good","dem",19,"male","bisexual/other",13,"never married","other",NA
+457,"fair","dem",65,"male","hetero",19,"no longer married","black",NA
+458,"good","rep",37,"female","hetero",16,"married","other",NA
+459,"poor","other",64,"female","bisexual/other",12,"married","white",NA
+461,"excellent","dem",28,"male","hetero",16,"married","white",82.5
+462,"good","rep",24,"female","hetero",17,"never married","other",9
+463,"fair","other",43,"male","hetero",15,"married","white",82.5
+465,"good","dem",76,"female","bisexual/other",16,"married","white",NA
+466,"excellent","other",21,"female","hetero",14,"never married","white",7.5
+469,"excellent","rep",55,"female","bisexual/other",16,"married","white",82.5
+471,"good","dem",66,"female","bisexual/other",18,"no longer married","white",NA
+472,"good","dem",37,"female","bisexual/other",19,"no longer married","other",32.5
+473,"good","dem",70,"female","bisexual/other",16,"married","white",NA
+474,"good","dem",43,"male","hetero",18,"married","white",120
+475,"excellent","other",19,"female","hetero",9,"never married","other",NA
+477,"fair","dem",40,"female","hetero",18,"married","white",82.5
+479,"excellent","rep",70,"female","bisexual/other",12,"married","white",NA
+480,"fair","dem",31,"male","hetero",13,"never married","white",23.75
+483,"fair","other",60,"female","bisexual/other",12,"married","white",NA
+484,"fair","rep",27,"male","hetero",12,"never married","white",18.75
+485,"good","rep",89,"male","bisexual/other",16,"no longer married","white",NA
+486,"poor","dem",50,"female","hetero",11,"no longer married","black",NA
+487,"excellent","dem",44,"female","bisexual/other",16,"never married","black",32.5
+490,"good","dem",31,"female","hetero",14,"never married","white",NA
+492,"excellent","dem",72,"male","hetero",16,"married","white",200
+493,"excellent","dem",50,"female","hetero",20,"no longer married","white",82.5
+494,"excellent","rep",66,"male","hetero",20,"married","white",NA
+495,"excellent","rep",35,"female","hetero",17,"never married","white",45
+496,"fair","dem",35,"female","bisexual/other",11,"never married","black",NA
+497,"excellent","rep",33,"female","gay",13,"never married","black",NA
+498,"fair","other",66,"female","bisexual/other",6,"no longer married","white",NA
+500,"excellent","other",37,"female","bisexual/other",16,"married","black",NA
+502,"excellent","dem",28,"male","bisexual/other",16,"married","black",NA
+503,"good","rep",30,"female","hetero",16,"married","white",NA
+504,"good","rep",37,"male","hetero",11,"married","white",NA
+506,"poor","rep",84,"male","bisexual/other",14,"married","white",NA
+508,"fair","dem",29,"female","bisexual/other",16,"married","other",55
+509,"good","dem",39,"male","hetero",17,"married","white",120
+511,"fair","dem",68,"female","hetero",18,"no longer married","other",45
+512,"good","other",70,"female","bisexual/other",16,"married","white",NA
+513,"good","other",50,"male","bisexual/other",16,"married","white",NA
+514,"good","other",54,"male","bisexual/other",17,"married","white",160
+515,"good","rep",45,"male","bisexual/other",16,"married","white",NA
+516,"excellent","rep",48,"female","hetero",14,"married","white",NA
+517,"good","rep",73,"male","hetero",16,"married","white",NA
+518,"good","dem",77,"female","bisexual/other",18,"married","white",NA
+519,"good","dem",59,"female","hetero",16,"no longer married","white",120
+521,"fair","rep",68,"male","hetero",18,"married","white",NA
+524,"fair","other",45,"male","bisexual/other",14,"never married","white",13.75
+525,"good","rep",35,"female","hetero",13,"married","white",200
+527,"good","other",36,"female","bisexual/other",12,"married","white",NA
+529,"good","rep",61,"female","bisexual/other",12,"married","white",NA
+530,"fair","dem",56,"female","hetero",12,"no longer married","white",55
+531,"fair","dem",26,"female","bisexual/other",12,"never married","black",2
+534,"good","rep",57,"male","hetero",18,"married","white",100
+535,"good","rep",59,"female","bisexual/other",14,"married","white",NA
+536,"excellent","other",33,"female","hetero",14,"married","white",9
+538,"excellent","rep",61,"male","bisexual/other",18,"married","white",82.5
+539,"fair","rep",39,"female","hetero",13,"married","white",32.5
+540,"good","rep",38,"female","bisexual/other",12,"married","white",32.5
+541,"good","dem",49,"female","bisexual/other",17,"no longer married","white",100
+543,"good","dem",47,"male","bisexual/other",16,"never married","black",100
+544,"excellent","dem",52,"male","hetero",13,"married","other",82.5
+546,"poor","rep",54,"female","hetero",12,"married","white",NA
+547,"fair","rep",39,"female","bisexual/other",12,"married","white",NA
+548,"fair","dem",70,"male","bisexual/other",11,"never married","black",NA
+549,"fair","dem",78,"female","bisexual/other",12,"no longer married","black",NA
+550,"excellent","dem",74,"female","bisexual/other",20,"no longer married","white",NA
+551,"excellent","other",65,"male","bisexual/other",16,"married","white",21.25
+553,"good","rep",53,"female","bisexual/other",16,"married","white",100
+554,"excellent","dem",21,"female","hetero",12,"never married","other",6.5
+556,"good","rep",62,"female","bisexual/other",14,"married","white",11.25
+558,"good","dem",89,"male","hetero",16,"no longer married","white",NA
+560,"excellent","dem",28,"male","hetero",16,"never married","white",55
+563,"good","other",29,"female","bisexual/other",16,"never married","other",67.5
+564,"good","other",39,"male","bisexual/other",16,"married","other",82.5
+565,"good","dem",28,"male","hetero",16,"never married","white",21.25
+566,"good","dem",74,"female","hetero",16,"no longer married","white",NA
+568,"excellent","dem",66,"male","bisexual/other",20,"no longer married","white",NA
+572,"excellent","rep",23,"female","hetero",16,"never married","white",32.5
+574,"good","dem",27,"male","gay",12,"never married","black",67.5
+575,"poor","dem",32,"female","bisexual/other",14,"never married","black",2
+576,"fair","dem",40,"female","bisexual/other",12,"no longer married","black",3.5
+577,"excellent","dem",22,"female","gay",16,"never married","white",NA
+578,"fair","dem",38,"male","hetero",14,"no longer married","black",18.75
+580,"fair","rep",63,"male","bisexual/other",12,"no longer married","white",NA
+582,"good","other",25,"male","bisexual/other",12,"never married","white",NA
+583,"fair","dem",44,"female","hetero",12,"no longer married","other",45
+585,"good","other",45,"female","hetero",12,"married","white",7.5
+589,"good","dem",48,"female","bisexual/other",18,"no longer married","black",55
+592,"good","dem",51,"male","hetero",16,"never married","black",23.75
+594,"excellent","dem",57,"female","bisexual/other",12,"married","black",4.5
+597,"excellent","rep",26,"male","bisexual/other",12,"never married","other",27.5
+598,"good","other",58,"female","hetero",16,"married","white",160
+601,"poor","dem",30,"female","bisexual/other",11,"married","white",NA
+604,"good","other",20,"male","bisexual/other",12,"never married","white",0.5
+606,"poor","other",40,"male","bisexual/other",12,"never married","other",3.5
+608,"good","dem",39,"female","bisexual/other",14,"married","white",18.75
+609,"good","rep",42,"female","hetero",9,"married","white",NA
+610,"good","rep",22,"male","bisexual/other",11,"never married","other",4.5
+611,"good","rep",51,"male","bisexual/other",5,"married","other",NA
+612,"good","other",40,"female","hetero",9,"no longer married","other",NA
+613,"good","other",40,"male","bisexual/other",10,"no longer married","other",55
+616,"good","dem",34,"female","hetero",7,"married","other",NA
+617,"excellent","other",24,"female","hetero",14,"never married","other",NA
+619,"excellent","dem",44,"female","hetero",16,"married","other",NA
+622,"excellent","dem",39,"female","bisexual/other",12,"no longer married","black",16.25
+624,"fair","dem",34,"male","bisexual/other",14,"married","other",67.5
+625,"excellent","rep",70,"female","bisexual/other",19,"married","white",NA
+626,"good","dem",49,"female","hetero",15,"no longer married","white",100
+628,"good","dem",31,"female","hetero",20,"never married","black",37.5
+629,"good","rep",77,"male","bisexual/other",16,"no longer married","white",NA
+630,"excellent","other",40,"female","bisexual/other",17,"no longer married","white",NA
+631,"good","other",53,"female","bisexual/other",16,"married","black",NA
+633,"excellent","dem",39,"female","gay",15,"never married","black",37.5
+635,"good","dem",62,"male","bisexual/other",18,"no longer married","black",82.5
+636,"fair","dem",48,"female","bisexual/other",12,"no longer married","black",11.25
+638,"good","dem",47,"male","bisexual/other",12,"married","black",13.75
+641,"good","other",53,"male","bisexual/other",16,"married","white",45
+642,"excellent","dem",40,"male","bisexual/other",14,"no longer married","black",67.5
+644,"good","other",51,"male","bisexual/other",11,"married","white",9
+645,"fair","other",60,"female","bisexual/other",14,"no longer married","white",NA
+647,"good","rep",40,"female","bisexual/other",14,"married","white",200
+650,"fair","dem",46,"male","bisexual/other",3,"never married","other",21.25
+652,"good","other",22,"female","bisexual/other",12,"never married","other",4.5
+653,"good","dem",29,"female","bisexual/other",19,"never married","black",55
+654,"good","dem",28,"male","hetero",16,"never married","black",32.5
+656,"excellent","other",29,"female","hetero",16,"married","white",32.5
+658,"excellent","other",47,"male","hetero",14,"married","white",67.5
+660,"good","dem",51,"male","bisexual/other",14,"no longer married","black",32.5
+661,"good","dem",63,"male","gay",13,"never married","white",NA
+662,"excellent","dem",33,"male","bisexual/other",13,"never married","black",NA
+663,"fair","other",47,"female","bisexual/other",12,"married","black",37.5
+664,"good","rep",26,"female","bisexual/other",15,"married","other",23.75
+665,"excellent","dem",68,"male","bisexual/other",16,"married","black",37.5
+666,"good","rep",36,"female","hetero",16,"married","black",NA
+668,"fair","dem",30,"female","hetero",17,"never married","black",7.5
+670,"good","rep",28,"female","hetero",12,"never married","white",NA
+672,"good","other",49,"male","hetero",12,"married","white",200
+674,"excellent","dem",21,"female","bisexual/other",15,"never married","white",4.5
+675,"good","rep",38,"female","bisexual/other",14,"married","white",13.75
+676,"good","other",22,"male","hetero",14,"never married","white",23.75
+677,"good","dem",50,"male","bisexual/other",14,"no longer married","black",37.5
+680,"fair","other",28,"female","bisexual/other",15,"no longer married","black",NA
+681,"good","dem",54,"male","bisexual/other",15,"married","black",67.5
+683,"good","rep",58,"female","bisexual/other",16,"married","black",45
+685,"good","rep",34,"male","hetero",12,"married","white",82.5
+686,"fair","other",52,"female","hetero",12,"never married","white",16.25
+687,"excellent","other",71,"female","bisexual/other",12,"married","white",NA
+688,"fair","dem",21,"female","bisexual/other",11,"married","other",11.25
+689,"excellent","other",23,"male","hetero",12,"never married","black",NA
+690,"fair","dem",82,"male","bisexual/other",12,"no longer married","black",NA
+691,"excellent","dem",34,"male","hetero",12,"married","black",45
+693,"good","dem",43,"female","bisexual/other",15,"no longer married","black",45
+694,"fair","dem",75,"female","bisexual/other",12,"no longer married","black",NA
+696,"good","other",33,"male","bisexual/other",12,"never married","other",27.5
+698,"good","other",50,"female","hetero",12,"no longer married","white",NA
+699,"good","other",40,"female","hetero",16,"no longer married","white",NA
+700,"poor","dem",89,"female","bisexual/other",4,"no longer married","black",NA
+702,"good","dem",69,"female","hetero",13,"no longer married","black",NA
+704,"good","dem",53,"female","bisexual/other",9,"never married","white",11.25
+705,"fair","rep",46,"female","hetero",14,"married","white",NA
+706,"good","dem",56,"female","bisexual/other",12,"no longer married","white",82.5
+708,"excellent","other",33,"male","bisexual/other",12,"never married","white",82.5
+710,"good","other",89,"female","bisexual/other",12,"no longer married","white",NA
+711,"fair","other",19,"male","bisexual/other",9,"never married","white",NA
+712,"excellent","dem",26,"male","hetero",16,"never married","black",4.5
+713,"excellent","rep",28,"female","bisexual/other",18,"no longer married","white",37.5
+714,"fair","dem",70,"male","hetero",12,"no longer married","white",NA
+715,"good","dem",38,"female","hetero",11,"married","black",21.25
+716,"excellent","rep",39,"male","hetero",18,"married","white",140
+717,"good","dem",19,"male","hetero",13,"never married","other",NA
+719,"excellent","dem",47,"female","bisexual/other",18,"married","white",140
+720,"excellent","dem",46,"male","bisexual/other",18,"married","white",82.5
+721,"excellent","rep",19,"female","hetero",11,"never married","white",2
+723,"good","dem",38,"female","hetero",15,"married","white",NA
+724,"excellent","other",24,"male","hetero",16,"never married","black",NA
+725,"fair","dem",54,"female","bisexual/other",12,"never married","black",NA
+728,"good","dem",25,"male","bisexual/other",14,"never married","black",5.5
+729,"fair","dem",59,"male","bisexual/other",12,"no longer married","black",55
+731,"excellent","dem",28,"female","bisexual/other",14,"married","black",32.5
+732,"good","dem",40,"female","bisexual/other",13,"never married","black",11.25
+734,"good","rep",50,"male","bisexual/other",10,"married","white",82.5
+735,"good","dem",20,"female","bisexual/other",16,"never married","white",7.5
+736,"good","dem",43,"male","hetero",14,"married","white",67.5
+737,"good","rep",68,"female","hetero",16,"married","white",NA
+738,"excellent","rep",18,"male","hetero",12,"never married","white",2
+739,"excellent","dem",54,"female","hetero",14,"married","black",NA
+741,"good","dem",28,"female","hetero",12,"married","white",27.5
+742,"fair","dem",46,"male","hetero",16,"never married","black",55
+744,"poor","rep",65,"female","bisexual/other",12,"no longer married","white",45
+745,"good","rep",18,"male","hetero",12,"never married","white",NA
+746,"good","dem",57,"female","bisexual/other",14,"married","black",45
+748,"excellent","dem",25,"female","hetero",12,"never married","black",16.25
+749,"good","dem",30,"male","hetero",12,"never married","black",55
+750,"poor","dem",37,"female","bisexual/other",13,"never married","black",NA
+751,"good","dem",68,"female","hetero",12,"married","white",NA
+754,"fair","dem",23,"male","hetero",12,"never married","other",23.75
+755,"excellent","other",27,"male","bisexual/other",18,"never married","white",32.5
+756,"good","other",19,"male","hetero",11,"never married","white",NA
+757,"good","dem",54,"male","bisexual/other",20,"married","white",82.5
+758,"excellent","dem",34,"female","gay",16,"married","white",5.5
+759,"fair","dem",89,"female","bisexual/other",18,"no longer married","white",NA
+760,"excellent","dem",34,"male","bisexual/other",14,"married","other",45
+762,"excellent","dem",36,"female","bisexual/other",16,"married","white",100
+764,"good","other",44,"female","bisexual/other",16,"married","other",3.5
+765,"excellent","rep",44,"male","bisexual/other",15,"no longer married","white",200
+766,"fair","dem",43,"male","hetero",18,"never married","white",140
+767,"good","dem",77,"female","bisexual/other",17,"no longer married","white",NA
+768,"fair","other",43,"male","bisexual/other",9,"no longer married","white",NA
+769,"fair","rep",36,"male","hetero",12,"no longer married","white",27.5
+770,"good","dem",30,"male","hetero",16,"never married","white",11.25
+772,"good","rep",89,"female","bisexual/other",16,"no longer married","white",NA
+773,"poor","other",62,"male","bisexual/other",12,"never married","white",NA
+774,"good","other",76,"female","bisexual/other",14,"no longer married","white",NA
+775,"good","dem",51,"female","hetero",14,"married","white",45
+776,"good","dem",27,"female","hetero",14,"never married","white",16.25
+777,"excellent","other",73,"male","bisexual/other",14,"married","white",NA
+778,"excellent","rep",28,"male","hetero",8,"never married","white",82.5
+779,"good","dem",34,"male","hetero",16,"married","white",45
+781,"good","dem",35,"female","hetero",16,"married","white",45
+783,"excellent","rep",82,"female","hetero",13,"no longer married","white",NA
+784,"good","dem",52,"female","bisexual/other",17,"no longer married","white",16.25
+786,"excellent","rep",46,"female","bisexual/other",15,"married","white",37.5
+787,"excellent","rep",33,"female","hetero",12,"married","white",11.25
+788,"excellent","rep",23,"female","bisexual/other",8,"never married","other",13.75
+789,"good","other",48,"male","bisexual/other",12,"married","white",82.5
+790,"good","dem",55,"male","bisexual/other",14,"no longer married","white",67.5
+791,"good","dem",56,"female","bisexual/other",12,"no longer married","white",NA
+792,"good","rep",74,"female","hetero",16,"married","white",NA
+793,"fair","rep",28,"female","bisexual/other",12,"never married","white",37.5
+794,"good","other",24,"female","bisexual/other",NA,"married","black",21.25
+796,"good","dem",74,"female","hetero",15,"no longer married","black",NA
+798,"fair","dem",29,"female","bisexual/other",15,"married","black",11.25
+800,"good","dem",73,"male","bisexual/other",15,"never married","white",NA
+801,"excellent","dem",65,"male","bisexual/other",3,"married","other",23.75
+803,"good","other",22,"female","bisexual/other",12,"never married","other",5.5
+805,"poor","dem",48,"male","bisexual/other",7,"married","other",21.25
+807,"excellent","dem",49,"female","bisexual/other",16,"married","white",140
+808,"good","dem",39,"male","hetero",12,"married","other",55
+809,"fair","dem",45,"female","hetero",16,"no longer married","other",27.5
+811,"good","dem",32,"male","hetero",16,"never married","white",45
+812,"good","dem",39,"male","hetero",18,"never married","white",37.5
+816,"poor","dem",46,"female","bisexual/other",12,"no longer married","white",21.25
+817,"good","rep",63,"male","bisexual/other",12,"never married","white",NA
+818,"good","other",26,"male","hetero",12,"never married","black",NA
+820,"excellent","dem",19,"male","hetero",12,"never married","black",6.5
+822,"fair","dem",64,"male","bisexual/other",16,"married","black",NA
+823,"fair","rep",25,"male","hetero",15,"never married","white",7.5
+825,"good","other",41,"female","hetero",14,"married","white",NA
+827,"good","rep",40,"male","bisexual/other",12,"no longer married","white",NA
+828,"fair","rep",64,"male","bisexual/other",16,"married","white",140
+829,"good","rep",56,"female","hetero",16,"no longer married","white",82.5
+831,"good","dem",50,"male","hetero",16,"married","white",140
+832,"good","other",69,"male","hetero",13,"no longer married","white",NA
+835,"good","rep",38,"female","hetero",19,"no longer married","white",55
+838,"good","other",34,"male","bisexual/other",12,"married","other",NA
+841,"fair","other",47,"female","bisexual/other",9,"married","other",5.5
+842,"good","dem",50,"female","hetero",14,"never married","white",13.75
+844,"good","dem",63,"female","bisexual/other",15,"no longer married","white",NA
+845,"fair","rep",56,"male","hetero",14,"married","white",67.5
+846,"excellent","rep",18,"female","bisexual/other",12,"never married","white",NA
+847,"good","other",25,"male","hetero",12,"married","other",32.5
+849,"fair","dem",58,"male","bisexual/other",14,"no longer married","white",11.25
+850,"excellent","dem",39,"female","hetero",14,"married","white",37.5
+852,"excellent","other",25,"male","hetero",12,"never married","other",45
+854,"good","other",53,"female","bisexual/other",17,"no longer married","other",82.5
+855,"good","dem",57,"male","bisexual/other",14,"never married","white",67.5
+856,"good","rep",53,"female","hetero",14,"married","white",55
+857,"good","rep",63,"male","bisexual/other",16,"married","white",NA
+858,"good","rep",62,"female","hetero",16,"married","white",NA
+860,"good","dem",70,"male","hetero",12,"no longer married","black",NA
+862,"excellent","other",64,"female","bisexual/other",16,"married","white",0.5
+863,"good","other",32,"male","hetero",13,"married","white",NA
+864,"good","rep",27,"female","hetero",16,"never married","white",18.75
+866,"good","rep",27,"female","bisexual/other",12,"married","white",2
+867,"poor","other",31,"male","hetero",15,"never married","white",2
+868,"good","rep",79,"female","hetero",13,"married","white",NA
+870,"fair","dem",29,"female","bisexual/other",15,"married","white",13.75
+871,"good","other",42,"female","hetero",8,"never married","black",NA
+873,"fair","rep",52,"female","bisexual/other",16,"married","white",13.75
+874,"excellent","dem",78,"male","bisexual/other",16,"married","white",NA
+875,"excellent","rep",77,"male","hetero",12,"married","white",16.25
+877,"excellent","rep",45,"male","bisexual/other",16,"married","white",67.5
+880,"excellent","dem",49,"female","bisexual/other",17,"married","white",67.5
+883,"poor","other",25,"female","bisexual/other",14,"never married","white",NA
+885,"excellent","rep",48,"female","bisexual/other",16,"married","white",67.5
+886,"good","rep",53,"female","hetero",12,"no longer married","white",21.25
+888,"good","other",84,"female","bisexual/other",12,"no longer married","white",NA
+889,"fair","dem",83,"female","hetero",14,"no longer married","white",NA
+891,"good","rep",64,"male","hetero",12,"never married","white",NA
+892,"good","dem",63,"female","bisexual/other",16,"no longer married","white",32.5
+893,"poor","dem",70,"female","hetero",12,"no longer married","white",NA
+894,"good","dem",21,"male","hetero",15,"never married","black",NA
+896,"good","dem",56,"male","bisexual/other",13,"no longer married","black",67.5
+897,"excellent","dem",27,"male","bisexual/other",16,"never married","black",27.5
+898,"good","dem",53,"female","hetero",12,"married","white",NA
+900,"good","dem",44,"male","bisexual/other",12,"no longer married","white",100
+901,"fair","dem",68,"female","hetero",11,"married","white",NA
+903,"good","rep",57,"male","hetero",12,"no longer married","white",32.5
+905,"fair","other",42,"female","bisexual/other",13,"never married","black",3.5
+906,"good","other",25,"male","hetero",13,"never married","black",NA
+908,"fair","other",66,"female","bisexual/other",12,"never married","black",NA
+909,"excellent","other",74,"male","bisexual/other",14,"no longer married","black",NA
+910,"good","other",69,"female","bisexual/other",20,"no longer married","other",NA
+912,"poor","dem",69,"male","bisexual/other",14,"no longer married","black",23.75
+916,"good","dem",32,"female","bisexual/other",14,"married","white",27.5
+917,"fair","other",19,"female","bisexual/other",11,"never married","white",NA
+919,"good","other",69,"male","hetero",14,"no longer married","white",NA
+921,"poor","other",69,"female","bisexual/other",20,"no longer married","white",NA
+922,"poor","other",43,"male","bisexual/other",12,"never married","white",32.5
+924,"good","rep",44,"female","bisexual/other",16,"married","white",NA
+925,"good","dem",58,"male","bisexual/other",16,"no longer married","white",140
+927,"good","rep",49,"female","bisexual/other",17,"married","white",NA
+929,"good","rep",59,"female","hetero",20,"married","white",32.5
+930,"good","dem",68,"male","bisexual/other",14,"no longer married","white",NA
+932,"fair","rep",67,"male","hetero",18,"married","white",NA
+933,"good","rep",70,"male","bisexual/other",19,"married","white",NA
+934,"excellent","rep",61,"female","hetero",16,"married","white",32.5
+936,"excellent","dem",67,"male","hetero",16,"married","white",NA
+937,"excellent","other",39,"male","bisexual/other",17,"married","white",120
+938,"good","rep",48,"female","hetero",18,"married","white",82.5
+939,"excellent","rep",19,"female","bisexual/other",13,"never married","white",2
+942,"good","dem",20,"male","hetero",11,"never married","white",NA
+944,"fair","other",44,"female","bisexual/other",11,"married","white",NA
+945,"fair","other",59,"male","hetero",12,"married","black",55
+947,"good","rep",46,"female","bisexual/other",18,"married","white",NA
+948,"good","other",55,"male","hetero",15,"married","other",23.75
+950,"good","other",23,"female","bisexual/other",14,"never married","white",NA
+952,"fair","rep",76,"female","bisexual/other",17,"no longer married","white",NA
+953,"good","dem",45,"male","hetero",14,"no longer married","white",55
+954,"fair","other",40,"female","hetero",9,"never married","white",NA
+955,"good","rep",77,"female","bisexual/other",12,"no longer married","white",NA
+956,"fair","dem",74,"male","gay",18,"never married","white",NA
+958,"poor","dem",70,"male","bisexual/other",9,"married","white",NA
+959,"fair","dem",61,"male","hetero",12,"married","white",0.5
+961,"fair","other",38,"male","bisexual/other",14,"married","white",32.5
+962,"good","rep",25,"female","hetero",16,"never married","white",32.5
+964,"good","rep",75,"female","hetero",16,"no longer married","white",NA
+966,"good","rep",45,"male","bisexual/other",14,"married","white",NA
+967,"good","rep",26,"female","hetero",14,"never married","other",7.5
+968,"good","dem",40,"male","bisexual/other",14,"never married","black",55
+969,"good","other",26,"female","hetero",12,"no longer married","black",100
+971,"good","rep",32,"male","hetero",16,"married","white",67.5
+974,"good","other",27,"female","hetero",14,"never married","black",23.75
+975,"good","dem",34,"male","bisexual/other",12,"never married","white",45
+976,"good","rep",37,"female","hetero",16,"married","white",NA
+977,"good","rep",41,"male","hetero",16,"married","white",120
+979,"good","dem",43,"male","bisexual/other",18,"never married","white",NA
+980,"good","rep",42,"male","hetero",18,"married","white",82.5
+982,"good","dem",43,"female","bisexual/other",16,"married","white",45
+983,"poor","rep",41,"male","gay",18,"never married","white",NA
+984,"excellent","dem",77,"male","bisexual/other",13,"never married","other",NA
+986,"good","rep",50,"female","bisexual/other",20,"never married","white",100
+987,"excellent","rep",25,"male","bisexual/other",17,"never married","white",5.5
+989,"poor","rep",60,"female","hetero",13,"married","white",0.5
+991,"good","other",38,"female","bisexual/other",12,"married","other",NA
+993,"fair","dem",34,"male","bisexual/other",16,"never married","white",7.5
+995,"good","other",34,"female","bisexual/other",12,"never married","white",45
+996,"fair","other",34,"female","hetero",15,"never married","white",16.25
+997,"good","other",40,"female","hetero",14,"never married","white",NA
+999,"good","dem",23,"female","bisexual/other",13,"never married","white",13.75
+1000,"good","rep",24,"female","bisexual/other",12,"never married","white",37.5
+1003,"good","rep",84,"male","hetero",16,"married","white",NA
+1004,"good","dem",42,"female","hetero",16,"no longer married","white",11.25
+1007,"excellent","dem",61,"male","hetero",16,"no longer married","black",45
+1008,"excellent","dem",37,"female","hetero",16,"married","white",82.5
+1011,"fair","dem",39,"female","bisexual/other",14,"no longer married","white",18.75
+1012,"excellent","rep",26,"female","hetero",13,"never married","black",27.5
+1014,"excellent","rep",51,"female","bisexual/other",16,"married","white",82.5
+1016,"good","rep",61,"male","hetero",14,"married","white",45
+1017,"excellent","rep",19,"female","bisexual/other",13,"never married","white",3.5
+1019,"fair","dem",30,"male","bisexual/other",13,"married","other",32.5
+1020,"fair","dem",60,"female","hetero",18,"never married","white",NA
+1023,"good","dem",75,"female","bisexual/other",12,"no longer married","black",NA
+1024,"poor","dem",35,"female","hetero",10,"married","white",NA
+1025,"good","rep",34,"male","bisexual/other",16,"married","white",200
+1027,"fair","rep",55,"male","bisexual/other",12,"no longer married","white",140
+1028,"good","dem",86,"male","hetero",16,"no longer married","white",NA
+1029,"excellent","rep",54,"male","bisexual/other",12,"never married","white",45
+1031,"excellent","rep",55,"male","bisexual/other",12,"never married","white",100
+1032,"good","dem",58,"female","hetero",14,"no longer married","white",NA
+1033,"good","rep",54,"male","hetero",15,"no longer married","white",55
+1034,"fair","rep",31,"female","bisexual/other",16,"no longer married","white",37.5
+1035,"good","rep",51,"male","bisexual/other",15,"never married","white",2
+1037,"fair","dem",86,"female","hetero",12,"no longer married","white",NA
+1039,"fair","other",26,"male","bisexual/other",12,"never married","black",NA
+1040,"good","dem",37,"female","bisexual/other",18,"married","white",82.5
+1041,"fair","rep",45,"male","bisexual/other",16,"no longer married","white",200
+1042,"good","dem",70,"female","bisexual/other",14,"married","black",NA
+1043,"excellent","dem",43,"male","bisexual/other",20,"married","other",67.5
+1045,"good","dem",42,"female","bisexual/other",17,"never married","other",27.5
+1046,"good","dem",86,"female","bisexual/other",14,"no longer married","white",NA
+1047,"good","rep",72,"female","hetero",12,"no longer married","white",NA
+1048,"good","dem",55,"female","hetero",18,"no longer married","white",0.5
+1049,"fair","dem",69,"male","hetero",11,"no longer married","black",NA
+1051,"fair","dem",68,"male","bisexual/other",10,"no longer married","black",NA
+1053,"good","dem",18,"female","bisexual/other",12,"never married","white",NA
+1055,"good","rep",66,"female","hetero",12,"married","white",NA
+1056,"poor","dem",66,"male","bisexual/other",13,"no longer married","white",NA
+1057,"good","rep",21,"male","hetero",9,"never married","white",13.75
+1059,"good","other",29,"male","bisexual/other",13,"married","white",NA
+1061,"good","rep",65,"male","bisexual/other",12,"no longer married","white",11.25
+1062,"fair","other",53,"male","bisexual/other",11,"no longer married","white",0.5
+1063,"excellent","rep",32,"female","bisexual/other",14,"married","white",NA
+1065,"fair","dem",58,"male","bisexual/other",12,"married","other",21.25
+1066,"fair","rep",44,"female","hetero",15,"no longer married","white",67.5
+1068,"excellent","rep",51,"male","hetero",15,"no longer married","white",67.5
+1069,"good","rep",53,"female","bisexual/other",13,"no longer married","other",55
+1070,"good","dem",44,"female","hetero",14,"never married","black",11.25
+1074,"good","dem",65,"female","bisexual/other",13,"no longer married","black",0.5
+1075,"good","rep",37,"female","hetero",14,"married","white",27.5
+1078,"excellent","dem",49,"female","bisexual/other",16,"married","white",55
+1079,"excellent","rep",41,"male","hetero",8,"never married","white",NA
+1080,"good","dem",72,"male","bisexual/other",14,"married","white",NA
+1081,"excellent","other",42,"male","hetero",12,"no longer married","white",32.5
+1082,"good","dem",24,"male","bisexual/other",13,"never married","white",32.5
+1084,"excellent","other",33,"female","hetero",13,"married","white",27.5
+1085,"good","dem",69,"female","hetero",9,"no longer married","white",13.75
+1087,"good","dem",71,"female","bisexual/other",9,"married","white",NA
+1088,"good","rep",22,"female","hetero",16,"never married","white",NA
+1091,"good","rep",61,"male","bisexual/other",16,"married","white",100
+1092,"good","rep",39,"male","hetero",18,"married","other",100
+1094,"fair","rep",71,"male","bisexual/other",16,"no longer married","white",NA
+1095,"good","rep",60,"female","hetero",12,"married","white",82.5
+1096,"good","dem",47,"male","hetero",17,"no longer married","white",55
+1097,"good","dem",33,"male","gay",14,"married","white",45
+1098,"good","dem",29,"male","bisexual/other",17,"never married","white",32.5
+1099,"good","other",60,"female","bisexual/other",13,"no longer married","black",45
+1100,"fair","other",27,"female","bisexual/other",13,"never married","black",27.5
+1101,"fair","other",30,"male","bisexual/other",9,"never married","white",5.5
+1102,"poor","dem",24,"female","bisexual/other",13,"never married","white",2
+1104,"poor","rep",19,"male","bisexual/other",12,"never married","white",NA
+1105,"fair","rep",55,"male","hetero",11,"never married","white",45
+1107,"good","dem",50,"male","bisexual/other",13,"married","black",82.5
+1108,"good","rep",70,"male","hetero",17,"married","white",21.25
+1109,"good","dem",65,"male","bisexual/other",18,"no longer married","white",NA
+1110,"good","dem",28,"female","hetero",16,"married","white",NA
+1111,"good","dem",57,"female","bisexual/other",12,"married","white",37.5
+1113,"excellent","other",18,"female","bisexual/other",12,"never married","white",NA
+1115,"good","other",41,"male","bisexual/other",12,"married","white",0.5
+1117,"good","dem",32,"female","bisexual/other",15,"never married","black",23.75
+1119,"good","other",30,"female","bisexual/other",12,"never married","black",27.5
+1120,"fair","dem",66,"female","hetero",12,"no longer married","white",NA
+1122,"good","other",22,"female","bisexual/other",12,"never married","other",6.5
+1123,"good","dem",31,"male","bisexual/other",16,"never married","white",32.5
+1125,"good","rep",21,"male","bisexual/other",15,"never married","white",4.5
+1126,"fair","dem",29,"male","hetero",16,"married","white",45
+1128,"excellent","dem",21,"female","hetero",15,"never married","other",3.5
+1130,"good","rep",22,"male","bisexual/other",16,"never married","white",67.5
+1131,"fair","dem",23,"male","hetero",13,"never married","black",NA
+1132,"fair","dem",21,"male","bisexual/other",14,"never married","white",NA
+1133,"excellent","dem",21,"male","hetero",15,"never married","white",2
+1135,"excellent","rep",63,"male","hetero",20,"married","white",45
+1136,"good","rep",86,"female","bisexual/other",12,"no longer married","white",NA
+1137,"good","rep",40,"male","hetero",8,"married","white",55
+1139,"fair","rep",64,"female","hetero",12,"no longer married","white",NA
+1140,"fair","dem",72,"female","bisexual/other",20,"no longer married","white",200
+1143,"good","other",33,"male","bisexual/other",12,"never married","white",21.25
+1144,"excellent","other",76,"male","hetero",14,"no longer married","white",NA
+1146,"excellent","rep",23,"female","hetero",16,"never married","black",21.25
+1148,"excellent","dem",29,"female","bisexual/other",12,"never married","other",NA
+1149,"fair","other",23,"male","hetero",11,"no longer married","white",16.25
+1151,"fair","other",58,"male","bisexual/other",9,"married","other",82.5
+1152,"fair","dem",86,"male","hetero",13,"no longer married","white",NA
+1154,"fair","dem",50,"male","bisexual/other",12,"married","black",23.75
+1156,"good","dem",41,"female","bisexual/other",16,"no longer married","other",55
+1157,"excellent","other",22,"male","hetero",14,"never married","other",18.75
+1159,"fair","dem",87,"female","bisexual/other",12,"no longer married","black",NA
+1161,"excellent","rep",18,"female","bisexual/other",11,"never married","white",NA
+1164,"good","rep",51,"female","bisexual/other",20,"married","white",200
+1165,"good","other",67,"male","hetero",16,"married","white",120
+1167,"good","rep",70,"male","bisexual/other",16,"no longer married","white",NA
+1169,"fair","rep",71,"female","hetero",12,"married","white",NA
+1170,"good","rep",34,"male","bisexual/other",16,"married","white",100
+1171,"good","other",86,"male","bisexual/other",16,"no longer married","white",55
+1173,"poor","other",47,"male","bisexual/other",12,"no longer married","white",0.5
+1174,"fair","dem",33,"female","hetero",18,"married","black",67.5
+1176,"good","rep",57,"female","bisexual/other",12,"married","white",37.5
+1178,"fair","dem",65,"female","bisexual/other",12,"no longer married","white",NA
+1179,"fair","rep",69,"male","hetero",12,"never married","white",NA
+1181,"good","dem",35,"male","hetero",13,"married","white",55
+1182,"poor","rep",37,"male","bisexual/other",13,"never married","white",27.5
+1183,"good","rep",51,"female","hetero",12,"married","white",160
+1185,"excellent","rep",49,"female","bisexual/other",16,"married","white",NA
+1186,"good","dem",68,"female","hetero",16,"married","white",NA
+1188,"poor","dem",74,"male","hetero",12,"no longer married","white",NA
+1190,"good","rep",46,"female","bisexual/other",16,"married","white",67.5
+1191,"good","rep",51,"female","hetero",14,"married","white",27.5
+1193,"good","rep",43,"male","bisexual/other",14,"never married","white",200
+1194,"poor","dem",74,"female","bisexual/other",11,"no longer married","white",NA
+1196,"fair","rep",85,"male","hetero",12,"married","white",NA
+1197,"fair","dem",49,"male","hetero",16,"no longer married","white",45
+1198,"fair","rep",46,"female","bisexual/other",12,"married","white",NA
+1199,"excellent","dem",37,"female","hetero",17,"married","white",NA
+1200,"fair","other",41,"female","bisexual/other",11,"no longer married","white",7.5
+1201,"good","dem",22,"male","hetero",12,"married","white",23.75
+1203,"excellent","other",73,"female","hetero",16,"married","white",NA
+1204,"good","rep",34,"female","bisexual/other",16,"married","white",32.5
+1205,"good","dem",87,"male","bisexual/other",14,"no longer married","white",NA
+1207,"good","other",31,"female","hetero",14,"no longer married","white",NA
+1209,"fair","rep",69,"male","bisexual/other",12,"no longer married","white",NA
+1210,"good","rep",77,"male","hetero",12,"never married","white",NA
+1211,"good","rep",52,"male","bisexual/other",13,"no longer married","white",NA
+1213,"fair","dem",52,"male","bisexual/other",12,"never married","white",27.5
+1214,"excellent","dem",38,"female","bisexual/other",16,"never married","other",100
+1215,"poor","rep",55,"male","hetero",11,"no longer married","other",3.5
+1217,"good","other",50,"female","bisexual/other",14,"married","white",27.5
+1218,"excellent","dem",25,"female","hetero",12,"never married","white",NA
+1219,"good","other",28,"male","hetero",12,"married","white",27.5
+1220,"poor","dem",76,"male","hetero",16,"no longer married","white",NA
+1221,"excellent","rep",52,"male","bisexual/other",16,"married","white",200
+1222,"fair","rep",22,"male","hetero",12,"never married","white",37.5
+1225,"fair","dem",63,"female","hetero",14,"married","white",37.5
+1227,"fair","dem",43,"female","gay",11,"married","white",NA
+1228,"good","rep",25,"female","bisexual/other",13,"never married","white",27.5
+1229,"fair","rep",39,"male","bisexual/other",10,"married","white",32.5
+1231,"fair","rep",39,"female","bisexual/other",12,"no longer married","white",37.5
+1232,"good","dem",34,"female","bisexual/other",12,"never married","black",NA
+1234,"fair","rep",35,"male","bisexual/other",16,"never married","white",23.75
+1235,"fair","dem",24,"female","gay",17,"never married","white",NA
+1237,"excellent","dem",21,"male","bisexual/other",14,"never married","white",NA
+1238,"good","rep",30,"male","hetero",15,"never married","white",37.5
+1242,"excellent","dem",80,"female","bisexual/other",18,"no longer married","white",NA
+1243,"excellent","rep",27,"female","gay",16,"never married","white",18.75
+1245,"fair","other",44,"female","bisexual/other",12,"no longer married","white",11.25
+1247,"excellent","dem",22,"male","hetero",13,"never married","black",NA
+1249,"good","dem",33,"female","hetero",9,"never married","white",3.5
+1251,"fair","rep",43,"male","bisexual/other",13,"never married","other",NA
+1252,"good","dem",32,"female","bisexual/other",12,"married","other",0.5
+1253,"good","dem",62,"female","bisexual/other",16,"no longer married","white",NA
+1254,"good","other",53,"female","bisexual/other",12,"married","white",21.25
+1257,"good","dem",18,"female","bisexual/other",12,"never married","white",NA
+1258,"good","dem",64,"male","bisexual/other",12,"no longer married","white",27.5
+1259,"good","dem",22,"male","hetero",12,"never married","white",NA
+1261,"excellent","dem",31,"female","bisexual/other",16,"never married","white",55
+1263,"good","dem",32,"female","bisexual/other",16,"married","white",27.5
+1264,"excellent","dem",69,"male","hetero",16,"married","white",NA
+1267,"good","other",60,"female","bisexual/other",15,"no longer married","white",37.5
+1269,"good","dem",41,"female","bisexual/other",14,"never married","other",45
+1271,"good","rep",77,"female","bisexual/other",14,"no longer married","white",NA
+1272,"excellent","rep",57,"male","hetero",10,"no longer married","white",18.75
+1273,"fair","dem",26,"male","hetero",15,"never married","white",NA
+1275,"excellent","dem",24,"male","bisexual/other",16,"never married","white",55
+1277,"good","dem",39,"female","bisexual/other",3,"no longer married","other",3.5
+1278,"excellent","dem",30,"female","hetero",20,"married","white",23.75
+1280,"good","other",31,"female","bisexual/other",12,"never married","white",NA
+1281,"excellent","dem",36,"female","hetero",16,"married","white",55
+1283,"excellent","dem",39,"female","bisexual/other",16,"married","white",45
+1285,"good","rep",55,"male","hetero",12,"no longer married","white",55
+1287,"good","dem",31,"male","hetero",18,"married","white",32.5
+1289,"excellent","dem",68,"female","hetero",14,"no longer married","white",NA
+1291,"good","dem",60,"female","bisexual/other",20,"never married","white",16.25
+1292,"good","rep",30,"male","hetero",12,"never married","white",21.25
+1294,"fair","dem",61,"male","hetero",12,"no longer married","white",0.5
+1296,"good","other",41,"male","bisexual/other",9,"never married","white",NA
+1297,"good","dem",64,"male","hetero",14,"never married","white",NA
+1299,"fair","other",22,"male","hetero",11,"never married","black",NA
+1301,"good","dem",56,"male","gay",16,"never married","white",82.5
+1302,"excellent","dem",30,"female","bisexual/other",15,"married","white",55
+1303,"fair","dem",89,"female","hetero",14,"no longer married","white",NA
+1305,"good","other",55,"male","hetero",12,"no longer married","white",55
+1306,"excellent","dem",67,"female","bisexual/other",18,"never married","white",NA
+1307,"good","other",61,"female","hetero",12,"married","white",NA
+1309,"good","dem",30,"male","hetero",16,"never married","black",NA
+1311,"excellent","dem",41,"male","bisexual/other",13,"no longer married","black",45
+1312,"poor","dem",67,"female","bisexual/other",8,"never married","black",13.75
+1313,"good","dem",62,"male","bisexual/other",12,"no longer married","white",NA
+1314,"good","dem",36,"female","bisexual/other",14,"no longer married","black",27.5
+1316,"good","dem",65,"female","bisexual/other",16,"married","white",37.5
+1318,"excellent","rep",23,"male","hetero",16,"never married","white",NA
+1320,"good","rep",47,"female","bisexual/other",16,"married","white",13.75
+1321,"good","rep",75,"female","hetero",12,"no longer married","white",NA
+1322,"good","rep",24,"male","hetero",12,"married","white",67.5
+1323,"excellent","rep",42,"male","bisexual/other",13,"married","white",100
+1324,"poor","other",29,"female","bisexual/other",12,"never married","white",NA
+1326,"good","dem",89,"female","bisexual/other",10,"no longer married","black",NA
+1327,"fair","dem",76,"female","bisexual/other",12,"married","white",NA
+1328,"good","dem",36,"female","hetero",12,"married","white",27.5
+1329,"good","rep",77,"female","bisexual/other",12,"married","white",NA
+1331,"good","other",72,"male","bisexual/other",12,"no longer married","white",NA
+1332,"good","dem",39,"female","hetero",17,"married","white",11.25
+1333,"fair","rep",71,"female","bisexual/other",12,"married","white",NA
+1336,"excellent","other",35,"male","hetero",3,"married","other",16.25
+1338,"excellent","dem",49,"male","bisexual/other",16,"no longer married","white",100
+1340,"good","dem",36,"female","bisexual/other",3,"married","other",NA
+1341,"poor","rep",71,"male","hetero",10,"married","white",NA
+1343,"excellent","rep",57,"male","bisexual/other",14,"no longer married","white",23.75
+1344,"fair","other",24,"female","hetero",12,"married","white",0.5
+1345,"good","rep",47,"female","bisexual/other",13,"no longer married","white",NA
+1346,"excellent","rep",23,"male","hetero",13,"never married","white",32.5
+1347,"good","rep",46,"male","bisexual/other",14,"no longer married","white",100
+1349,"good","other",50,"female","hetero",18,"married","white",45
+1351,"good","rep",20,"male","hetero",13,"never married","white",NA
+1352,"good","rep",49,"female","bisexual/other",15,"married","white",67.5
+1354,"fair","other",29,"male","bisexual/other",12,"married","white",32.5
+1356,"fair","dem",29,"female","bisexual/other",20,"never married","other",NA
+1357,"good","dem",21,"male","hetero",14,"never married","white",NA
+1359,"good","dem",34,"female","bisexual/other",18,"married","white",NA
+1361,"fair","rep",21,"male","bisexual/other",14,"never married","white",NA
+1362,"excellent","rep",22,"male","hetero",15,"never married","white",NA
+1363,"fair","other",38,"male","bisexual/other",12,"never married","white",4.5
+1364,"good","other",70,"male","hetero",12,"married","white",16.25
+1366,"fair","dem",75,"female","bisexual/other",10,"married","white",NA
+1367,"fair","rep",56,"male","hetero",12,"married","white",11.25
+1369,"good","dem",39,"female","bisexual/other",12,"married","white",NA
+1370,"good","rep",54,"female","hetero",14,"married","white",23.75
+1372,"good","rep",60,"male","bisexual/other",14,"married","white",67.5
+1373,"fair","rep",36,"male","hetero",18,"married","white",NA
+1374,"excellent","rep",31,"female","bisexual/other",12,"married","white",32.5
+1375,"good","dem",41,"female","bisexual/other",16,"married","black",67.5
+1377,"good","rep",38,"female","hetero",16,"married","white",23.75
+1378,"fair","rep",42,"female","bisexual/other",15,"no longer married","white",27.5
+1379,"poor","dem",69,"female","bisexual/other",13,"no longer married","white",NA
+1380,"excellent","dem",29,"female","bisexual/other",16,"married","black",45
+1381,"fair","dem",33,"male","bisexual/other",3,"married","other",NA
+1382,"excellent","other",27,"male","bisexual/other",14,"married","white",55
+1383,"good","rep",42,"male","hetero",14,"married","white",3.5
+1385,"good","dem",41,"female","hetero",18,"no longer married","white",NA
+1386,"good","dem",70,"female","hetero",16,"no longer married","white",NA
+1387,"fair","rep",31,"male","bisexual/other",8,"married","white",11.25
+1388,"good","rep",68,"female","hetero",14,"married","white",21.25
+1389,"good","other",38,"female","bisexual/other",20,"married","white",45
+1390,"good","dem",57,"male","bisexual/other",16,"never married","white",NA
+1391,"good","other",38,"male","hetero",15,"married","white",55
+1392,"good","rep",30,"female","bisexual/other",18,"never married","white",6.5
+1393,"fair","other",68,"male","bisexual/other",11,"married","white",21.25
+1395,"good","dem",82,"male","bisexual/other",12,"married","white",NA
+1397,"fair","rep",44,"male","bisexual/other",9,"married","white",37.5
+1398,"good","dem",82,"female","bisexual/other",13,"no longer married","white",NA
+1399,"excellent","dem",69,"female","bisexual/other",12,"married","other",NA
+1401,"good","dem",61,"female","bisexual/other",12,"no longer married","black",27.5
+1403,"excellent","other",57,"female","bisexual/other",13,"married","white",21.25
+1404,"fair","dem",37,"female","hetero",16,"never married","white",67.5
+1406,"good","dem",74,"female","bisexual/other",18,"no longer married","black",NA
+1407,"good","dem",71,"female","hetero",12,"no longer married","black",NA
+1408,"good","rep",22,"male","hetero",14,"never married","white",21.25
+1409,"poor","dem",26,"female","bisexual/other",10,"never married","white",7.5
+1410,"fair","rep",52,"female","bisexual/other",13,"married","white",45
+1411,"good","dem",84,"female","bisexual/other",12,"no longer married","black",NA
+1412,"poor","other",22,"male","bisexual/other",10,"never married","other",NA
+1413,"excellent","dem",28,"male","bisexual/other",13,"never married","black",7.5
+1414,"excellent","rep",60,"female","bisexual/other",12,"no longer married","white",37.5
+1416,"fair","other",45,"male","bisexual/other",15,"no longer married","black",37.5
+1418,"good","other",32,"female","bisexual/other",10,"never married","white",NA
+1419,"good","dem",43,"female","hetero",11,"no longer married","black",9
+1421,"excellent","dem",65,"male","bisexual/other",14,"married","white",NA
+1422,"good","dem",32,"female","hetero",14,"never married","white",NA
+1424,"good","rep",52,"male","bisexual/other",18,"married","white",67.5
+1425,"good","dem",58,"female","hetero",16,"married","white",55
+1427,"excellent","dem",77,"female","hetero",16,"no longer married","white",4.5
+1428,"excellent","rep",86,"male","bisexual/other",10,"married","white",NA
+1429,"good","dem",52,"female","hetero",14,"no longer married","white",27.5
+1430,"excellent","other",66,"male","bisexual/other",16,"no longer married","white",NA
+1432,"good","rep",47,"female","bisexual/other",14,"no longer married","white",27.5
+1434,"excellent","dem",35,"female","bisexual/other",15,"no longer married","black",55
+1435,"fair","other",50,"female","hetero",14,"no longer married","black",45
+1437,"good","dem",22,"male","hetero",15,"never married","black",NA
+1439,"fair","dem",26,"male","bisexual/other",12,"no longer married","black",21.25
+1440,"good","dem",24,"female","hetero",16,"married","white",NA
+1441,"good","other",NA,"female","bisexual/other",12,"married","white",21.25
+1442,"good","dem",38,"male","gay",14,"married","white",NA
+1443,"good","dem",31,"male","hetero",16,"never married","white",45
+1444,"good","dem",31,"female","bisexual/other",16,"never married","white",NA
+1445,"good","other",30,"female","bisexual/other",16,"never married","black",21.25
+1447,"fair","dem",49,"male","hetero",16,"never married","black",11.25
+1448,"good","rep",29,"male","bisexual/other",10,"married","white",21.25
+1449,"fair","rep",45,"female","bisexual/other",10,"no longer married","white",NA
+1451,"excellent","rep",34,"female","hetero",12,"married","white",67.5
+1454,"good","dem",48,"female","hetero",18,"married","white",32.5
+1457,"excellent","rep",65,"male","bisexual/other",11,"married","white",11.25
+1458,"good","dem",48,"female","hetero",13,"never married","black",82.5
+1459,"good","dem",27,"female","bisexual/other",16,"never married","black",NA
+1460,"excellent","dem",55,"female","bisexual/other",18,"married","black",100
+1461,"good","rep",25,"male","hetero",15,"married","white",NA
+1462,"fair","dem",55,"female","hetero",12,"no longer married","black",11.25
+1463,"fair","other",71,"female","hetero",13,"no longer married","white",NA
+1466,"excellent","dem",56,"female","hetero",16,"no longer married","white",67.5
+1468,"fair","dem",27,"female","bisexual/other",15,"never married","black",32.5
+1469,"excellent","other",69,"female","hetero",13,"married","black",100
+1472,"fair","dem",53,"female","bisexual/other",9,"married","black",37.5
+1474,"fair","other",34,"female","bisexual/other",11,"married","black",NA
+1475,"good","rep",37,"female","hetero",8,"no longer married","white",18.75
+1477,"fair","other",63,"female","bisexual/other",12,"no longer married","white",13.75
+1478,"fair","dem",32,"female","hetero",16,"never married","black",13.75
+1481,"good","other",22,"male","bisexual/other",12,"never married","black",5.5
+1482,"good","other",24,"female","bisexual/other",14,"never married","white",32.5
+1483,"good","dem",31,"female","hetero",16,"married","white",NA
+1484,"good","rep",43,"female","bisexual/other",16,"married","white",16.25
+1485,"excellent","rep",56,"female","hetero",16,"no longer married","white",200
+1487,"excellent","other",47,"male","bisexual/other",12,"married","white",67.5
+1488,"good","rep",72,"female","bisexual/other",16,"married","white",NA
+1489,"excellent","rep",60,"male","hetero",18,"married","white",200
+1491,"excellent","dem",38,"male","bisexual/other",16,"married","white",120
+1493,"poor","rep",67,"female","bisexual/other",16,"no longer married","white",NA
+1494,"excellent","other",39,"female","hetero",13,"never married","other",NA
+1495,"good","rep",75,"female","hetero",12,"no longer married","white",NA
+1496,"good","other",65,"female","bisexual/other",14,"married","white",2
+1498,"fair","dem",35,"female","bisexual/other",14,"no longer married","other",NA
+1499,"fair","dem",57,"female","hetero",18,"married","black",27.5
+1501,"good","dem",29,"male","bisexual/other",12,"never married","white",23.75
+1502,"fair","rep",66,"female","bisexual/other",12,"married","white",NA
+1503,"poor","dem",58,"female","bisexual/other",14,"no longer married","white",NA
+1504,"good","dem",77,"female","bisexual/other",16,"married","white",27.5
+1506,"excellent","other",34,"female","hetero",14,"married","white",3.5
+1508,"fair","rep",46,"female","bisexual/other",6,"married","white",NA
+1510,"fair","dem",23,"female","bisexual/other",13,"married","white",11.25
+1511,"good","dem",25,"female","hetero",16,"never married","black",45
+1514,"fair","other",58,"female","bisexual/other",14,"married","white",2
+1515,"fair","rep",50,"female","bisexual/other",8,"no longer married","white",32.5
+1517,"excellent","other",58,"female","bisexual/other",14,"no longer married","white",23.75
+1518,"good","dem",68,"female","hetero",15,"no longer married","white",NA
+1520,"good","dem",68,"female","bisexual/other",12,"no longer married","white",NA
+1521,"good","rep",54,"female","hetero",12,"no longer married","white",4.5
+1523,"good","dem",64,"female","bisexual/other",12,"no longer married","white",11.25
+1524,"fair","rep",58,"male","hetero",11,"married","white",45
+1526,"poor","dem",56,"female","bisexual/other",12,"married","white",67.5
+1527,"good","rep",69,"female","hetero",10,"married","white",NA
+1529,"excellent","rep",34,"male","bisexual/other",11,"no longer married","white",18.75
+1530,"fair","rep",67,"female","bisexual/other",13,"no longer married","white",NA
+1531,"fair","other",40,"female","bisexual/other",13,"never married","white",NA
+1533,"good","dem",32,"female","bisexual/other",15,"never married","black",45
+1535,"excellent","rep",35,"male","bisexual/other",9,"married","other",23.75
+1537,"good","dem",59,"male","hetero",13,"never married","black",0.5
+1539,"fair","rep",53,"male","bisexual/other",12,"married","black",18.75
+1540,"fair","other",39,"female","bisexual/other",10,"never married","black",5.5
+1542,"fair","other",26,"male","bisexual/other",12,"never married","black",NA
+1543,"excellent","dem",64,"male","hetero",20,"married","other",NA
+1544,"fair","other",62,"female","hetero",11,"no longer married","white",7.5
+1545,"good","other",72,"male","hetero",17,"no longer married","white",NA
+1546,"good","rep",58,"female","bisexual/other",12,"married","white",32.5
+1547,"good","other",22,"female","hetero",12,"married","white",NA
+1550,"good","other",62,"male","bisexual/other",16,"no longer married","white",NA
+1552,"good","rep",24,"female","bisexual/other",12,"married","white",21.25
+1553,"fair","dem",38,"female","hetero",11,"never married","black",NA
+1555,"excellent","rep",32,"female","hetero",16,"married","white",45
+1557,"good","rep",88,"male","hetero",10,"no longer married","white",NA
+1559,"good","rep",18,"male","hetero",12,"never married","white",NA
+1561,"good","dem",60,"female","bisexual/other",18,"married","black",37.5
+1563,"fair","dem",72,"female","hetero",18,"married","black",NA
+1565,"excellent","dem",27,"female","bisexual/other",14,"married","black",NA
+1566,"good","dem",42,"male","bisexual/other",11,"married","black",45
+1568,"good","rep",38,"male","hetero",12,"married","white",82.5
+1570,"good","dem",37,"male","gay",17,"never married","black",45
+1571,"good","dem",73,"female","bisexual/other",10,"no longer married","black",NA
+1572,"good","dem",21,"male","bisexual/other",15,"never married","black",11.25
+1573,"fair","dem",60,"male","bisexual/other",12,"never married","other",NA
+1574,"good","dem",70,"female","bisexual/other",12,"married","black",5.5
+1575,"good","dem",70,"female","bisexual/other",18,"no longer married","black",NA
+1577,"good","dem",35,"female","bisexual/other",11,"never married","black",13.75
+1578,"good","dem",51,"female","hetero",14,"married","black",45
+1579,"good","dem",37,"female","bisexual/other",12,"married","white",45
+1580,"poor","other",71,"male","bisexual/other",15,"married","white",NA
+1581,"poor","rep",35,"male","hetero",12,"married","white",NA
+1582,"fair","rep",78,"male","bisexual/other",14,"married","white",NA
+1583,"fair","rep",32,"male","hetero",12,"never married","white",4.5
+1585,"good","dem",41,"female","hetero",14,"married","black",55
+1588,"good","dem",36,"female","bisexual/other",13,"never married","black",3.5
+1589,"excellent","rep",85,"male","bisexual/other",14,"no longer married","white",NA
+1590,"good","dem",71,"male","bisexual/other",16,"no longer married","black",NA
+1591,"excellent","other",30,"male","hetero",16,"never married","white",NA
+1593,"good","other",88,"male","bisexual/other",11,"married","other",NA
+1594,"good","dem",76,"female","hetero",16,"no longer married","white",NA
+1596,"fair","rep",88,"female","bisexual/other",14,"no longer married","white",NA
+1597,"fair","dem",64,"female","hetero",11,"no longer married","white",NA
+1599,"fair","other",55,"female","hetero",9,"no longer married","white",13.75
+1600,"good","dem",55,"female","gay",12,"never married","white",37.5
+1602,"fair","dem",38,"male","hetero",14,"married","white",9
+1604,"good","dem",54,"female","bisexual/other",16,"never married","black",9
+1605,"excellent","rep",80,"female","hetero",12,"no longer married","white",NA
+1606,"good","other",33,"female","bisexual/other",17,"never married","black",37.5
+1607,"good","dem",25,"male","hetero",13,"never married","white",NA
+1609,"good","dem",38,"female","bisexual/other",14,"never married","white",32.5
+1610,"excellent","other",25,"male","hetero",12,"never married","white",NA
+1611,"good","other",63,"male","bisexual/other",12,"never married","white",32.5
+1612,"good","dem",22,"male","hetero",13,"never married","white",NA
+1614,"good","dem",69,"female","bisexual/other",12,"married","white",NA
+1615,"good","dem",20,"female","hetero",14,"never married","white",2
+1617,"excellent","other",19,"male","hetero",12,"never married","white",2
+1618,"good","dem",34,"male","bisexual/other",14,"never married","white",21.25
+1619,"excellent","rep",59,"female","bisexual/other",16,"married","white",NA
+1621,"good","rep",44,"female","bisexual/other",16,"married","white",NA
+1622,"good","dem",34,"male","hetero",19,"married","white",67.5
+1624,"good","rep",42,"female","bisexual/other",16,"married","white",NA
+1626,"good","dem",32,"female","bisexual/other",15,"never married","white",21.25
+1627,"fair","other",61,"female","hetero",12,"no longer married","white",NA
+1629,"poor","rep",39,"male","bisexual/other",12,"married","white",NA
+1631,"fair","rep",49,"female","bisexual/other",12,"married","white",NA
+1632,"good","rep",23,"male","hetero",12,"never married","white",NA
+1633,"good","other",56,"female","hetero",12,"married","white",21.25
+1635,"poor","rep",89,"female","bisexual/other",12,"no longer married","white",NA
+1636,"poor","rep",66,"female","hetero",14,"no longer married","white",NA
+1637,"excellent","rep",54,"female","bisexual/other",19,"married","white",200
+1639,"fair","dem",53,"female","bisexual/other",13,"no longer married","white",23.75
+1640,"poor","rep",76,"male","hetero",11,"married","white",NA
+1643,"fair","dem",71,"female","bisexual/other",16,"married","white",NA
+1644,"good","other",42,"male","hetero",15,"married","white",45
+1646,"fair","rep",44,"male","bisexual/other",12,"no longer married","white",NA
+1647,"good","other",63,"male","hetero",15,"no longer married","white",NA
+1648,"excellent","rep",68,"female","bisexual/other",12,"no longer married","white",NA
+1649,"excellent","dem",30,"female","gay",12,"never married","white",27.5
+1651,"good","dem",43,"female","bisexual/other",14,"never married","white",21.25
+1652,"excellent","other",26,"female","hetero",13,"never married","white",23.75
+1653,"fair","dem",57,"female","hetero",14,"no longer married","white",NA
+1655,"excellent","rep",42,"male","bisexual/other",16,"married","white",82.5
+1656,"good","dem",74,"male","hetero",12,"married","white",NA
+1658,"good","rep",65,"male","hetero",19,"no longer married","white",45
+1660,"good","dem",89,"male","bisexual/other",8,"no longer married","white",NA
+1661,"good","rep",44,"male","hetero",12,"no longer married","white",23.75
+1662,"good","dem",77,"female","bisexual/other",12,"no longer married","white",9
+1663,"good","dem",23,"male","hetero",13,"never married","white",13.75
+1665,"good","rep",37,"male","hetero",19,"no longer married","white",45
+1667,"fair","rep",60,"female","bisexual/other",13,"no longer married","white",45
+1669,"excellent","dem",43,"male","bisexual/other",16,"married","white",120
+1670,"excellent","rep",43,"female","hetero",16,"married","black",45
+1671,"fair","dem",21,"male","bisexual/other",12,"never married","white",37.5
+1672,"good","rep",51,"female","hetero",14,"no longer married","white",37.5
+1673,"good","rep",36,"male","bisexual/other",16,"married","white",45
+1674,"good","rep",69,"male","hetero",19,"no longer married","white",NA
+1679,"good","other",73,"male","bisexual/other",16,"no longer married","white",37.5
+1681,"good","dem",34,"male","hetero",16,"married","white",100
+1683,"fair","other",34,"male","bisexual/other",15,"married","white",NA
+1684,"good","rep",65,"female","bisexual/other",12,"married","white",NA
+1685,"good","other",46,"female","hetero",12,"no longer married","white",45
+1686,"excellent","rep",37,"male","bisexual/other",20,"married","white",NA
+1687,"fair","dem",22,"male","hetero",12,"never married","white",NA
+1689,"poor","other",59,"female","hetero",12,"never married","white",NA
+1690,"poor","other",69,"male","bisexual/other",18,"no longer married","white",NA
+1692,"excellent","dem",78,"male","bisexual/other",15,"married","white",45
+1693,"excellent","rep",88,"female","hetero",16,"no longer married","white",NA
+1695,"fair","dem",41,"male","hetero",9,"no longer married","white",NA
+1696,"fair","dem",41,"female","bisexual/other",12,"no longer married","white",NA
+1697,"fair","dem",56,"female","bisexual/other",11,"no longer married","white",NA
+1698,"fair","other",28,"male","hetero",12,"never married","black",NA
+1700,"fair","dem",44,"male","bisexual/other",13,"married","white",NA
+1701,"fair","dem",34,"female","bisexual/other",13,"married","black",NA
+1702,"good","rep",58,"male","bisexual/other",16,"no longer married","white",67.5
+1704,"good","dem",19,"female","bisexual/other",12,"never married","black",2
+1705,"fair","other",68,"male","hetero",12,"no longer married","white",NA
+1706,"excellent","rep",43,"male","bisexual/other",18,"married","white",120
+1709,"good","dem",28,"female","bisexual/other",19,"married","other",9
+1710,"excellent","other",23,"female","hetero",17,"never married","white",NA
+1712,"fair","other",37,"female","bisexual/other",12,"never married","white",NA
+1713,"fair","rep",31,"male","bisexual/other",14,"never married","white",NA
+1714,"good","dem",44,"female","bisexual/other",18,"no longer married","white",200
+1716,"good","dem",22,"male","bisexual/other",14,"never married","white",NA
+1717,"good","dem",22,"male","bisexual/other",15,"never married","white",NA
+1719,"excellent","dem",23,"male","bisexual/other",12,"never married","white",23.75
+1720,"good","dem",40,"female","hetero",14,"married","white",4.5
+1721,"fair","dem",78,"female","bisexual/other",12,"no longer married","white",NA
+1722,"good","other",62,"male","hetero",12,"no longer married","white",67.5
+1724,"good","dem",27,"male","bisexual/other",16,"never married","white",32.5
+1726,"good","other",52,"male","bisexual/other",18,"no longer married","white",55
+1728,"fair","dem",76,"female","bisexual/other",10,"no longer married","white",NA
+1729,"fair","rep",52,"male","hetero",14,"never married","white",11.25
+1731,"excellent","rep",50,"female","hetero",17,"never married","white",32.5
+1734,"good","rep",51,"female","bisexual/other",12,"married","white",NA
+1736,"good","rep",48,"female","bisexual/other",12,"married","white",NA
+1738,"excellent","rep",59,"female","bisexual/other",16,"married","white",23.75
+1739,"excellent","dem",24,"male","hetero",17,"never married","white",NA
+1740,"poor","rep",65,"male","hetero",12,"no longer married","white",NA
+1742,"fair","rep",39,"female","hetero",16,"no longer married","white",55
+1743,"good","other",66,"female","bisexual/other",11,"no longer married","black",NA
+1744,"good","dem",38,"male","hetero",18,"married","white",67.5
+1746,"good","dem",89,"female","bisexual/other",12,"no longer married","white",NA
+1748,"fair","rep",58,"male","bisexual/other",10,"no longer married","white",45
+1749,"fair","rep",25,"male","hetero",10,"never married","white",21.25
+1750,"excellent","rep",51,"male","hetero",12,"married","white",100
+1751,"good","dem",69,"female","bisexual/other",12,"no longer married","white",13.75
+1752,"excellent","rep",45,"female","hetero",16,"married","white",140
+1754,"good","dem",73,"female","bisexual/other",12,"no longer married","white",55
+1757,"good","dem",68,"male","bisexual/other",12,"married","white",NA
+1759,"excellent","dem",86,"female","bisexual/other",20,"never married","white",NA
+1760,"fair","rep",54,"male","hetero",12,"married","white",67.5
+1762,"excellent","dem",65,"female","hetero",14,"married","white",NA
+1764,"excellent","rep",67,"female","hetero",14,"no longer married","white",55
+1766,"poor","other",23,"female","bisexual/other",13,"married","white",NA
+1768,"good","rep",26,"female","bisexual/other",12,"never married","white",32.5
+1769,"good","other",41,"male","hetero",12,"married","white",67.5
+1772,"good","dem",86,"female","bisexual/other",17,"no longer married","white",NA
+1774,"good","rep",54,"female","bisexual/other",8,"no longer married","white",NA
+1775,"good","dem",51,"male","bisexual/other",1,"married","other",0.5
+1776,"good","dem",61,"male","hetero",14,"married","white",27.5
+1778,"good","other",54,"female","hetero",12,"married","white",23.75
+1779,"good","dem",72,"male","bisexual/other",20,"never married","white",NA
+1781,"good","rep",59,"male","hetero",16,"married","white",100
+1782,"fair","rep",31,"female","hetero",12,"never married","white",21.25
+1785,"good","other",34,"female","bisexual/other",16,"married","white",55
+1786,"good","rep",37,"female","gay",15,"married","white",NA
+1787,"good","rep",30,"female","bisexual/other",16,"married","white",67.5
+1788,"good","rep",33,"female","bisexual/other",16,"married","white",27.5
+1789,"good","rep",48,"male","bisexual/other",16,"no longer married","white",67.5
+1790,"excellent","rep",60,"female","bisexual/other",16,"married","white",2
+1791,"good","dem",47,"female","hetero",20,"married","white",NA
+1793,"fair","dem",67,"male","hetero",12,"married","white",NA
+1795,"good","rep",31,"female","bisexual/other",13,"never married","white",NA
+1796,"excellent","rep",36,"male","hetero",16,"married","white",82.5
+1798,"fair","rep",89,"female","bisexual/other",16,"no longer married","white",NA
+1799,"good","other",63,"female","hetero",16,"married","white",45
+1800,"excellent","other",24,"male","bisexual/other",11,"never married","black",32.5
+1801,"good","dem",35,"female","hetero",14,"no longer married","white",45
+1803,"good","rep",66,"male","bisexual/other",16,"married","white",82.5
+1805,"excellent","dem",53,"male","hetero",16,"married","black",45
+1807,"excellent","dem",32,"female","bisexual/other",16,"married","white",NA
+1808,"fair","other",26,"female","bisexual/other",12,"never married","white",21.25
+1809,"good","rep",35,"female","hetero",16,"married","white",45
+1810,"excellent","rep",59,"male","bisexual/other",19,"married","white",120
+1811,"excellent","dem",55,"male","bisexual/other",14,"married","white",32.5
+1812,"good","dem",41,"female","hetero",16,"married","white",NA
+1813,"excellent","other",85,"male","bisexual/other",14,"no longer married","white",NA
+1815,"good","dem",56,"male","hetero",12,"no longer married","white",NA
+1816,"fair","rep",77,"male","bisexual/other",12,"no longer married","white",NA
+1817,"good","dem",49,"male","hetero",12,"no longer married","white",37.5
+1819,"poor","dem",66,"male","bisexual/other",14,"no longer married","white",NA
+1820,"good","dem",56,"male","hetero",13,"never married","black",9
+1822,"excellent","rep",45,"male","bisexual/other",17,"no longer married","white",120
+1823,"good","rep",66,"male","bisexual/other",14,"married","white",NA
+1825,"excellent","rep",58,"female","bisexual/other",12,"married","white",120
+1826,"excellent","other",28,"female","hetero",12,"married","white",NA
+1828,"good","rep",87,"female","bisexual/other",11,"married","white",3.5
+1829,"good","rep",56,"female","bisexual/other",16,"no longer married","white",140
+1831,"good","rep",72,"female","bisexual/other",13,"married","white",NA
+1832,"good","dem",49,"female","bisexual/other",16,"never married","black",45
+1833,"excellent","other",25,"female","bisexual/other",12,"never married","black",11.25
+1834,"poor","dem",53,"male","bisexual/other",11,"never married","black",NA
+1835,"excellent","other",23,"male","bisexual/other",12,"never married","black",NA
+1836,"good","rep",23,"female","hetero",12,"never married","black",NA
+1837,"fair","other",73,"female","bisexual/other",14,"married","white",23.75
+1838,"good","rep",18,"female","hetero",12,"married","white",NA
+1843,"good","rep",70,"female","bisexual/other",13,"never married","white",NA
+1845,"good","dem",85,"male","bisexual/other",19,"no longer married","black",45
+1847,"good","dem",68,"male","hetero",15,"no longer married","black",45
+1848,"good","rep",64,"female","bisexual/other",12,"no longer married","white",27.5
+1849,"good","dem",75,"male","hetero",12,"no longer married","white",NA
+1852,"good","other",24,"female","bisexual/other",12,"never married","white",3.5
+1853,"fair","rep",27,"male","hetero",12,"never married","white",27.5
+1854,"good","other",28,"female","bisexual/other",10,"married","white",NA
+1856,"excellent","rep",67,"female","hetero",13,"married","white",NA
+1858,"excellent","dem",86,"female","hetero",16,"no longer married","white",NA
+1859,"good","other",33,"female","bisexual/other",12,"married","other",16.25
+1860,"excellent","other",28,"female","hetero",18,"never married","white",32.5
+1861,"good","other",30,"female","bisexual/other",9,"no longer married","white",NA
+1862,"good","dem",23,"female","gay",14,"never married","white",2
+1864,"good","rep",77,"male","bisexual/other",11,"no longer married","white",100
+1866,"fair","rep",81,"male","hetero",14,"married","white",NA
+1867,"fair","other",32,"female","bisexual/other",9,"no longer married","other",NA
+1868,"excellent","rep",34,"male","hetero",11,"married","white",67.5
+1869,"poor","dem",39,"female","bisexual/other",19,"never married","white",NA
+1870,"excellent","dem",59,"female","hetero",13,"no longer married","other",45
+1871,"good","other",49,"male","bisexual/other",13,"no longer married","other",160
+1872,"good","rep",84,"male","hetero",16,"married","white",NA
+1874,"excellent","dem",52,"male","bisexual/other",13,"married","other",NA
+1877,"excellent","dem",67,"female","bisexual/other",12,"never married","black",NA
+1878,"excellent","other",18,"male","hetero",10,"never married","white",NA
+1880,"fair","rep",49,"female","hetero",9,"no longer married","white",3.5
+1881,"good","dem",24,"female","bisexual/other",13,"never married","black",NA
+1882,"fair","dem",72,"female","hetero",8,"no longer married","other",NA
+1883,"good","rep",54,"female","bisexual/other",12,"married","white",NA
+1884,"good","rep",21,"male","bisexual/other",12,"never married","other",0.5
+1886,"fair","dem",60,"female","bisexual/other",12,"no longer married","white",67.5
+1887,"good","rep",25,"female","hetero",12,"married","white",NA
+1889,"good","other",33,"male","bisexual/other",12,"married","white",67.5
+1890,"good","rep",30,"female","hetero",12,"married","other",37.5
+1891,"fair","dem",43,"male","hetero",11,"no longer married","other",23.75
+1893,"poor","other",57,"male","hetero",11,"never married","black",NA
+1895,"good","dem",49,"female","bisexual/other",13,"no longer married","other",NA
+1896,"good","other",61,"female","hetero",10,"no longer married","white",21.25
+1897,"good","dem",39,"male","hetero",14,"no longer married","other",67.5
+1899,"excellent","dem",55,"female","bisexual/other",8,"married","other",67.5
+1903,"good","other",80,"female","bisexual/other",10,"married","white",NA
+1904,"excellent","dem",43,"male","hetero",10,"married","white",67.5
+1905,"fair","other",45,"female","bisexual/other",4,"no longer married","other",3.5
+1906,"fair","dem",33,"male","bisexual/other",15,"married","black",55
+1907,"good","rep",51,"male","hetero",14,"no longer married","white",120
+1908,"fair","other",34,"female","hetero",12,"never married","white",11.25
+1909,"good","rep",28,"male","hetero",17,"married","white",120
+1911,"fair","dem",61,"male","bisexual/other",16,"no longer married","white",200
+1912,"good","dem",35,"female","bisexual/other",20,"married","white",55
+1914,"poor","rep",43,"male","bisexual/other",12,"no longer married","white",NA
+1915,"excellent","dem",20,"male","gay",11,"never married","white",NA
+1916,"good","other",60,"male","bisexual/other",20,"married","white",NA
+1917,"good","rep",64,"female","hetero",13,"married","white",NA
+1918,"poor","other",34,"male","bisexual/other",12,"never married","other",NA
+1921,"good","dem",31,"female","hetero",14,"married","white",NA
+1923,"good","dem",64,"female","bisexual/other",16,"no longer married","other",55
+1924,"fair","dem",38,"female","bisexual/other",15,"never married","white",NA
+1925,"good","dem",56,"male","bisexual/other",11,"never married","white",27.5
+1926,"excellent","other",60,"female","hetero",17,"no longer married","white",55
+1927,"excellent","other",27,"male","bisexual/other",13,"never married","white",NA
+1928,"poor","other",25,"female","hetero",12,"never married","white",5.5
+1929,"good","other",38,"male","bisexual/other",12,"never married","other",NA
+1930,"excellent","rep",71,"female","bisexual/other",16,"no longer married","other",NA
+1931,"good","dem",73,"male","bisexual/other",11,"married","white",11.25
+1932,"excellent","dem",61,"female","hetero",20,"married","white",NA
+1935,"fair","rep",53,"female","bisexual/other",12,"no longer married","white",2
+1936,"good","dem",41,"male","hetero",16,"married","white",NA
+1937,"excellent","rep",56,"female","bisexual/other",18,"married","white",82.5
+1938,"good","dem",26,"female","hetero",16,"married","white",NA
+1939,"good","other",39,"male","bisexual/other",19,"married","white",120
+1940,"excellent","rep",60,"female","bisexual/other",16,"married","white",NA
+1941,"excellent","rep",56,"male","bisexual/other",20,"married","white",140
+1942,"good","dem",18,"female","hetero",12,"never married","white",NA
+1943,"excellent","rep",62,"female","bisexual/other",16,"married","white",NA
+1944,"excellent","dem",48,"female","hetero",14,"married","white",NA
+1946,"good","other",55,"male","bisexual/other",16,"married","white",200
+1948,"good","dem",24,"male","bisexual/other",16,"never married","white",9
+1950,"excellent","other",29,"male","bisexual/other",16,"never married","white",82.5
+1951,"fair","dem",66,"female","hetero",15,"no longer married","other",NA
+1952,"excellent","rep",33,"female","bisexual/other",16,"no longer married","white",45
+1953,"fair","rep",58,"male","hetero",14,"no longer married","white",NA
+1954,"fair","rep",76,"female","bisexual/other",12,"no longer married","white",NA
+1956,"good","dem",30,"female","bisexual/other",12,"never married","white",55
+1958,"excellent","rep",51,"male","bisexual/other",14,"no longer married","white",37.5
+1959,"good","dem",63,"male","hetero",12,"married","white",NA
+1960,"fair","dem",39,"male","bisexual/other",10,"married","white",NA
+1961,"fair","rep",69,"female","hetero",14,"no longer married","other",16.25
+1962,"fair","other",24,"male","bisexual/other",12,"married","white",32.5
+1963,"good","other",NA,"male","bisexual/other",20,"married","other",NA
+1965,"good","other",30,"male","bisexual/other",12,"married","other",45
+1966,"good","dem",32,"female","bisexual/other",13,"married","white",45
+1968,"good","dem",67,"female","bisexual/other",13,"no longer married","white",NA
+1969,"poor","other",28,"female","bisexual/other",14,"no longer married","white",21.25
+1970,"good","other",60,"female","bisexual/other",16,"never married","other",NA
+1971,"good","rep",51,"female","bisexual/other",14,"no longer married","white",120
+1972,"good","dem",32,"male","hetero",16,"never married","white",32.5
+1973,"good","dem",28,"male","bisexual/other",16,"never married","black",13.75
+1974,"good","rep",59,"male","hetero",13,"married","white",55
+1976,"good","rep",70,"female","bisexual/other",12,"married","white",NA
+1977,"fair","rep",36,"male","hetero",15,"never married","black",18.75
+1979,"fair","other",59,"male","bisexual/other",2,"no longer married","other",7.5
+1980,"fair","other",42,"female","hetero",9,"married","other",16.25
+1982,"good","dem",56,"male","bisexual/other",13,"no longer married","white",NA
+1983,"fair","dem",34,"male","hetero",18,"never married","white",82.5
+1985,"good","rep",22,"female","bisexual/other",12,"never married","black",6.5
+1987,"excellent","other",22,"female","hetero",12,"never married","black",NA
+1988,"fair","rep",25,"female","bisexual/other",12,"never married","white",NA
+1989,"fair","other",44,"male","hetero",12,"never married","other",NA
+1991,"good","rep",44,"male","bisexual/other",11,"never married","other",0.5
+1992,"good","other",47,"male","hetero",0,"no longer married","other",4.5
+1993,"fair","other",21,"male","bisexual/other",12,"never married","white",NA
+1994,"fair","other",43,"female","bisexual/other",9,"no longer married","white",NA
+1995,"fair","other",51,"male","bisexual/other",8,"no longer married","white",NA
+1998,"excellent","dem",85,"female","hetero",16,"no longer married","white",NA
+2001,"good","rep",81,"male","bisexual/other",11,"married","other",NA
+2005,"good","dem",49,"male","bisexual/other",15,"married","white",NA
+2007,"fair","dem",29,"female","bisexual/other",20,"never married","other",NA
+2009,"good","dem",19,"female","bisexual/other",12,"never married","white",NA
+2011,"good","dem",19,"male","bisexual/other",12,"never married","white",NA
+2013,"fair","dem",25,"male","hetero",16,"never married","white",18.75
+2014,"good","other",73,"male","bisexual/other",15,"married","white",NA
+2017,"fair","rep",49,"female","bisexual/other",12,"no longer married","white",NA
+2018,"fair","rep",69,"male","hetero",15,"married","white",NA
+2020,"good","rep",51,"male","bisexual/other",15,"married","white",NA
+2022,"excellent","rep",66,"female","bisexual/other",15,"married","white",NA
+2024,"good","dem",57,"male","bisexual/other",17,"no longer married","white",100
+2025,"good","rep",44,"male","hetero",20,"married","white",160
+2026,"good","other",26,"female","bisexual/other",16,"never married","black",45
+2027,"excellent","dem",44,"male","hetero",20,"never married","white",45
+2028,"excellent","dem",58,"female","bisexual/other",19,"no longer married","white",160
+2030,"good","other",24,"male","hetero",19,"married","white",NA
+2031,"good","dem",28,"female","bisexual/other",15,"married","white",21.25
+2033,"good","dem",34,"male","bisexual/other",14,"married","white",2
+2035,"good","dem",62,"female","hetero",14,"married","other",32.5
+2037,"good","dem",37,"male","bisexual/other",14,"never married","white",27.5
+2038,"good","rep",36,"male","hetero",9,"no longer married","white",32.5
+2039,"poor","other",41,"male","bisexual/other",10,"no longer married","white",NA
+2041,"excellent","rep",71,"male","bisexual/other",19,"married","white",100
+2043,"excellent","dem",44,"male","bisexual/other",12,"no longer married","other",32.5
+2044,"excellent","other",50,"male","bisexual/other",14,"no longer married","other",55
+2046,"excellent","rep",69,"female","hetero",16,"no longer married","other",NA
+2047,"fair","rep",63,"female","bisexual/other",18,"married","white",NA
+2049,"good","other",66,"male","bisexual/other",12,"married","white",5.5
+2050,"excellent","rep",35,"male","bisexual/other",12,"no longer married","white",45
+2051,"good","other",44,"male","hetero",12,"married","white",45
+2052,"good","dem",81,"female","bisexual/other",12,"no longer married","white",NA
+2053,"poor","rep",76,"male","hetero",14,"married","white",NA
+2054,"excellent","other",34,"female","hetero",12,"married","white",NA
+2055,"fair","rep",18,"male","bisexual/other",8,"never married","white",4.5
+2056,"good","dem",36,"male","hetero",12,"never married","white",27.5
+2058,"fair","other",41,"female","hetero",11,"married","white",NA
+2060,"good","rep",57,"male","bisexual/other",12,"no longer married","white",NA
+2061,"poor","dem",30,"female","hetero",14,"never married","white",NA
+2063,"good","dem",53,"female","bisexual/other",12,"never married","white",18.75
+2066,"excellent","rep",37,"male","hetero",12,"never married","other",3.5
+2069,"good","rep",52,"female","hetero",14,"married","white",55
+2071,"fair","rep",60,"female","hetero",11,"no longer married","white",NA
+2073,"good","dem",33,"female","bisexual/other",9,"married","white",NA
+2075,"fair","rep",53,"female","bisexual/other",12,"no longer married","white",11.25
+2076,"good","dem",66,"female","hetero",12,"no longer married","white",32.5
+2078,"good","other",27,"female","bisexual/other",12,"married","white",NA
+2081,"good","other",28,"female","bisexual/other",14,"married","white",11.25
+2083,"good","other",59,"male","bisexual/other",14,"married","white",21.25
+2085,"good","rep",75,"female","bisexual/other",12,"married","white",NA
+2088,"good","rep",36,"male","hetero",14,"married","other",67.5
+2089,"good","rep",65,"male","bisexual/other",8,"married","white",NA
+2091,"fair","rep",29,"female","bisexual/other",13,"never married","white",9
+2093,"good","rep",39,"male","bisexual/other",17,"married","white",82.5
+2094,"excellent","rep",40,"female","bisexual/other",14,"married","white",67.5
+2096,"fair","rep",63,"female","hetero",12,"married","white",NA
+2097,"good","rep",39,"female","bisexual/other",12,"married","white",NA
+2098,"excellent","rep",33,"female","bisexual/other",14,"never married","white",32.5
+2099,"excellent","rep",57,"female","bisexual/other",13,"no longer married","white",32.5
+2100,"excellent","dem",44,"female","hetero",16,"no longer married","white",67.5
+2101,"good","rep",43,"female","bisexual/other",17,"married","white",NA
+2102,"excellent","rep",48,"male","bisexual/other",15,"married","white",140
+2103,"good","other",27,"male","hetero",12,"never married","white",55
+2104,"good","dem",59,"female","hetero",12,"no longer married","white",NA
+2105,"good","dem",46,"male","bisexual/other",13,"married","other",67.5
+2107,"excellent","rep",63,"male","hetero",16,"married","white",67.5
+2108,"good","rep",76,"female","bisexual/other",12,"no longer married","white",NA
+2109,"excellent","rep",56,"female","hetero",16,"married","white",200
+2110,"excellent","rep",39,"male","bisexual/other",13,"married","white",32.5
+2111,"fair","other",34,"female","bisexual/other",14,"never married","white",13.75
+2112,"good","other",36,"female","bisexual/other",12,"married","white",13.75
+2114,"good","other",62,"male","gay",20,"no longer married","white",NA
+2115,"good","dem",75,"female","bisexual/other",14,"no longer married","black",NA
+2119,"good","other",20,"female","hetero",10,"married","white",NA
+2122,"good","rep",52,"female","hetero",13,"married","white",NA
+2123,"good","rep",87,"male","hetero",14,"no longer married","white",NA
+2124,"fair","other",39,"male","hetero",14,"married","white",27.5
+2126,"fair","rep",30,"female","hetero",14,"never married","white",NA
+2127,"good","rep",20,"female","hetero",13,"never married","white",0.5
+2129,"fair","dem",36,"female","hetero",17,"married","white",27.5
+2131,"fair","dem",62,"male","bisexual/other",12,"married","white",100
+2133,"good","dem",38,"female","bisexual/other",20,"married","white",45
+2134,"excellent","rep",59,"male","hetero",16,"married","white",67.5
+2136,"poor","dem",55,"female","bisexual/other",12,"married","white",NA
+2137,"poor","rep",37,"female","hetero",12,"married","white",32.5
+2139,"excellent","other",58,"female","bisexual/other",9,"married","white",NA
+2141,"fair","dem",46,"female","hetero",12,"married","white",9
+2143,"fair","rep",85,"male","bisexual/other",12,"married","white",NA
+2144,"fair","rep",73,"male","bisexual/other",16,"married","white",NA
+2145,"good","other",89,"male","hetero",12,"no longer married","white",120
+2146,"fair","dem",69,"male","bisexual/other",14,"no longer married","white",NA
+2148,"excellent","rep",66,"female","bisexual/other",12,"married","white",NA
+2150,"poor","rep",56,"male","bisexual/other",6,"married","white",NA
+2153,"fair","other",34,"female","hetero",14,"never married","white",27.5
+2156,"excellent","dem",26,"male","bisexual/other",17,"never married","white",21.25
+2157,"excellent","dem",53,"male","bisexual/other",12,"no longer married","white",200
+2159,"fair","other",20,"female","bisexual/other",13,"never married","black",0.5
+2160,"good","rep",39,"female","hetero",12,"no longer married","white",45
+2161,"good","dem",38,"female","bisexual/other",12,"married","white",55
+2164,"good","dem",82,"male","bisexual/other",9,"married","white",NA
+2165,"good","dem",47,"female","hetero",12,"never married","white",NA
+2166,"good","rep",38,"male","bisexual/other",14,"married","white",NA
+2167,"good","dem",25,"male","bisexual/other",14,"never married","black",27.5
+2169,"good","rep",55,"female","hetero",10,"married","other",32.5
+2170,"good","rep",74,"female","bisexual/other",16,"never married","white",NA
+2171,"excellent","rep",77,"male","bisexual/other",12,"married","white",NA
+2172,"good","dem",61,"female","bisexual/other",12,"no longer married","white",0.5
+2173,"good","rep",29,"male","hetero",12,"never married","white",100
+2174,"good","other",29,"female","bisexual/other",12,"married","white",13.75
+2176,"fair","dem",37,"female","hetero",12,"no longer married","white",18.75
+2178,"good","dem",80,"female","bisexual/other",14,"no longer married","white",13.75
+2179,"good","dem",78,"female","hetero",12,"no longer married","white",NA
+2180,"fair","rep",59,"male","hetero",12,"married","white",NA
+2184,"excellent","rep",44,"female","bisexual/other",16,"married","white",NA
+2186,"fair","dem",83,"male","bisexual/other",12,"married","white",NA
+2187,"fair","other",47,"female","bisexual/other",12,"no longer married","white",45
+2189,"fair","other",37,"male","bisexual/other",12,"married","white",NA
+2191,"excellent","rep",40,"male","bisexual/other",12,"married","white",45
+2192,"good","dem",39,"male","hetero",16,"married","white",82.5
+2193,"good","other",30,"female","bisexual/other",19,"never married","white",13.75
+2194,"good","other",29,"male","hetero",15,"never married","other",NA
+2195,"good","other",24,"female","bisexual/other",12,"never married","other",2
+2198,"fair","dem",59,"male","bisexual/other",16,"no longer married","black",37.5
+2199,"good","dem",39,"male","hetero",18,"never married","white",37.5
+2201,"good","rep",56,"female","bisexual/other",10,"no longer married","white",4.5
+2204,"good","other",35,"female","hetero",13,"never married","white",NA
+2206,"good","other",62,"male","bisexual/other",12,"married","white",67.5
+2207,"good","rep",33,"female","hetero",20,"married","white",45
+2209,"good","other",40,"female","bisexual/other",16,"married","white",18.75
+2210,"fair","rep",63,"female","hetero",14,"no longer married","white",NA
+2211,"excellent","dem",50,"female","hetero",20,"married","white",67.5
+2213,"fair","rep",77,"male","bisexual/other",8,"no longer married","white",NA
+2214,"fair","dem",33,"male","bisexual/other",12,"never married","white",NA
+2217,"good","dem",51,"male","bisexual/other",17,"married","white",82.5
+2218,"good","other",42,"female","hetero",12,"never married","white",9
+2219,"good","other",73,"male","bisexual/other",13,"married","white",NA
+2221,"poor","other",57,"male","bisexual/other",12,"never married","white",NA
+2222,"fair","other",65,"male","bisexual/other",19,NA,"white",NA
+2224,"good","rep",59,"male","bisexual/other",13,"no longer married","white",45
+2225,"good","rep",27,"female","bisexual/other",18,"married","white",NA
+2226,"good","dem",29,"male","hetero",16,"never married","white",37.5
+2227,"fair","rep",32,"female","bisexual/other",12,"married","white",27.5
+2228,"good","rep",32,"male","hetero",11,"never married","white",37.5
+2230,"good","dem",40,"female","bisexual/other",12,"married","white",23.75
+2231,"excellent","rep",30,"female","hetero",17,"married","white",NA
+2232,"good","dem",68,"female","bisexual/other",14,"never married","white",NA
+2234,"fair","dem",51,"male","bisexual/other",9,"never married","white",NA
+2235,"poor","other",56,"female","bisexual/other",11,"married","white",27.5
+2237,"poor","dem",80,"male","bisexual/other",13,"married","other",NA
+2238,"fair","dem",53,"female","hetero",8,"married","white",NA
+2240,"good","dem",57,"female","bisexual/other",12,"married","white",32.5
+2241,"poor","rep",59,"female","hetero",10,"no longer married","white",NA
+2242,"good","rep",61,"female","bisexual/other",12,"married","white",13.75
+2244,"poor","dem",66,"male","bisexual/other",12,"no longer married","white",NA
+2245,"good","dem",55,"female","bisexual/other",12,"no longer married","white",3.5
+2246,"good","rep",60,"female","hetero",12,"married","white",NA
+2247,"good","rep",79,"female","bisexual/other",12,"no longer married","white",NA
+2248,"fair","dem",55,"male","hetero",12,"married","white",120
+2250,"excellent","dem",56,"female","bisexual/other",14,"no longer married","white",45
+2251,"good","dem",66,"male","hetero",12,"married","white",NA
+2252,"good","rep",30,"female","bisexual/other",19,"married","white",55
+2253,"good","other",21,"female","bisexual/other",12,"never married","white",NA
+2254,"good","rep",29,"male","hetero",12,"no longer married","white",11.25
+2256,"fair","dem",57,"female","bisexual/other",12,"no longer married","white",37.5
+2258,"fair","dem",77,"male","bisexual/other",8,"married","white",NA
+2259,"excellent","dem",67,"male","bisexual/other",10,"no longer married","black",NA
+2261,"fair","dem",24,"female","hetero",16,"never married","black",32.5
+2262,"good","other",21,"female","bisexual/other",16,"never married","other",23.75
+2263,"fair","dem",30,"male","bisexual/other",6,"never married","other",5.5
+2264,"fair","rep",28,"female","bisexual/other",13,"never married","black",NA
+2265,"good","dem",22,"female","bisexual/other",14,"never married","black",NA
+2267,"good","rep",65,"male","bisexual/other",12,"married","white",NA
+2269,"poor","other",89,"female","bisexual/other",12,"never married","white",NA
+2270,"good","dem",46,"male","hetero",12,"no longer married","black",82.5
+2272,"good","other",34,"female","bisexual/other",11,"married","white",9
+2273,"fair","dem",34,"female","hetero",14,"married","black",45
+2274,"fair","dem",64,"female","bisexual/other",10,"no longer married","black",NA
+2276,"fair","dem",56,"male","hetero",14,"married","black",2
+2277,"fair","rep",26,"female","bisexual/other",14,"never married","black",NA
+2279,"good","rep",68,"female","hetero",17,"never married","white",13.75
+2282,"excellent","other",22,"male","bisexual/other",12,"never married","black",NA
+2284,"excellent","other",35,"female","bisexual/other",12,"married","white",23.75
+2285,"fair","rep",43,"male","hetero",9,"married","white",NA
+2287,"excellent","dem",34,"male","bisexual/other",6,"never married","other",21.25
+2288,"poor","rep",60,"male","bisexual/other",10,"married","white",NA
+2290,"good","other",37,"female","bisexual/other",11,"never married","black",NA
+2291,"good","other",25,"female","gay",11,"never married","black",NA
+2293,"excellent","dem",41,"male","bisexual/other",12,"never married","black",0.5
+2295,"good","rep",23,"female","bisexual/other",13,"never married","black",2
+2296,"fair","dem",53,"female","bisexual/other",12,"never married","black",NA
+2297,"good","dem",30,"male","hetero",10,"never married","black",27.5
+2298,"excellent","dem",21,"female","bisexual/other",13,"never married","black",3.5
+2299,"fair","other",75,"male","bisexual/other",6,"no longer married","black",NA
+2300,"fair","dem",77,"male","bisexual/other",12,"married","black",NA
+2301,"good","dem",68,"male","hetero",10,"married","black",NA
+2302,"good","dem",28,"female","bisexual/other",12,"married","black",21.25
+2303,"excellent","rep",20,"female","hetero",12,"never married","black",NA
+2305,"fair","dem",52,"male","bisexual/other",10,"no longer married","black",82.5
+2306,"good","other",40,"male","hetero",12,"married","white",32.5
+2307,"good","other",31,"female","hetero",12,"married","black",NA
+2309,"poor","dem",53,"female","bisexual/other",9,"never married","black",NA
+2310,"good","dem",78,"male","hetero",14,"no longer married","black",NA
+2312,"good","rep",25,"female","bisexual/other",14,"never married","white",9
+2313,"good","other",53,"female","bisexual/other",8,"married","white",23.75
+2314,"fair","rep",54,"female","bisexual/other",12,"no longer married","white",NA
+2316,"fair","other",75,"male","bisexual/other",NA,"married","white",NA
+2317,"good","rep",56,"male","bisexual/other",17,"married","white",120
+2318,"good","dem",36,"female","hetero",20,"married","white",55
+2319,"excellent","other",52,"female","hetero",12,"no longer married","white",55
+2321,"good","other",67,"male","bisexual/other",12,"no longer married","black",NA
+2322,"good","rep",53,"male","hetero",15,"married","white",82.5
+2325,"fair","other",68,"female","bisexual/other",12,"no longer married","white",6.5
+2326,"excellent","dem",57,"female","bisexual/other",16,"no longer married","white",6.5
+2327,"excellent","rep",39,"male","hetero",12,"never married","white",82.5
+2329,"good","rep",74,"male","hetero",17,"no longer married","white",NA
+2333,"good","dem",35,"female","hetero",17,"married","white",NA
+2334,"excellent","dem",76,"male","bisexual/other",20,"married","white",NA
+2335,"excellent","dem",65,"female","hetero",18,"no longer married","white",NA
+2336,"good","dem",54,"female","bisexual/other",18,"married","white",37.5
+2338,"good","rep",87,"female","hetero",12,"no longer married","white",NA
+2339,"fair","rep",46,"female","hetero",12,"no longer married","white",NA
+2340,"fair","other",29,"female","bisexual/other",14,"married","white",32.5
+2342,"fair","rep",68,"female","bisexual/other",14,"no longer married","white",NA
+2343,"good","rep",19,"male","hetero",12,"never married","white",NA
+2344,"good","other",37,"female","bisexual/other",12,"no longer married","white",NA
+2345,"excellent","rep",75,"female","bisexual/other",12,"married","white",16.25
+2346,"excellent","other",67,"female","hetero",12,"married","white",3.5
+2348,"good","other",79,"female","bisexual/other",12,"no longer married","white",NA

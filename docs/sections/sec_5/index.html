@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../style/css/hiacs.css">
+
+    <title>CS109A - S-Section 05: Logistic Regression, Multiple Logistic Regression, and KNN-classification</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../..">
+      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+ <div>
+  <div class="float-left">
+    <p>
+      Key Word(s):       <a href="../../pages/materials.html#Logistic Regression"
+        >Logistic Regression</a
+      >,       <a href="../../pages/materials.html#Multiple Logistic Regression"
+        >Multiple Logistic Regression</a
+      >,       <a href="../../pages/materials.html#classification"
+        >classification</a
+      >,       <a href="../../pages/materials.html#decision boundaries"
+        >decision boundaries</a
+      >,       <a href="../../pages/materials.html#KNN-classification"
+        >KNN-classification</a
+      >,       <a href="../../pages/materials.html#pipeline"
+        >pipeline</a
+      >     </p>
+  </div>
+  <div class="float-right">
+    <a href="../../sections/section5/notebook/cs109a_section_5.ipynb">
+      Download Notebook <i class="fas fa-download"></i>
+    </a>
+  </div>
+</div>
+<br />
+<hr />
+ <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">Standard Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification<a class="anchor-link" href="#Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this section we will be covering Linear Regression, KNN-Classification, and Logistic Regression on the famous iris dataset.</p>
+<p>Specifically, we will:</p>
+<ol>
+<li>Import data and data exploration.</li>
+<li>Fit a linear regression model for classification, understand drawbacks, and interpret results.</li>
+<li>Fit a simple logistic regression model for classification, compare performance, and interpret results.</li>
+<li>Visualize Predictions and Decision boundaries.</li>
+<li>Fit a higher order polynomial logistic regression model for classification, compare performance, plot decision boundaries, and interpret results.</li>
+<li>Fit a higher order polynomial logistic regression model for classification with different regularization parameters C ( [10000, 100, 1] )</li>
+<li>Optional: Fit a KNN-classification model for classification, plot decision boundaries, and interpret results.</li>
+<li>Optional Homework Tip: Pipeline building to sequentially apply a list of transforms (e.g. scaling, polynomial feature creation) and a final estimator.</li>
+</ol>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this section we will be using the following packages:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data and Stats packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.api</span> <span class="k">import</span> <span class="n">OLS</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+
+<span class="c1"># Visualization packages</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Aesthetic settings</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Import-data-and-data-exploration.">1. Import data and data exploration.<a class="anchor-link" href="#1.-Import-data-and-data-exploration.">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="What-our-the-target-and-features?">What our the target and features?<a class="anchor-link" href="#What-our-the-target-and-features?">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we can see, the response variable (y) is the flower type, it has 3 classes:</p>
+<ul>
+<li>setosa</li>
+<li>versicolor</li>
+<li>virginica</li>
+</ul>
+<p>The 4 predictor variables are flower characteristics (x):</p>
+<ul>
+<li>'sepal length (cm)'</li>
+<li>'sepal width (cm)'</li>
+<li>'petal length (cm)'</li>
+<li>'petal width (cm)'</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'species'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Explore-Data">Explore Data<a class="anchor-link" href="#Explore-Data">¶</a></h2><p>Check which variables have high correlations and distinctive patterns with the response.</p>
+<p>Any patterns worth mentioning?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">full_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">full_df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Are the features sepal/petal length and width uniformally distributed or do you observe some clusters of data points?</strong></p>
+<p>What do you expect? Let's add color according to our response variable: 'species' = flower species.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">full_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'species'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some features like 'petal length' and 'petal width' do have very high correlations and distinctive patterns with the response variable 'flower species'. When we would use these features for predicting the flower species, the classification wouldn't be very difficult. Certain ranges of 'petal length' and 'petal width' are very much correlated with a specific flower species and they are almost seperating our classes perfectly.</p>
+<p><strong>Just for illustration purposes we will continue to use only 'sepal width (cm)' and 'sepal length (cm)'. We are making the problem harder for ourselves by only using 'weaker' or less-discriminative features.</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[[</span><span class="s1">'sepal width (cm)'</span><span class="p">,</span> <span class="s1">'sepal length (cm)'</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Train-Test-Split">Train-Test Split<a class="anchor-link" href="#Train-Test-Split">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Fit-a-linear-regression-model-for-classification,-understand-drawbacks,-and-interpret-results.">2. Fit a linear regression model for classification, understand drawbacks, and interpret results.<a class="anchor-link" href="#2.-Fit-a-linear-regression-model-for-classification,-understand-drawbacks,-and-interpret-results.">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_linear_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1">#Add constant to x_train and x_test</span>
+<span class="n">X_train_cst</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_cst</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#Training</span>
+<span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_cst</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Why do we get this error? Something is wrong with y_train and y_pred_train...</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fact that our linear regression is outputting continuous predicstions is one of the major drawbacks of linear regression for classification. We can solve this in two manners:</p>
+<ul>
+<li>simply rounding our prediction by using <code>np.round())</code> and converting it to an int data type with <code>.astype(int)</code></li>
+<li>or use a modified algorithm that has bounded outputs (more about Logistic Regression later)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_pred_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">y_pred_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_linear_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1">#Add constant to x_train and x_test</span>
+<span class="n">X_train_cst</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_cst</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#Training</span>
+<span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_cst</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-Performance-by-Class-(Lookup-Confusion-Matrix)">Get Performance by Class (Lookup Confusion Matrix)<a class="anchor-link" href="#Get-Performance-by-Class-(Lookup-Confusion-Matrix)">¶</a></h3><ul>
+<li>Each row of the matrix represents the instances in an actual class</li>
+<li>Each column represents the instances in a predicted class (or vice versa)</li>
+<li>The name stems from the fact that it makes it easy to see if the system is confusing two classes (i.e. commonly mislabeling one as another).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_matrix_linear</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>  <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> 
+                                        <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> 
+                                        <span class="n">rownames</span><span class="o">=</span><span class="p">[</span><span class="s1">'Actual Class'</span><span class="p">],</span> 
+                                        <span class="n">colnames</span><span class="o">=</span><span class="p">[</span><span class="s1">'Predicted Class'</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">confusion_matrix_linear</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>How many classes do we have in our y_test and in our y_pred_test?</strong>
+Why do we have 4 different predicted classes?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Can we use Linear Regression for classification?</strong></p>
+<p><strong>Four Assumptions of Linear Regression:</strong></p>
+<ol>
+<li>Linearity: Our dependent variable Y is a linear combination of the  explanatory variables X (and the error terms)</li>
+<li>Observations are independent of one another</li>
+<li>I.I.D error terms that are Normally Distributed ~ $N(0,\sigma^2)$</li>
+<li>Design matrix X is Full Rank. </li>
+</ol>
+<p><strong>Suppose we have a binary outcome variable. Can we use Linear Regression?</strong></p>
+<p>Then we will have the following problems:</p>
+<ol>
+<li>The error terms are heteroskedastic</li>
+<li>$\epsilon$ is not normally distributed because Y takes on only two values</li>
+<li>The predicted probabilities can be greater than 1 or less than 0</li>
+</ol>
+<p><strong>Datasets where linear regression is problematic:</strong></p>
+<ol>
+<li>Binary response data where there are only two outcomes (yes/no, 0/1, etc.)</li>
+<li>Categorical or Ordinal Data of any type, where the outcome is one of a number of discrete (possibly ordered) classes</li>
+<li>Count data in which the outcome is restricted to non-negative integers.</li>
+<li>Continuous data in which the noise is not normally distributed</li>
+</ol>
+<p><strong>Generalized Linear Models (GLMs), of which Logistic regression is a specific type, to the resque: Logistic regression is most useful for binary response and categorical data.</strong></p>
+<p><img alt="Linear versus Logistic" src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1534281070/linear_vs_logistic_regression_edxw03.png" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Fit-a-simple-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">3. Fit a simple logistic regression model for classification, compare performance, plot decision boundaries, and interpret results.<a class="anchor-link" href="#3.-Fit-a-simple-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">¶</a></h2><p>The logistic regression formula:</p>
+<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
+<p>This is equivalent to:</p>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
+<hr />
+<p><img alt="Sigmoid Function" src="https://miro.medium.com/max/3000/1*RqXFpiNGwdiKBWyLJc_E7g.png" /></p>
+<p><a href="https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc">Medium Article: Detailed overview of Logistic Regression</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Training</span>
+<span class="n">model_logistic</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_cst</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Let's-compare-logistic-regression-against-linear-regression-predictions">Let's compare logistic regression against linear regression predictions<a class="anchor-link" href="#Let's-compare-logistic-regression-against-linear-regression-predictions">¶</a></h3><ul>
+<li>We fix X_train['sepal width (cm)'] to its mean value. <ul>
+<li>```x_1 = X_train['sepal width (cm)']````</li>
+<li><code>x_1_range  = np.ones_like(x_2_range)*x_1.mean()</code></li>
+</ul>
+</li>
+<li>We varie X_train['sepal length (cm)'] from its minimum to its maximum and look how the predicted class evolves.<ul>
+<li><code>x_2 = X_train['sepal length (cm)']</code></li>
+<li><code>x_2_min, x_2_max = x_2.min(), x_2.max()+0.3</code></li>
+<li><code>x_2_range  = np.arange(x_2_min, x_2_max, 0.003)</code></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Making our input features (x_2 varying, x_1 constat = mean of x_1)</span>
+<span class="n">x_1</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">'sepal width (cm)'</span><span class="p">]</span>
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">'sepal length (cm)'</span><span class="p">]</span>
+
+<span class="n">x_2_min</span><span class="p">,</span> <span class="n">x_2_max</span> <span class="o">=</span> <span class="n">x_2</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">x_2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.3</span>
+
+<span class="n">x_2_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_2_min</span><span class="p">,</span> <span class="n">x_2_max</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">)</span>
+<span class="n">x_constant</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">)</span>
+<span class="n">x_1_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">)</span><span class="o">*</span><span class="n">x_1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+
+<span class="c1"># Construct our input features</span>
+<span class="n">X_with_varying_x_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x_constant</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+                               <span class="n">x_1_range</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">,</span>
+                               <span class="n">x_2_range</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Make linear Predictions</span>
+<span class="n">prediction_linear</span> <span class="o">=</span> <span class="n">model_linear_sklearn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_with_varying_x_2</span><span class="p">)</span>
+
+<span class="c1"># Make logistic Predictions</span>
+<span class="n">prediction_proba</span> <span class="o">=</span> <span class="n">model_logistic</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_with_varying_x_2</span><span class="p">)</span>
+<span class="n">prediction_thresholded</span> <span class="o">=</span> <span class="n">model_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_with_varying_x_2</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># Plot Linear Predictions</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span> <span class="n">prediction_linear</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Predicted Output (raw = continuous)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">prediction_linear</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Predicted Class (round = integer)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Linear Regression: raw output and rounded output.'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">3.1</span><span class="p">))</span>
+
+<span class="c1"># Plot Logistic Predictions</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span> <span class="n">prediction_proba</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Class 0'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span> <span class="n">prediction_proba</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Class 1'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span> <span class="n">prediction_proba</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Class 2'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2_range</span><span class="p">,</span><span class="n">prediction_thresholded</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span> <span class="s1">'Predicted Class'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Logistic Regression: Predict_Proba Output per Class and the Predicted Class'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">3.1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-does-our-Logistic-Regression-come-up-with-mutiple-class-predictions?">How does our Logistic Regression come up with mutiple class predictions?<a class="anchor-link" href="#How-does-our-Logistic-Regression-come-up-with-mutiple-class-predictions?">¶</a></h4><ul>
+<li>Each class $y_i$ has a sigmoid function that tries to predict the probability of the tested input belonging to that specific class $y_i$.<ul>
+<li>In our case when we have 3 classes, thus we have 3 sigmoid functions (the blue, orange and green line in the right figure).</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>LogisticRegression().predict_proba(...)</code> : returns probability estimates $P(y_i|x)$ for each $y_i$. In our case <code>.predict_proba(...)</code> returns 3 values (one for each class). In the figure we observe that : <ul>
+<li>we have a <strong>high probability of predicting Class 0</strong> in regions with <strong>low 'sepal width' values (left)</strong>.</li>
+<li>we have a <strong>high probability of predicting Class 1</strong> in regions with <strong>medium 'sepal width' regions (middle)</strong>.</li>
+<li>have a <strong>high probability of predicting Class 2</strong> in regions with <strong>high 'sepal width' regions (right)</strong>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>LogisticRegression().predict(...)</code>: returns 1 value: the predicted class label. The class with the highest probability given by <code>.predict_proba(...)</code> is exactly the predicted class output of <code>.predict(...)</code><ul>
+<li>In the figure our final prediction is the <strong>red line</strong>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-Performance-by-Class-(Lookup-Confusion-Matrix)">Get Performance by Class (Lookup Confusion Matrix)<a class="anchor-link" href="#Get-Performance-by-Class-(Lookup-Confusion-Matrix)">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_matrix_logistic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>  <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> 
+                                          <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> 
+                                          <span class="n">rownames</span><span class="o">=</span><span class="p">[</span><span class="s1">'Actual Class'</span><span class="p">],</span> 
+                                          <span class="n">colnames</span><span class="o">=</span><span class="p">[</span><span class="s1">'Predicted Class'</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">confusion_matrix_logistic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's compare the cuusion matrix of our linear model to the confusion matrix of our logistic regression model:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'######################################'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Confusion Matrix Linear Regression:'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">confusion_matrix_linear</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">######################################'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Confusion Matrix Logistic Regression:'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">confusion_matrix_logistic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'######################################'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we do observe that the logistic regression has the correct number of predicted classes.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-Visualize-Predictions-and-Decision-boundaries.">4. Visualize Predictions and Decision boundaries.<a class="anchor-link" href="#4.-Visualize-Predictions-and-Decision-boundaries.">¶</a></h2><p><strong>What are decision boundaries:</strong></p>
+<ul>
+<li>In general, a pattern classifier carves up (or tesselates or partitions) the feature space into volumes called decision regions. </li>
+<li>All feature vectors in a decision region are assigned to the same category.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y_class</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">())):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">y_class</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">'sepal width (cm)'</span><span class="p">],</span>
+                   <span class="n">X_train</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="s1">'sepal length (cm)'</span><span class="p">],</span>
+                   <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                   <span class="n">s</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> 
+                   <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span>
+                   <span class="n">label</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span><span class="s2">"blue"</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span>
+
+<span class="n">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Classes of Flowers'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'sepal length (cm)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Plotting the decision boundary:</strong> by using the following functions:</p>
+<ul>
+<li><code>np.meshgrid(..)</code>: 'constructing a grid': np.meshgrid() returns coordinate matrices from coordinate vectors.</li>
+<li><code>plt.contourf(..)</code>: contourf draws filled contours.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_1</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">'sepal width (cm)'</span><span class="p">]</span>
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">'sepal length (cm)'</span><span class="p">]</span>
+
+<span class="c1"># Just for illustration purposes we use a margin of 0.2 to the</span>
+<span class="c1"># left, right, top and bottum of our minimal and maximal points.</span>
+<span class="c1"># This way our minimal and maximal points won't lie exactly </span>
+<span class="c1"># on the axis. </span>
+
+<span class="n">x_1_min</span><span class="p">,</span> <span class="n">x_1_max</span> <span class="o">=</span> <span class="n">x_1</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">x_1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="n">x_2_min</span><span class="p">,</span> <span class="n">x_2_max</span> <span class="o">=</span> <span class="n">x_2</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">x_2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.2</span>
+
+<span class="n">xx_1</span><span class="p">,</span> <span class="n">xx_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_1_min</span><span class="p">,</span> <span class="n">x_1_max</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_2_min</span><span class="p">,</span> <span class="n">x_2_max</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting decision regions</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">X_mesh</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">xx_1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">xx_2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">model_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_mesh</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx_1</span><span class="p">,</span> <span class="n">xx_2</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Classes of Flowers'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'sepal length (cm)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Why are the decision boundaries of this Logistic Regression linear?</strong></p>
+<p>Imagine the simple case where we have only a 2 class classification problem: 
+The logistic regression formula can be written as:</p>
+<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
+<p>This is equivalent to:</p>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
+<p>We have x_1 (sepal width), x_2 (sepal length), and our intercept (constant =1)</p>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2)}}$$</p>
+<p>Since we don't use multiple higher order polynomial features like $x_1^2, x_2^2$, our logistic model only depends on the first order simple features $x_1$ and $x_2$.</p>
+<p><strong>What do we have to do to find the the decision boundary?</strong></p>
+<p>The decision boundaries are exactly at the position where our algorithm "hesitates" when predicting which class to classify. The output probability of our sigmoid (or softmax) is exactly 0.5. Solving our sigmoid function for $p=0.5$:</p>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}} = 0.5 =  \dfrac{1}{1+1} $$</p>
+<p>$$ e^{-w^T x} = 1$$</p>
+<p>$$ -w^T x = 0$$</p>
+<p>$$ w^T x = 0$$</p>
+<p>$$ w_0*1 + w_1 *x_1 +  w_2 *1x_2 = 0$$</p>
+<p>When we only use two predictor features this constraint of $p=0.5$ results in a linear system; thus we observe a <strong>linear decision boundary.</strong></p>
+<p>In our case when we have three classes.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">5. Fit a higher order polynomial logistic regression model for classification, compare performance, plot decision boundaries, and interpret results.<a class="anchor-link" href="#5.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train_cst</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train_poly_cst</span><span class="o">=</span><span class="n">X_train_cst</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_train_poly_cst</span><span class="p">[</span><span class="s1">'sepal width (cm)^2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train_cst</span><span class="p">[</span><span class="s1">'sepal width (cm)'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">X_train_poly_cst</span><span class="p">[</span><span class="s1">'sepal length (cm)^2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train_cst</span><span class="p">[</span><span class="s1">'sepal length (cm)'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">X_test_poly_cst</span><span class="o">=</span><span class="n">X_test_cst</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test_poly_cst</span><span class="p">[</span><span class="s1">'sepal width (cm)^2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test_poly_cst</span><span class="p">[</span><span class="s1">'sepal width (cm)'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">X_test_poly_cst</span><span class="p">[</span><span class="s1">'sepal length (cm)^2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test_poly_cst</span><span class="p">[</span><span class="s1">'sepal length (cm)'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">X_test_poly_cst</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Training</span>
+<span class="n">model_logistic_poly</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_logistic_poly</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model_logistic_poly</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_poly_cst</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Our test performance is decreasing, what might be happening?</strong></p>
+<ul>
+<li>How would you test if this is happening? </li>
+<li>How would you inhibit this phenomenon from happening?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting decision regions</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">X_mesh_poly</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">xx_1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">xx_2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">xx_1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">xx_2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">model_logistic_poly</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_mesh_poly</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx_1</span><span class="p">,</span> <span class="n">xx_2</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Classes of Flowers'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'sepal length (cm)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>What do you observe regarding the form of the decision boundaries? Does this make sense?</strong></p>
+<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
+<p>This is equivalent to:</p>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
+<p>Now we use $x_1$ (sepal width), $x_2$ (sepal length), an intercept (constant =1), PLUS two higher order terms while making predictions:</p>
+<ul>
+<li>$x_1^2$ = (sepal_width)^2</li>
+<li>$x_2^2$ = (sepal_length)^2</li>
+</ul>
+<p>$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2 + w_3 *x_1^2 +  w_4* x_2^2))}}$$</p>
+<p>Now solving for $p=0.5$ results in an equation also dependent on $x_1^2$ and $x_2^2$: thus we observe <strong>non-linear decision boundaries.</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification-with-different-regularization-parameters-C-(-[10000,-100,-1]-)">6. Fit a higher order polynomial logistic regression model for classification with different regularization parameters C ( [10000, 100, 1] )<a class="anchor-link" href="#6.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification-with-different-regularization-parameters-C-(-[10000,-100,-1]-)">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">model_logistics</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">model_logistics_test_accs_scores</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">model_logistics_train_accs_scores</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">C</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
+    <span class="n">model_logistics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+    
+    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_logistics</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">)</span>
+    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model_logistics</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_poly_cst</span><span class="p">)</span>
+    <span class="n">model_logistics_train_accs_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">model_logistics_test_accs_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">model_logistics</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_mesh_poly</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx_1</span><span class="p">,</span> <span class="n">xx_2</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">])</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Classes of Flowers, with C = '</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'sepal length (cm)'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>What do you observe?</strong></p>
+<ul>
+<li>How are the decision boundaries looking?</li>
+<li>What happens when the regularization term C changes? </li>
+<li>You may want to look at the documentation of sklearn.linear.LogisticRegression():</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To get the documentation uncomment and run the following command:</span>
+<span class="c1"># LogisticRegression?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>What do expect regarding the evolution of the norm of the coefficients of our models when the regularizatoin term C changes?</strong></p>
+<p>Our list contains all 3 models with different values for C (<strong>take a look at the first parameter within brackets</strong>)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_logistics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model_logistics</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Regularization parameter : </span><span class="se">\t</span><span class="s1">C = </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">C</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy : </span><span class="se">\t</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_logistics_train_accs_scores</span><span class="p">[</span><span class="n">test</span><span class="p">])</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy : </span><span class="se">\t\t</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_logistics_test_accs_scores</span><span class="p">[</span><span class="n">test</span><span class="p">])</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Mean absolute coeficient : </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Interpretation of Results: What happens when our Regularization Parameter decreases?</strong></p>
+<p>The amount of regularizaiton increases. This results in:</p>
+<ul>
+<li>The Training Set Accuracy decreasing a little bit (not much of a problem)</li>
+<li>The Test Set Accuracy decreasing a little bit (better generalization!)</li>
+<li>Our size of coefficents decreases on average.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>END OF STANDARD SECTION</strong></p>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Optional:-Fit-a-KNN-classification-model-for-classification,-plot-decision-boundaries,-and-interpret-results.">Optional: Fit a KNN-classification model for classification, plot decision boundaries, and interpret results.<a class="anchor-link" href="#Optional:-Fit-a-KNN-classification-model-for-classification,-plot-decision-boundaries,-and-interpret-results.">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Training</span>
+<span class="n">model_KNN_classifier</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_KNN_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_cst</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model_KNN_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_cst</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fact we have a big gap of performance between the test and training set means we are overfitting, and can be explained by using "n_neighbors=1".</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Based on your knowledge of KNN-regression can you guess how the decision boundary of the KNN-classification will look when using "n_neighbors=1"?</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting decision regions</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">Z</span> <span class="o">=</span> <span class="n">model_KNN_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_mesh</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx_1</span><span class="p">,</span> <span class="n">xx_2</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plot_points</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Classes of Flowers'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'sepal length (cm)'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'sepal width (cm)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="8.-Optional-Homework-Tip:-Pipeline-building-to-sequentially-apply-a-list-of-transforms-(e.g.-scaling,-polynomial-feature-creation)-and-a-final-estimator.">8. Optional Homework Tip: Pipeline building to sequentially apply a list of transforms (e.g. scaling, polynomial feature creation) and a final estimator.<a class="anchor-link" href="#8.-Optional-Homework-Tip:-Pipeline-building-to-sequentially-apply-a-list-of-transforms-(e.g.-scaling,-polynomial-feature-creation)-and-a-final-estimator.">¶</a></h3><p>Instead of manually building our polynomial features which might take a lot of lines of code we can use a <strong>pipeline</strong> to sequentially create polynomials before fitting our logistic regression. Scaling can also be done inside the <code>make_pipeline</code>.</p>
+<p>Previously we did:</p>
+<pre><code>X_train_poly_cst=X_train_cst.copy()
+X_train_poly_cst['sepal width (cm)^2'] = X_train_cst['sepal width (cm)']**2
+X_train_poly_cst['sepal length (cm)^2'] = X_train_cst['sepal length (cm)']**2
+
+X_test_poly_cst=X_test_cst.copy()
+X_test_poly_cst['sepal width (cm)^2'] = X_test_poly_cst['sepal width (cm)']**2
+X_test_poly_cst['sepal length (cm)^2'] = X_test_poly_cst['sepal length (cm)']**2</code></pre>
+<p>Now it is a one-liner:</p>
+<pre><code>make_pipeline(PolynomialFeatures(degree=2), LogisticRegression())</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="k">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="n">polynomial_logreg_estimator</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
+    <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">LogisticRegression</span><span class="p">())</span>
+
+<span class="c1">#Training</span>
+<span class="n">polynomial_logreg_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">polynomial_logreg_estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_poly_cst</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">polynomial_logreg_estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_poly_cst</span><span class="p">)</span>
+
+<span class="c1">#Perfromance Evaluation</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">train_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+     </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
