@@ -7,5 +7,5 @@ Tags:   Logistic Regression, Multiple Logistic Regression, classification, decis
 
 ## Jupyter Notebooks
 
-- [S-Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification ]({filename}notebook/cs109a_section_5.ipynb)
+- [S-Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification ]({static}notebook/cs109a_section_5.ipynb)
 

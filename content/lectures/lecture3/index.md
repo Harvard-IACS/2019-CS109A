@@ -12,6 +12,6 @@ Tags: EDA, exploratory data analysis, pandas, scraping, web scraping, dataframe
 
 ## Lecture Notebook
 
-- [Lecture 3: Pandas Tutorial]({filename}presentation/Lecture3_Notebook.ipynb)
+- [Lecture 3: Pandas Tutorial]({static}presentation/Lecture3_Notebook.ipynb)
 
 <hr>

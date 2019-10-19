@@ -8,5 +8,5 @@ Tags: logistic regression, linear regression, mle
 
 ## Jupyter Notebooks
 
-- [Lab 6: Logistic Regression]({filename}notebook/cs109a_lab6_logistic_regression.ipynb)
-- [Lab 6: Logistic Regression Solutions]({filename}notebook/cs109a_lab6_logistic_regression_solutions.ipynb)
+- [Lab 6: Logistic Regression]({static}notebook/cs109a_lab6_logistic_regression.ipynb)
+- [Lab 6: Logistic Regression Solutions]({static}notebook/cs109a_lab6_logistic_regression_solutions.ipynb)

@@ -7,5 +7,5 @@ Tags:  model selection, cross validation, ridge, lasso, regularization
 
 ## Jupyter Notebooks
 
-- [S-Section 4: Regularization and Model Selection ]({filename}notebook/cs109a_section_4.ipynb)
+- [S-Section 4: Regularization and Model Selection ]({static}notebook/cs109a_section_4.ipynb)
 

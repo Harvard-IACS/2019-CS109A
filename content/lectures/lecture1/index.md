@@ -14,6 +14,6 @@ Tags: Introduction, data science process, logistics
 
 ## Lecture Notebook
 
-- [Lecture 1: Data Science Demo]({filename}notes/Lecture1_Notebook.ipynb)
+- [Lecture 1: Data Science Demo]({static}notes/Lecture1_Notebook.ipynb)
 
 <hr>
