@@ -8,8 +8,8 @@ Tags: matplotlib, seaborn, plots, pandas
 
 ## Jupyter Notebooks
 
-- [Lab 5: Exploratory Data Analysis, seaborn, more Plotting]({filename}notebook/cs109a_lab5_EDA_plotting.ipynb)
-- [Lab 5: Solutions to Exploratory Data Analysis, seaborn, more Plotting]({filename}notebook/cs109a_lab5_EDA_plotting_solutions.ipynb)
+- [Lab 5: Exploratory Data Analysis, seaborn, more Plotting]({static}notebook/cs109a_lab5_EDA_plotting.ipynb)
+- [Lab 5: Solutions to Exploratory Data Analysis, seaborn, more Plotting]({static}notebook/cs109a_lab5_EDA_plotting_solutions.ipynb)
 
 
 

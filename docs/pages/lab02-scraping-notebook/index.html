@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../style/css/hiacs.css">
+
+    <title>CS109A - Lab 02: Scraping</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../..">
+      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+ <div>
+  <div class="float-left">
+    <p>
+      Key Word(s):       <a href="../../pages/materials.html#Pandas"
+        >Pandas</a
+      >     </p>
+  </div>
+  <div class="float-right">
+    <a href="../../labs/lab02/cs109a_lab2_web_scraping.ipynb">
+      Download Notebook <i class="fas fa-download"></i>
+    </a>
+  </div>
+</div>
+<br />
+<hr />
+ <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style><div class="skip-links">
+<span>Accessibility links</span> <ul>
+<li><a class="skiplink" href="#mainContent">Skip to main content</a></li>
+<li><a class="skiplink" href="https://help.npr.org/customer/en/portal/articles/2535181-what-are-the-keyboard-shortcuts-for-using-the-npr-org-audio-player-">Keyboard shortcuts for audio player</a></li>
+</ul>
+</div>
+<header aria-label="NPR header" class="npr-header" id="globalheader"><nav aria-label="main navigation" class="navigation">
+<div class="navigation__top-level-wrap" data-metrics-all="" data-metrics-category="global navigation">
+<ul class="navigation__top-level">
+<li class="navigation__home">
+<a data-metrics-action="click npr logo" href="/">
+<img alt="NPR logo" src="https://media.npr.org/chrome_svg/npr-logo.svg" />
+</a>
+</li>
+<li id="navigation__station-mount"></li>
+<li class="navigation__account" id="user-account-dropdown-mount"></li>
+<li class="navigation__shop">
+<a data-metrics-action="click npr shop" href="https://shop.npr.org">NPR Shop</a>
+</li>
+<li id="navigation__station-donate-mount"></li>
+<li class="navigation__toggle-wrap">
+<button aria-expanded="false" aria-haspopup="true" class="navigation__toggle navigation__toggle--open" data-metrics-action="open navigation menu" id="navigation__toggle--open">
+                    Open Navigation Menu
+                </button>
+</li>
+</ul>
+</div>
+<section class="menu menu--main" data-metrics-all="" data-metrics-category="global navigation" id="main-menu">
+<div class="menu__inner">
+<header class="menu__header">
+<button aria-expanded="true" aria-haspopup="true" class="navigation__toggle navigation__toggle--close" data-metrics-action="close navigation menu" id="navigation__toggle--close">
+                    Close <span>Navigation Menu</span>
+</button>
+</header>
+<ul class="menu__list">
+<li class="menu__item menu__item--home">
+<div class="menu__item-inner"><a data-metrics-action="click npr logo" href="/">Home</a></div>
+</li>
+<li class="menu__item menu__item--news menu__item--has-submenu" data-metrics-hover="toggle news drawer">
+<div class="menu__item-inner">
+<a data-metrics-action="click news" href="/sections/news/">News</a>
+<button class="menu__toggle-submenu" data-metrics-action="toggle news drawer">Expand/collapse submenu for News</button>
+</div>
+<ul class="submenu submenu--news">
+<li class="submenu__item"><a data-metrics-action="click national" href="/sections/national/">National</a></li>
+<li class="submenu__item"><a data-metrics-action="click world" href="/sections/world/">World</a></li>
+<li class="submenu__item"><a data-metrics-action="click politics" href="/sections/politics/">Politics</a></li>
+<li class="submenu__item"><a data-metrics-action="click business" href="/sections/business/">Business</a></li>
+<li class="submenu__item"><a data-metrics-action="click health" href="/sections/health/">Health</a></li>
+<li class="submenu__item"><a data-metrics-action="click science" href="/sections/science/">Science</a></li>
+<li class="submenu__item"><a data-metrics-action="click technology" href="/sections/technology/">Technology</a></li>
+<li class="submenu__item"><a data-metrics-action="click race &amp; culture" href="/sections/codeswitch/">Race &amp; Culture</a></li>
+</ul>
+</li>
+<li class="menu__item menu__item--arts-life menu__item--has-submenu" data-metrics-hover="toggle arts drawer">
+<div class="menu__item-inner">
+<a data-metrics-action="click arts &amp; life" href="/sections/arts/">Arts &amp; Life</a>
+<button class="menu__toggle-submenu" data-metrics-action="toggle arts drawer">Expand/collapse submenu for Arts &amp; Life</button>
+</div>
+<ul class="submenu submenu--arts-life">
+<li class="submenu__item"><a data-metrics-action="click books" href="/books/">Books</a></li>
+<li class="submenu__item"><a data-metrics-action="click movies" href="/sections/movies/">Movies</a></li>
+<li class="submenu__item"><a data-metrics-action="click television" href="/sections/television/">Television</a></li>
+<li class="submenu__item"><a data-metrics-action="click pop culture" href="/sections/pop-culture/">Pop Culture</a></li>
+<li class="submenu__item"><a data-metrics-action="click food" href="/sections/food/">Food</a></li>
+<li class="submenu__item"><a data-metrics-action="click art &amp; design" href="/sections/art-design/">Art &amp; Design</a> </li>
+<li class="submenu__item"><a data-metrics-action="click performing arts" href="/sections/performing-arts/">Performing Arts</a></li>
+</ul>
+</li>
+<li class="menu__item menu__item--music menu__item--has-submenu" data-metrics-hover="toggle music drawer">
+<div class="menu__item-inner">
+<a data-metrics-action="click music" href="/music/">Music</a>
+<button class="menu__toggle-submenu" data-metrics-action="toggle music drawer">Expand/collapse submenu for Music</button>
+</div>
+<ul class="submenu submenu--music"><li class="submenu__item">
+<a data-metrics-action="click tiny desk" href="https://www.npr.org/series/tiny-desk-concerts/">
+        Tiny Desk
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click all songs considered" href="https://www.npr.org/sections/allsongs/">
+        All Songs Considered
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click turning the tables" href="https://www.npr.org/series/538009815/turning-the-tables">
+        Turning The Tables
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click music news" href="https://www.npr.org/sections/music-news/">
+        Music News
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click new music" href="https://www.npr.org/sections/new-music/">
+        New Music
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click best music of 2019" href="https://www.npr.org/series/689345495/best-music-of-2019">
+        Best Music Of 2019
+    </a>
+</li></ul>
+</li>
+<li class="menu__item menu__item--shows-podcasts menu__item--has-submenu" data-metrics-hover="toggle programs &amp; podcasts drawer">
+<div class="menu__item-inner">
+<a data-metrics-action="click shows &amp; podcasts" href="/programs/">Shows &amp; Podcasts</a>
+<button class="menu__toggle-submenu" data-metrics-action="toggle programs &amp; podcasts drawer">Expand/collapse submenu for Shows &amp; Podcasts</button>
+</div>
+<div class="submenu submenu--shows-podcasts">
+<span class="submenu__category submenu__category--daily">Daily</span>
+<ul class="submenu__list submenu__list--daily">
+<li class="submenu__item submenu__item--timed submenu__item--weekday hidden">
+<a data-metrics-action="click morning edition" href="/programs/morning-edition/">
+<img alt="" src="https://media.npr.org/chrome/programs/logos/morning-edition.jpg" />
+                                    Morning Edition
+                                </a>
+</li>
+<li class="submenu__item submenu__item--timed submenu__item--saturday hidden">
+<a data-metrics-action="click weekend edition saturday" href="/programs/weekend-edition-saturday/">
+<img alt="" src="https://media.npr.org/assets/img/2019/02/26/we_otherentitiestemplatesat_sq-cbde87a2fa31b01047441e6f34d2769b0287bcd4-s100-c85.png" />
+                                    Weekend Edition Saturday
+                                </a>
+</li>
+<li class="submenu__item submenu__item--timed submenu__item--sunday hidden">
+<a data-metrics-action="click weekend edition sunday" href="/programs/weekend-edition-sunday/">
+<img alt="" src="https://media.npr.org/assets/img/2019/02/26/we_otherentitiestemplatesun_sq-4a03b35e7e5adfa446aec374523a578d54dc9bf5-s100-c85.png" />
+                                    Weekend Edition Sunday
+                                </a>
+</li>
+<li class="submenu__item">
+<a data-metrics-action="click all things considered" href="/programs/all-things-considered/">
+<img alt="" src="https://media.npr.org/chrome/programs/logos/all-things-considered.png" />
+                                    All Things Considered
+                                </a>
+</li>
+<li class="submenu__item">
+<a data-metrics-action="click fresh air" href="/programs/fresh-air/">
+<img alt="" src="https://media.npr.org/chrome/programs/logos/fresh-air.png" />
+                                    Fresh Air
+                                </a>
+</li>
+<li class="submenu__item">
+<a data-metrics-action="click up first" href="/podcasts/510318/up-first">
+<img alt="" src="https://media.npr.org/chrome/programs/logos/up-first.jpg" />
+                                    Up First
+                                </a>
+</li>
+</ul>
+<span class="submenu__category submenu__category--featured">Featured</span>
+<ul class="submenu__list submenu__list--featured"><li class="submenu__item">
+<a data-metrics-action="click how i built this with guy raz" href="https://www.npr.org/podcasts/510313/how-i-built-this">
+<img alt="" src="https://media.npr.org/assets/img/2018/08/03/npr_hibt_podcasttile_sq-98320b282169a8cea04a406530e6e7b957665b3f.jpg?s=100" />
+        How I Built This with Guy Raz
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click wait wait...don't tell me!" href="https://www.npr.org/podcasts/344098539/wait-wait-don-t-tell-me">
+<img alt="" src="https://media.npr.org/assets/img/2019/05/23/screen-shot-2019-05-23-at-8.46.21-am_sq-7dcea391e7a87ca3569fe3d2047dda0144e5d86f.png?s=100" />
+        Wait Wait...Don't Tell Me!
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click planet money" href="https://www.npr.org/podcasts/510289/planet-money">
+<img alt="" src="https://media.npr.org/assets/img/2018/08/02/npr_planetmoney_podcasttile_sq-7b7fab0b52fd72826936c3dbe51cff94889797a0.jpg?s=100" />
+        Planet Money
+    </a>
+</li><li class="submenu__item">
+<a data-metrics-action="click hidden brain" href="https://www.npr.org/podcasts/510308/hidden-brain">
+<img alt="" src="https://media.npr.org/assets/img/2018/08/03/npr_hiddenbrain_podcasttile_sq-270ab642de6948802f485c6ad1f087239ef6e324.jpg?s=100" />
+        Hidden Brain
+    </a>
+</li></ul>
+<ul class="submenu__list submenu__list--directories">
+<li class="submenu__item"><a data-metrics-action="click all programs" href="/programs/">More Shows &amp; Podcasts</a></li>
+</ul>
+</div>
+</li>
+<li class="menu__item menu__item--search">
+<div class="menu__item-inner">
+<a data-metrics-action="click search" href="/search" id="navigation_dropdown-search">Search</a>
+</div>
+</li>
+<li class="menu__item menu__item--account" id="user-account-dropdown-mount-two"></li>
+<li class="menu__item menu__item--shop">
+<div class="menu__item-inner">
+<a data-metrics-action="click npr shop" href="https://shop.npr.org">NPR Shop</a>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="menu menu--music" data-metrics-all="" data-metrics-category="music ecosystem navigation">
+<div class="menu__list-wrap">
+<ul class="menu__list menu__list--ecosystem menu__list--music">
+<li class="menu__item menu__item--music-home">
+<a data-metrics-action="click npr music logo" href="/music/">
+<img alt="NPR Music" class="music-logo" src="https://media.npr.org/chrome_svg/music-logo-dark.svg" />
+<img alt="NPR Music" class="music-logo-alt" src="https://media.npr.org/chrome_svg/music-logo-light.svg" />
+</a>
+</li>
+<li class="menu__item">
+<a data-metrics-action="click tiny desk" href="https://www.npr.org/series/tiny-desk-concerts/">
+        Tiny Desk
+    </a>
+</li><li class="menu__item">
+<a data-metrics-action="click all songs considered" href="https://www.npr.org/sections/allsongs/">
+        All Songs Considered
+    </a>
+</li><li class="menu__item">
+<a data-metrics-action="click turning the tables" href="https://www.npr.org/series/538009815/turning-the-tables">
+        Turning The Tables
+    </a>
+</li><li class="menu__item">
+<a data-metrics-action="click music news" href="https://www.npr.org/sections/music-news/">
+        Music News
+    </a>
+</li><li class="menu__item">
+<a data-metrics-action="click new music" href="https://www.npr.org/sections/new-music/">
+        New Music
+    </a>
+</li><li class="menu__item">
+<a data-metrics-action="click best music of 2019" href="https://www.npr.org/series/689345495/best-music-of-2019">
+        Best Music Of 2019
+    </a>
+</li>
+</ul>
+</div>
+</section>
+<section class="menu menu--about" data-metrics-all="" data-metrics-category="about ecosystem navigation">
+<div class="menu__list-wrap">
+<ul class="menu__list menu__list--ecosystem menu__list--about">
+<li class="menu__item menu__item--about-home"><a data-metrics-action="click about npr" href="/about/">About NPR</a></li>
+<li class="menu__item menu__item--about-overview"><a data-metrics-action="click overview" href="/overview/">Overview</a></li>
+<li class="menu__item menu__item--about-support"><a data-metrics-action="click support" href="/support/">Support</a></li>
+<li class="menu__item menu__item--about-careers"><a data-metrics-action="click careers" href="/careers/">Careers</a></li>
+<li class="menu__item menu__item--about-connect"><a data-metrics-action="click connect" href="/connect/">Connect</a></li>
+<li class="menu__item menu__item--about-press"><a data-metrics-action="click press" href="/press/">Press</a></li>
+<li class="menu__item menu__item--about-ethics"><a data-metrics-action="click ethics" href="/ethics/">Ethics</a></li>
+</ul>
+</div>
+</section>
+</nav></header><main aria-label="main content"><div class="speakable">
+<b data-is-speakable="">What If The Polls Are Wrong Again? 4 Scenarios For What Might Happen In The Elections</b> <b data-is-speakable="">The polls show a Democratic advantage in the House and a Republican one in the Senate. But be ready for anything because surprises in politics always happen.</b>
+</div>
+<div id="wrapper">
+<header class="contentheader contentheader--one" data-metrics='{"category":"Elections"}'></header> <div class="story-sticky-header">
+<div class="story-sticky-header-inner">
+<a class="nprhome nprhome-news" data-metrics='{"category":"global navigation","action":"click npr logo","label":"\/"}' href="/">
+<img alt="NPR logo" src="https://media.npr.org/chrome_svg/npr-logo.svg" />
+</a>
+<a class="title" href="#">
+<b>What If The Polls Are Wrong Again? 4 Scenarios For What Might Happen In The Elections</b>
+</a>
+</div>
+</div> <section id="main-section"><article class="story"><a id="mainContent"></a><div class="slug-wrap">
+<h3 class="slug">
+<a href="https://www.npr.org/sections/elections/">Elections</a>
+</h3>
+</div>
+<div class="storytitle">
+<h1>What If The Polls Are Wrong Again? 4 Scenarios For What Might Happen In The Elections</h1>
+<input id="title664395755" type="hidden" value="What If The Polls Are Wrong Again? 4 Scenarios For What Might Happen In The Elections" />
+<input id="shortTitle664395755" type="hidden" value="What If The Polls Are Wrong Again? 4 Scenarios For What Might Happen In The Elections" />
+<input id="modelShortUrl664395755" type="hidden" value="https://n.pr/2Pff0wF" />
+<input id="modelFullUrl664395755" type="hidden" value="https://www.npr.org/2018/11/05/664395755/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect" />
+</div>
+<!-- END CLASS="STORYTITLE" -->
+<div class="story-tools">
+<div aria-label="Share tools" class="share-tools share-tools--primary">
+<ul>
+<li class="share-tools__service share-tools__service--facebook"><button class="fbStory664395755" data-metrics='{"action":"Click Facebook","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-facebook='{"storyId": 664395755 }'><b class="share-tools__service-name">Facebook</b></button></li>
+<li class="share-tools__service share-tools__service--twitter"><button class="story664395755" data-metrics='{"action":"Click Twitter","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-twitter='{"storyId": 664395755 }'><b class="share-tools__service-name">Twitter</b></button></li>
+<li class="share-tools__service share-tools__service--flipboard"><button class="story664395755" data-metrics='{"action":"Click Flipboard","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-flipboard='{"storyId": 664395755 }'><b class="share-tools__service-name">Flipboard</b></button></li>
+<li class="share-tools__service share-tools__service--email"><button class="share-tools__email-link" data-metrics='{"action":"Click Email a Friend","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-story-id="664395755"><b class="share-tools__service-name">Email</b></button></li>
+</ul>
+</div>
+<!-- END CLASS="SHARE-TOOLS SHARE-TOOLS--PRIMARY" ARIA-LABEL="SHARE TOOLS" -->
+</div>
+<!-- END CLASS="STORY-TOOLS" -->
+<div class="story-meta has-byline" id="story-meta">
+<div class="story-meta__one">
+<div class="dateblock">
+<time datetime="2018-11-05T16:49:00-05:00">
+<span class="date">November 5, 2018</span><span class="time">4:49 PM ET</span>
+</time>
+</div>
+</div>
+<!-- END CLASS="STORY-META__ONE" -->
+<div class="story-meta__two">
+<div class="storybyline-wrap linkLocation" id="storybyline">
+<div class="bucketwrap byline" id="res664395888" previewtitle="bylines">
+<div class="byline-container--block">
+<div aria-label="Byline" class="byline byline--block byline--has-link">
+<div class="byline__photo">
+<a data-metrics='{"action":"Click Byline","category":"Story Metadata"}' href="https://www.npr.org/people/392602474/domenico-montanaro" rel="author">
+<img alt="Domenico Montanaro - 2015" class="img" src="https://media.npr.org/assets/img/2015/03/24/domenico_montanaro_npr_007_sq-91c49487814945192035ed885c8239a7fcbed9bd-s100-c85.jpg" />
+</a>
+</div>
+<p class="byline__name byline__name--block">
+<a data-metrics='{"action":"Click Byline","category":"Story Metadata"}' href="https://www.npr.org/people/392602474/domenico-montanaro" rel="author">
+      Domenico Montanaro
+    </a>
+</p>
+<a class="byline__social-handle byline__social-handle--5" data-metrics='{"action":"Click Social Handle","category":"Story Metadata"}' href="https://www.twitter.com/DomenicoNPR">
+      Twitter
+    </a>
+</div>
+</div>
+</div>
+<!-- END CLASS="BUCKETWRAP BYLINE" ID="RES664395888" PREVIEWTITLE="BYLINES" -->
+</div>
+</div>
+<!-- END CLASS="STORY-META__TWO" -->
+</div>
+<!-- END ID="STORY-META" CLASS="STORY-META HAS-BYLINE" -->
+<div class="storytext storylocation linkLocation" id="storytext">
+<div class="bucketwrap image large" id="res664470819">
+<div class="imagewrap" data-crop-type="">
+<img alt="" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-1057663456vote_wide-9fc473c80fc1f9d825f563fd94d01c766f5ff669-s1100.jpg" src="https://media.npr.org/assets/img/2018/11/05/gettyimages-1057663456vote_wide-9fc473c80fc1f9d825f563fd94d01c766f5ff669-s1100-c15.jpg" />
+<div class="enlarge-options">
+<a class="enlargelink" href="https://media.npr.org/assets/img/2018/11/05/gettyimages-1057663456vote_wide-9fc473c80fc1f9d825f563fd94d01c766f5ff669-s1200.jpg">Enlarge this image</a>
+</div>
+</div>
+<div class="credit-caption">
+<div class="caption-wrap">
+<div aria-label="Image caption" class="caption">
+<p>
+                Supporters of Missouri Democratic Sen. Claire McCaskill wait for her to arrive at a campaign stop in St. Louis on Monday.
+                
+                <b aria-label="Image credit" class="credit">
+                    
+                    Scott Olson/Getty Images
+                    
+                </b>
+<b class="hide-caption"><b>hide caption</b></b>
+</p>
+</div>
+<b class="toggle-caption"><b>toggle caption</b></b>
+</div>
+<span aria-label="Image credit" class="credit">
+        
+        Scott Olson/Getty Images
+        
+    </span>
+</div>
+<div class="enlarge_measure">
+<div class="img_wrap">
+<img alt="" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-1057663456vote_wide-9fc473c80fc1f9d825f563fd94d01c766f5ff669-s1200.jpg" />
+</div>
+</div>
+<div class="enlarge_html">
+<div class="image_data">
+<p class="caption">Supporters of Missouri Democratic Sen. Claire McCaskill wait for her to arrive at a campaign stop in St. Louis on Monday.</p>
+<span aria-label="Image credit" class="credit">
+            
+            Scott Olson/Getty Images
+            
+        </span>
+</div>
+</div>
+</div>
+<p>There's a lot that can happen Tuesday, the culmination of a long midterm election campaign that will provide the first nationwide measure of the U.S. electorate since Donald Trump was elected president.</p> <p>One narrative has become dominant: that Democrats are likely to gain control of the House and Republicans hold the Senate, if not expand their majority there. That narrative is based largely on national polls, and caution should be urged. Pollsters have made a lot of adjustments to hopefully correct what they got wrong in 2016, but they can't tell you precisely who is going to show up to vote.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664445643">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/04\/663968176\/key-questions-the-2018-election-will-answer"}' href="https://www.npr.org/2018/11/04/663968176/key-questions-the-2018-election-will-answer" id="featuredStackSquareImage663968176"><img alt="Key Questions The 2018 Election Will Answer" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/03/ap_18306730245179_sq-5e7137b77f967ca66c441eaa938895edd248264e-s100.jpg" src="https://media.npr.org/assets/img/2018/11/03/ap_18306730245179_sq-5e7137b77f967ca66c441eaa938895edd248264e-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/analysis/">Analysis </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/04\/663968176\/key-questions-the-2018-election-will-answer"}' href="https://www.npr.org/2018/11/04/663968176/key-questions-the-2018-election-will-answer">Key Questions The 2018 Election Will Answer</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664445643" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>What's more, there have been far fewer statewide and district-specific surveys than in past midterm elections. And, as it is, there are data both parties can take solace in that buoy their respective cases. So everyone should be prepared for surprises — because there always are some. That's the beauty of campaigns and voting.</p> <p>Here are four scenarios for how election night might play out and what each could mean.</p> <h3 class="edTag">1. Democrats win the House, and Republicans hold the Senate<strong> </strong></h3> <p>This is the most likely outcome, based not just on the polls but also on conversations with strategists in both parties. But they urge caution, because the races in the many districts across the country that are up for grabs are still very close.</p> <aside aria-label="advertisement" id="ad-backstage-wrap">
+<div class="ad-backstage" data-ad-config='{"network":"\/6735\/","site":{"default":"n6735.NPR","mobile":"n6735.NPRMOBILE"},"zone":"News_Politics_Elections","targets":{"testserver":"false","storyId":"664395755","agg":["312150170","191676894","434975886"]},"location":"backstage","deferred":false,"isBetweenContent":true,"isAggSponsorship":false,"borderClass":""}' id="ad-backstage-News_Politics_Elections"></div>
+</aside> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664447135">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/01\/662794792\/heres-why-democrats-are-confident-they-ll-win-the-house"}' href="https://www.npr.org/2018/11/01/662794792/heres-why-democrats-are-confident-they-ll-win-the-house" id="featuredStackSquareImage662794792"><img alt="Here's Why Democrats Are Confident They'll Win The House " class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/10/31/gettyimages-974323074_sq-86948ba36a45648f6813632f4ae09a61f6278565-s100.jpg" src="https://media.npr.org/assets/img/2018/10/31/gettyimages-974323074_sq-86948ba36a45648f6813632f4ae09a61f6278565-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/01\/662794792\/heres-why-democrats-are-confident-they-ll-win-the-house"}' href="https://www.npr.org/2018/11/01/662794792/heres-why-democrats-are-confident-they-ll-win-the-house">Here's Why Democrats Are Confident They'll Win The House </a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664447135" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p><strong>How it would happen: </strong>Forget the polls; <a href="https://www.npr.org/2018/11/01/662794792/heres-why-democrats-are-confident-they-ll-win-the-house">Democrats are favored to take back the House</a> for more reasons than that. There have been a record number of retirements, reducing the built-in advantage incumbents tend to have; record numbers of candidates, <a href="https://www.npr.org/2018/11/03/663466805/democratic-women-house-candidates-set-for-a-much-easier-election-day-than-gop-wo">especially Democratic women</a>, have run for public office; Democrats won the off-year elections in Virginia and New Jersey; they won or fared better than expected in special elections across the country; there was high primary turnout for Democrats in many states; and there is very high early voting turnout.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664447640">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/03\/663466805\/democratic-women-house-candidates-set-for-a-much-easier-election-day-than-gop-wo"}' href="https://www.npr.org/2018/11/03/663466805/democratic-women-house-candidates-set-for-a-much-easier-election-day-than-gop-wo" id="featuredStackSquareImage663466805"><img alt="Female Democratic House Candidates Set For A Much Easier Election Day Than GOP Women" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/02/gettyimages-1062257472_sq-23dd8a592523eb63d7b263e3fc2dcd46a7e2600f-s100.jpg" src="https://media.npr.org/assets/img/2018/11/02/gettyimages-1062257472_sq-23dd8a592523eb63d7b263e3fc2dcd46a7e2600f-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/elections/">Elections </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/03\/663466805\/democratic-women-house-candidates-set-for-a-much-easier-election-day-than-gop-wo"}' href="https://www.npr.org/2018/11/03/663466805/democratic-women-house-candidates-set-for-a-much-easier-election-day-than-gop-wo">Female Democratic House Candidates Set For A Much Easier Election Day Than GOP Women</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664447640" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>And just look at how wide the playing field is — Democrats need to pick up 23 seats to take back the House,<strong> </strong>and they are targeting some 80 Republican-held seats. Republicans are competing in just eight held by Democrats. That right there is and has been a huge flashing red light for the GOP. So many of those races are running through the suburbs, where independents and wealthy, college-educated women live, both of which have consistently in polling said they disapproved of the job the president is doing and prefer to vote for a Democrat in their district.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664449455">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/01\/662730647\/poll-nearly-4-in-5-voters-concerned-incivility-will-lead-to-violence"}' href="https://www.npr.org/2018/11/01/662730647/poll-nearly-4-in-5-voters-concerned-incivility-will-lead-to-violence" id="featuredStackSquareImage662730647"><img alt="Poll: Nearly 4 In 5 Voters Concerned Incivility Will Lead To Violence" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/10/31/gettyimages-1055522638trumpprotest_sq-ee84b30f7a28a6e9f4b9bfc59ce4c4b90fd1cd27-s100.jpg" src="https://media.npr.org/assets/img/2018/10/31/gettyimages-1055522638trumpprotest_sq-ee84b30f7a28a6e9f4b9bfc59ce4c4b90fd1cd27-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/elections/">Elections </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/01\/662730647\/poll-nearly-4-in-5-voters-concerned-incivility-will-lead-to-violence"}' href="https://www.npr.org/2018/11/01/662730647/poll-nearly-4-in-5-voters-concerned-incivility-will-lead-to-violence">Poll: Nearly 4 In 5 Voters Concerned Incivility Will Lead To Violence</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664449455" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>One other overlooked number from <a href="https://www.npr.org/2018/11/01/662730647/poll-nearly-4-in-5-voters-concerned-incivility-will-lead-to-violence">the last NPR/PBS NewsHour/Marist poll</a>: Just 54 percent of Republican women who are registered voters said they were very enthusiastic about voting in this election. Compare that with 78 percent of Republican men who are registered voters. And where do a lot of those women live? The suburbs. If GOP women, an important group that Republicans need to bolster them, stay home, that's one way Democrats clean up in the House.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664452930">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/10\/16\/656970406\/battle-for-the-senate-10-races-that-will-determine-control"}' href="https://www.npr.org/2018/10/16/656970406/battle-for-the-senate-10-races-that-will-determine-control" id="featuredStackSquareImage656970406"><img alt="Battle For The Senate: 10 Races That Will Determine Control" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/10/15/senate-race-nd_sq-17ab1a5762ec244f5e7876df2b4ecef7ea1675d4-s100.png" src="https://media.npr.org/assets/img/2018/10/15/senate-race-nd_sq-17ab1a5762ec244f5e7876df2b4ecef7ea1675d4-s100-c15.png" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/10\/16\/656970406\/battle-for-the-senate-10-races-that-will-determine-control"}' href="https://www.npr.org/2018/10/16/656970406/battle-for-the-senate-10-races-that-will-determine-control">Battle For The Senate: 10 Races That Will Determine Control</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664452930" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>In the Senate, on the other hand, Republicans have a very favorable landscape and <a href="https://www.npr.org/2018/10/16/656970406/battle-for-the-senate-10-races-that-will-determine-control">are competing in conservative states held by Democrats</a>. The fundamentals favor the GOP in these states, and if Republicans win where they should win, they will hold the Senate.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664453284">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/02\/662112853\/democrats-say-house-majority-would-mean-investigative-barrage-not-impeachment"}' href="https://www.npr.org/2018/11/02/662112853/democrats-say-house-majority-would-mean-investigative-barrage-not-impeachment" id="featuredStackSquareImage662112853"><img alt="As Dems Prepare Investigative Barrage, Key White House Lawyer Jobs Remain Vacant" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/10/31/gettyimages-973240628_sq-2732f652e321498f69cd62e21eda3b0f2aa49c91-s100.jpg" src="https://media.npr.org/assets/img/2018/10/31/gettyimages-973240628_sq-2732f652e321498f69cd62e21eda3b0f2aa49c91-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/02\/662112853\/democrats-say-house-majority-would-mean-investigative-barrage-not-impeachment"}' href="https://www.npr.org/2018/11/02/662112853/democrats-say-house-majority-would-mean-investigative-barrage-not-impeachment">As Dems Prepare Investigative Barrage, Key White House Lawyer Jobs Remain Vacant</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664453284" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p><strong>What it would mean: </strong>This would be a huge win for Democrats, as they'd be able to gum up Trump's agenda <a href="https://www.npr.org/2018/11/02/662112853/democrats-say-house-majority-would-mean-investigative-barrage-not-impeachment">and begin to investigate his administration</a>, something the GOP has not done very much of. In the Senate, <a href="https://www.npr.org/2018/10/27/660643999/trump-republicans-continue-remaking-the-federal-courts-even-as-senate-on-recess">Republicans could still approve federal judges and Trump Supreme Court nominees</a>, but if they want to get any big legislation done they're going to have to negotiate with Democrats in the House, and possibly a Speaker Nancy Pelosi.</p> <p>Democrats feel they need to limit the losses in the Senate. If they can hold Republicans to net even, keeping the Senate at 51-49, or maybe lose a net of one seat, then they will be very happy. They have a much more favorable Senate landscape in 2020 and believe they will be able to take back the Senate then.</p> <h3 class="edTag">2. Republicans hold the House and Senate</h3> <p>This would be a huge win for the GOP.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664456331">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/sections\/health-shots\/2018\/10\/16\/656900971\/npr-poll-rural-americans-are-worried-about-addiction-and-jobs-but-remain-optimis"}' href="https://www.npr.org/sections/health-shots/2018/10/16/656900971/npr-poll-rural-americans-are-worried-about-addiction-and-jobs-but-remain-optimis" id="featuredStackSquareImage656900971"><img alt="NPR Poll: Rural Americans Are Worried About Addiction And Jobs, But Remain Optimistic" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/10/15/rural-poll-promo-1_sq-de12fba6c18d0e3e6eb007f2a211b4c867456c1d-s100.png" src="https://media.npr.org/assets/img/2018/10/15/rural-poll-promo-1_sq-de12fba6c18d0e3e6eb007f2a211b4c867456c1d-s100-c15.png" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/health-shots/">Shots - Health News </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/sections\/health-shots\/2018\/10\/16\/656900971\/npr-poll-rural-americans-are-worried-about-addiction-and-jobs-but-remain-optimis"}' href="https://www.npr.org/sections/health-shots/2018/10/16/656900971/npr-poll-rural-americans-are-worried-about-addiction-and-jobs-but-remain-optimis">NPR Poll: Rural Americans Are Worried About Addiction And Jobs, But Remain Optimistic</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664456331" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p><strong>How it would happen: </strong><a href="https://www.npr.org/2018/10/18/658255884/voter-turnout-could-hit-50-year-record-for-midterm-elections">A record turnout is expected Tuesday</a> — perhaps higher than any time in the past 50 years for a midterm — but, as in 2016, Trump voters would have to dominate. Rural voters would have to turn out at higher-than-expected rates, causing the polls to be wrong (again). Meanwhile, young voters and Latinos would have to stay home. (<a href="https://www.usatoday.com/story/news/nation/2018/11/05/election-day-weather-forecast-big-storm-blast-eastern-us/1891149002/">It is supposed to rain on the East Coast Tuesday</a>, which could depress low-propensity-voter turnout.)</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664463985">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662122877\/taking-back-the-house-could-be-life-and-death-for-democrats"}' href="https://www.npr.org/2018/11/05/662122877/taking-back-the-house-could-be-life-and-death-for-democrats" id="featuredStackSquareImage662122877"><img alt="Taking Back The House Could Be 'Life And Death' For Democrats " class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/02/ap_18249605913127_sq-92d88328b6f3471cb745cefc23bc840acaaac281-s100.jpg" src="https://media.npr.org/assets/img/2018/11/02/ap_18249605913127_sq-92d88328b6f3471cb745cefc23bc840acaaac281-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/elections/">Elections </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662122877\/taking-back-the-house-could-be-life-and-death-for-democrats"}' href="https://www.npr.org/2018/11/05/662122877/taking-back-the-house-could-be-life-and-death-for-democrats">Taking Back The House Could Be 'Life And Death' For Democrats </a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664463985" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>All of those close House races would have to tip Republicans' way, something that's very possible given the conservative lean of those districts and the distrust of the media, purposefully stoked by the president. And who pays for polls for the most part? Big media organizations.</p> <div class="bucketwrap image large" id="res664468363">
+<div class="imagewrap" data-crop-type="">
+<img alt="" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-1063521758trumptenn_wide-75d4737201e2a39478b2253c9d5d9c12aec54d44-s1100.jpg" src="https://media.npr.org/assets/img/2018/11/05/gettyimages-1063521758trumptenn_wide-75d4737201e2a39478b2253c9d5d9c12aec54d44-s1100-c15.jpg" />
+<div class="enlarge-options">
+<a class="enlargelink" href="https://media.npr.org/assets/img/2018/11/05/gettyimages-1063521758trumptenn_wide-75d4737201e2a39478b2253c9d5d9c12aec54d44-s1200.jpg">Enlarge this image</a>
+</div>
+</div>
+<div class="credit-caption">
+<div class="caption-wrap">
+<div aria-label="Image caption" class="caption">
+<p>
+                President Trump acknowledges supporters during a campaign rally for Rep. Marsha Blackburn, R-Tenn., and other Tennessee Republican candidates on Monday in Chattanooga, Tenn.
+                
+                <b aria-label="Image credit" class="credit">
+                    
+                    Alex Wong/Getty Images
+                    
+                </b>
+<b class="hide-caption"><b>hide caption</b></b>
+</p>
+</div>
+<b class="toggle-caption"><b>toggle caption</b></b>
+</div>
+<span aria-label="Image credit" class="credit">
+        
+        Alex Wong/Getty Images
+        
+    </span>
+</div>
+<div class="enlarge_measure">
+<div class="img_wrap">
+<img alt="" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-1063521758trumptenn_wide-75d4737201e2a39478b2253c9d5d9c12aec54d44-s1200.jpg" />
+</div>
+</div>
+<div class="enlarge_html">
+<div class="image_data">
+<p class="caption">President Trump acknowledges supporters during a campaign rally for Rep. Marsha Blackburn, R-Tenn., and other Tennessee Republican candidates on Monday in Chattanooga, Tenn.</p>
+<span aria-label="Image credit" class="credit">
+            
+            Alex Wong/Getty Images
+            
+        </span>
+</div>
+</div>
+</div>
+<p><strong>What it would mean: </strong>President Trump and Republicans would step on the gas, validated by an election cycle dominated by negative news coverage and polling that said the GOP had its back against the wall. The Affordable Care Act (aka Obamacare) would very likely be repealed once and for all. And Trump could set his sights on ousting Attorney General Jeff Sessions and other key figures at the Justice Department, possibly ending the department's investigation of Russia's attack on the 2016 election.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664461265">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/02\/663532238\/fact-check-migrants-are-not-overwhelming-the-southwest-border"}' href="https://www.npr.org/2018/11/02/663532238/fact-check-migrants-are-not-overwhelming-the-southwest-border" id="featuredStackSquareImage663532238"><img alt="FACT CHECK: Migrants Are Not Overwhelming The Southwest Border " class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/02/ap_18229761384723_sq-3660f8f1a9e4aaa52829cf059b68219818ae1d62-s100.jpg" src="https://media.npr.org/assets/img/2018/11/02/ap_18229761384723_sq-3660f8f1a9e4aaa52829cf059b68219818ae1d62-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/national/">National </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/02\/663532238\/fact-check-migrants-are-not-overwhelming-the-southwest-border"}' href="https://www.npr.org/2018/11/02/663532238/fact-check-migrants-are-not-overwhelming-the-southwest-border">FACT CHECK: Migrants Are Not Overwhelming The Southwest Border </a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664461265" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>What's more, Trump's strategy of demonizing immigrants would have worked — again. That was rewarded, and what message would that send? He is only going to do more of it between Wednesday and November 2020 when he stands for re-election.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664462395">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662946236\/how-to-make-sense-of-exit-polls-on-election-night"}' href="https://www.npr.org/2018/11/05/662946236/how-to-make-sense-of-exit-polls-on-election-night" id="featuredStackSquareImage662946236"><img alt="How To Make Sense Of Exit Polls On Election Night" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/03/gettyimages-621808780_sq-b826a8f30ac379d9d49f87f50bdb0956af1bc5ae-s100.jpg" src="https://media.npr.org/assets/img/2018/11/03/gettyimages-621808780_sq-b826a8f30ac379d9d49f87f50bdb0956af1bc5ae-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662946236\/how-to-make-sense-of-exit-polls-on-election-night"}' href="https://www.npr.org/2018/11/05/662946236/how-to-make-sense-of-exit-polls-on-election-night">How To Make Sense Of Exit Polls On Election Night</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664462395" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>It would also be yet another reckoning for pollsters and media organizations that pay for the surveys. The polls currently show Democrats with a razor-thin, but consistent advantage heading into Election Day. But if the polls are wrong, it should induce more than a shoulder shrug from outlets that conduct them and the news media organizations that report on them.</p> <h3 class="edTag">3. Democrats win both the House and Senate</h3> <p>This is not seen as the likeliest of scenarios, but it's not out of the realm of possibility either. It would very likely mean a massive wave and a massive shift against Trump and Republicans tied to him nationally.</p> <p>A lot would have to happen, especially in the Senate, for this to happen.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664462972">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662912609\/miserable-and-emboldened-if-republicans-lose-the-house-they-ll-be-on-defense"}' href="https://www.npr.org/2018/11/05/662912609/miserable-and-emboldened-if-republicans-lose-the-house-they-ll-be-on-defense" id="featuredStackSquareImage662912609"><img alt="'Miserable And Emboldened': If Republicans Lose The House, They'll Be On Defense" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/04/ap_18172039998456_sq-2a60e862dfa4c7fd802425033e42eaf4f65bceb4-s100.jpg" src="https://media.npr.org/assets/img/2018/11/04/ap_18172039998456_sq-2a60e862dfa4c7fd802425033e42eaf4f65bceb4-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/elections/">Elections </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/662912609\/miserable-and-emboldened-if-republicans-lose-the-house-they-ll-be-on-defense"}' href="https://www.npr.org/2018/11/05/662912609/miserable-and-emboldened-if-republicans-lose-the-house-they-ll-be-on-defense">'Miserable And Emboldened': If Republicans Lose The House, They'll Be On Defense</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664462972" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p><strong>How it would happen: </strong>The path for Democrats in the House is through the suburbs, as in Scenario 1. That doesn't change. But for Democrats to pull this off in the Senate, not only would voters have to side with Democratic incumbents in conservative states, but Democratic challengers would have to win in places like Nevada and Arizona, and possibly Tennessee and Texas.</p> <p><strong>What it would mean: </strong>It would be a repudiation of Trump and the Republicans tied to him nationwide. It would have to trigger a degree of soul-searching — in at least some Republican corners.</p> <p>Trump would be faced with the choice of moderating and working with Democrats or being a lame-duck president starting in January 2019 when a new Democratic Congress is sworn in — as talk ramps up about Democratic 2020 challengers.</p> <h3 class="edTag">4. Overtime</h3> <p>It's very possible control of both the House and Senate will not be clear on election night.</p> <div class="bucketwrap image large" id="res664473136">
+<div class="imagewrap" data-crop-type="">
+<img alt="" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-982602238capitollights_wide-e860d528189800297e88db8d5e739f659b4c228b-s1100.jpg" src="https://media.npr.org/assets/img/2018/11/05/gettyimages-982602238capitollights_wide-e860d528189800297e88db8d5e739f659b4c228b-s1100-c15.jpg" />
+<div class="enlarge-options">
+<a class="enlargelink" href="https://media.npr.org/assets/img/2018/11/05/gettyimages-982602238capitollights_wide-e860d528189800297e88db8d5e739f659b4c228b-s1200.jpg">Enlarge this image</a>
+</div>
+</div>
+<div class="credit-caption">
+<div class="caption-wrap">
+<div aria-label="Image caption" class="caption">
+<p>
+                A number of races are so close that it may not be possible to declare a winner on election night, leaving control of the House and Senate up in the air.
+                
+                <b aria-label="Image credit" class="credit">
+                    
+                    Joe Sohm/Visions of America/UIG via Getty Images
+                    
+                </b>
+<b class="hide-caption"><b>hide caption</b></b>
+</p>
+</div>
+<b class="toggle-caption"><b>toggle caption</b></b>
+</div>
+<span aria-label="Image credit" class="credit">
+        
+        Joe Sohm/Visions of America/UIG via Getty Images
+        
+    </span>
+</div>
+<div class="enlarge_measure">
+<div class="img_wrap">
+<img alt="" data-original="https://media.npr.org/assets/img/2018/11/05/gettyimages-982602238capitollights_wide-e860d528189800297e88db8d5e739f659b4c228b-s1200.jpg" />
+</div>
+</div>
+<div class="enlarge_html">
+<div class="image_data">
+<p class="caption">A number of races are so close that it may not be possible to declare a winner on election night, leaving control of the House and Senate up in the air.</p>
+<span aria-label="Image credit" class="credit">
+            
+            Joe Sohm/Visions of America/UIG via Getty Images
+            
+        </span>
+</div>
+</div>
+</div>
+<p><strong>How it would happen:</strong> There are a half-dozen congressional races in California, for example, that are very close heading into Election Day. It's possible those races are so close they will not be called on election night. They might not be called for days and possibly weeks later, especially because the vote there is counted slowly.</p> <div class="bucketwrap internallink insettwocolumn inset2col" id="res664465748">
+<div class="bucket img">
+<a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/664172876\/voter-purges-are-up-but-most-americans-wont-see-problems-at-the-polls"}' href="https://www.npr.org/2018/11/05/664172876/voter-purges-are-up-but-most-americans-wont-see-problems-at-the-polls" id="featuredStackSquareImage664172876"><img alt="Voter Purges Are Up, But Most Americans Won't See Problems At The Polls" class="img lazyOnLoad" data-original="https://media.npr.org/assets/img/2018/11/05/ap_18304708017054-2-_sq-bba35f7cc8247e748007256ada6483606e15ec2f-s100.jpg" src="https://media.npr.org/assets/img/2018/11/05/ap_18304708017054-2-_sq-bba35f7cc8247e748007256ada6483606e15ec2f-s100-c15.jpg" /></a> <div class="bucketblock">
+<h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+<h3><a data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/11\/05\/664172876\/voter-purges-are-up-but-most-americans-wont-see-problems-at-the-polls"}' href="https://www.npr.org/2018/11/05/664172876/voter-purges-are-up-but-most-americans-wont-see-problems-at-the-polls">Voter Purges Are Up, But Most Americans Won't See Problems At The Polls</a></h3>
+</div>
+<!-- END CLASS="BUCKETBLOCK" -->
+</div>
+<!-- END CLASS="BUCKET IMG" -->
+</div>
+<!-- END ID="RES664465748" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+<p>Additionally, early and absentee ballots can get counted slowly and there is <a href="http://time.com/5439236/mail-absentee-ballot-concerns/">growing concern </a>that many voters' absentee and mailed ballots could be rejected. In 2016, to the surprise of many, 319,000 absentee ballots were rejected for one reason or another.</p> <p>In the Senate, depending on how results from other races shake out, there is the possibility that control is not known on election night or for weeks after. Specifically, it could all come down to Mississippi. There, no candidate is polling above 50 percent heading into Election Day, and if no one gets at least 50 percent, the race heads to a runoff three weeks later.</p> <p><strong>What it would mean: </strong>Imagine a scenario in which Democrats lead 50-49 on Election Day in the Senate, and the eyes of the country — and the deep pockets of out-of-state money — descend on Mississippi. The consequences would be enormous, the rancor pitched and the tension thick.</p>
+</div>
+<div class="tags">
+<ul>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/520216945/2018">2018</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/497806639/election-day">election day</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/432805936/2016">2016</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/428799323/trump">trump</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/360452518/election-night">election night</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/219323468/2020">2020</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/162174434/polling">polling</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/127115490/senate">Senate</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/126953005/house">House</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/126944326/democrats">Democrats</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/126931907/gop">GOP</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/125951073/republican">Republican</a></li>
+<li><a class="tag tag--story" data-metrics='{"category":"story actions","action":"click tag"}' href="https://www.npr.org/tags/125950998/election">election</a></li>
+</ul>
+</div>
+<!-- END CLASS="TAGS" -->
+<div aria-label="Share tools" class="share-tools share-tools--secondary">
+<ul>
+<li class="share-tools__service share-tools__service--facebook"><button class="fbStory664395755" data-metrics='{"action":"Click Facebook","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-facebook='{"storyId": 664395755 }'><b class="share-tools__service-name">Facebook</b></button></li>
+<li class="share-tools__service share-tools__service--twitter"><button class="story664395755" data-metrics='{"action":"Click Twitter","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-twitter='{"storyId": 664395755 }'><b class="share-tools__service-name">Twitter</b></button></li>
+<li class="share-tools__service share-tools__service--flipboard"><button class="story664395755" data-metrics='{"action":"Click Flipboard","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-share-flipboard='{"storyId": 664395755 }'><b class="share-tools__service-name">Flipboard</b></button></li>
+<li class="share-tools__service share-tools__service--email"><button class="share-tools__email-link" data-metrics='{"action":"Click Email a Friend","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/11\/05\/664395755\/what-if-the-polls-are-wrong-again-4-scenarios-for-what-might-happen-in-the-elect"}' data-story-id="664395755"><b class="share-tools__service-name">Email</b></button></li>
+</ul>
+</div>
+<!-- END CLASS="SHARE-TOOLS SHARE-TOOLS--SECONDARY" ARIA-LABEL="SHARE TOOLS" -->
+<div data-newsletter='{"newsletterId":"politics","title":"Politics","marketingHeader":"Sign Up For The NPR Politics Newsletter","frequency":"every week","shortDescription":"From the White House to your home \u2014 political news and analysis that matter, sent weekly.","contentImage":"https:\/\/media.npr.org\/assets\/img\/2018\/08\/03\/newsletters\/politics.png","staticMarkupDir":" ","brandingDir":"\/branding\/sections\/politics\/","brandingLink":"https:\/\/www.npr.org\/sections\/politics\/","organizationId":1,"recaptchaSiteKey":"6LfD6CYUAAAAAIBeUekwZ9KCjF4UyLFtu7NWNaEK"}' id="newsletter-acquisition-callout-data">
+</div>
+<!-- END ID="NEWSLETTER-ACQUISITION-CALLOUT-DATA" DATA-NEWSLETTER="{&QUOT;NEWSLETTERID&QUOT;:&QUOT;POLITICS&QUOT;,&QUOT;TITLE&QUOT;:&QUOT;POLITICS&QUOT;,&QUOT;MARKETINGHEADER&QUOT;:&QUOT;SIGN UP FOR THE NPR POLITICS NEWSLETTER&QUOT;,&QUOT;FREQUENCY&QUOT;:&QUOT;EVERY WEEK&QUOT;,&QUOT;SHORTDESCRIPTION&QUOT;:&QUOT;FROM THE WHITE HOUSE TO YOUR HOME \U2014 POLITICAL NEWS AND ANALYSIS THAT MATTER, SENT WEEKLY.&QUOT;,&QUOT;CONTENTIMAGE&QUOT;:&QUOT;HTTPS:\/\/MEDIA.NPR.ORG\/ASSETS\/IMG\/2018\/08\/03\/NEWSLETTERS\/POLITICS.PNG&QUOT;,&QUOT;STATICMARKUPDIR&QUOT;:&QUOT; &QUOT;,&QUOT;BRANDINGDIR&QUOT;:&QUOT;\/BRANDING\/SECTIONS\/POLITICS\/&QUOT;,&QUOT;BRANDINGLINK&QUOT;:&QUOT;HTTPS:\/\/WWW.NPR.ORG\/SECTIONS\/POLITICS\/&QUOT;,&QUOT;ORGANIZATIONID&QUOT;:1,&QUOT;RECAPTCHASITEKEY&QUOT;:&QUOT;6LFD6CYUAAAAAIBEUEKWZ9KCJF4UYLFTU7NWNAEK&QUOT;}" -->
+<div data-podcast='{"name":"The NPR Politics Podcast","itunesUrl":"https:\/\/podcasts.apple.com\/podcast\/id1057255460?mt=2&amp;at=11l79Y&amp;ct=nprdirectory","googlePodcastsUrl":"https:\/\/www.google.com\/podcasts?feed=aHR0cHM6Ly93d3cubnByLm9yZy9yc3MvcG9kY2FzdC5waHA_aWQ9NTEwMzEw","rssUrl":"https:\/\/www.npr.org\/rss\/podcast.php?id=510310","jsonFeedUrl":"https:\/\/www.npr.org\/feeds\/664395755\/feed.json","nprOneUniversalUrl":"https:\/\/rpb3r.app.goo.gl\/XDGl","amazonAlexaUrl":null,"pocketCastsUrl":"https:\/\/pca.st\/npr-politics","spotifyUrl":"https:\/\/open.spotify.com\/show\/2PnWnDNwU3wKesCHCpy252"}' id="podcast-callout-data">
+</div>
+<!-- END ID="PODCAST-CALLOUT-DATA" DATA-PODCAST="{&QUOT;NAME&QUOT;:&QUOT;THE NPR POLITICS PODCAST&QUOT;,&QUOT;ITUNESURL&QUOT;:&QUOT;HTTPS:\/\/PODCASTS.APPLE.COM\/PODCAST\/ID1057255460?MT=2&AMP;AT=11L79Y&AMP;CT=NPRDIRECTORY&QUOT;,&QUOT;GOOGLEPODCASTSURL&QUOT;:&QUOT;HTTPS:\/\/WWW.GOOGLE.COM\/PODCASTS?FEED=AHR0CHM6LY93D3CUBNBYLM9YZY9YC3MVCG9KY2FZDC5WAHA_AWQ9NTEWMZEW&QUOT;,&QUOT;RSSURL&QUOT;:&QUOT;HTTPS:\/\/WWW.NPR.ORG\/RSS\/PODCAST.PHP?ID=510310&QUOT;,&QUOT;JSONFEEDURL&QUOT;:&QUOT;HTTPS:\/\/WWW.NPR.ORG\/FEEDS\/664395755\/FEED.JSON&QUOT;,&QUOT;NPRONEUNIVERSALURL&QUOT;:&QUOT;HTTPS:\/\/RPB3R.APP.GOO.GL\/XDGL&QUOT;,&QUOT;AMAZONALEXAURL&QUOT;:NULL,&QUOT;POCKETCASTSURL&QUOT;:&QUOT;HTTPS:\/\/PCA.ST\/NPR-POLITICS&QUOT;,&QUOT;SPOTIFYURL&QUOT;:&QUOT;HTTPS:\/\/OPEN.SPOTIFY.COM\/SHOW\/2PNWNDNWU3WKESCHCPY252&QUOT;}" -->
+<div id="callout-end-of-story-mount">
+</div>
+<!-- END ID="CALLOUT-END-OF-STORY-MOUNT" -->
+<aside aria-label="recommended stories" class="recommended-stories" id="end-of-story-recommendations-mount"></aside>
+<!-- END ID="END-OF-STORY-RECOMMENDATIONS-MOUNT" CLASS="RECOMMENDED-STORIES" ARIA-LABEL="RECOMMENDED STORIES" -->
+</article><header class="contentheader contentheader--two" data-metrics='{"category":"Elections"}'></header><footer aria-label="NPR footer" class="npr-footer" id="npr-footer" role="contentinfo"><div class="npr-footer__content" data-metrics-category="Global Footer" data-metrics-label="Footer">
+<div class="npr-footer__module-group">
+<div class="npr-footer__module">
+<h6 class="npr-footer__header">Read &amp; Listen</h6>
+<ul>
+<li class="npr-footer__item"><a data-metrics-action="Click Homepage" href="/">Home</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click News" href="/sections/news/">News</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Arts &amp; Life" href="/sections/arts/">Arts &amp; Life</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Music" href="/music/">Music</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Podcasts" href="/podcasts/">Podcasts</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Programs" href="/programs/">Programs</a></li>
+</ul>
+</div>
+<div class="npr-footer__module">
+<h6 class="npr-footer__header">Connect</h6>
+<ul>
+<li class="npr-footer__item"><a data-metrics-action="Click Newsletters" href="/newsletters/">Newsletters</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Facebook" href="https://www.facebook.com/NPR/">Facebook</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Twitter" href="https://twitter.com/NPR">Twitter</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Instagram" href="https://www.instagram.com/npr/">Instagram</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Contact" href="https://www.npr.org/contact">Contact</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Help" href="https://help.npr.org">Help</a></li>
+</ul>
+</div>
+<div class="npr-footer__module">
+<h6 class="npr-footer__header">About NPR</h6>
+<ul>
+<li class="npr-footer__item"><a data-metrics-action="Click Overview" href="/about/">Overview</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Finances" href="/about-npr/178660742/public-radio-finances">Finances</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click People" href="/about-npr/179803822/people-at-npr">People</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Press" href="/press/">Press</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Public Editor" href="/sections/publiceditor/">Public Editor</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Corrections" href="/corrections/">Corrections</a></li>
+</ul>
+</div>
+<div class="npr-footer__module">
+<h6 class="npr-footer__header">Get Involved</h6>
+<ul>
+<li class="npr-footer__item"><a data-metrics-action="Click Support Public Radio" href="/support/">Support Public Radio</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Sponsor NPR" href="/about-npr/186948703/corporate-sponsorship">Sponsor NPR</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click NPR Careers" href="/careers/">NPR Careers</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click NPR Shop" href="https://shop.npr.org/">NPR Shop</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click NPR Events" href="https://www.nprpresents.org">NPR Events</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Visit NPR" href="/about-npr/177066727/visit-npr">Visit NPR</a></li>
+</ul>
+</div>
+</div>
+<div class="npr-footer__module npr-footer__module--secondary">
+<ul>
+<li class="npr-footer__item"><a data-metrics-action="Click Terms of Use" href="/about-npr/179876898/terms-of-use">Terms of Use</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Privacy" href="/about-npr/179878450/privacy-policy">Privacy</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Your Privacy Choices" href="/about-npr/179878450/privacy-policy#yourchoices">Your Privacy Choices</a></li>
+<li class="npr-footer__item"><a data-metrics-action="Click Text Only" href="https://text.npr.org/">Text Only</a></li>
+<li class="npr-footer__item"><span class="copy-year"></span></li>
+</ul>
+</div>
+</div></footer></section> <div id="main-sidebar">
+<aside aria-label="advertisement" id="ad-standard-wrap">
+<div class="ad-standard" data-ad-config='{"network":"\/6735\/","site":{"default":"n6735.NPR","mobile":"n6735.NPRMOBILE"},"zone":"News_Politics_Elections","targets":{"testserver":"false","storyId":"664395755","agg":["312150170","191676894","434975886"]},"location":"standard","deferred":false,"isBetweenContent":false,"isAggSponsorship":false,"borderClass":""}' id="ad-standard-News_Politics_Elections"></div>
+<p class="left">NPR thanks our sponsors</p><p class="right"><a href="/about-npr/186948703/corporate-sponsorship">Become an NPR sponsor</a></p>
+</aside>
+</div>
+<!-- END ID="MAIN-SIDEBAR" -->
+</div>
+<!-- END ID="WRAPPER" -->
+<script type="text/javascript">
+   (function () {
+    var loadPageJs = function () { webpackJsonp([82,25],{0:function(n,t,c){n.exports=c(1823)},1823:function(n,t,c){"use strict";c.p=NPR.serverVars.webpackPublicPath,function(){var n=2,t=function(){--n<1&&function(n){c(45),c(2232),c(366),c(373),c(263),c(794),c(408),c(2237),c(407),c(2236),c(2235),c(1402),c(589),c(2229),c(1563),c(2222),c(355)}(c)}.bind(this);c.e(0,t),c.e(4,t)}.call(this)}}); };
+    if (document.readyState === 'complete') {
+        loadPageJs();
+    } else {
+        window.addEventListener('load', function load() {
+            window.removeEventListener('load', load, false);
+            loadPageJs();
+        });
+    }
+})();
+</script>
+</main><noscript><iframe height="0" src="//20655831p.rfihub.com/ca.html?rb=3035&amp;ca=20501671&amp;ra=gtmcb" style="display:none;padding:0;margin:0;" width="0"></iframe></noscript><noscript><iframe><img height="1" src="https://www.facebook.com/tr?id=1621557368158968&amp;ev=PageView&amp;noscript=1" style="display:none" width="1" /></iframe></noscript><script type="text/javascript">
+    var _sf_async_config = _sf_async_config || {};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = '18888';
+    _sf_async_config.domain = NPR.ServerConstants.cbHost;
+    _sf_async_config.useCanonical = true;
+
+    /** CONFIGURATION END **/
+    (function() {
+        function loadChartbeat() {
+            // Wait until the metric for chartbeat have been setup
+            // in templates/javascript/metrics/chartbeat.js
+            if( !!NPR.ChartbeatLoaded) {
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src', 'https://static.chartbeat.com/js/chartbeat.js');
+                document.body.appendChild(e);
+            } else {
+                setTimeout(loadChartbeat, 1000);
+            }
+        }
+
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() {
+            oldonload();
+            window._sf_endpt = (new Date()).getTime();
+            loadChartbeat();
+        };
+    })();
+</script>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+     </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>

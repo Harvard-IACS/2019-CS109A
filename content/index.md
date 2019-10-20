@@ -64,6 +64,10 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 
 <hr>
+<span style="color: #993300;"><strong>Helpline:</strong></span> <a href="mailto:cs109a2019@gmail.com">cs109a2019@gmail.com</a>
+<br/>
+
+<hr>
 <span style="color: #993300;"><strong>Announcement:</strong></span> <a href="https://canvas.harvard.edu/courses/61942/assignments/306006">HW0</a> is now available.
 <br/>
 
@@ -91,12 +95,12 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 
 <pre>
 <span style="color: #993300;"><strong>STANDARD SECTIONS</strong></span>
-<strong>Friday 10/4</strong> 10:30-11:45 am 1 Story St. Room 306
-<strong>Monday 10/7</strong> 4:30-5:45 pm Science Center 110
+<strong>Friday 10/18</strong> 10:30-11:45 am 1 Story St. Room 306
+<strong>Monday 10/21</strong> 4:30-5:45 pm Science Center 110
 Cover the material presented in class. Both standard sections are identical.<br /></span></pre>
 
 <pre><span style="color: #993300;"><strong>ADVANCED SECTIONS</strong></span>
-<strong>Wednesday 10/9</strong> 4:30-5:45 pm Maxwell Dworkin G115
+<strong>Wednesday 10/23</strong> 4:30-5:45 pm Maxwell Dworkin G115
 Cover a different topic each week and are required for 209a students.<br /></pre>
 
 <pre><span style="color: #993300;"><strong>Instructor Office Hours</strong></span><br /><span style="color: #000000;"><strong>Pavlos & Kevin</strong>: Monday 3-5 pm, IACS Lobby</span>

@@ -7,5 +7,5 @@ Tags:  data scraping, beautifulsoup, pandas, matplotlib
 
 ## Jupyter Notebooks
 
-- [S-Section 1: Introduction to Web Scraping]({filename}notebook/cs109a_section_1.ipynb)
+- [S-Section 1: Introduction to Web Scraping]({static}notebook/cs109a_section_1.ipynb)
 

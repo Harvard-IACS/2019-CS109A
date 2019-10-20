@@ -14,6 +14,6 @@ Tags: Data, Data Exploration, Descriptive Statistics
 
 ## Lecture Notebook
 
-- [Lecture 2: Data Science Demo]({filename}notes/Lecture2_Notebook.ipynb)
+- [Lecture 2: Data Science Demo]({static}notes/Lecture2_Notebook.ipynb)
 
 <hr>

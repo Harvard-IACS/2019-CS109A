@@ -1,4 +1,4 @@
-Title: Advanced Section 2:
+Title: Advanced Section 2: Regularization
 Category: A-section
 Date: 2019-9-25
 Author: Pavlos Protopapas, Robbert Struyven
@@ -13,4 +13,4 @@ Tags: Regularization, LASSO, Ridge, Elastic Net, Bayesian, Model Selection, Demo
 - [Advanced Section: Methods of regularization and their justifications [pptx]]({attach}presentation/A-sec2_Slides.pptx )
 
 ## Notebook
-- [Advanced Section: Methods of regularization and their justifications: Demo Notebook [ipynb]]({filename}notebook/A-sec2_demo.ipynb )
+- [Advanced Section: Methods of regularization and their justifications: Demo Notebook [ipynb]]({static}notebook/A-sec2_demo.ipynb )

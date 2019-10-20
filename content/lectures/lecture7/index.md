@@ -10,7 +10,3 @@ Tags: Cross Validation, Model Selection
 
 - [PDF]({attach}presentation/Lecture7_ModeLSelectionRegularization.pdf)
 - [PPTX]({attach}presentation/Lecture7_ModeLSelectionRegularization.pptx)
-
-### Sections
-<!--- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
-- [Section 4 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb) -->

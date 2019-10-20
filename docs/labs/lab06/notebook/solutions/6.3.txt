@@ -1,0 +1,1 @@
+print('The 10d PCA and the 2d PCA agree about how much variance the first two components explain. The 10d and 2d PCA give the same components in the same order. This means it is safe to simply fit a PCA with the largest number of components you expect you will need, and take a subset as appropriate.')

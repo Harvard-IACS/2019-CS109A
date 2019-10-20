@@ -1,0 +1,2 @@
+print('1. The PCA dimensions are chosen without regard to the y variable. Thus it is possible that the very next PCA dimension will lift the red points up out of the page, push the blue points down into it, and leave the cyan points where they are; such a dimension would separate the different types of wine and make classification easy.')
+print('2. PCA would not work with categorical data. PCA requires there to be a meaningful notion of distance between points. Categorical or ordinal data is not enough.')

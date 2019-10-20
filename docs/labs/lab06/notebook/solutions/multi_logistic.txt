@@ -1,0 +1,3 @@
+1\. We get three sets of coefficients, and three intercepts. 
+
+We need three sets because (under the default 'one versus rest' strategy) we fit three models. When predicting, model 1 reports a probability of the new example coming from class A or from the cloud of remaining classes. Model 2 reports the probability of whether the example comes from class B or the cloud of remaining classes, and so on. We take this set of scores and pick the biggest one (we classify as whichever class has the biggest ratio of "this class" to "not this class").

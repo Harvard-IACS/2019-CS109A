@@ -1,9 +1,12 @@
-Title: Lab 6:
+Title: Lab 6: Logistic Regression
 Category: labs
-Date: 2019-06-06
-Author: 
-Slug: lab6
-Tages: ADD TAGS HERE
+Slug: lab06
+Author: Chris Tanner
+Date: 2019-10-10
+Tags: logistic regression, linear regression, mle
 
 
-## Slides
+## Jupyter Notebooks
+
+- [Lab 6: Logistic Regression]({static}notebook/cs109a_lab6_logistic_regression.ipynb)
+- [Lab 6: Logistic Regression Solutions]({static}notebook/cs109a_lab6_logistic_regression_solutions.ipynb)
