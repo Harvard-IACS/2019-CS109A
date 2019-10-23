@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Preliminaries in Linear Algebra and Statistics}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Linear Algebra}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Statistics}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Principal Component Analysis}{}% 5
+\BOOKMARK [1][-]{section.4}{Assumptions of Principal Component Analysis}{}% 6
+\BOOKMARK [1][-]{section.5}{Multidimensional Scaling and Other Linear Dimensionality Reduction Methods}{}% 7
+\BOOKMARK [1][-]{section.6}{Nonlinear Dimensionality Reduction Techniques}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Kernel PCA}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Isomap}{section.6}% 10
