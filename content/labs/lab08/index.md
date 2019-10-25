@@ -1,10 +1,11 @@
-Title: Lab 8:
+Title: Lab 8: PCA
 Category: labs
-Date: 2019-06-06
-Author: 
 Slug: lab8
-Tages: ADD TAGS HERE
+Author: Chris Tanner
+Date: 2019-10-24
+Tags: pca, principle component analysis, dimensionality reduction
 
 
-## Notebook
-- [Lab 8: PCA]({static}notes/cs109a_lab8_PCA.ipynb)
+## Jupyter Notebooks
+
+- [Lab 8: PCA]({filename}notes/cs109a_lab8_PCA.ipynb)
