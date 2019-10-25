@@ -6,4 +6,5 @@ Slug: lab8
 Tages: ADD TAGS HERE
 
 
-## Slides
+## Notebook
+- [Lab 8: PCA]({static}notes/cs109a_lab8_PCA.ipynb)
