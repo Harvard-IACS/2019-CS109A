@@ -12,4 +12,4 @@ Tags: PCA, Eigenvalues, Eigenvectors, Dimensionality Reduction
 [Advanced Section 4: PCA [pptx]]({attach}presentation/Adv_Section4_Slides_PCA.pptx)
 
 ## Notes
-[Advanced Section 4: PCA [notes]]({attached}notes/a-sec4-PCA.pdf)
+[Advanced Section 4: PCA [notes]]({attach}notes/a-sec4-PCA.pdf)

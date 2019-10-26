@@ -1,9 +1,9 @@
 Title: Lecture 12: KNN Classification & Imputation
 Category: lectures
-Date: 2019-10-17
+Date: 2019-10-16
 Author: Kevin Rader
 Slug: lecture12
-Tags: KNN imputation classification
+Tags: KNN, imputation,classification
 
 
 ## Slides
@@ -12,4 +12,4 @@ Tags: KNN imputation classification
 [Lecture 12 Slides - PPTX]({attach}presentation/Lecture12_kNNclassAndImputation.pptx)
 
 ## Notebooks
-[Lecture 7 Notebook]({static}presentation/Lecture12.ipynb)
+[Lecture 12 Notebook]({static}presentation/Lecture12.ipynb)
