@@ -12,4 +12,4 @@ Tags: KNN, imputation,classification
 [Lecture 12 Slides - PPTX]({attach}presentation/Lecture12_kNNclassAndImputation.pptx)
 
 ## Notebooks
-[Lecture 12 Notebook]({static}presentation/Lecture12.ipynb)
+[Lecture 12 Notebook]({filename}presentation/Lecture12.ipynb)

@@ -11,6 +11,6 @@ Tages: logistic, regression, classification, likelihood, multiclass, multinomial
 
 - [Logistic Regression 2 PDF]({attach}presentation/Lecture11_LogReg2.pdf)
 - [Logistic Regression 2 PPTX]({attach}presentation/Lecture11_LogReg2.pptx)
-- [Logistic Regression 2 Notebook]({attach}presentation/Lecture11.ipynb)
+- [Logistic Regression 2 Notebook]({filename}presentation/Lecture11.ipynb)
 
 - [Data Directory]({attach}data/)
