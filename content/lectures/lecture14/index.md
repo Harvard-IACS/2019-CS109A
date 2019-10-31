@@ -12,4 +12,4 @@ Tags: PCA, dimensionality reduction
 [Lecture 14 Slides - PPTX]({attach}presentation/Lecture14_PCA.pptx)
 
 ## Notebooks
-[Lecture 14 Notebook]({static}presentation/Lecture14.ipynb)
+[Lecture 14 Notebook]({filename}presentation/Lecture14.ipynb)
