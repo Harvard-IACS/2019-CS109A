@@ -114,9 +114,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -195,12 +310,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -213,27 +336,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -429,7 +564,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -439,11 +576,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -691,6 +841,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -729,7 +882,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -851,6 +1004,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -867,16 +1024,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -892,6 +1057,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -942,8 +1112,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1082,15 +1259,14 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-6:-PCA-and-Logistic-Regression">Standard Section 6: PCA and Logistic Regression<a class="anchor-link" href="#Standard-Section-6:-PCA-and-Logistic-Regression">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
-<hr style="height:2px" />
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-6:-PCA-and-Logistic-Regression">Standard Section 6: PCA and Logistic Regression<a class="anchor-link" href="#Standard-Section-6:-PCA-and-Logistic-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
+<hr style="height:2px">
 </div>
 </div>
 </div>
@@ -1110,8 +1286,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section, our goal is to get you familiarized with Dimensionality Reduction using Principal Components Analysis (PCA) and to recap Logistic Regression from the last homework. This <a href="https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60">medium article</a> was referenced extensively while creating this notebook.</p>
 <p>Specifically, we will:</p>
@@ -1125,16 +1300,15 @@ h6:hover .anchor-link {
 <li>Use PCA in order to <strong>improve model training time</strong> and understand the <strong>speed-accuracy trade-off</strong></li>
 <li>Discuss when to use PCA and when not to use it</li>
 </ul>
-<hr />
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="../fig/meme.png" width="400" /></p>
-<hr />
+<p><img src="../fig/meme.png" width="400"></p>
+<hr>
 </div>
 </div>
 </div>
@@ -1163,20 +1337,18 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Principal Components Analysis helps us deal with high-dimensionality in big-data.</p>
 <p>But first...</p>
-<p><img src="../fig/bigdata.png" width="600" /></p>
+<p><img src="../fig/bigdata.png" width="600"></p>
 <p><strong>High-dimensionality</strong> is the case when p is large i.e. there are a lot of predictors. This is sometimes a problem because:</p>
 <ol>
 <li>Our models may be overfit</li>
@@ -1188,59 +1360,51 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="What-is-Principal-Components-Analysis-(PCA)?">What is Principal Components Analysis (PCA)?<a class="anchor-link" href="#What-is-Principal-Components-Analysis-(PCA)?">¶</a></h1><h2 id="A-Framework-For-Dimensionality-Reduction">A Framework For Dimensionality Reduction<a class="anchor-link" href="#A-Framework-For-Dimensionality-Reduction">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We said that one way to reduce the dimensions of the feature space is to create a new, smaller set of predictors by taking linear combinations of the original predictors. Our original model (let's say it is a Linear Regression Model) looks like this:</p>
-<p>$$
+$$
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon
-$$</p>
-<p>We choose $Z_1$, $Z_2$,$\dots$, $Z_m$, where $m < p$ and where each $Z_i$ is a linear combination of
+$$<p>We choose $Z_1$, $Z_2$,$\dots$, $Z_m$, where $m < p$ and where each $Z_i$ is a linear combination of
 the original p predictors, $X_1$ to $X_p$. We can say that:</p>
-<p>$$
+$$
 Z_i = \sum_{j=1}^{p} c_{ij} X_i
-$$</p>
-<p>for fixed constants $c_{ij}$  (PCA can determines them).  As an example, we could say that:</p>
-<p>$$
+$$<p>for fixed constants $c_{ij}$  (PCA can determines them).  As an example, we could say that:</p>
+$$
 Z_1 = 3.3 X_1 + 4 X_2 + 0 X_3 + \dots + 1.2 X_p
-$$</p>
-<p>In the above equation, we see that $Z_1$ is a linear combination of the original predictors. Then we can build a linear regression model using the new predictors as follows:</p>
-<p>$$
+$$<p>In the above equation, we see that $Z_1$ is a linear combination of the original predictors. Then we can build a linear regression model using the new predictors as follows:</p>
+$$
 Y = \theta_0 + \theta_1 Z_1 + \theta_2 Z_2 + \dots + \theta_m Z_m + \epsilon
-$$</p>
-<p>Notice that this model has a smaller number (m+1 < p+1) of parameters. Each $Z_i$ is called <strong>PRINCIPAL COMPONENT</strong>. The principcal components consist an $m$-dimensional <strong>orthonormal</strong> system of coordinates.</p>
+$$<p>Notice that this model has a smaller number (m+1 < p+1) of parameters. Each $Z_i$ is called <strong>PRINCIPAL COMPONENT</strong>. The principcal components consist an $m$-dimensional <strong>orthonormal</strong> system of coordinates.</p>
 <p>PCA is a method to identify a new set of predictors, as linear combinations of the original ones, that captures the 'maximum amount' of variance  in the observed data. This is the basic assumption in the PCA.</p>
-<p><img src="../fig/pca.png" width="400" /></p>
+<p><img src="../fig/pca.png" width="400"></p>
 <p>We see that the "best line" is the one where there is maximal variance along the line. Source <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579">here</a>.</p>
-<p><img src="../fig/pca.gif" width="1000" /></p>
+<p><img src="../fig/pca.gif" width="1000"></p>
 <p>In principle, we could explore all the rotations, that is, rotating our coordinate system under all the angles, and find which rotation yields the maximum variance or the smallest covariance. However, when the dimensionality (p) is large this is very time consuming and inefficient technique. In that case we may use PCA which is systematic way to find the best rotation or the best coordinate system. 
 PCA is a mathematical method based on linear algebra, for more details and rigorous formulation see the notes in the advanced section for PCA.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Applications-of-PCA">Applications of PCA<a class="anchor-link" href="#Applications-of-PCA">¶</a></h2><p>One major application of PCA is to address the issues we pointed out earlier (reduce the number of predictors).</p>
 <p>In addition, another major application of PCA is in <strong>visualization</strong>. Specifically, if we have an N-dimensional dataset, how do we visualize it?</p>
 <p><strong>One option</strong>:</p>
-<p><img src="../fig/matrix.png" width="400" /></p>
+<p><img src="../fig/matrix.png" width="400"></p>
 <p><strong>A more practical option</strong>: use PCA to get the top 2-3 principal components and plot these components on 2-d or 3-d plots!</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="PCA-for-Visualization">PCA for Visualization<a class="anchor-link" href="#PCA-for-Visualization">¶</a></h1><p>Data Source: <a href="https://gist.github.com/seankross/a412dfbd88b3db70b74b">MTCars Dataset</a></p>
 <p>Here are a few resources that use this dataset and apply PCA for visualization. This notebook references <a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">this PCA tutorial in R</a>, <a href="http://www.stat.cmu.edu/~cshalizi/uADA/12/lectures/ch18.pdf">these lecture notes from CMU</a>, this <a href="https://www.analyticsvidhya.com/blog/2016/03/practical-guide-principal-component-analysis-python/">blog</a>, and <a href="http://setosa.io/ev/principal-component-analysis/">this blog</a> which has some nice visualizations of PCA.</p>
@@ -1248,8 +1412,7 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Loading-in-The-Cars-Dataset-and-carry-out-EDA">Loading in The Cars Dataset and carry out EDA<a class="anchor-link" href="#Loading-in-The-Cars-Dataset-and-carry-out-EDA">¶</a></h3><p>This dataset consists of data on 32 models of car, taken from an American motoring magazine (1974 Motor Trend magazine). For each car, you have 11 features, expressed in varying units (US units), They are as follows (<a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">source</a>):</p>
 <ul>
@@ -1295,8 +1458,7 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Our task</strong> is to try to visualize this data in a meaningful way. Obviously we can't make a 9-dimensional plot, but we can try to make several different plots using the <code>pairplot</code> function from seaborn.</p>
 </div>
@@ -1314,16 +1476,14 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>But there are numerous variables and numerous more relationships between these variables. We can do better through PCA.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="A-Better-Visualization-using-PCA">A Better Visualization using PCA<a class="anchor-link" href="#A-Better-Visualization-using-PCA">¶</a></h2><h3 id="Standardizing-Variables">Standardizing Variables<a class="anchor-link" href="#Standardizing-Variables">¶</a></h3><p>Standardization is crucial for PCA. For more details check the notes from the advanced section.</p>
 </div>
@@ -1353,8 +1513,7 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Carrying-out-PCA">Carrying out PCA<a class="anchor-link" href="#Carrying-out-PCA">¶</a></h3><p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">Sklearn PCA documentation</a></p>
 </div>
@@ -1384,8 +1543,7 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us examine some of the attributes we obtain from PCA.</p>
 <ol>
@@ -1426,24 +1584,22 @@ PCA is a mathematical method based on linear algebra, for more details and rigor
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that over 85% of the variance is explained by the first 2 principal components!</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
 <li><code>components_</code>: This represents the principal components i.e. directions of maximum variance in the data. The components are sorted by <code>explained_variance_</code>. </li>
 </ol>
 <p>Let us write the equation for all the principal components using our formulation of the principal components above:</p>
-<p>$$
+$$
 Z_i = \sum_{j=1}^{p} w_{ij} X_i
-$$</p>
+$$
 </div>
 </div>
 </div>
@@ -1466,11 +1622,10 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using the printed equations above, we can create vectors showing where each feature has a high value. Let us do this for the first 2 principal components (using $v$ to denote a vector):</p>
-<p>$$
+$$
 \begin{aligned}
 v_{carb} = \begin{pmatrix}-0.24 \\ 0.48 \end{pmatrix}, \;
 v_{cyl} = \begin{pmatrix}-0.4 \\ 0.02 \end{pmatrix}, \; 
@@ -1482,20 +1637,18 @@ v_{mpg} = \begin{pmatrix}0.39 \\ 0.03 \end{pmatrix}, \;
 v_{qsec} = \begin{pmatrix}0.22 \\ -0.48 \end{pmatrix}, \;
 v_{wt} = \begin{pmatrix}-0.37 \\ -0.17 \end{pmatrix}
 \end{aligned}
-$$</p>
+$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Checking-if-our-vectors-are-orthonormal">Checking if our vectors are orthonormal<a class="anchor-link" href="#Checking-if-our-vectors-are-orthonormal">¶</a></h3><p>Orthonormal vectors are the vectors which are orthogonal (zero dot product) with length equal to one (unit vectors).</p>
 <h4 id="Orthogonal:">Orthogonal:<a class="anchor-link" href="#Orthogonal:">¶</a></h4><p>We use the dot product between two vectors to check if the vectors are orthogonal or not. If the dot product is 0, that means that the two vectors are orthogonal. The dot product between two vectors is (geometrically):</p>
-<p>$$
+$$
 \textbf{a} \cdot \textbf{b} = ||\textbf{a}|| ||\textbf{b}|| \cos(\theta)
-$$</p>
-<p>Where $\theta$ is the angle between the two vectors and $||\cdot||$ denotes the norm of the vector. Since we assume that the norm of a vector is non-zero, the only way the dot product of two vectors to be zero is when the angle between them is 90 degrees (since $\cos(90) = 0$). Thus, the dot product is a good way to check if two vectors are perpendicular.</p>
+$$<p>Where $\theta$ is the angle between the two vectors and $||\cdot||$ denotes the norm of the vector. Since we assume that the norm of a vector is non-zero, the only way the dot product of two vectors to be zero is when the angle between them is 90 degrees (since $\cos(90) = 0$). Thus, the dot product is a good way to check if two vectors are perpendicular.</p>
 <h4 id="Unit-vectors">Unit vectors<a class="anchor-link" href="#Unit-vectors">¶</a></h4><p>In order to calculate the length $||\textbf{a}||$ of a vector we can take the dot product of a vector with itself, namely
 $$ 
 ||\textbf{a}|| =  \textbf{a}\cdot \textbf{a}
@@ -1520,16 +1673,14 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that the first two principal components are orthogonal and the first principal component is also a unit vector. Check other pairs of principal components in order to convince yourself that all principal components are always pairwise orthogonal unit vectors.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Plotting-Results">Plotting Results<a class="anchor-link" href="#Plotting-Results">¶</a></h3>
 </div>
@@ -1564,8 +1715,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Any patterns of interest?</strong> Let us examine the geography more closely. Source: <a href="https://www.datacamp.com/community/tutorials/pca-analysis-r">this blog</a>.</p>
 </div>
@@ -1624,8 +1774,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What patterns do you see now?</p>
 <p>For instance, we can observe that fuel consumption (<em>mpg</em>) is increased for the japanese cars and weight (<em>wt</em>) is increased for US cars.</p>
@@ -1633,8 +1782,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Addressing-n_components">Addressing <code>n_components</code><a class="anchor-link" href="#Addressing-n_components">¶</a></h3><p>We notice that PCA takes in 1 parameter: <code>n_components</code>. This is the number of principal components that PCA will  use. By default, the number of the used principal components is the minimum of the number of rows and the number of columns in the dataset.</p>
 <p><strong>Note</strong>: Setting the default parameter for <code>n_components</code> and taking the top-k principal components is equivalent to setting <code>n_components=k</code>. Let's check this.</p>
@@ -1661,8 +1809,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="PCA-to-speed-up-classification-of-Handwritten-Digits">PCA to speed up classification of Handwritten Digits<a class="anchor-link" href="#PCA-to-speed-up-classification-of-Handwritten-Digits">¶</a></h1><p>This example, using the <a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>, was borrowed from this <a href="https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60">Towards Data Science blog post</a>. In this example, we will be classifying hand-written digits.</p>
 <h2 id="Data-Loading-and-EDA">Data Loading and EDA<a class="anchor-link" href="#Data-Loading-and-EDA">¶</a></h2>
@@ -1685,8 +1832,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Our training set (<code>x_train</code>) contains 60000 images of size 28 by 28. Our training labels (<code>y_train</code>) are numbers from 0 to 9. Let's examine one of these values below.</p>
 </div>
@@ -1707,16 +1853,14 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Our task</strong> is to classify the test set digits as accurately as possible.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We notice that the shape of the training set is $6000 \times 28 \times 28$ which is a 3-dimensional array.  We have not dealt with these kinds of arrays before. We will deal with images in greater detail (and not only!!!) in the follow-up course, <em>CS 109b</em>, if you are interested in doing more of this kind of stuff you should take this course. For now, we will <strong>reshape</strong> the array into a 2-dimensional array of shape $6000\times 784$.</p>
 </div>
@@ -1738,8 +1882,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Normalizing-Data">Normalizing Data<a class="anchor-link" href="#Normalizing-Data">¶</a></h2><p>Image data is usually between 0 and 255 (0 indicating a black pixel and 255 indicating a white pixel). We can normalize these values by dividing by 255.</p>
 </div>
@@ -1763,8 +1906,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Modeling-using-Logistic-Regression">Modeling using Logistic Regression<a class="anchor-link" href="#Modeling-using-Logistic-Regression">¶</a></h2>
 </div>
@@ -1825,16 +1967,14 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We get a high training and test set score but it takes a relatively long time to fit a model. Let us see if we can speed things up when using PCA</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-Regression-Model-after-PCA">Logistic Regression Model after PCA<a class="anchor-link" href="#Logistic-Regression-Model-after-PCA">¶</a></h2>
 </div>
@@ -1866,8 +2006,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that the first 100 principal components hold over 90% of the variance and the first 50 principal components hold over 80% of the variance! We have significantly reduced the dimensionality of our problem! Let us use PCA to find the first 100 principal components of our dataset and transform our <code>x_train</code> and <code>x_test</code> accordingly.</p>
 </div>
@@ -1914,8 +2053,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Note:</strong> The time taken to fit our model is considerably smaller! Now let us check our accuracy</p>
 </div>
@@ -1953,8 +2091,7 @@ $$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Not a significant drop in accuracy!! But, since we are losing information by not accounting for all the variance, we are faced with a speed accuracy tradeoff. 
 Explore the case of keeping less principal components.</p>
@@ -1962,8 +2099,7 @@ Explore the case of keeping less principal components.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Plotting-PCA">Plotting PCA<a class="anchor-link" href="#Plotting-PCA">¶</a></h2><h3 id="Plotting-the-Reconstructed-Image">Plotting the Reconstructed Image<a class="anchor-link" href="#Plotting-the-Reconstructed-Image">¶</a></h3>
 </div>
@@ -1992,8 +2128,7 @@ Explore the case of keeping less principal components.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Uhhh... this is terrible. But we can use PCA to carry out an inverse transform in order to get a reconstructed image. Let's try again, using <code>pca.inverse_transform()</code>! Source: <a href="https://github.com/mGalarnyk/Python_Tutorials/blob/master/Sklearn/PCA/PCA_Image_Reconstruction_and_such.ipynb">this github repo</a></p>
 </div>
@@ -2024,8 +2159,7 @@ Explore the case of keeping less principal components.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Plotting-all-our-points-on-a-2-dimensional-plot-given-by-the-first-2-principal-components-of-PCA">Plotting all our points on a 2-dimensional plot given by the first 2 principal components of PCA<a class="anchor-link" href="#Plotting-all-our-points-on-a-2-dimensional-plot-given-by-the-first-2-principal-components-of-PCA">¶</a></h3><p>This <a href="https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b">towards data science article</a> has a few similar plots that are pretty cool!</p>
 </div>
@@ -2064,16 +2198,14 @@ Explore the case of keeping less principal components.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Any patterns of interest?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="So,-should-I-always-use-PCA?">So, should I always use PCA?<a class="anchor-link" href="#So,-should-I-always-use-PCA?">¶</a></h1><p>PCA is <strong>great</strong> for:</p>
 <ol>
@@ -2093,11 +2225,10 @@ Explore the case of keeping less principal components.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr />
+<hr>
+<h3 id="End-of-Standard-Section">End of Standard Section<a class="anchor-link" href="#End-of-Standard-Section">¶</a></h3><hr>
 </div>
 </div>
 </div>

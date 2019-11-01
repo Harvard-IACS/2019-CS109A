@@ -114,9 +114,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -195,12 +310,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -213,27 +336,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -429,7 +564,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -439,11 +576,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -691,6 +841,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -729,7 +882,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -851,6 +1004,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -867,16 +1024,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -892,6 +1057,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -942,8 +1112,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1082,20 +1259,18 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">Standard Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification<a class="anchor-link" href="#Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">Standard Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification<a class="anchor-link" href="#Standard-Section-5:-Logistic-Regression,-Multiple-Logistic-Regression,-and-KNN-classification">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this section we will be covering Linear Regression, KNN-Classification, and Logistic Regression on the famous iris dataset.</p>
 <p>Specifically, we will:</p>
@@ -1109,13 +1284,12 @@ h6:hover .anchor-link {
 <li>Optional: Fit a KNN-classification model for classification, plot decision boundaries, and interpret results.</li>
 <li>Optional Homework Tip: Pipeline building to sequentially apply a list of transforms (e.g. scaling, polynomial feature creation) and a final estimator.</li>
 </ol>
-<hr />
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section we will be using the following packages:</p>
 </div>
@@ -1156,8 +1330,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Import-data-and-data-exploration.">1. Import data and data exploration.<a class="anchor-link" href="#1.-Import-data-and-data-exploration.">¶</a></h2>
 </div>
@@ -1176,8 +1349,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="What-our-the-target-and-features?">What our the target and features?<a class="anchor-link" href="#What-our-the-target-and-features?">¶</a></h4>
 </div>
@@ -1196,8 +1368,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As we can see, the response variable (y) is the flower type, it has 3 classes:</p>
 <ul>
@@ -1254,8 +1425,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Explore-Data">Explore Data<a class="anchor-link" href="#Explore-Data">¶</a></h2><p>Check which variables have high correlations and distinctive patterns with the response.</p>
 <p>Any patterns worth mentioning?</p>
@@ -1287,8 +1457,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Are the features sepal/petal length and width uniformally distributed or do you observe some clusters of data points?</strong></p>
 <p>What do you expect? Let's add color according to our response variable: 'species' = flower species.</p>
@@ -1308,8 +1477,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some features like 'petal length' and 'petal width' do have very high correlations and distinctive patterns with the response variable 'flower species'. When we would use these features for predicting the flower species, the classification wouldn't be very difficult. Certain ranges of 'petal length' and 'petal width' are very much correlated with a specific flower species and they are almost seperating our classes perfectly.</p>
 <p><strong>Just for illustration purposes we will continue to use only 'sepal width (cm)' and 'sepal length (cm)'. We are making the problem harder for ourselves by only using 'weaker' or less-discriminative features.</strong></p>
@@ -1328,8 +1496,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-Test-Split">Train-Test Split<a class="anchor-link" href="#Train-Test-Split">¶</a></h3>
 </div>
@@ -1362,8 +1529,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Fit-a-linear-regression-model-for-classification,-understand-drawbacks,-and-interpret-results.">2. Fit a linear regression model for classification, understand drawbacks, and interpret results.<a class="anchor-link" href="#2.-Fit-a-linear-regression-model-for-classification,-understand-drawbacks,-and-interpret-results.">¶</a></h2>
 </div>
@@ -1399,8 +1565,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Why do we get this error? Something is wrong with y_train and y_pred_train...</strong></p>
 </div>
@@ -1429,8 +1594,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The fact that our linear regression is outputting continuous predicstions is one of the major drawbacks of linear regression for classification. We can solve this in two manners:</p>
 <ul>
@@ -1492,8 +1656,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Get-Performance-by-Class-(Lookup-Confusion-Matrix)">Get Performance by Class (Lookup Confusion Matrix)<a class="anchor-link" href="#Get-Performance-by-Class-(Lookup-Confusion-Matrix)">¶</a></h3><ul>
 <li>Each row of the matrix represents the instances in an actual class</li>
@@ -1519,8 +1682,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How many classes do we have in our y_test and in our y_pred_test?</strong>
 Why do we have 4 different predicted classes?</p>
@@ -1528,8 +1690,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Can we use Linear Regression for classification?</strong></p>
 <p><strong>Four Assumptions of Linear Regression:</strong></p>
@@ -1554,20 +1715,17 @@ Why do we have 4 different predicted classes?</p>
 <li>Continuous data in which the noise is not normally distributed</li>
 </ol>
 <p><strong>Generalized Linear Models (GLMs), of which Logistic regression is a specific type, to the resque: Logistic regression is most useful for binary response and categorical data.</strong></p>
-<p><img alt="Linear versus Logistic" src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1534281070/linear_vs_logistic_regression_edxw03.png" /></p>
+<p><img alt="Linear versus Logistic" src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1534281070/linear_vs_logistic_regression_edxw03.png"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.-Fit-a-simple-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">3. Fit a simple logistic regression model for classification, compare performance, plot decision boundaries, and interpret results.<a class="anchor-link" href="#3.-Fit-a-simple-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">¶</a></h2><p>The logistic regression formula:</p>
-<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
-<p>This is equivalent to:</p>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
-<hr />
-<p><img alt="Sigmoid Function" src="https://miro.medium.com/max/3000/1*RqXFpiNGwdiKBWyLJc_E7g.png" /></p>
+$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$<p>This is equivalent to:</p>
+$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$<hr>
+<p><img alt="Sigmoid Function" src="https://miro.medium.com/max/3000/1*RqXFpiNGwdiKBWyLJc_E7g.png"></p>
 <p><a href="https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc">Medium Article: Detailed overview of Logistic Regression</a></p>
 </div>
 </div>
@@ -1596,8 +1754,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Let's-compare-logistic-regression-against-linear-regression-predictions">Let's compare logistic regression against linear regression predictions<a class="anchor-link" href="#Let's-compare-logistic-regression-against-linear-regression-predictions">¶</a></h3><ul>
 <li>We fix X_train['sepal width (cm)'] to its mean value. <ul>
@@ -1667,8 +1824,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="How-does-our-Logistic-Regression-come-up-with-mutiple-class-predictions?">How does our Logistic Regression come up with mutiple class predictions?<a class="anchor-link" href="#How-does-our-Logistic-Regression-come-up-with-mutiple-class-predictions?">¶</a></h4><ul>
 <li>Each class $y_i$ has a sigmoid function that tries to predict the probability of the tested input belonging to that specific class $y_i$.<ul>
@@ -1694,8 +1850,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Get-Performance-by-Class-(Lookup-Confusion-Matrix)">Get Performance by Class (Lookup Confusion Matrix)<a class="anchor-link" href="#Get-Performance-by-Class-(Lookup-Confusion-Matrix)">¶</a></h3>
 </div>
@@ -1717,8 +1872,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's compare the confusion matrix of our linear model to the confusion matrix of our logistic regression model:</p>
 </div>
@@ -1743,16 +1897,14 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we do observe that the logistic regression has the correct number of predicted classes.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4.-Visualize-Predictions-and-Decision-boundaries.">4. Visualize Predictions and Decision boundaries.<a class="anchor-link" href="#4.-Visualize-Predictions-and-Decision-boundaries.">¶</a></h2><p><strong>What are decision boundaries:</strong></p>
 <ul>
@@ -1815,8 +1967,7 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Plotting the decision boundary:</strong> by using the following functions:</p>
 <ul>
@@ -1878,33 +2029,23 @@ Why do we have 4 different predicted classes?</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Why are the decision boundaries of this Logistic Regression linear?</strong></p>
 <p>Imagine the simple case where we have only a 2 class classification problem: 
 The logistic regression formula can be written as:</p>
-<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
-<p>This is equivalent to:</p>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
-<p>We have x_1 (sepal width), x_2 (sepal length), and our intercept (constant =1)</p>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2)}}$$</p>
-<p>Since we don't use multiple higher order polynomial features like $x_1^2, x_2^2$, our logistic model only depends on the first order simple features $x_1$ and $x_2$.</p>
+$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$<p>This is equivalent to:</p>
+$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$<p>We have x_1 (sepal width), x_2 (sepal length), and our intercept (constant =1)</p>
+$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2)}}$$<p>Since we don't use multiple higher order polynomial features like $x_1^2, x_2^2$, our logistic model only depends on the first order simple features $x_1$ and $x_2$.</p>
 <p><strong>What do we have to do to find the the decision boundary?</strong></p>
 <p>The decision boundaries are exactly at the position where our algorithm "hesitates" when predicting which class to classify. The output probability of our sigmoid (or softmax) is exactly 0.5. Solving our sigmoid function for $p=0.5$:</p>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}} = 0.5 =  \dfrac{1}{1+1} $$</p>
-<p>$$ e^{-w^T x} = 1$$</p>
-<p>$$ -w^T x = 0$$</p>
-<p>$$ w^T x = 0$$</p>
-<p>$$ w_0*1 + w_1 *x_1 +  w_2 *1x_2 = 0$$</p>
-<p>When we only use two predictor features this constraint of $p=0.5$ results in a linear system; thus we observe a <strong>linear decision boundary.</strong></p>
+$$\hat{p}= \dfrac{1}{1+e^{-w^T x}} = 0.5 =  \dfrac{1}{1+1} $$$$ e^{-w^T x} = 1$$$$ -w^T x = 0$$$$ w^T x = 0$$$$ w_0*1 + w_1 *x_1 +  w_2 *1x_2 = 0$$<p>When we only use two predictor features this constraint of $p=0.5$ results in a linear system; thus we observe a <strong>linear decision boundary.</strong></p>
 <p>In our case when we have three classes.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">5. Fit a higher order polynomial logistic regression model for classification, compare performance, plot decision boundaries, and interpret results.<a class="anchor-link" href="#5.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification,-compare-performance,-plot-decision-boundaries,-and-interpret-results.">¶</a></h2>
 </div>
@@ -1963,8 +2104,7 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Our test performance is decreasing, what might be happening?</strong></p>
 <ul>
@@ -2003,26 +2143,21 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>What do you observe regarding the form of the decision boundaries? Does this make sense?</strong></p>
-<p>$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$</p>
-<p>This is equivalent to:</p>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$</p>
-<p>Now we use $x_1$ (sepal width), $x_2$ (sepal length), an intercept (constant =1), PLUS two higher order terms while making predictions:</p>
+$$\hat{p}= \dfrac{e^{w^T x}}{1+e^{w^T x}}$$<p>This is equivalent to:</p>
+$$\hat{p}= \dfrac{1}{1+e^{-w^T x}}$$<p>Now we use $x_1$ (sepal width), $x_2$ (sepal length), an intercept (constant =1), PLUS two higher order terms while making predictions:</p>
 <ul>
 <li>$x_1^2$ = (sepal_width)^2</li>
 <li>$x_2^2$ = (sepal_length)^2</li>
 </ul>
-<p>$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2 + w_3 *x_1^2 +  w_4* x_2^2))}}$$</p>
-<p>Now solving for $p=0.5$ results in an equation also dependent on $x_1^2$ and $x_2^2$: thus we observe <strong>non-linear decision boundaries.</strong></p>
+$$\hat{p}= \dfrac{1}{1+e^{-(w_0 *1 + w_1 *x_1 +  w_2* x_2 + w_3 *x_1^2 +  w_4* x_2^2))}}$$<p>Now solving for $p=0.5$ results in an equation also dependent on $x_1^2$ and $x_2^2$: thus we observe <strong>non-linear decision boundaries.</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="6.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification-with-different-regularization-parameters-C-(-[10000,-100,-1]-)">6. Fit a higher order polynomial logistic regression model for classification with different regularization parameters C ( [10000, 100, 1] )<a class="anchor-link" href="#6.-Fit-a-higher-order-polynomial-logistic-regression-model-for-classification-with-different-regularization-parameters-C-(-[10000,-100,-1]-)">¶</a></h2>
 </div>
@@ -2065,8 +2200,7 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>What do you observe?</strong></p>
 <ul>
@@ -2090,8 +2224,7 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>What do expect regarding the evolution of the norm of the coefficients of our models when the regularizatoin term C changes?</strong></p>
 <p>Our list contains all 3 models with different values for C (<strong>take a look at the first parameter within brackets</strong>)</p>
@@ -2125,8 +2258,7 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Interpretation of Results: What happens when our Regularization Parameter decreases?</strong></p>
 <p>The amount of regularizaiton increases. This results in:</p>
@@ -2139,17 +2271,15 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>END OF STANDARD SECTION</strong></p>
-<hr />
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Optional:-Fit-a-KNN-classification-model-for-classification,-plot-decision-boundaries,-and-interpret-results.">Optional: Fit a KNN-classification model for classification, plot decision boundaries, and interpret results.<a class="anchor-link" href="#Optional:-Fit-a-KNN-classification-model-for-classification,-plot-decision-boundaries,-and-interpret-results.">¶</a></h3>
 </div>
@@ -2188,16 +2318,14 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The fact we have a big gap of performance between the test and training set means we are overfitting, and can be explained by using "n_neighbors=1".</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Based on your knowledge of KNN-regression can you guess how the decision boundary of the KNN-classification will look when using "n_neighbors=1"?</strong></p>
 </div>
@@ -2229,8 +2357,7 @@ The logistic regression formula can be written as:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="8.-Optional-Homework-Tip:-Pipeline-building-to-sequentially-apply-a-list-of-transforms-(e.g.-scaling,-polynomial-feature-creation)-and-a-final-estimator.">8. Optional Homework Tip: Pipeline building to sequentially apply a list of transforms (e.g. scaling, polynomial feature creation) and a final estimator.<a class="anchor-link" href="#8.-Optional-Homework-Tip:-Pipeline-building-to-sequentially-apply-a-list-of-transforms-(e.g.-scaling,-polynomial-feature-creation)-and-a-final-estimator.">¶</a></h3><p>Instead of manually building our polynomial features which might take a lot of lines of code we can use a <strong>pipeline</strong> to sequentially create polynomials before fitting our logistic regression. Scaling can also be done inside the <code>make_pipeline</code>.</p>
 <p>Previously we did:</p>
@@ -2278,10 +2405,9 @@ X_test_poly_cst['sepal length (cm)^2'] = X_test_poly_cst['sepal length (cm)']**2
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 </div>
 </div>
 </div>
