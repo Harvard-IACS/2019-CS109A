@@ -1,9 +1,11 @@
-Title: Lab 9:
+Title: Lab 8: PCA
 Category: labs
-Date: 2019-06-06
-Author: 
 Slug: lab9
-Tages: ADD TAGS HERE
+Author: Chris Tanner
+Date: 2019-10-31
+Tags: decision trees, trees, regression trees, bagging, entropy, information gain
 
 
-## Slides
+## Jupyter Notebooks
+
+- [Lab 9: PCA]({filename}notes/cs109a_Lab9_Decision_Trees.ipynb)
