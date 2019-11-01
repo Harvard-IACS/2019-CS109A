@@ -1077,11 +1077,11 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Lecture-14-(PCA-and-High-Dimensionality)">Lecture 14 (PCA and High Dimensionality)<a class="anchor-link" href="#Lecture-14-(PCA-and-High-Dimensionality)">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br></p>
-<hr>
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Lecture-14-(PCA-and-High-Dimensionality)">Lecture 14 (PCA and High Dimensionality)<a class="anchor-link" href="#Lecture-14-(PCA-and-High-Dimensionality)">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br /></p>
+<hr />
 </div>
 </div>
 </div>
@@ -1090,7 +1090,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -1123,7 +1123,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">heart_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/Heart.csv'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">heart_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/Heart.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1134,7 +1134,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">heart_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">heart_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1146,7 +1146,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">heart_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1157,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># For pedagogical purposes, let's simplify our lives and use just 4 predictors</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For pedagogical purposes, let's simplify our lives and use just 4 predictors</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[[</span><span class="s1">'Age'</span><span class="p">,</span><span class="s1">'RestBP'</span><span class="p">,</span><span class="s1">'Chol'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">heart_df</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Yes'</span><span class="p">)</span>
 </pre></div>
@@ -1170,7 +1170,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#fit the 'full' model on the 4 predictors. and print out the coefficients</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fit the 'full' model on the 4 predictors. and print out the coefficients</span>
 <span class="n">logit_full</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
 <span class="n">beta</span> <span class="o">=</span> <span class="n">logit_full</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1186,7 +1186,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># investigating what happens when two identical predictors are used</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># investigating what happens when two identical predictors are used</span>
 
 <span class="n">logit1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">heart_df</span><span class="p">[[</span><span class="s1">'Age'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
 <span class="n">logit2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">heart_df</span><span class="p">[[</span><span class="s1">'Age'</span><span class="p">,</span><span class="s1">'Age'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
@@ -1203,7 +1203,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[[</span><span class="s1">'Age'</span><span class="p">,</span><span class="s1">'RestBP'</span><span class="p">,</span><span class="s1">'Chol'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">heart_df</span><span class="p">[[</span><span class="s1">'Age'</span><span class="p">,</span><span class="s1">'RestBP'</span><span class="p">,</span><span class="s1">'Chol'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">]]</span>
 
 <span class="c1"># create/fit the 'full' pca transformation</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1230,7 +1230,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plot the response over the first 2 PCA component vectors</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot the response over the first 2 PCA component vectors</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[</span><span class="s1">'PCA1'</span><span class="p">][</span><span class="n">y</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">pcaX_df</span><span class="p">[</span><span class="s1">'PCA2'</span><span class="p">][</span><span class="n">y</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[</span><span class="s1">'PCA1'</span><span class="p">][</span><span class="n">y</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">pcaX_df</span><span class="p">[</span><span class="s1">'PCA2'</span><span class="p">][</span><span class="n">y</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
@@ -1248,7 +1248,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">logit_pcr1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logit_pcr1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Intercept from simple PCR-Logistic:"</span><span class="p">,</span><span class="n">logit_pcr1</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"'Slope' from simple PCR-Logistic:"</span><span class="p">,</span> <span class="n">logit_pcr1</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
@@ -1264,7 +1264,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the other 3 PCRs on the rest of the 4 predictors</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the other 3 PCRs on the rest of the 4 predictors</span>
 
 <span class="n">logit_pcr2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">,</span><span class="s1">'PCA2'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
 <span class="n">logit_pcr3</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaX_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">,</span><span class="s1">'PCA2'</span><span class="p">,</span><span class="s1">'PCA3'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
@@ -1291,7 +1291,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="s1">'PCR1'</span> <span class="p">,</span> <span class="s1">'PCR2'</span><span class="p">,</span> <span class="s1">'PCR3'</span><span class="p">,</span> <span class="s1">'PCR4'</span><span class="p">,</span> <span class="s1">'Logistic'</span><span class="p">],</span><span class="n">results</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="s1">'PCR1'</span> <span class="p">,</span> <span class="s1">'PCR2'</span><span class="p">,</span> <span class="s1">'PCR3'</span><span class="p">,</span> <span class="s1">'PCR4'</span><span class="p">,</span> <span class="s1">'Logistic'</span><span class="p">],</span><span class="n">results</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Back-calculated Beta Coefficients"</span><span class="p">);</span>
 
@@ -1306,7 +1306,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
@@ -1325,7 +1325,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#fit the 'full' model on the 4 predictors. and print out the coefficients</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fit the 'full' model on the 4 predictors. and print out the coefficients</span>
 <span class="n">logit_full</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
 
@@ -1342,7 +1342,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the PCR</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fit the PCR</span>
 <span class="n">logit_pcr1Z</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaZ_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
 <span class="n">logit_pcr2Z</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaZ_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">,</span><span class="s1">'PCA2'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
 <span class="n">logit_pcr3Z</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">"lbfgs"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pcaZ_df</span><span class="p">[[</span><span class="s1">'PCA1'</span><span class="p">,</span><span class="s1">'PCA2'</span><span class="p">,</span><span class="s1">'PCA3'</span><span class="p">]],</span><span class="n">y</span><span class="p">)</span>
@@ -1370,7 +1370,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 </div>
 </div>
 </div>
