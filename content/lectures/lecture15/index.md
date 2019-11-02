@@ -1,4 +1,4 @@
-﻿Title: Lecture 15:Decision Trees
+Title: Lecture 15: Decision Trees
 Category: lectures
 Date: 2019-10-28
 Author: Kevin Rader

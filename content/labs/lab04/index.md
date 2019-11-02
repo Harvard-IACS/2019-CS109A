@@ -10,5 +10,5 @@ Tags: linear regression, multinomial regression, polynomial regression, cross-va
 - [Lab 4: Multiple and Polynomial Regression (solutions)]({static}notebook/cs109a_lab4_regression_solutions.ipynb)
 
 ## Slides
-[Lab 4 Slides: Multiple and Polynomial Regression (PPTX)]({attach}presentation/lab04_data_splits.pptx)
-[Lab 4 Slides: Multiple and Polynomial Regression (PDF)]({attach}presentation/lab04_data_splits.pdf)
+- [Lab 4 Slides: Multiple and Polynomial Regression (PPTX)]({attach}presentation/lab04_data_splits.pptx)
+- [Lab 4 Slides: Multiple and Polynomial Regression (PDF)]({attach}presentation/lab04_data_splits.pdf)

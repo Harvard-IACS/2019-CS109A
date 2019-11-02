@@ -1,6 +1,6 @@
 Title: Lecture 1: Introduction
 Category: lectures
-Date: 2019-09-04
+Date: 2019-09-03
 Author: Pavlos Protopapas
 Slug: lecture1
 Tags: Introduction, data science process, logistics

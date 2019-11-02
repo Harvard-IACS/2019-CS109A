@@ -1,4 +1,4 @@
-Title: Lab 2:
+Title: Lab 2: Pandas and Scraping
 Category: labs
 Date: 2019-09-12
 Author: Chris Tanner
