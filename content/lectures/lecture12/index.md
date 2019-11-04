@@ -8,9 +8,9 @@ Tags: KNN, imputation,classification
 
 ## Lecture
 
-[Lecture 12: KNN Classification & Imputation [PDF]]({attach}presentation/Lecture12_kNNclassAndImputation.pdf)
-[Lecture 12: KNN Classification & Imputation [PPTX]]({attach}presentation/Lecture12_kNNclassAndImputation.pptx)
-[Lecture 12: KNN Classification & Imputation [Notebook]]({filename}presentation/Lecture12.ipynb)
+- [Lecture 12: KNN Classification & Imputation [PDF]]({attach}presentation/Lecture12_kNNclassAndImputation.pdf)
+- [Lecture 12: KNN Classification & Imputation [PPTX]]({attach}presentation/Lecture12_kNNclassAndImputation.pptx)
+- [Lecture 12: KNN Classification & Imputation [Notebook]]({filename}presentation/Lecture12.ipynb)
 
 
 ## Section

@@ -7,9 +7,9 @@ Tags: Bagging, out of bag error, OOB, Variable Importance, Random Forest, RF
 
 ## Lecture
 
-[Lecture 16: Bagging and Random Forest [PDF]]({attach}presentation/Lecture16_BaggingRF.pdf)
-[Lecture 16: Bagging and Random Forest [PPTX]]({attach}presentation/Lecture16_BaggingRF.pptx)
+- [Lecture 16: Bagging and Random Forest [PDF]]({attach}presentation/Lecture16_BaggingRF.pdf)
+- [Lecture 16: Bagging and Random Forest [PPTX]]({attach}presentation/Lecture16_BaggingRF.pptx)
 
 ## Section
 
-[S-Section 7: Bagging and Random Forest]({filename}../../sections/section7/notebook/cs109a_section_7.ipynb)
+- [Section 7: Bagging and Random Forest]({filename}../../sections/section7/notebook/cs109a_section_7.ipynb)
