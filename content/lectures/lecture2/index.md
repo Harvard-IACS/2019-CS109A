@@ -16,4 +16,8 @@ Tags: Data, Data Exploration, Descriptive Statistics
 
 - [Lecture 2: Data Science Demo]({static}notes/Lecture2_Notebook.ipynb)
 
+## Lab
+
+- [Lab 1: Introduction to Python and its Libraries]({static}../../labs/lab01/notebook/cs109a_lab1_intro.ipynb)
+
 <hr>

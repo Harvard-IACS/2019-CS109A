@@ -1,6 +1,6 @@
 Title: Schedule
 Slug: schedule
-Date: 2019-11-02
+Date: 2019-11-03
 
 
 |Week|Lecture (Mon)|Lecture (Wed)|Lab (Thu)|Advanced Section (Wed)|Assignment (R:Released Tue - D:Due Wed)|
@@ -12,8 +12,8 @@ Date: 2019-11-02
 |5|[Lecture 8: Regularization and EDA]({filename}/lectures/lecture8/index.md)|[Lecture 9: Visualization for Communication]({filename}/lectures/lecture9/index.md)|[Lab 5: Matplotlib & Seaborn]({filename}/labs/lab05/index.md)|No Advanced Section|No Assignment|
 |6|[Lecture 10: kNN Classification & Logistic Regression I]({filename}/lectures/lecture10/index.md)|[Lecture 11: Loistic Regression II]({filename}/lectures/lecture11/index.md)|[Lab 6: Logistic Regression]({filename}/labs/lab06/index.md)|[Advanced Section 3:Generalized Linear Models]({filename}/a-section/a-section3/index.md)|R:HW4 (individual) - D:HW3|
 |7|No Lecture (Holiday)|[Lecture 12: Dealing with Missing Data, Imputation]({filename}/lectures/lecture12/index.md)|[Lab 7: KNN Classification & Imputation]({filename}/labs/lab07/index.md)|No Advanced Section|No Assignment|
-|8|Lecture 13:  EthiCS|[Lecture 14: PCA]({filename}/lectures/lecture14/index.md)|[Lab 8: PCA]({filename}/labs/lab09/index.md)|Advanced Section 4: PCA|R:HW5 - D:HW4|
-|9|Lecture 15: Classification Trees|[Lecture 16: Regression Trees, Bagging, & Random Forest]({filename}/lectures/lecture16/index.md)|Lab 9: Random Forests and Boosting|No Advanced Section|R:HW6 - D:HW5|
+|8|Lecture 13:  EthiCS|[Lecture 14: PCA]({filename}/lectures/lecture14/index.md)|[Lab 8: PCA]({filename}/labs/lab08/index.md)|Advanced Section 4: PCA|R:HW5 - D:HW4|
+|9|[Lecture 15: Classification Trees]({filename}/lectures/lecture15/index.md)|[Lecture 16: Regression Trees, Bagging, & Random Forest]({filename}/lectures/lecture16/index.md)|[Lab 9: Random Forests and Boosting]({filename}/labs/lab09/index.md)|No Advanced Section|R:HW6 - D:HW5|
 |10|[Lecture 17: Boosting Methods & Stacking]({filename}/lectures/lecture17/index.md)|[Lecture 18: Neural Networks I - Perceptron, Back Propagation, SGD]({filename}/lectures/lecture18/index.md)|[Lab 10: Intro to Neural Networks & Keras]({filename}/labs/lab10/index.md)|No Advanced Section|No Assignment|
 |11|[Lecture 19: Neural Networks II - NN as Function Approximation; Design Choices]({filename}/lectures/lecture19/index.md)|[Lecture 20: Neural Networks III - Dropout & Regularization]({filename}/lectures/lecture20/index.md)|[Lab 11: Dropout]({filename}/labs/lab11/index.md)|Advanced Section 5: Decision Trees & Ensemble Methods|R:HW7 (individual) -  D:HW6|
 |12|[Lecture 21: Neural Networks IV - Solvers]({filename}/lectures/lecture21/index.md)|[Lecture 22: Visulization for Model Interpretation]({filename}/lectures/lecture22/index.md)|[Lab 12: VIZ]({filename}/labs/lab12/index.md)|Advanced Section 6: SGD|No Assignment|

@@ -6,7 +6,8 @@ Slug: lecture4
 Tags: Statistical model, predictors, response variable, R^2, R-square, kNN regression, train-test
 
 
-## Slides
-- [Lecture4: Introduction to Regression [pptx]]({attach}presentation/Lecture4_kNNRegression.pptx )
+## Lecture
+
+- [Lecture 4: Introduction to Regression [pptx]]({attach}presentation/Lecture4_kNNRegression.pptx )
 - [Lecture 4: Introduction to Regression [pdf]]({attach}presentation/Lecture4_kNNRegression.pdf )
 

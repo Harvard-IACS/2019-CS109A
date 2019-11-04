@@ -6,10 +6,9 @@ Slug: lecture10
 Tages: logistic, regression, classification, binary, categorical, likelihood, odds, interaction, bayes, boundary, boundaries, classifier
 
 
-## Slides
+## Lecture
 
-- [Logistic Regression PDF]({attach}presentation/Lecture10_LogisticRegression.pdf)
-- [Logistic Regression PPTX]({attach}presentation/Lecture10_LogisticRegression.pptx)
-- [Logistic Regression Notebook]({attach}presentation/Lecture10.ipynb)
-
+- [Lecture 10: Logistic Regression [PDF]]({attach}presentation/Lecture10_LogisticRegression.pdf)
+- [Lecture 10: Logistic Regression [PPTX]]({attach}presentation/Lecture10_LogisticRegression.pptx)
+- [Lecture 10: Logistic Regression [Notebook]]({attach}presentation/Lecture10.ipynb)
 - [Data Directory]({attach}data/)

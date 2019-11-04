@@ -6,10 +6,13 @@ Slug: lecture15
 Tags: Decision Trees, Variance vs Bias, Entropy, Gini Index, Classification
 
 
-## Slides
+## Lecture
 
-- [Bagging and RF PDF]({attach}presentation/Lecture15_Decision_Trees.pdf)
-- [Bagging and RF PPTX]({attach}presentation/Lecture15_Decision_Trees.pptx)
+[Lecture 15: Decision Trees [PDF]]({attach}presentation/Lecture15_Decision_Trees.pdf)
+[Lecture 15: Decision Trees [PPTX]]({attach}presentation/Lecture15_Decision_Trees.pptx)
+[Lecture 15: Decision Trees [Notebook]]({attach}presentation/Lecture_15_Notebook.ipynb)
 
-## Notebooks
-- [Lecture 15 Notebook]({attach}presentation/Lecture_15_Notebook.ipynb)
+
+## Lab
+
+[Lab 9: Decision Trees]({filename}../../labs/lab09/notes/cs109a_Lab9_Decision_Trees.ipynb)

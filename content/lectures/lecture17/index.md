@@ -6,4 +6,21 @@ Slug: lecture17
 Tages: ADD TAGS HERE
 
 
-## Slides
+## Lecture
+
+- [Lecture 17: [pptx]
+
+
+## Section
+
+- [S-Section X: [Notebook]]
+
+
+## Advanced Section
+
+- [Advanced Section: [pptx]]
+
+
+## Lab
+
+- [Lab X: [Notebook]]
