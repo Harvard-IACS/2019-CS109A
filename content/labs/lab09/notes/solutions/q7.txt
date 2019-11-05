@@ -1,0 +1,2 @@
+Related to Q6, it's okay if we have outliers. Decision Trees are robust (not sensitive) to outliers because it's merely drawing separation lines on a per feature basis.
+It's okay if some values are extremely far from others, as we are effectively trying to figure out how to separate our data, not fit a line that represents all of the data.

@@ -1,0 +1,3 @@
+Linear Regression is a supervised, prediction task (in particular, a regression task -- trying to predict a numeric value).
+Logistic Regression is a supervised, prediction task (in particular, a classification task -- trying to pick the probability of a category)
+PCA is unsupervised and isn't a prediction or inference task. It's independent, as it's merely transforming the data by reducing its dimensions. Afterwards, the data could be used for any model.

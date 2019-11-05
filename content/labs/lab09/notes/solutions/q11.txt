@@ -1,0 +1,4 @@
+This was intended to be a class activity to illustrate the idea and effectiveness of bagging.
+
+Basically, there is power in having many people do a particular task. For example,  most people cannot recall the exact year that a particular movie was released. Let's use the movie Titanic as an example.
+Perhaps you'd guess it was 1990? Some would guess 2000? But, if we polled enough people, by the law of large numbers, we'd probably see a pretty good estimate of the correct answer (1997).

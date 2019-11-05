@@ -1,0 +1,4 @@
+# This was the main lab exercise.
+InformationGain(outlook) = 0.246
+InformationGain(humidity) = 0.151
+InformationGain((temp) = 0.029
