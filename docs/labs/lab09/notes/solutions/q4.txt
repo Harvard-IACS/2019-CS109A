@@ -1,0 +1,6 @@
+Discussed in Lab.
+The node that yields the highest Information Gain (outlook) should become our root node, and it should have 3 edges, 1 for each of its possible values (sunny, overcast, rain).
+For each of these children, we will focus on the just the corresponding subset of data. For example, for the 'sunny' child, we will only look at the subset of data that has outlook being sunny.
+When looking at this subset of data, we need to re-calculate the Information Gain for the remaining features (Humidity, Wind, Temp). Whichever has the highest Information Gain will become
+'Sunny's' child. This process continues until our stopping criterion is met.
+

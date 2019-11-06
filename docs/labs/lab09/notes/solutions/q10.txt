@@ -1,0 +1,1 @@
+They would be equally useful. The log-scale is easier to visualize, so we will use it.

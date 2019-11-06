@@ -1,0 +1,2 @@
+It is not identical. Sklearn's DecisionTree class, by default, doesn't handle categorical data, so we need to do one-hot encoding to handle it.
+Further, its default splitting criterion is Gini, whereas we used Entropy. You'll notice the tree

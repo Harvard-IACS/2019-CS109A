@@ -1,0 +1,4 @@
+Different algorithms approach this differently, as there is no gold-standard approach. No approach should try an unwieldy number of possible threshold points though.
+At most, you could imagine trying N-1 threshold, where N is the number of distinct/unique values for a given feature. Each threshold could be the median between any two
+successive points after sorting the values. For example, if we only had 4 distinct values (-4, -2, 6, 10), then you could try -3, 2, 8.
+This could still lead to trying too many thresholds. It is more common to bin your values in N bins (picture a histogram). Then, you can pick your thresholds based on the N bins.

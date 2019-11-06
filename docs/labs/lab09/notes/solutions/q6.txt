@@ -1,0 +1,3 @@
+You do not need to standardize or normalize the data because decision trees are not trying to fit the data to a particular line;
+it tries to draw decision boundaries on a per feature basis, so it's okay if the values for one feature are drastically different from the values of a different features.
+That is, the features are not being combined in our traditional approach. Instead, for each node in our tree, a given feature is being evaluated for making a decision independent of the other features.

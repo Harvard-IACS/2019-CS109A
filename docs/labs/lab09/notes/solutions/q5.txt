@@ -1,0 +1,6 @@
+Discussed in Lab.
+You get to decide. Possible options include:
+- all data has the same output (entropy of 0)
+- no features remain for the current path of the tree
+- depth is N
+- Information Gain < alpha
