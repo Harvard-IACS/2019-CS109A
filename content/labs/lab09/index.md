@@ -6,6 +6,6 @@ Date: 2019-10-31
 Tags: decision trees, trees, regression trees, bagging, entropy, information gain
 
 
-## Jupyter Notebooks
+## Notebooks
 
-- [Lab 9: Decision Trees]({filename}notes/cs109a_Lab9_Decision_Trees.ipynb)
+- [Lab 9: Decision Trees]({static}notes/cs109a_Lab9_Decision_Trees.ipynb)

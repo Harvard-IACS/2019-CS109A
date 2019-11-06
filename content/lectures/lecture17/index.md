@@ -8,7 +8,8 @@ Tags: Boosting
 
 ## Lecture
 
-- [Lecture 16: Boosting [PPTX]]({attach}presentation/Lecture17_Boosting.pptx)
+- [Lecture 17: Boosting [PPTX]]({attach}presentation/Lecture17_Boosting.pptx)
+- [Lecture 17: Boosting [PDF]]({attach}presentation/Lecture17_Boosting.pdf)
 
 ## Lab
 
