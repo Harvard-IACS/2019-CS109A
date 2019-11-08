@@ -1,0 +1,6 @@
+# SOLUTION: discussed heavily in lab. in short, shorter trees have less variance and higher bias. the opposite is true for longer trees.
+imagine if we had a dataset with 12 features measuring personal attributes, and the target goal is to predict if one is a basketball
+player or not. if we had a short decision tree, perhaps it would have 'height' as the root node of a decision tree. surely
+there's more useful info than that, and it's wrong of us to assume that all tall people play basketball. thus, it's very biased of us/our model
+to think so. moreover, if we were given more training data (simply, more people in our dataset), our tree would likely still pick
+height as the same root node, so there's little variance w.r.t. training data.
