@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../style/css/hiacs.css">
+
+    <title>CS109A - S-Section 08: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../..">
+      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+ <div>
+  <div class="float-left">
+    <p>
+      Key Word(s):       <a href="../../pages/materials.html#decision trees"
+        >decision trees</a
+      >,       <a href="../../pages/materials.html#bagging"
+        >bagging</a
+      >,       <a href="../../pages/materials.html#random forest"
+        >random forest</a
+      >,       <a href="../../pages/materials.html#boosting"
+        >boosting</a
+      >,       <a href="../../pages/materials.html#adaboost and xgboost"
+        >adaboost and xgboost</a
+      >     </p>
+  </div>
+  <div class="float-right">
+    <a href="../../sections/section8/notebook/cs109a_section_8.ipynb">
+      Download Notebook <i class="fas fa-download"></i>
+    </a>
+  </div>
+</div>
+<br />
+<hr />
+ <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">Standard Section 8: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost.<a class="anchor-link" href="#Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This section will work with a spam email dataset again. Our ultimate goal is to be able to build models so that we can predict whether an email is spam or not spam based on word characteristics within each email. We will review Decision Trees, Bagging, and Random Forest methods, and introduce Boosting: Ada Boost and XGBoost.</p>
+<p>Specifically, we will:</p>
+<ol>
+<li><em>Quick review of last week</em> </li>
+<li>Rebuild the Decision Tree model, Bagging model, Random Forest Model just for comparison with Boosting. </li>
+<li><em>Theory:</em> What is Boosting?</li>
+<li>Use the Adaboost on the Spam Dataset.</li>
+<li><em>Theory:</em> What is Gradient Boosting and XGBoost?</li>
+<li>Use XGBoost on the Spam Dataset: Extreme Gradient Boosting</li>
+</ol>
+<p>Optional: Example to better understand Bias vs Variance tradeoff.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="1.-Quick-review-of-last-week">1. <em>Quick review of last week</em><a class="anchor-link" href="#1.-Quick-review-of-last-week">¶</a></h2><h4 id="The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">The Idea: Decision Trees are just flowcharts and interpretable!<a class="anchor-link" href="#The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">¶</a></h4><p>It turns out that simple flow charts can be formulated as mathematical models for classification and these models have the properties we desire;</p>
+<ul>
+<li>interpretable by humans </li>
+<li>have sufficiently complex decision boundaries </li>
+<li>the decision boundaries are locally linear, each component of the decision boundary is simple to describe mathematically. </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h4 id="How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">How to build Decision Trees (the Learning Algorithm in words):<a class="anchor-link" href="#How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">¶</a></h4><p>To learn a decision tree model, we take a greedy approach:</p>
+<ol>
+<li>Start with an empty decision tree (undivided feature space) </li>
+<li>Choose the ‘optimal’ predictor on which to split and choose the ‘optimal’ threshold value for splitting by applying a <strong>splitting criterion (1)</strong></li>
+<li>Recurse on on each new node until <strong>stopping condition (2)</strong> is met</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split2" src="data/split2_adj.png" width="70%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="(2)-Stopping-condition">(2) Stopping condition<a class="anchor-link" href="#(2)-Stopping-condition">¶</a></h4><p>**Not stopping while building a deeper and deeper tree = 100% training accuracy; Yet we will overfit!</p>
+<p>To prevent the <strong>overfitting</strong> from happening, we should have stopping condition.</p>
+<hr>
+<h4 id="How-do-we-go-from-Classification-to-Regression?">How do we go from Classification to Regression?<a class="anchor-link" href="#How-do-we-go-from-Classification-to-Regression?">¶</a></h4><ul>
+<li>For classification, we return the majority class in the points of each leaf node. </li>
+<li>For regression we return the average of the outputs for the points in each leaf node. </li>
+</ul>
+<hr>
+<h4 id="What-is-bagging?">What is bagging?<a class="anchor-link" href="#What-is-bagging?">¶</a></h4><p>One way to adjust for the high variance of the output of an experiment is to perform the experiment multiple times and then average the results.</p>
+<ol>
+<li><strong>Bootstrap:</strong> we generate multiple samples of training data, via bootstrapping. We train a full decision tree on each sample of data. </li>
+<li><strong>AGgregatiING</strong> for a given input, we output the averaged outputs of all the models for that input. </li>
+</ol>
+<p>This method is called <strong>Bagging: B</strong> ootstrap + <strong>AGG</strong>regat<strong>ING</strong>.</p>
+<hr>
+<h4 id="What-is-Random-Forest?">What is Random Forest?<a class="anchor-link" href="#What-is-Random-Forest?">¶</a></h4><ul>
+<li><strong>Many trees</strong> make a <strong>forest</strong>.</li>
+<li><strong>Many random trees</strong> make a <strong>random forest</strong>.</li>
+</ul>
+<p>Random Forest is a modified form of bagging that creates ensembles of independent decision trees. 
+To <em>de-correlate the trees</em>, we:</p>
+<ol>
+<li>train each tree on a separate bootstrap <strong>random sample</strong> of the full training set (same as in bagging) </li>
+<li>for each tree, at each split, we <strong>randomly select a set of 𝐽′ predictors from the full set of predictors.</strong> (not done in bagging)</li>
+<li>From amongst the 𝐽′  predictors, we select the optimal predictor and the optimal corresponding threshold for the split. </li>
+</ol>
+<hr>
+<h4 id="Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">Interesting Piazza post: why randomness in simple decision tree?<a class="anchor-link" href="#Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">¶</a></h4><p><code>"Hi there. I notice that there is a parameter called "random_state" in decision tree function and I wonder why we need randomness in simple decision tree. If we add randomness in such case, isn't it the same as random forest?"</code></p>
+<ul>
+<li>The problem of learning an optimal decision tree is known to be <strong>NP-complete</strong> under several aspects of optimality and even for simple concepts. </li>
+<li>Consequently, practical decision-tree learning algorithms are based on <strong>heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node</strong>. </li>
+<li>Such algorithms <strong>cannot guarantee to return the globally optimal decision tree</strong>. </li>
+<li>This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement (Bagging).</li>
+</ul>
+<p>For example: <strong>What is the defaulth DecisionTreeClassifier behaviour when there are 2 or more best features for a certain split (a tie among "splitters")?</strong> (after a deep dive and internet search <a href="https://github.com/scikit-learn/scikit-learn/issues/12259">link</a> ):</p>
+<ul>
+<li>The current default behaviour when splitter="best" is to shuffle the features at each step and take the best feature to split. </li>
+<li>In case there is a tie, we take a random one.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="2.-Just-re-building-the-tree-models-of-last-week">2. Just re-building the tree models of last week<a class="anchor-link" href="#2.-Just-re-building-the-tree-models-of-last-week">¶</a></h2><h3 id="Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">Rebuild the Decision Tree model, Bagging model and Random Forest Model for comparison with Boosting methods<a class="anchor-link" href="#Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will be working with a spam email dataset. The dataset has 57 predictors with a response variable called <code>Spam</code> that indicates whether an email is spam or not spam. <strong>The goal is to be able to create a classifier or method that acts as a spam filter.</strong></p>
+<p>Link to description : <a href="https://archive.ics.uci.edu/ml/datasets/spambase">https://archive.ics.uci.edu/ml/datasets/spambase</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">metrics</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">AdaBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegressionCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">learning_curve</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Dataframe and Set Column Names</span>
+<span class="n">spam_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/spam.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Column_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">spam_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Spam'</span><span class="p">]</span>
+<span class="n">spam_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+<span class="n">display</span><span class="p">(</span><span class="n">spam_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Let us split the dataset into a 70-30 split by using the following:</span>
+<span class="c1">#Split data into train and test</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">msk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spam_df</span><span class="p">))</span> <span class="o"><</span> <span class="mf">0.7</span>
+<span class="n">data_train</span> <span class="o">=</span> <span class="n">spam_df</span><span class="p">[</span><span class="n">msk</span><span class="p">]</span>
+<span class="n">data_test</span> <span class="o">=</span> <span class="n">spam_df</span><span class="p">[</span><span class="o">~</span><span class="n">msk</span><span class="p">]</span>
+
+<span class="c1">#Split predictor and response columns</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Spam'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">'Spam'</span><span class="p">]</span>
+<span class="n">x_test</span> <span class="p">,</span> <span class="n">y_test</span>  <span class="o">=</span> <span class="n">data_test</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Spam'</span><span class="p">]</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">'Spam'</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Shape of Training Set :"</span><span class="p">,</span><span class="n">data_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Shape of Testing Set :"</span> <span class="p">,</span><span class="n">data_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Check Percentage of Spam in Train and Test Set</span>
+<span class="n">percentage_spam_training</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">percentage_spam_testing</span>  <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">y_test</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+                                                  
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of Spam in Training Set </span><span class="se">\t</span><span class="s2"> : </span><span class="si">{:0.2f}</span><span class="s2">%."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">percentage_spam_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of Spam in Testing Set </span><span class="se">\t</span><span class="s2"> : </span><span class="si">{:0.2f}</span><span class="s2">%."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">percentage_spam_testing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="Fitting-an-Optimal-Single-Decision-Tree">Fitting an Optimal Single Decision Tree<a class="anchor-link" href="#Fitting-an-Optimal-Single-Decision-Tree">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Best depth for single decision trees of last week</span>
+<span class="n">best_depth</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The best depth was found to be:"</span><span class="p">,</span> <span class="n">best_depth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Evalaute the performance at the best depth</span>
+<span class="n">model_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">best_depth</span><span class="p">)</span>
+<span class="n">model_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Check Accuracy of Spam Detection in Train and Test Set</span>
+<span class="n">acc_trees_training</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">model_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span>
+<span class="n">acc_trees_testing</span>  <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span>  <span class="n">model_tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Simple Decision Trees: Accuracy, Training Set </span><span class="se">\t</span><span class="s2"> : </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Simple Decision Trees: Accuracy, Testing Set </span><span class="se">\t</span><span class="s2"> : </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="Fitting-100-Single-Decision-Trees-while-Bagging">Fitting 100 Single Decision Trees while Bagging<a class="anchor-link" href="#Fitting-100-Single-Decision-Trees-while-Bagging">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_trees</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># we tried a variety of numbers here</span>
+
+<span class="c1">#Creating model</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">best_depth</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#Initializing variables</span>
+<span class="n">predictions_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">data_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_trees</span><span class="p">))</span>
+<span class="n">predictions_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">data_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_trees</span><span class="p">))</span>
+
+<span class="c1">#Conduct bootstraping iterations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trees</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">response_variable</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">'Spam'</span><span class="p">]</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Spam'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">response_variable</span><span class="p">)</span>  
+    <span class="n">predictions_train</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>   
+    <span class="n">predictions_test</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+    
+<span class="c1">#Make Predictions Dataframe</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bootstrap-Model_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trees</span><span class="p">)]</span>
+<span class="n">predictions_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">predictions_train</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">predictions_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">predictions_test</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Function to ensemble the prediction of each bagged decision tree model</span>
+<span class="k">def</span> <span class="nf">get_prediction</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">count</span><span class="o">==-</span><span class="mi">1</span> <span class="k">else</span> <span class="n">count</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">count</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">></span><span class="mf">0.5</span>
+
+<span class="c1">#Check Accuracy of Spam Detection in Train and Test Set</span>
+<span class="n">acc_bagging_training</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">get_prediction</span><span class="p">(</span><span class="n">predictions_train</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">acc_bagging_testing</span>  <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">get_prediction</span><span class="p">(</span><span class="n">predictions_test</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_bagging_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fitting-Random-Forest">Fitting Random Forest<a class="anchor-link" href="#Fitting-Random-Forest">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fit a Random Forest Model</span>
+<span class="c1">#Training</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">best_depth</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1">#Performance Evaluation</span>
+<span class="n">acc_random_forest_training</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">acc_random_forest_testing</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: Accuracy, Training Set : </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: Accuracy, Testing Set :  </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Let's-compare-the-performance-of-our-3-models:">Let's compare the performance of our 3 models:<a class="anchor-link" href="#Let's-compare-the-performance-of-our-3-models:">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_bagging_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Theory:-What-is-Boosting?">3. <em>Theory:</em> What is Boosting?<a class="anchor-link" href="#3.-Theory:-What-is-Boosting?">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Bagging and Random Forest:</strong><ul>
+<li>complex and deep trees <strong>overfit</strong></li>
+<li>thus <strong>let's perform variance reduction on complex trees!</strong></li>
+</ul>
+</li>
+<li><strong>Boosting:</strong> <ul>
+<li>simple and shallow trees <strong>underfit</strong> </li>
+<li>thus <strong>let's perform bias reduction of simple trees!</strong></li>
+<li>make the simple trees more expressive!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Boosting</strong> attempts to improve the predictive flexibility of simple models.</p>
+<ul>
+<li>It trains a <strong>large number of “weak” learners in sequence</strong>.</li>
+<li>A weak learner is a constrained model (limit the max depth of each decision tree).</li>
+<li>Each one in the sequence focuses on <strong>learning from the mistakes</strong> of the one before it.</li>
+<li>By more heavily weighting in the mistakes in the next tree, our next tree will learn from the mistakes.</li>
+<li>A combining all the weak learners into a single strong learner = <strong>a boosted tree</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="tree_adj" src="data/gradient_boosting1.png?" width="70%"></p>
+<hr>
+<h3 id="Illustrative-example-(from-source)">Illustrative example (from <a href="https://towardsdatascience.com/underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6fe4a8a49dbf">source</a>)<a class="anchor-link" href="#Illustrative-example-(from-source)">¶</a></h3><p><img alt="tree_adj" src="data/boosting.png" width="70%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We built multiple trees consecutively: Tree 1 -> Tree 2 -> Tree 3 - > ....</p>
+<p><strong>The size of the plus or minus singns indicates the weights of a data points for every Tree</strong>. How do we determine these weights?</p>
+<p>For each consecutive tree and iteration we do the following:</p>
+<ul>
+<li>The <strong>wrongly classified data points ("mistakes" = red circles)</strong> are identified and <strong>more heavily weighted in the next tree (green arrow)</strong>. </li>
+<li>Thus the size of the plus or minus changes in the next tree</li>
+<li>This change in weights will influence and change the next simple decision tree</li>
+<li>The <strong>correct predictions are</strong> identified and <strong>less heavily weighted in the next tree</strong>.</li>
+</ul>
+<p>We iterate this process for a certain number of times, stop and construct our final model:</p>
+<ul>
+<li>The ensemble (<strong>"Final: Combination"</strong>) is a linear combination of the simple trees, and is more expressive!</li>
+<li>The ensemble (<strong>"Final: Combination"</strong>) has indeed not just one simple decision boundary line, and fits the data better.</li>
+</ul>
+<p><img alt="tree_adj" src="data/boosting_2.png?" width="70%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-is-Ada-Boost?">What is Ada Boost?<a class="anchor-link" href="#What-is-Ada-Boost?">¶</a></h3><ul>
+<li>Ada Boost = Adaptive Boosting.</li>
+<li>AdaBoost is adaptive in the sense that subsequent weak learners are tweaked in favor of those instances misclassified by previous classifiers</li>
+</ul>
+<p><img alt="tree_adj" src="data/AdaBoost1.png" width="70%">
+<img alt="tree_adj" src="data/AdaBoost2.png" width="70%">
+<img alt="tree_adj" src="data/AdaBoost3.png" width="70%"></p>
+<p><strong>Notice that when $\hat{y}_n = 𝑦_n$, the weight $w_n$ is small; when $\hat{y}_n \neq 𝑦_n$, the weight $w_n$ is larger.</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Illustrative-Example-(from-slides)">Illustrative Example (from slides)<a class="anchor-link" href="#Illustrative-Example-(from-slides)">¶</a></h3><hr>
+<p><strong>Step1. Start with equal distribition initially</strong>
+<img alt="tree_adj" src="data/ADA2.png" width="40%"></p>
+<hr>
+<p><strong>Step2. Fit a simple classifier</strong>
+<img alt="tree_adj" src="data/ADA3.png" width="40%"></p>
+<hr>
+<p><strong>Step3. Update the weights</strong>
+<img alt="tree_adj" src="data/ADA4.png" width="40%"></p>
+<p><strong>Step4. Update the classifier:</strong> First time trivial (we have no model yet.)</p>
+<hr>
+<p><strong>Step2. Fit a simple classifier</strong>
+<img alt="tree_adj" src="data/ADA5.png" width="40%"></p>
+<p><strong>Step3. Update the weights:</strong> not shown.</p>
+<hr>
+<p><strong>Step4. Update the classifier:</strong>
+<img alt="tree_adj" src="data/ADA6.png" width="40%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-Use-the-Adaboost-method-to-visualize-Bias-Variance-tradeoff.">4. Use the Adaboost method to visualize Bias-Variance tradeoff.<a class="anchor-link" href="#4.-Use-the-Adaboost-method-to-visualize-Bias-Variance-tradeoff.">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's try Boosting!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fit an Adaboost Model</span>
+
+<span class="c1">#Training</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> 
+                           <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+                           <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1">#Performance Evaluation</span>
+<span class="n">acc_boosting_training</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">acc_boosting_test</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>How does the test and training accuracy evolve with every iteration (tree)?</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot Iteration based score</span>
+<span class="n">train_scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">staged_score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">))</span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">staged_score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'train'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'test'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iteration'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Accuracy'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Variation of Accuracy with Iterations - ADA Boost"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What about performance?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>AdaBoost seems to be performing better than Simple Decision Trees and has a similar Test Set Accuracy performance compared to Random Forest.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Random tip:</strong> If a "for"-loop takes som time and you want to know the progress while running the loop, use: <strong>tqdm()</strong> (<a href="https://github.com/tqdm/tqdm">link</a>). No need for 1000's of <code>print(i)</code> outputs.</p>
+<p>Usage: <code>for i in tqdm( range(start,finish) ):</code></p>
+<ul>
+<li>tqdm means <em>"progress"</em> in Arabic (taqadum, تقدّم) and </li>
+<li>tqdm is an abbreviation for <em>"I love you so much"</em> in Spanish (te quiero demasiado).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="What-if-we-change-the-depth-of-our-AdaBoost-trees?">What if we change the depth of our AdaBoost trees?<a class="anchor-link" href="#What-if-we-change-the-depth-of-our-AdaBoost-trees?">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Start Timer</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1">#Find Optimal Depth of trees for Boosting</span>
+<span class="n">score_train</span><span class="p">,</span> <span class="n">score_test</span><span class="p">,</span> <span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span>
+        <span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">i</span><span class="p">),</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">score_train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span>
+    <span class="n">score_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+    
+<span class="c1"># Stop Timer</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">elapsed_adaboost</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
+<span class="n">lists1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_train</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">lists2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_test</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists1</span><span class="p">)</span> 
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists2</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Accuracy"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Depth"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Variation of Accuracy with Depth - ADA Boost Classifier'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">'b-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">'g-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adaboost complexity depends on both the number of estimators and the base estimator.</p>
+<ul>
+<li>In the beginning as our model complexity increases (depth 2-3), we first observe a small increase in accuracy.</li>
+<li>But as we go further to the right of the graph (<strong>deeper trees</strong>), our model <strong>will overfit the data.</strong></li>
+<li><strong>REMINDER and validation: Boosting relies on simple trees!</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Food for Thought :</strong></p>
+<ul>
+<li>Are <strong>boosted models independent of one another?</strong> Do they need to wait for the previous model's residuals?</li>
+<li>Are <strong>bagging or random forest models independent of each other</strong>, can they be trained in a parallel fashion?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Theory:-What-is-Gradient-Boosting-and-XGBoost?">5. <em>Theory:</em> What is Gradient Boosting and XGBoost?<a class="anchor-link" href="#5.-Theory:-What-is-Gradient-Boosting-and-XGBoost?">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-is-Gradient-Boosting?">What is Gradient Boosting?<a class="anchor-link" href="#What-is-Gradient-Boosting?">¶</a></h3><p>To improve its predictions, <strong>gradient boosting looks at the difference between its current approximation, and the known correct target vector, which is called the residual</strong>.</p>
+<p>The mathematics:</p>
+<ul>
+<li>It may be assumed that there is some imperfect model $F_{m}$ </li>
+<li><p>The gradient boosting algorithm improves on $F_{m}$ constructing a new model that adds an estimator $h$ to provide a better model: 
+$$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
+</li>
+<li><p>To find $h$, the gradient boosting solution starts with the observation that a perfect <strong>h</strong> would imply</p>
+</li>
+</ul>
+$$F_{m+1}(x)=F_{m}(x)+h(x)=y$$<ul>
+<li>or, equivalently solving for h,</li>
+</ul>
+$$h(x)=y-F_{m}(x)$$<ul>
+<li>Therefore, gradient boosting will fit h to the residual $y-F_{m}(x)$</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="tree_adj" src="data/gradient_boosting2.png" width="80%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id='XGBoost:-"Long-May-She-Reign!"'>XGBoost: <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">"Long May She Reign!"</a><a class="anchor-link" href='#XGBoost:-"Long-May-She-Reign!"'>¶</a></h3><p><img alt="tree_adj" src="data/kaggle.png" width="100%"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h3 id="What-is-XGBoost-and-why-is-it-so-good!?">What is XGBoost and why is it so good!?<a class="anchor-link" href="#What-is-XGBoost-and-why-is-it-so-good!?">¶</a></h3><ul>
+<li>Based on Gradient Boosting</li>
+<li>XGBoost = <strong>eXtreme Gradient Boosting</strong>; refers to the engineering goal to push the limit of computations resources for boosted tree algorithm</li>
+</ul>
+<p><strong>Accuracy:</strong></p>
+<ul>
+<li>XGBoost however uses a <strong>more regularized model formalizaiton to control overfitting</strong> (=better performance) by both L1 and L2 regularization.</li>
+<li>Tree Pruning methods: more shallow tree will also prevent overfitting</li>
+<li>Improved convergence techniques (like early stopping when no improvement is made for X number of iterations)</li>
+<li>Built-in Cross-Validaiton</li>
+</ul>
+<p><strong>Computing Speed:</strong></p>
+<ul>
+<li>Special Vector and matrix type data structures for faster results.</li>
+<li>Parallelized tree building: using all of your CPU cores during training.</li>
+<li>Distributed Computing: for training very large models using a cluster of machines.</li>
+<li>Cache Optimization of data structures and algorithm: to make best use of hardware.</li>
+</ul>
+<p><strong>XGBoost is building boosted trees in parallel? What? How?</strong></p>
+<ul>
+<li>No: Xgboost doesn't run multiple trees in parallel, you need predictions after each tree to update gradients.</li>
+<li>Rather it does the parallelization WITHIN a single tree my using openMP to create branches independently.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-Use-XGBoost:-Extreme-Gradient-Boosting">6. Use XGBoost: Extreme Gradient Boosting<a class="anchor-link" href="#6.-Use-XGBoost:-Extreme-Gradient-Boosting">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's install XGBoost</span>
+<span class="o">!</span> pip install xgboost
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+
+<span class="c1"># Create the training and test data</span>
+<span class="n">dtrain</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">dtest</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">best_depth</span><span class="p">,</span>  <span class="c1"># the maximum depth of each tree</span>
+    <span class="s1">'eta'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>               <span class="c1"># the training step for each iteration</span>
+    <span class="s1">'silent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>              <span class="c1"># logging mode - quiet</span>
+    <span class="s1">'objective'</span><span class="p">:</span> <span class="s1">'multi:softprob'</span><span class="p">,</span>  <span class="c1"># error evaluation for multiclass training</span>
+    <span class="s1">'num_class'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>           <span class="c1"># the number of classes that exist in this datset</span>
+
+<span class="c1"># Number of training iterations</span>
+<span class="n">num_round</span> <span class="o">=</span> <span class="mi">200</span>  
+
+<span class="c1"># Start timer</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># Train XGBoost</span>
+<span class="n">bst</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> 
+                <span class="n">dtrain</span><span class="p">,</span> 
+                <span class="n">num_round</span><span class="p">,</span> 
+                <span class="n">evals</span><span class="o">=</span> <span class="p">[(</span><span class="n">dtrain</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">)],</span> 
+                <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="c1"># early stopping</span>
+                <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+
+<span class="c1"># Make prediction training set</span>
+<span class="n">preds_train</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dtrain</span><span class="p">)</span>
+<span class="n">best_preds_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">preds_train</span><span class="p">])</span>
+
+<span class="c1"># Make prediction test set</span>
+<span class="n">preds_test</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dtest</span><span class="p">)</span>
+<span class="n">best_preds_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">preds_test</span><span class="p">])</span>
+
+<span class="c1"># Performance Evaluation </span>
+<span class="n">acc_XGBoost_training</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">best_preds_train</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">acc_XGBoost_test</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best_preds_test</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="c1"># Stop Timer</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">elapsed_xgboost</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost:</span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_XGBoost_training</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_XGBoost_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-about-the-accuracy-performance:-AdaBoost-versus-XGBoost?">What about the accuracy performance: AdaBoost versus XGBoost?<a class="anchor-link" href="#What-about-the-accuracy-performance:-AdaBoost-versus-XGBoost?">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_XGBoost_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-about-the-computing-performance:-AdaBoost-versus-XGBoost?">What about the computing performance: AdaBoost versus XGBoost?<a class="anchor-link" href="#What-about-the-computing-performance:-AdaBoost-versus-XGBoost?">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"AdaBoost elapsed time: </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s2">s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_adaboost</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost elapsed time: </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s2">s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_xgboost</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-if-we-change-the-depth-of-our-XGBoost-trees-and-compare-to-Ada-Boost?">What if we change the depth of our XGBoost trees and compare to Ada Boost?<a class="anchor-link" href="#What-if-we-change-the-depth-of-our-XGBoost-trees-and-compare-to-Ada-Boost?">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">model_xgboost</span><span class="p">(</span><span class="n">best_depth</span><span class="p">):</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">best_depth</span><span class="p">,</span>  <span class="c1"># the maximum depth of each tree</span>
+    <span class="s1">'eta'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># the training step for each iteration</span>
+    <span class="s1">'silent'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># logging mode - quiet</span>
+    <span class="s1">'objective'</span><span class="p">:</span> <span class="s1">'multi:softprob'</span><span class="p">,</span>  <span class="c1"># error evaluation for multiclass training</span>
+    <span class="s1">'num_class'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>  <span class="c1"># the number of classes that exist in this datset</span>
+
+    <span class="c1"># the number of training iterations</span>
+    <span class="n">num_round</span> <span class="o">=</span> <span class="mi">200</span>  
+
+    <span class="n">bst</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> 
+                    <span class="n">dtrain</span><span class="p">,</span> 
+                    <span class="n">num_round</span><span class="p">,</span> 
+                    <span class="n">evals</span><span class="o">=</span> <span class="p">[(</span><span class="n">dtrain</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">)],</span> 
+                    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                    <span class="n">verbose_eval</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">preds_train</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dtrain</span><span class="p">)</span>
+    <span class="n">best_preds_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">preds_train</span><span class="p">])</span>
+    <span class="n">preds_test</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dtest</span><span class="p">)</span>
+    <span class="n">best_preds_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">preds_test</span><span class="p">])</span>
+
+    <span class="c1">#Performance Evaluation</span>
+    <span class="n">XGBoost_training</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">best_preds_train</span><span class="p">)</span>
+    <span class="n">XGBoost_test</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best_preds_test</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">XGBoost_training</span><span class="p">,</span> <span class="n">XGBoost_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Find Optimal Depth of trees for Boosting</span>
+<span class="n">score_train_xgb</span><span class="p">,</span> <span class="n">score_test_xgb</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+<span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="n">XGBoost_training</span><span class="p">,</span> <span class="n">XGBoost_test</span> <span class="o">=</span> <span class="n">model_xgboost</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">score_train_xgb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">XGBoost_training</span>
+    <span class="n">score_test_xgb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">XGBoost_test</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
+<span class="n">lists1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_train_xgb</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">lists2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_test_xgb</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists1</span><span class="p">)</span> 
+<span class="n">x4</span><span class="p">,</span> <span class="n">y4</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists2</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Accuracy"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Depth"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Variation of Accuracy with Depth - Adaboost & XGBoost Classifier'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train Accuracy Ada Boost'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test Accuracy Ada Boost'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Train Accuracy XGBoost'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Test Accuracy XGBoost'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Interesting</strong>:</p>
+<ul>
+<li>No real optimal depth of the simple tree for XGBoost, probably a lot of regularization, pruning, or early stopping when using a deep tree at the start.</li>
+<li>XGBoost does not seem to overfit when the depth of the tree increases, as opposed to Ada Boost.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>All the accuracy performances:</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_XGBoost_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><strong>Overview of all the tree algorithms:</strong> <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">Source</a></p>
+<p><img alt="tree_adj" src="data/trees.png" width="100%"></p>
+<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Optional:-Example-to-better-understand-Bias-vs-Variance-tradeoff.">Optional: Example to better understand Bias vs Variance tradeoff.<a class="anchor-link" href="#Optional:-Example-to-better-understand-Bias-vs-Variance-tradeoff.">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A central notion underlying what we've been learning in lectures and sections so far is the trade-off between overfitting and underfitting. If you remember back to Homework 3, we had a model that seemed to represent our data accurately. However, we saw that as we made it more and more accurate on the training set, it did not generalize well to unobserved data.</p>
+<p>As a different example, in face recognition algorithms, such as that on the iPhone X, a too-accurate model would be unable to identity someone who styled their hair differently that day. The reason is that our model may learn irrelevant features in the training data. On the contrary, an insufficiently trained model would not generalize well either. For example, it was recently reported that a face mask could sufficiently fool the iPhone X.</p>
+<p>A widely used solution in statistics to reduce overfitting consists of adding structure to the model, with something like regularization. This method favors simpler models during training.</p>
+<p>The bias-variance dilemma is closely related.</p>
+<ul>
+<li>The <strong>bias</strong> of a model quantifies how precise a model is across training sets. </li>
+<li>The <strong>variance</strong> quantifies how sensitive the model is to small changes in the training set. </li>
+<li>A <strong>robust</strong> model is not overly sensitive to small changes. </li>
+<li><strong>The dilemma involves minimizing both bias and variance</strong>; we want a precise and robust model. Simpler models tend to be less accurate but more robust. Complex models tend to be more accurate but less robust.</li>
+</ul>
+<p><strong>How to reduce bias:</strong></p>
+<ul>
+<li><strong>Use more complex models, more features, less regularization,</strong> ...</li>
+<li><strong>Boosting:</strong> attempts to improve the predictive flexibility of simple models. Boosting uses simple base models and tries to “boost” their aggregate complexity.</li>
+</ul>
+<p><strong>How to reduce variance:</strong></p>
+<ul>
+<li><strong>Early Stopping:</strong> Its rules provide us with guidance as to how many iterations can be run before the learner begins to over-fit.</li>
+<li><strong>Pruning:</strong> Pruning is extensively used while building related models. It simply removes the nodes which add little predictive power for the problem in hand.</li>
+<li><strong>Regularization:</strong> It introduces a cost term for bringing in more features with the objective function. Hence it tries to push the coefficients for many variables to zero and hence reduce cost term.</li>
+<li><strong>Train with more data:</strong> It won’t work every time, but training with more data can help algorithms detect the signal better.</li>
+<li><strong>Ensembling:</strong> Ensembles are machine learning methods for combining predictions from multiple separate models. For example:<ul>
+<li><strong>Bagging</strong> attempts to reduce the chance of overfitting complex models: Bagging uses complex base models and tries to “smooth out” their predictions.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+     </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
