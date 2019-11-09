@@ -1,4 +1,4 @@
-Title: Lecture 16: Bagging and Random Forest
+Title: Lecture 16: Bagging, & Random Forest
 Category: lectures
 Date: 2019-10-30
 Author: Pavlos Protopapas

@@ -1,5 +1,5 @@
 Title: Sections 8:
-Category: section
+Category: sections
 Date: 2019-06-01
 Author: 
 Slug: section8

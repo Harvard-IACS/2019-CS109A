@@ -1,4 +1,4 @@
-Title: Lecture 19:
+Title: Lecture 19: NN 2: Anatomy of NN, design choices
 Category: lectures
 Date: 2019-11-11
 Author: 

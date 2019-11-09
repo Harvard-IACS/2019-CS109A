@@ -7,9 +7,9 @@ Week,Lecture (Mon),Lecture (Wed),Lab (Thu),Advanced Section (Wed),Assignment (R:
 6,Lecture 10: kNN Classification & Logistic Regression I,Lecture 11: Logistic Regression II,Lab 6: Logistic Regression,Advanced Section 3:Generalized Linear Models,R:HW4 (individual) - D:HW3
 7,No Lecture (Holiday),"Lecture 12: Dealing with Missing Data, Imputation",Lab 7: KNN Classification & Imputation,No Advanced Section,No Assignment
 8,Lecture 13:  EthiCS,Lecture 14: PCA,Lab 8: PCA,Advanced Sections 4: PCA,R:HW5 - D:HW4
-9,Lecture 15: Classification Trees,"Lecture 16: Regression Trees, Bagging, & Random Forest",Lab 9: Trees and Random Forests,No Advanced Section,R:HW6 - D:HW5
-10,Lecture 17: Boosting Methods & Stacking,Lecture 18: Neural Networks 1 – Perceptron and MLP,Lab 10: Boosting,No Advanced Section,No Assignment
-11,"Lecture 19: Neural Networks 2. Back Propagation, SGD","Lecture 20: Neural Networks 3. Anatomy of NN, design choices",Lab 11: Intro to NN,Advanced Sections 5: Decision Trees & Ensemble Methods,R:HW7 (individual) -  D:HW6
+9,Lecture 15: Classification Trees,"Lecture 16: Bagging, & Random Forest",Lab 9: Trees and Random Forests,No Advanced Section,R:HW6 - D:HW5
+10,Lecture 17: Boosting Methods,Lecture 18: Neural Networks 1 – Perceptron and MLP,Lab 10: Boosting,No Advanced Section,No Assignment
+11,"Lecture 19: NN 2: Anatomy of NN, design choices",Lecture 20: NN 3. Back Propagation,Lab 11: Intro to NN,Advanced Sections 5: Decision Trees & Ensemble Methods,R:HW7 (individual) -  D:HW6
 12,Lecture 21: Neural Networks 4. Regularization methods,Lecture 22: Visualization for Model Interpretation,Lab 12: Regularization with NN,Advanced Sections 6: Solvers,No Assignment
 13,Lecture 23: Experimental Design & Testing I,No Lecture (Thanksgiving),No Lab,,R:HW8 - D:HW7 *[Due on Tuesday]*
 14,Lecture 24: Experimental Design & Testing II,,Lab 13: Web Dev for Final Projects,,D:HW8
