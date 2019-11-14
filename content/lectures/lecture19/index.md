@@ -8,19 +8,8 @@ Tages: ADD TAGS HERE
 
 ## Lecture
 
-- [Lecture X: [pptx]
+- [Lecture 19: NN 2: Anatomy of NN, design choices [PDF]]({attach}presentation/Lecture19_NN_Design.pdf)
+- [Lecture 19: NN 2: Anatomy of NN, design choices [PPTX]]({attach}presentation/Lecture19_NN_Design.pptx)
 
 
-## Section
 
-- [S-Section X: [Notebook]]
-
-
-## Advanced Section
-
-- [Advanced Section: [pptx]]
-
-
-## Lab
-
-- [Lab X: [Notebook]]
