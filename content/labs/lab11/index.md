@@ -3,7 +3,7 @@ Category: labs
 Date: 2019-11-14
 Author: Eleni Kaxiras
 Slug: lab11
-Tages: feed forward neural networks, neural networks, multilayer perceptron, weights, activation function, tensorflow, keras
+Tags: feed forward neural networks, neural networks, multilayer perceptron, weights, activation function, tensorflow, keras
 
 
 ## Jupyter Notebooks
