@@ -1,4 +1,4 @@
-Title: Lab 11: Lab 11: Neural Network Basics - Introduction to tf.keras
+Title: Lab 11: Neural Network Basics - Introduction to tf.keras
 Category: labs
 Date: 2019-11-14
 Author: Eleni Kaxiras

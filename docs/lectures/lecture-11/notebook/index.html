@@ -1267,11 +1267,11 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Lecture-11-(Logistic-Regression-#2)">Lecture 11 (Logistic Regression #2)<a class="anchor-link" href="#Lecture-11-(Logistic-Regression-#2)">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br></p>
-<hr>
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Lecture-11-(Logistic-Regression-#2)">Lecture 11 (Logistic Regression #2)<a class="anchor-link" href="#Lecture-11-(Logistic-Regression-#2)">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br /></p>
+<hr />
 </div>
 </div>
 </div>
@@ -1280,7 +1280,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">pl</span>
@@ -1304,7 +1304,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/Heart.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/Heart.csv'</span><span class="p">)</span>
 
 <span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Yes"</span><span class="p">)</span>
 <span class="n">df_heart</span><span class="p">[</span><span class="s1">'Interaction'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[</span><span class="s1">'MaxHR'</span><span class="p">]</span><span class="o">*</span><span class="n">df_heart</span><span class="p">[</span><span class="s1">'Sex'</span><span class="p">]</span>
@@ -1320,7 +1320,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span><span class="p">,</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">AHD</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span><span class="p">,</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">AHD</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1340,7 +1340,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beta1_l1</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">beta1_l1</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">beta1_l2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">Cs</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -1379,7 +1379,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Response for Multinomial Logistic Regression Example</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Response for Multinomial Logistic Regression Example</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">RestECG</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">RestECG</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1394,7 +1394,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 'Multinomial' Logistic Regression Example</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 'Multinomial' Logistic Regression Example</span>
 
 <span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[[</span><span class="s1">'Sex'</span><span class="p">]]</span>
 
@@ -1417,7 +1417,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logitm2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'multinomial'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">logitm2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'multinomial'</span><span class="p">)</span>
 <span class="n">logitm2</span><span class="o">.</span><span class="n">fit</span> <span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">)</span>
 
 <span class="c1"># The coefficients</span>
@@ -1433,7 +1433,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logitm3</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'ovr'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">logitm3</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">,</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'ovr'</span><span class="p">)</span>
 <span class="n">logitm3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[[</span><span class="s1">'Sex'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Interaction'</span><span class="p">]],</span> <span class="n">df_heart</span><span class="p">[</span><span class="s1">'RestECG'</span><span class="p">])</span>
 <span class="c1"># The coefficients</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Estimated beta1: </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">logitm3</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
@@ -1448,7 +1448,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"For OVR Logistic Regression:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">logitm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">logitm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
@@ -1473,7 +1473,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logitm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[[</span><span class="s1">'Sex'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Interaction'</span><span class="p">]],</span> <span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">logitm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[[</span><span class="s1">'Sex'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Interaction'</span><span class="p">]],</span> <span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]);</span>
 
 <span class="c1"># The coefficients</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Estimated beta1: </span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">logitm</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
@@ -1488,7 +1488,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#calculating confusion matrices</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#calculating confusion matrices</span>
 
 <span class="n">yhat</span> <span class="o">=</span> <span class="n">logitm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[[</span><span class="s1">'Sex'</span><span class="p">,</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Interaction'</span><span class="p">]])[:,</span><span class="mi">1</span><span class="p">]</span>
 
@@ -1507,7 +1507,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#ROC curve on the train set</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#ROC curve on the train set</span>
 
 <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">met</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">],</span> <span class="n">yhat</span><span class="p">)</span>
 
@@ -1535,7 +1535,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_toy2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/toy_example2.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_toy2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/toy_example2.csv'</span><span class="p">)</span>
 <span class="n">df_toy2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1547,7 +1547,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
@@ -1558,7 +1558,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
 
 
 <span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">)</span>
@@ -1579,7 +1579,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">dummy_x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1597,7 +1597,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_toy2</span><span class="p">[[</span><span class="s1">'x1'</span><span class="p">,</span><span class="s1">'x2'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_toy2</span><span class="p">[[</span><span class="s1">'x1'</span><span class="p">,</span><span class="s1">'x2'</span><span class="p">]]</span>
 
 <span class="n">logreg2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'liblinear'</span><span class="p">)</span>
 <span class="n">poly</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1617,7 +1617,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dummy_x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dummy_x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">find_boundary</span><span class="p">(</span><span class="n">dummy_x</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">poly</span><span class="p">):</span>
    
@@ -1643,7 +1643,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dummy_x1</span><span class="p">,</span><span class="n">dummy_x2</span><span class="p">,</span><span class="s1">'--'</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1658,7 +1658,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Cs</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">Cs</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="n">logregCV</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span> <span class="o">=</span> <span class="n">Cs</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">'liblinear'</span><span class="p">,</span><span class="n">penalty</span><span class="o">=</span><span class="s1">'l1'</span><span class="p">)</span>
 
@@ -1673,7 +1673,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">logregCV</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">logregCV</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="c1">#print(logregCV.scores_)</span>
 <span class="c1">#print(logregCV.coefs_paths_)</span>
 </pre></div>
@@ -1686,7 +1686,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dummy_x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">dummy_x1</span><span class="o">+</span><span class="n">beta0</span><span class="p">)</span><span class="o">/-</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dummy_x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">dummy_x1</span><span class="o">+</span><span class="n">beta0</span><span class="p">)</span><span class="o">/-</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">dummy_x2poly</span> <span class="o">=</span> <span class="n">find_boundary</span><span class="p">(</span><span class="n">dummy_x1</span><span class="p">,</span> <span class="n">logreg2</span><span class="p">,</span> <span class="n">poly</span><span class="p">)</span>
 <span class="n">dummy_x2CV</span> <span class="o">=</span> <span class="n">find_boundary</span><span class="p">(</span><span class="n">dummy_x1</span><span class="p">,</span> <span class="n">logregCV</span><span class="p">,</span> <span class="n">poly</span><span class="p">)</span>
 </pre></div>
@@ -1699,7 +1699,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'x2'</span><span class="p">][</span><span class="n">df_toy2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dummy_x1</span><span class="p">,</span><span class="n">dummy_x2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1718,7 +1718,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>

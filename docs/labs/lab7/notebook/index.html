@@ -1245,13 +1245,13 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
-<h2 id="Lab-7:-$k$-NN-Classification-and-Imputation">Lab 7: $k$-NN Classification and Imputation<a class="anchor-link" href="#Lab-7:-$k$-NN-Classification-and-Imputation">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, Chris Tanner<br>
-<strong>Lab Instructors:</strong> Chris Tanner and Eleni Kaxiras.  <br>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
+<h2 id="Lab-7:-$k$-NN-Classification-and-Imputation">Lab 7: $k$-NN Classification and Imputation<a class="anchor-link" href="#Lab-7:-$k$-NN-Classification-and-Imputation">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, Chris Tanner<br />
+<strong>Lab Instructors:</strong> Chris Tanner and Eleni Kaxiras.  <br />
 <strong>Contributors:</strong> Kevin Rader</p>
-<hr>
+<hr />
 </div>
 </div>
 </div>
@@ -1260,7 +1260,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1362,7 +1362,7 @@ header {
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1438,7 +1438,7 @@ header {
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gssdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/gsshealth18.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gssdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/gsshealth18.csv"</span><span class="p">)</span>
 
 <span class="c1">#####</span>
 <span class="c1"># You code here: EDA</span>
@@ -1565,7 +1565,7 @@ header {
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gssdata</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gssdata</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1596,7 +1596,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">I_test</span> <span class="o">=</span> <span class="n">gssdata</span><span class="p">[</span><span class="n">gssdata</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">I_test</span> <span class="o">=</span> <span class="n">gssdata</span><span class="p">[</span><span class="n">gssdata</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -1607,7 +1607,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">I_test</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">I_test</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span>
 <span class="n">I_test</span> <span class="o">=</span> <span class="n">I_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1619,7 +1619,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">I_test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">I_test</span>
 </pre></div>
 </div>
 </div>
@@ -1696,7 +1696,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_test</span>
 </pre></div>
 </div>
 </div>
@@ -1719,7 +1719,7 @@ Name: marital, dtype: object</pre>
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">I_train</span> <span class="o">=</span> <span class="n">gssdata</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">I_train</span> <span class="o">=</span> <span class="n">gssdata</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">])</span>
 <span class="n">I_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1839,7 +1839,7 @@ Name: marital, dtype: object</pre>
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">I_train</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">I_train</span><span class="p">[</span><span class="s1">'marital'</span><span class="p">]</span>
 <span class="n">y_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1871,7 +1871,7 @@ Name: marital, dtype: object</pre>
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">I_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">I_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1902,7 +1902,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
 <span class="n">logit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">I_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">logit</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">I_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">))</span>
 <span class="n">logit</span><span class="o">.</span><span class="n">coef_</span>
@@ -1971,7 +1971,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gssdata</span><span class="p">[</span><span class="s1">'health'</span><span class="p">],</span> <span class="n">gssdata</span><span class="p">[</span><span class="s1">'sex'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gssdata</span><span class="p">[</span><span class="s1">'health'</span><span class="p">],</span> <span class="n">gssdata</span><span class="p">[</span><span class="s1">'sex'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2042,7 +2042,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1"># You code here: EDA</span>
 <span class="c1"># 4. Create a binary called `poorhealth`.  </span>
 <span class="c1"># 5. Explore the distribution of the responses, `health` and `poorhealth`, </span>
@@ -2093,7 +2093,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#########</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#########</span>
 <span class="c1"># 1. Determine the amount of missingness in each variable. </span>
 <span class="c1"># Use is.na() in combination with .sum()</span>
 <span class="c1">########</span>
@@ -2109,7 +2109,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#######</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######</span>
 <span class="c1"># And then build your predictor set</span>
 <span class="c1"># 2. Drop any variables with lots of missingnes (in a new data set).</span>
 <span class="c1"># 3. Do simple imputations for variables with a little bit of missingness.</span>
@@ -2126,7 +2126,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">gssdata</span><span class="o">.</span><span class="n">to_html</span><span class="p">()))</span> 
 </pre></div>
 </div>
@@ -2138,7 +2138,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#create dummies (lots of ways to do it, two ways will be in the solutions</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#create dummies (lots of ways to do it, two ways will be in the solutions</span>
 
 
 <span class="c1">#print(X.shape)</span>
@@ -2169,7 +2169,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#######</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#######</span>
 <span class="c1"># Use the following train_test_split code to: </span>
 <span class="c1"># 1. Split the data into 70-30 train-test splits</span>
 <span class="c1">#######</span>
@@ -2189,7 +2189,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">######</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">######</span>
 <span class="c1"># 2. Fit an unregularize logistic regression model to predict `poorhealth` </span>
 <span class="c1">#    from all predictors except income.</span>
 <span class="c1"># 2b. If you have time: use 'LogisticRegressionCV' to find a well-tuned L2 regularized model.</span>
@@ -2206,7 +2206,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">######</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">######</span>
 <span class="c1"># 4. Report classification accuracy on both train and test set for all models.</span>
 <span class="c1">######</span>
 </pre></div>
@@ -2238,7 +2238,7 @@ dtype: int64</pre>
 <li>the samples that are +ive and the classifier predicts as -ive are called False Negatives (FN)</li>
 </ul>
 <p>A classifier produces a confusion matrix which looks like this:</p>
-<p><img alt="confusionmatrix" src="confusionmatrix_360.png"></p>
+<p><img alt="confusionmatrix" src="confusionmatrix_360.png" /></p>
 <p>IMPORTANT NOTE: In sklearn, to obtain the confusion matrix in the form above, always have the observed <code>y</code> first, i.e.: use as <code>confusion_matrix(y_true, y_pred)</code></p>
 </div>
 </div>
@@ -2248,7 +2248,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1"># 1. Plot the histograms of predicted probabilities on train for your favorite </span>
 <span class="c1">#    model from above</span>
 <span class="c1">#####</span>
@@ -2262,7 +2262,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1">#  2. Create the confusion matrices for (a) the default threshold for classification and </span>
 <span class="c1">#     (b) a well-chosen threshold for classification to balance errors more equally.</span>
 <span class="c1">#####</span>
@@ -2286,7 +2286,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1"># 3. Make ROC curves to evaluate a model's overall useability.</span>
 <span class="c1">#####</span>
 
@@ -2370,7 +2370,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1"># 1. Plot the histogram of `income`.</span>
 <span class="c1"># 2. Create a new variable `income_imp` that imputes the median or </span>
 <span class="c1">#    mean income for all the missing values and plot the histogram for this new variable.</span>
@@ -2395,7 +2395,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#####</span>
 <span class="c1"># 4. Update your `poorhealth` prediction model(s) by incorporating `income_imp`. </span>
 <span class="c1"># 5. Calculate and compare the accuracy of this new model.</span>
 <span class="c1"># And if there is time:</span>
@@ -2421,7 +2421,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
