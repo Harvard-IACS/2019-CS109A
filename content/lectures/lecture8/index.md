@@ -1,4 +1,4 @@
-Title: Lecture 8:Regularization and EDA
+Title: Lecture 8: Regularization and EDA
 Category: lectures
 Date: 2019-09-30
 Author: Pavlos Protopapas and Chris Tanner
