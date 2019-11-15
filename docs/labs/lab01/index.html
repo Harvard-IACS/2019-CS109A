@@ -108,124 +108,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -304,20 +189,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -330,39 +207,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -558,9 +423,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -570,24 +433,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -835,9 +685,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -876,7 +723,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -998,10 +845,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1018,24 +861,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1051,11 +886,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1106,15 +936,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1253,15 +1076,16 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
-<h2 id="Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">Lab 1: Introduction to Python and its Numerical Stack<a class="anchor-link" href="#Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner <br>
-<strong>Lab Instructor:</strong> Eleni Kaxiras <br>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
+<h2 id="Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">Lab 1: Introduction to Python and its Numerical Stack<a class="anchor-link" href="#Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner <br />
+<strong>Lab Instructor:</strong> Eleni Kaxiras <br />
 <strong>Authors:</strong> Rahul Dave, David Sondak, Will Claybaugh, Pavlos Protopapas, Chris Tanner, and Eleni Kaxiras</p>
-<hr>
+<hr />
 </div>
 </div>
 </div>
@@ -1361,7 +1185,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Programming-Expectations">Programming Expectations<a class="anchor-link" href="#Programming-Expectations">¶</a></h2><p>All assignments for this class will use Python and the browser-based iPython notebook format you are currently viewing.  Programming at the level of CS 50 is a prerequisite for this course.   If you have concerns about this, come speak with any of the instructors.</p>
 <p>We will refer to the Python 3 <a href="https://docs.python.org/3/">documentation</a> in this lab and throughout the course.</p>
@@ -1369,7 +1194,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>This introductory lab is a condensed introduction to Python numerical programming.  By the end of this lab, you will feel more comfortable:</p>
 <ul>
@@ -1386,7 +1212,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:-Set-up-a-Conda-Python-Environment-and-Clone-the-Class-Repository">Part 1: Set up a Conda Python Environment and Clone the Class Repository<a class="anchor-link" href="#Part-1:-Set-up-a-Conda-Python-Environment-and-Clone-the-Class-Repository">¶</a></h2><h3 id="On-Python-installation-packages">On Python installation packages<a class="anchor-link" href="#On-Python-installation-packages">¶</a></h3><p>There are two main installing packages for Python, <code>conda</code> and <code>pip</code>. Pip is the Python Packaging Authority’s recommended tool for installing packages from the <strong>Python Package Index (PyPI)</strong>. <code>Conda</code> is a cross platform package and environment manager that installs and manages conda packages from the <strong>Anaconda repository</strong> and <strong>Anaconda Cloud</strong>. Conda does not assume any specific configuration in your computer and will install the Python interpreter along with the other Python packages, whereas <code>pip</code> assumes that you have installed the Python interpreter in your computer. Given the fact that most operating systems do include Python this is not a problem.</p>
 <p>If I could summarize their differences into a sentence it would be that conda has the ability to create <strong>isolated environments</strong> that can contain different versions of Python and/or the packages installed in them. This can be extremely useful when working with data science tools as different tools may contain conflicting requirements which could prevent them all being installed into a single environment. You can have environments with pip but would have to install a tool such as virtualenv or venv. You may use either, we recommend <code>conda</code> because in our experience it leads to fewer incompatibilities between packages and thus fewer broken environments.</p>
@@ -1399,15 +1226,16 @@ header {
 <p><strong>Windows</strong> : <a href="https://docs.anaconda.com/anaconda/install/windows">https://docs.anaconda.com/anaconda/install/windows</a> (Note:  #8 is important: DO NOT add to your path. The reason is that Windows contains paths that may include spaces and that clashes with the way <code>conda</code> understands paths.)</p>
 <h4 id="--If-you-do-have-anaconda-consider-upgrading-it-so-you-get-the-latest-version-of-the-packages:">- If you do have anaconda consider upgrading it so you get the latest version of the packages:<a class="anchor-link" href="#--If-you-do-have-anaconda-consider-upgrading-it-so-you-get-the-latest-version-of-the-packages:">¶</a></h4><p><code>conda update conda</code></p>
 <p>Conda allows you to work in 'computing sandboxes' called environments. You may have environments installed on your computer to access different versions of Python and different libraries to avoid conflict between libraries which can cause errors.</p>
-<hr>
+<hr />
 <h3 id="NOTE-(Sept.6,-2019):">NOTE (Sept.6, 2019):<a class="anchor-link" href="#NOTE-(Sept.6,-2019):">¶</a></h3><p>If you are still having issues please check the Announcements and the Discussion Forum (Ed) via the <a href="https://canvas.harvard.edu/courses/61942">2019-CS109a Canvas site</a></p>
 <p>Also please check the latest version of the cs109a.yml file. We have edited it as of today.</p>
-<hr>
+<hr />
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-are-environments-and-do-I-need-them?">What are environments and do I need them?<a class="anchor-link" href="#What-are-environments-and-do-I-need-them?">¶</a></h3><p>Environments in Python are like sandboxes that have different versions of Python and/or packages installed in them. You can create, export, list, remove, and update environments. Switching or moving between environments is called activating the environment. When you are done with an environments you may deactivate it.</p>
 <p>For this class we want to have a bit more control on the packages that will be installed with the enviromnent so we will create an environment with a so called YAML file called <code>cs109a.yml</code>. Originally YAML was said to mean <em>Yet Another Markup Language</em> referencing its purpose as a markup language with the yet another construct, but it was then repurposed as <em>YAML Ain't Markup Language</em> [source:wikipedia]. This is included in the Lab directory in the class git repository.</p>
@@ -1419,7 +1247,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Activate-the-new-environment:">Activate the new environment:<a class="anchor-link" href="#Activate-the-new-environment:">¶</a></h4><p><code>source activate cs109a</code></p>
 <p>You should see the name of the environment at the start of your command prompth in parenthesis.</p>
@@ -1430,7 +1259,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Clone-the-class-repository">Clone the class repository<a class="anchor-link" href="#Clone-the-class-repository">¶</a></h4><p>In the Terminal type:</p>
 <p><code>git clone https://github.com/Harvard-IACS/2019-CS109A.git</code></p>
@@ -1438,7 +1268,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Starting-the-Jupyter-Notebook">Starting the Jupyter Notebook<a class="anchor-link" href="#Starting-the-Jupyter-Notebook">¶</a></h3><p>Once all is installed go in the Terminal and type</p>
 <p><code>jupyter notebook</code></p>
@@ -1453,14 +1284,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2:-Getting-Started-with-Python">Part 2: Getting Started with Python<a class="anchor-link" href="#Part-2:-Getting-Started-with-Python">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Importing-modules">Importing modules<a class="anchor-link" href="#Importing-modules">¶</a></h3><p>All notebooks should begin with code that imports <em>modules</em>, collections of built-in, commonly-used Python functions.  Below we import the Numpy module, a fast numerical programming library for scientific computing.  Future labs will require additional modules, which we'll import with the same syntax.</p>
 <p><code>import MODULE_NAME as MODULE_NICKNAME</code></p>
@@ -1479,7 +1312,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that Numpy has been imported, we can access some useful functions.  For example, we can use <code>mean</code> to calculate the mean of a set of numbers.</p>
 </div>
@@ -1508,7 +1342,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Calculations-and-variables">Calculations and variables<a class="anchor-link" href="#Calculations-and-variables">¶</a></h3>
 </div>
@@ -1537,7 +1372,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The last line in a cell is returned as the output value, as above.  For cells with multiple lines of results, we can display results using <code>print</code>, as can be seen below.</p>
 </div>
@@ -1573,7 +1409,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can store integer or floating point values as variables.  The other basic Python data types -- booleans, strings, lists -- can also be stored as variables.</p>
 </div>
@@ -1592,7 +1429,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is the storing of a list</p>
 </div>
@@ -1610,10 +1448,11 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Think of a variable as a label for a value, not a box in which you put the value</p>
-<p><img alt="" src="../images/sticksnotboxes.png"></p>
+<p><img alt="" src="../images/sticksnotboxes.png" /></p>
 <p>(image: Fluent Python by Luciano Ramalho)</p>
 </div>
 </div>
@@ -1641,7 +1480,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This DOES NOT create a new copy of <code>a</code>. It merely puts a new label on the memory at a, as can be seen by the following code:</p>
 </div>
@@ -1677,7 +1517,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Tuples</strong></p>
 <p>Multiple items on one line in the interface are returned as a <em>tuple</em>, an immutable sequence of Python objects. See the end of this notebook for an interesting use of <code>tuples</code>.</p>
@@ -1708,7 +1549,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="type()"><code>type()</code><a class="anchor-link" href="#type()">¶</a></h4><p>We can obtain the type of a variable, and use boolean comparisons to test these types. VERY USEFUL when things go wrong and you cannot understand why this method does not work on a specific variable!</p>
 </div>
@@ -1778,16 +1620,18 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For reference, below are common arithmetic and comparison operations.</p>
-<p><img alt="Drawing" src="../images/ops1_v2.png" style="width: 600px;"></p>
-<p><img alt="Drawing" src="../images/ops2_v2.png" style="width: 650px;"></p>
+<p><img alt="Drawing" src="../images/ops1_v2.png" style="width: 600px;" /></p>
+<p><img alt="Drawing" src="../images/ops2_v2.png" style="width: 650px;" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> <b> EXERCISE 1:  Create a tuple called `tup` with the following seven objects: </b></div><ul>
 <li>The first element is an integer of your choice</li>
@@ -1870,7 +1714,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Lists">Lists<a class="anchor-link" href="#Lists">¶</a></h3><p>Much of Python is based on the notion of a list.  In Python, a list is a sequence of items separated by commas, all within square brackets.  The items can be integers, floating points, or another type.  Unlike in C arrays, items in a Python list can be different types, so Python lists are more versatile than traditional arrays in C or other languages.</p>
 <p>Let's start out by creating a few lists.</p>
@@ -1908,7 +1753,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lists in Python are zero-indexed, as in C.  The first entry of the list has index 0, the second has index 1, and so on.</p>
 </div>
@@ -1939,7 +1785,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What happens if we try to use an index that doesn't exist for that list?  Python will complain!</p>
 </div>
@@ -1973,7 +1820,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can find the length of a list using the built-in function <code>len</code>:</p>
 </div>
@@ -2009,14 +1857,16 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Indexing-on-lists-plus-Slicing">Indexing on lists plus Slicing<a class="anchor-link" href="#Indexing-on-lists-plus-Slicing">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And since Python is zero-indexed, the last element of <code>float_list</code> is</p>
 </div>
@@ -2044,7 +1894,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is more idiomatic in Python to use -1 for the last element, -2 for the second last, and so on</p>
 </div>
@@ -2072,7 +1923,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can use the <code>:</code> operator to access a subset of the list.  This is called <strong>slicing.</strong></p>
 </div>
@@ -2103,10 +1955,11 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below is a summary of list slicing operations:</p>
-<p><img alt="Drawing" src="../images/ops3_v2.png" style="width: 600px;"></p>
+<p><img alt="Drawing" src="../images/ops3_v2.png" style="width: 600px;" /></p>
 </div>
 </div>
 </div>
@@ -2133,7 +1986,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can slice "backwards" as well:</p>
 </div>
@@ -2182,7 +2036,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also slice with a stride:</p>
 </div>
@@ -2210,7 +2065,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can iterate through a list using a loop.  Here's a <strong>for loop.</strong></p>
 </div>
@@ -2244,14 +2100,16 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What if you wanted the index as well?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Use the built-in python method <code>enumerate</code>,  which can be used to create a list of tuples with each tuple of the form <code>(index, value)</code>.</p>
 </div>
@@ -2285,14 +2143,16 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Appending-and-deleting">Appending and deleting<a class="anchor-link" href="#Appending-and-deleting">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also append items to the end of the list using the <code>+</code> operator or with <code>append</code>.</p>
 </div>
@@ -2360,7 +2220,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, run the cell with <code>float_list.append()</code> a second time. Then run the subsequent cell. What happens?</p>
 <p>To remove an item from the list, use <code>del.</code></p>
@@ -2391,7 +2252,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You may also add an element (elem) in a specific position (index) in the list</p>
 </div>
@@ -2422,7 +2284,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="List-Comprehensions">List Comprehensions<a class="anchor-link" href="#List-Comprehensions">¶</a></h3><p>Lists can be constructed in a compact way using a <em>list comprehension</em>.  Here's a simple example.</p>
 </div>
@@ -2451,7 +2314,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And here's a more complicated one, requiring a conditional.</p>
 </div>
@@ -2481,7 +2345,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is entirely equivalent to creating <code>comp_list1</code> using a loop with a conditional, as below:</p>
 </div>
@@ -2514,7 +2379,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The list comprehension syntax</p>
 <pre><code>[expression for item in list if conditional]</code></pre>
@@ -2526,7 +2392,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b> Exercise 2:  (do at home) Build a list that contains every prime number between 1 and 100, in two different ways: </b></div><ul>
 <li>2.1 Using for loops and conditional if statements.</li>
@@ -2656,17 +2523,6 @@ b after change [1, 7, 3]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [40]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
@@ -2681,7 +2537,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Simple-Functions">Simple Functions<a class="anchor-link" href="#Simple-Functions">¶</a></h2><p>A <em>function</em> object is a reusable block of code that does a specific task.  Functions are commonplace in Python, either on their own or as they belong to other objects. To invoke a function <code>func</code>, you call it as <code>func(arguments)</code>.</p>
 <p>We've seen built-in Python functions and methods (details below). For example, <code>len()</code> and <code>print()</code> are built-in Python functions. And at the beginning, you called <code>np.mean()</code> to calculate the mean of three numbers, where <code>mean()</code> is a function in the numpy module and numpy was abbreviated as <code>np</code>. This syntax allows us to have multiple "mean" functions in different modules; calling this one as <code>np.mean()</code> guarantees that we will execute numpy's mean function, as opposed to a mean function from a different module.</p>
@@ -2689,7 +2546,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="User-defined-functions">User-defined functions<a class="anchor-link" href="#User-defined-functions">¶</a></h3><p>We'll now learn to write our own user-defined functions.  Below is the syntax for defining a basic function with one input argument and one output. You can also define functions with no input or output arguments, or multiple input or output arguments.</p>
 <pre><code>def name_of_function(arg):
@@ -2729,7 +2587,8 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What if you want to return two variables at a time? The usual way is to return a tuple:</p>
 </div>
@@ -2762,9 +2621,10 @@ b after change [1, 7, 3]
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Lambda-functions">Lambda functions<a class="anchor-link" href="#Lambda-functions">¶</a></h3><p>Often we quickly define mathematical functions with a one-line function called a <em>lambda</em> function.  Lambda functions are great because they enable us to write functions without having to name them, ie, they're <em>anonymous</em>.<br>
+<h3 id="Lambda-functions">Lambda functions<a class="anchor-link" href="#Lambda-functions">¶</a></h3><p>Often we quickly define mathematical functions with a one-line function called a <em>lambda</em> function.  Lambda functions are great because they enable us to write functions without having to name them, ie, they're <em>anonymous</em>.<br />
 No return statement is needed.</p>
 </div>
 </div>
@@ -2808,7 +2668,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Methods">Methods<a class="anchor-link" href="#Methods">¶</a></h3><p>A function that belongs to an object is called a <em>method</em>. By "object," we mean an "instance" of a class (e.g., list, integer, or floating point variable).</p>
 <p>For example, when we invoke <code>append()</code> on an existing list, <code>append()</code> is a method.</p>
@@ -2848,7 +2709,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b> Exercise 3: (do at home) generated a list of the prime numbers between 1 and 100</b></div><p>In Exercise 2, above, you wrote code that generated a list of the prime numbers between 1 and 100. Now, write a function called <code>isprime()</code> that takes in a positive integer $N$, and determines whether or not it is prime.  Return <code>True</code> if it's prime and return <code>False</code> if it isn't. Then, using a list comprehension and <code>isprime()</code>, create a list <code>myprimes</code> that contains all the prime numbers less than 100.</p>
 </div>
@@ -2941,7 +2803,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction-to-Numpy">Introduction to Numpy<a class="anchor-link" href="#Introduction-to-Numpy">¶</a></h2><p>Scientific Python code uses a fast array structure, called the numpy array. Those who have programmed in Matlab will find this very natural. For reference, the numpy documention can be found <a href="https://docs.scipy.org/doc/numpy/reference/">here</a>.</p>
 <p>Let's make a numpy array:</p>
@@ -2993,7 +2856,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The shape array of an array is very useful (we'll see more of it later when we talk about 2D arrays -- matrices -- and higher-dimensional arrays).</p>
 </div>
@@ -3021,7 +2885,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays are <strong>typed</strong>. This means that by default, all the elements will be assumed to be of the same type (e.g., integer, float, String).</p>
 </div>
@@ -3049,7 +2914,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays have similar functionality as lists! Below, we compute the length, slice the array, and iterate through it (one could identically perform the same with a list).</p>
 </div>
@@ -3086,7 +2952,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are two ways to manipulate numpy arrays a) by using the numpy module's methods (e.g., <code>np.mean()</code>) or b) by applying the function np.mean() with the numpy array as an argument.</p>
 </div>
@@ -3117,7 +2984,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A <code>constructor</code> is a general programming term that refers to the mechanism for creating a new object (e.g., list, array, String).</p>
 <p>There are many other efficient ways to construct numpy arrays. Here are some commonly used numpy array constructors. Read more details in the numpy documentation.</p>
@@ -3146,7 +3014,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy gains a lot of its efficiency from being typed. That is, all elements in the array have the same type, such as integer or floating point. The default type, as can be seen above, is a float. (Each float uses either 32 or 64 bits of memory, depending on if the code is running a 32-bit or 64-bit machine, respectively).</p>
 </div>
@@ -3216,7 +3085,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Often, you will want random numbers. Use the <code>random</code> constructor!</p>
 </div>
@@ -3245,7 +3115,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can generate random numbers from a normal distribution with mean 0 and variance 1:</p>
 </div>
@@ -3296,7 +3167,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can sample with and without replacement from an array. Let's first construct a list with evenly-spaced values:</p>
 </div>
@@ -3325,7 +3197,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Without replacement</p>
 </div>
@@ -3382,7 +3255,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With replacement:</p>
 </div>
@@ -3411,19 +3285,20 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Tensors">Tensors<a class="anchor-link" href="#Tensors">¶</a></h2><p>We can think of tensors as a name to include multidimensional arrays of numerical values. While tensors first emerged in the 20th century, they have since been applied to numerous other disciplines, including machine learning. In this class you will only be using <strong>scalars</strong>, <strong>vectors</strong>, and <strong>2D arrays</strong>, so you do not need to worry about the name 'tensor'.</p>
 <p>We will use the following naming conventions:</p>
 <ul>
 <li>scalar = just a number = rank 0 tensor  ($a$ ∈ $F$,)
-<br><br></li>
+<br /><br /></li>
 <li>vector = 1D array = rank 1 tensor ( $x = (\;x_1,...,x_i\;)⊤$ ∈ $F^n$ )
-<br><br></li>
+<br /><br /></li>
 <li>matrix = 2D array = rank 2 tensor ( $\textbf{X} = [a_{ij}] ∈ F^{m×n}$ )
-<br><br></li>
+<br /><br /></li>
 <li>3D array = rank 3 tensor ( $\mathscr{X} =[t_{i,j,k}]∈F^{m×n×l}$ )
-<br><br></li>
+<br /><br /></li>
 <li>$\mathscr{N}$D array = rank $\mathscr{N}$ tensor ( $\mathscr{T} =[t_{i1},...,t_{i\mathscr{N}}]∈F^{n_1×...×n_\mathscr{N}}$ ) </li>
 </ul>
 <h3 id="Slicing-a-2D-array">Slicing a 2D array<a class="anchor-link" href="#Slicing-a-2D-array">¶</a></h3>
@@ -3431,9 +3306,10 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="Drawing" src="../images/slicing_2D_oreilly.png" style="width: 400px;"></p>
+<p><img alt="Drawing" src="../images/slicing_2D_oreilly.png" style="width: 400px;" /></p>
 <p><a href="https://www.oreilly.com/library/view/python-for-data/9781449323592/ch04.html">source:oreilly</a></p>
 </div>
 </div>
@@ -3450,7 +3326,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Numpy-supports-vector-operations">Numpy supports vector operations<a class="anchor-link" href="#Numpy-supports-vector-operations">¶</a></h4><p>What does this mean? It means that instead of adding two arrays, element by element, you can just say: add the two arrays.</p>
 </div>
@@ -3470,7 +3347,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note that this behavior is very different from python lists where concatenation happens.</p>
 </div>
@@ -3490,14 +3368,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>On some computer chips, this numpy addition actually happens in parallel and can yield significant increases in speed. But even on regular chips, the advantage of greater readability is important.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Broadcasting">Broadcasting<a class="anchor-link" href="#Broadcasting">¶</a></h4><p>Numpy supports a concept known as <em>broadcasting</em>, which dictates how arrays of different sizes are combined together. There are too many rules to list here, but importantly, multiplying an array by a number multiplies each element by the number. Adding a number adds the number to each element.</p>
 </div>
@@ -3526,7 +3406,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This means that if you wanted the distribution $N(5, 7)$ you could do:</p>
 </div>
@@ -3545,7 +3426,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Multiplying two arrays multiplies them element-by-element</p>
 </div>
@@ -3563,7 +3445,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You might have wanted to compute the dot product instead:</p>
 </div>
@@ -3581,7 +3464,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Probabilitiy-Distributions-from-scipy.stats-and-statsmodels">Probabilitiy Distributions from <code>scipy.stats</code> and <code>statsmodels</code><a class="anchor-link" href="#Probabilitiy-Distributions-from-scipy.stats-and-statsmodels">¶</a></h2><p>Two useful statistics libraries in python are <code>scipy</code> and <code>statsmodels</code>.</p>
 <p>For example to load the z_test:</p>
@@ -3629,7 +3513,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's get the normal distribution namespace from <code>scipy.stats</code>. See here for <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html">Documentation</a>.</p>
 </div>
@@ -3647,7 +3532,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's create 1,000 points between -10 and 10</p>
 </div>
@@ -3666,7 +3552,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's get the pdf of a normal distribution with a mean of 1 and standard deviation 3, and plot it using the grid points computed before:</p>
 </div>
@@ -3685,14 +3572,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And you can get random variables using the <code>rvs</code> function.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Referencies">Referencies<a class="anchor-link" href="#Referencies">¶</a></h3><p>A useful book by Jake Vanderplas:  <a href="https://jakevdp.github.io/PythonDataScienceHandbook/">PythonDataScienceHandbook</a>.</p>
 <p>You may also benefit from using <a href="https://chrisalbon.com">Chris Albon's web site</a> as a reference. It contains lots of useful information.</p>
@@ -3700,7 +3589,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">¶</a></h2><p>A dictionary is another data structure (aka storage container) -- arguably the most powerful. Like a list, a dictionary is a sequence of items. Unlike a list, a dictionary is unordered and its items are accessed with keys and not integer positions.</p>
 <p>Dictionaries are the closest data structure we have to a database.</p>
@@ -3721,7 +3611,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One can obtain the value corresponding to a key via:</p>
 </div>
@@ -3739,7 +3630,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you try to access a key that isn't present, your code will yield an error:</p>
 </div>
@@ -3757,7 +3649,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Alternatively, the <code>.get()</code> function allows one to gracefully handle these situations by providing a default value if the key isn't found:</p>
 </div>
@@ -3775,7 +3668,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note, this does not <em>store</em> a new value for the key; it only provides a value to return if the key isn't found.</p>
 </div>
@@ -3804,7 +3698,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>All sorts of iterations are supported:</p>
 </div>
@@ -3833,7 +3728,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can iterate over the tuples obtained above:</p>
 </div>
@@ -3852,7 +3748,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Simply iterating over a dictionary gives us the keys. This is useful when we want to do something with each item:</p>
 </div>
@@ -3873,14 +3770,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The above is an actual <strong>copy</strong> of _enroll2017<em>dict's</em> allocated memory, unlike, <code>second_dict = enroll2017_dict</code> which would have made both variables label the same memory location.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the previous dictionary example, the keys were strings corresponding to course names.  Keys don't have to be strings, though; they can be other <em>immutable</em> data type such as numbers or tuples (not lists, as lists are mutable).</p>
 <h3 id='Dictionary-comprehension:-"Do-not-try-this-at-home"'>Dictionary comprehension: "Do not try this at home"<a class="anchor-link" href='#Dictionary-comprehension:-"Do-not-try-this-at-home"'>¶</a></h3><p>You can construct dictionaries using a <em>dictionary comprehension</em>, which is similar to a list comprehension. Notice the brackets {} and the use of <code>zip</code> (see next cell for more on <code>zip</code>)</p>
@@ -3903,7 +3802,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Creating-tuples-with-zip">Creating tuples with <code>zip</code><a class="anchor-link" href="#Creating-tuples-with-zip">¶</a></h4><p><code>zip</code> is a Python built-in function that returns an iterator that aggregates elements from each of the iterables. This is an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables. The iterator stops when the shortest input iterable is exhausted. The <code>set()</code> built-in function returns a <code>set</code> object, optionally with elements taken from another iterable. By using <code>set()</code> you can make <code>zip</code> printable. In the example below, the iterables are the two lists, <code>float_list</code> and <code>int_list</code>. We can have more than two iterables.</p>
 </div>

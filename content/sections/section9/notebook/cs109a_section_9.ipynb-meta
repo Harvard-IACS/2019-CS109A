@@ -1,0 +1,6 @@
+Title: S-Section 09: Feed forward neural networks
+Category: sections
+Slug: sec_9
+Author: Marios Matthaiakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven
+Date: 2019-11-14
+Tags: neural networks, feed forward, tensorflow, keras, training, batching, stochastic gradient descent
