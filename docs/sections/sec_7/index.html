@@ -108,9 +108,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -189,12 +304,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -207,27 +330,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -423,7 +558,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -433,11 +570,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -685,6 +835,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -723,7 +876,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -845,6 +998,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -861,16 +1018,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -886,6 +1051,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -936,8 +1106,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1076,14 +1253,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-7:-Bagging-and-Random-Forest">Standard Section 7: Bagging and Random Forest<a class="anchor-link" href="#Standard-Section-7:-Bagging-and-Random-Forest">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-7:-Bagging-and-Random-Forest">Standard Section 7: Bagging and Random Forest<a class="anchor-link" href="#Standard-Section-7:-Bagging-and-Random-Forest">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
 </div>
 </div>
 </div>
@@ -1103,8 +1279,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This section will work with a spam email dataset. Our ultimate goal is to be able to build models so that we can predict whether an email is spam or not spam based on word characteristics within each email. We will cover Decision Trees, Bagging, and Random Forest methods and allow you to apply it to the homework.</p>
 <p>Specifically, we will:</p>
@@ -1127,11 +1302,10 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h4 id="The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">The Idea: Decision Trees are just flowcharts and interpretable!<a class="anchor-link" href="#The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">¶</a></h4><p><img alt="how to fix anything" src="data/flowchart.png" width="70%" /></p>
+<hr>
+<h4 id="The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">The Idea: Decision Trees are just flowcharts and interpretable!<a class="anchor-link" href="#The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">¶</a></h4><p><img alt="how to fix anything" src="data/flowchart.png" width="70%"></p>
 <p>It turns out that simple flow charts can be formulated as mathematical models for classification and these models have the properties we desire;</p>
 <ul>
 <li>interpretable by humans </li>
@@ -1142,10 +1316,9 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h4 id="Let's-review-some-theory:">Let's review some theory:<a class="anchor-link" href="#Let's-review-some-theory:">¶</a></h4><h4 id="How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">How to build Decision Trees (the Learning Algorithm in words):<a class="anchor-link" href="#How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">¶</a></h4><p>To learn a decision tree model, we take a greedy approach:</p>
 <ol>
 <li>Start with an empty decision tree (undivided feature space) </li>
@@ -1157,18 +1330,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split1" src="data/split1.png" width="70%" /></p>
-<hr />
-<p><img alt="split2" src="data/split2.png" width="70%" /></p>
+<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split1" src="data/split1.png" width="70%"></p>
+<hr>
+<p><img alt="split2" src="data/split2.png" width="70%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="(2)-Stopping-condition">(2) Stopping condition<a class="anchor-link" href="#(2)-Stopping-condition">¶</a></h4><p>If we don’t terminate the decision tree learning algorithm manually, the tree will continue to grow until each region defined by the model possibly contains exactly one training point (and the model attains 100% training accuracy). <strong>Not stopping while building a deeper and deeper tree = 100% training accuracy; What will your test accuracy be? What can we do to fix this?</strong></p>
 <p>To prevent the <strong>overfitting</strong> from happening, we could</p>
@@ -1179,7 +1350,7 @@ h6:hover .anchor-link {
 <li>Don't use to many splits in the tree (=<strong>not too many splits / not too complex global tree</strong>)</li>
 <li>Be content with <100% accuracy training set...</li>
 </ul>
-<hr />
+<hr>
 <h4 id="Done-with-theory,-let's-get-started">Done with theory, let's get started<a class="anchor-link" href="#Done-with-theory,-let's-get-started">¶</a></h4>
 </div>
 </div>
@@ -1216,17 +1387,15 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h1 id="Part-1-:-Introduction-to-the-Spam-Dataset">Part 1 : Introduction to the Spam Dataset<a class="anchor-link" href="#Part-1-:-Introduction-to-the-Spam-Dataset">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will be working with a spam email dataset. The dataset has 57 predictors with a response variable called <code>Spam</code> that indicates whether an email is spam or not spam. The goal is to be able to create a classifier or method that acts as a spam filter.</p>
 </div>
@@ -1248,32 +1417,28 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The predictor variabes are all continuous. They represent certain features like the frequency of the word "<code>discount</code>". The exact specification and description of each predictor can be found online. We are not so much interested in the exact inference of each predictor so we will omit the exact names of each of the predictors. We are more interested in the prediction of the algorithm so we will treat each as predictor without going into too much exact detail in each.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Link to description : <a href="https://archive.ics.uci.edu/ml/datasets/spambase">https://archive.ics.uci.edu/ml/datasets/spambase</a></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us split the dataset into a 70-30 split by using the following:</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Note :</strong> While you will use <code>train_test_split</code> in your homeworks, the code below should help you visualize splitting/masking of a dataframe which will be helpful in general.</p>
 </div>
@@ -1313,8 +1478,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can check that the number of spam cases is roughly evenly represented in both the training and test set.</p>
 </div>
@@ -1337,17 +1501,15 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h1 id="Part-2-:-Fitting-an-Optimal-Single-Decision-Tree-(by-Depth)-:">Part 2 : Fitting an Optimal Single Decision Tree (by Depth) :<a class="anchor-link" href="#Part-2-:-Fitting-an-Optimal-Single-Decision-Tree-(by-Depth)-:">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We fit here a single tree to our spam dataset and perform 5-fold cross validation on the training set. For EACH depth of the tree, we fit a tree and then compute the 5-fold CV scores. These scores are then averaged and compared across different depths.</p>
 </div>
@@ -1384,8 +1546,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some dictionary manipulations for our x,y construction for the plot below:</p>
 </div>
@@ -1433,16 +1594,14 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As we can see, the optimal depth is found to be a depth of 7. Although, does it makes sense to choose 6?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Also, if we wanted to get the Confidence Bands of these results, how would we? It's as simple as a combination of getting variance using <code>scores.std()</code> and <code>plt.fill_between()</code>.</p>
 </div>
@@ -1479,8 +1638,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we want to display it as a boxplot we first construct a dataframe with all the scores and second we use <code>sns.boxplot(...)</code></p>
 </div>
@@ -1532,8 +1690,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Let's extract the best_depth value from this dictionary:</strong></p>
 <p>We create the new variable <code>best_depth</code>. Can you see why we coded the best depth parameter as we did below? (Hint: Think about reproducibility.)</p>
@@ -1614,8 +1771,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="How-to-visualize-a-Decision-Tree-with-pydot">How to visualize a Decision Tree with <code>pydot</code><a class="anchor-link" href="#How-to-visualize-a-Decision-Tree-with-pydot">¶</a></h4><p><em>Question:</em> Do you think this tree is interpretable? What do you think about a the maximal depth of the tree?</p>
 <ul>
@@ -1639,8 +1795,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Let's look at the resulting text <code>decision_tree.dot</code></li>
@@ -1660,8 +1815,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Let's convert our (hard to read) written decision tree (<code>decision_tree.dot</code>) into an intuitive image file format: <code>image_tree.png</code></li>
@@ -1696,23 +1850,21 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Let's display the <code>image_tree.png</code> in markdown:</li>
 </ul>
 <p>Markdown: <code>![title](results/image_tree.png)</code>. The result:</p>
-<p><img alt="title" src="results/image_tree.png" /></p>
+<p><img alt="title" src="results/image_tree.png"></p>
 <p><em>Repost Question:</em> Do you think this tree is interpretable?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h1 id="Part-3:-Bagging-and-Voting">Part 3: Bagging and Voting<a class="anchor-link" href="#Part-3:-Bagging-and-Voting">¶</a></h1><p><em>QUESTION:</em> Where does the word <em>"Bagging"</em> come from?</p>
 <h4 id="Some-Theory:-What-is-bagging?">Some Theory: What is bagging?<a class="anchor-link" href="#Some-Theory:-What-is-bagging?">¶</a></h4><ol>
 <li>Bootstrapping: resample with replacements to get different datasets and built different models.</li>
@@ -1724,7 +1876,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 <li><strong>AGgregatiING</strong> for a given input, we output the averaged outputs of all the models for that input. </li>
 </ol>
 <p>This method is called <strong>Bagging: B</strong> ootstrap + <strong>AGG</strong>regat<strong>ING</strong>.</p>
-<hr />
+<hr>
 <p>Let's bootstrap our training dataset to create multiple datasets and fit Decision Tree models to each.</p>
 <p>(Resampling: we showed live that different samples give different results for things like sums, varying more when the things we sum over have high variance themselves.)</p>
 </div>
@@ -1754,8 +1906,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we actually fit the samples</p>
 </div>
@@ -1861,8 +2012,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And now get final predictions: majority voting!</p>
 </div>
@@ -1891,8 +2041,7 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Count in the above code can be use to define the number of models the voting in the dataframe should be based on.</p>
 </div>
@@ -1911,24 +2060,21 @@ If you want your own implementation for sorting, sorted() also accepts a key fun
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Food for Thought :</strong> Are these bagging models independent of each other, can they be trained in a parallel fashion?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Part-4-:-Random-Forest-vs-Bagging">Part 4 : Random Forest vs Bagging<a class="anchor-link" href="#Part-4-:-Random-Forest-vs-Bagging">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="What-is-Random-Forest?">What is Random Forest?<a class="anchor-link" href="#What-is-Random-Forest?">¶</a></h4><ul>
 <li><strong>Many trees</strong> make a <strong>forest</strong>.</li>
@@ -1946,8 +2092,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we will fit an ensemble method, the Random Forest technique, which is different from the decision tree. Refer to the lectures slides for a full treatment on how they are different. Let's use <code>n_estimators = predictor_count/2</code> and <code>max_depth = best_depth</code>.</p>
 </div>
@@ -1980,8 +2125,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Let's-compare-the-performance-of-our-3-models:">Let's compare the performance of our 3 models:<a class="anchor-link" href="#Let's-compare-the-performance-of-our-3-models:">¶</a></h4>
 </div>
@@ -2006,8 +2150,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="As-we-see-above,-the-performance-of-both-Bagging-and-Random-Forest-was-similar,-so-what-is-the-difference?-Do-both-overfit-the-data-just-as-much?">As we see above, the performance of both Bagging and Random Forest was similar, so what is the difference? Do both overfit the data just as much?<a class="anchor-link" href="#As-we-see-above,-the-performance-of-both-Bagging-and-Random-Forest-was-similar,-so-what-is-the-difference?-Do-both-overfit-the-data-just-as-much?">¶</a></h4><p>Hints :</p>
 <ul>
@@ -2045,8 +2188,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Training-accuracies:">Training accuracies:<a class="anchor-link" href="#Training-accuracies:">¶</a></h4>
 </div>
@@ -2068,8 +2210,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Testing-accuracies:">Testing accuracies:<a class="anchor-link" href="#Testing-accuracies:">¶</a></h4>
 </div>
@@ -2091,8 +2232,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Feature-Importance">Feature Importance<a class="anchor-link" href="#Feature-Importance">¶</a></h4><p>Random Forest gives the above values as <code>feature_importance</code> where it normalizes the impact of a predictor to the number of times it is useful and thus gives overvall significance for free. Explore the attributes of the Random Forest model object for the best nodes.</p>
 </div>
@@ -2122,8 +2262,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Our-Initial-Questions:">Our Initial Questions:<a class="anchor-link" href="#Our-Initial-Questions:">¶</a></h4><ul>
 <li>What are decision tree models?</li>
@@ -2134,10 +2273,21 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>Why does bagging help to built more expressive trees?</li>
 </ul>
 <h4 id="End-of-Standard-Section.-What-about-next-week?">End of Standard Section. What about next week?<a class="anchor-link" href="#End-of-Standard-Section.-What-about-next-week?">¶</a></h4><p><strong>Gradient Boosting etc.. building upon decision trees. Why should we care?</strong></p>
-<p><img alt="tree_adj" src="data/kaggle.png" width="100%" /></p>
-<hr />
-<p><img alt="tree_adj" src="data/trees_adj.png" width="100%" /></p>
+<p><img alt="tree_adj" src="data/kaggle.png" width="100%"></p>
+<hr>
+<p><img alt="tree_adj" src="data/trees_adj.png" width="100%"></p>
 <p><a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">Source Medion: "XGBoost Algorithm: Long May She Reign!"</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

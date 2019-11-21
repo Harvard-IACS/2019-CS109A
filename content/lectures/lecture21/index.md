@@ -1,4 +1,4 @@
-Title: Lecture 21:
+Title: Lecture 21: NN 4: Regularization methods
 Category: lectures
 Date: 2019-11-18
 Author: 
@@ -8,19 +8,8 @@ Tages: ADD TAGS HERE
 
 ## Lecture
 
-- [Lecture X: [pptx]
+- [Lecture 21: NN 4: Regularization methods [PDF]]({attach}presentation/Lecture21_OptimizersAndRegularization.pdf)
+- [Lecture 21: NN 4: Regularization methods [PPTX]]({attach}presentation/Lecture21_OptimizersAndRegularization.pptx)
 
 
-## Section
 
-- [S-Section X: [Notebook]]
-
-
-## Advanced Section
-
-- [Advanced Section: [pptx]]
-
-
-## Lab
-
-- [Lab X: [Notebook]]

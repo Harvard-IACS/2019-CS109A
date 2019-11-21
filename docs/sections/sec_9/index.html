@@ -116,9 +116,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -197,12 +312,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -215,27 +338,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -431,7 +566,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -441,11 +578,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -693,6 +843,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -731,7 +884,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -853,6 +1006,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -869,16 +1026,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -894,6 +1059,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -944,8 +1114,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1084,14 +1261,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-9:--Feed-Forward-Neural-Networks">Standard Section 9:  Feed Forward Neural Networks<a class="anchor-link" href="#Standard-Section-9:--Feed-Forward-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-9:--Feed-Forward-Neural-Networks">Standard Section 9:  Feed Forward Neural Networks<a class="anchor-link" href="#Standard-Section-9:--Feed-Forward-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
 </div>
 </div>
 </div>
@@ -1111,8 +1287,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The goal of this section is to be familiar with the most basic Artificial Neural Network architecture the  Feed-Forward Neural Network (FFNN).</p>
 <p>Specifically, we will:</p>
@@ -1128,8 +1303,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Import-packages-and-check-the-version-of-your-TensorFlow,-it-should-be-the-version-2.0.0">Import packages and check the version of your TensorFlow, it should be the version 2.0.0<a class="anchor-link" href="#Import-packages-and-check-the-version-of-your-TensorFlow,-it-should-be-the-version-2.0.0">¶</a></h4>
 </div>
@@ -1164,8 +1338,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id='IMPORTANT:-Unless-you-have-the-"TF-version-2.0.0"--try-the-following'>IMPORTANT: Unless you have the "TF version 2.0.0"  try the following<a class="anchor-link" href='#IMPORTANT:-Unless-you-have-the-"TF-version-2.0.0"--try-the-following'>¶</a></h4><p><code>pip install --upgrade pip</code></p>
 <p><code>pip install tensorflow==2.0.0</code></p>
@@ -1175,18 +1348,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h2 id="1.-Review-of-the-ANN-anatomy">1. Review of the ANN <em>anatomy</em><a class="anchor-link" href="#1.-Review-of-the-ANN-anatomy">¶</a></h2><h4 id="Input,-Hidden,-and-Output-layers">Input, Hidden, and Output layers<a class="anchor-link" href="#Input,-Hidden,-and-Output-layers">¶</a></h4><p>The <strong>forward</strong> pass through an FFNN  is  a sequence of linear (affine) and nonlinear (activation) operations.</p>
-<p><img src="../fig/forward.jpg" width="70%" /></p>
+<p><img src="../fig/forward.jpg" width="70%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Design-a-Feed-Forward-neural-network">2. Design a Feed Forward neural network<a class="anchor-link" href="#2.-Design-a-Feed-Forward-neural-network">¶</a></h2><p>Let's create a simple FFNN  with one input,  one linear  neuron as output layer, and one hidden layer of arbitrary number of hidden neurons. Get familiar with the forward propagation.</p>
 <ul>
@@ -1202,8 +1373,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Define-the-activation-function">Define the activation function<a class="anchor-link" href="#Define-the-activation-function">¶</a></h3><p>Here, we use the <em>Rectified Linear Unit</em>  (ReLU) function which is defined as $$g(x)=\max(0,x)$$</p>
 </div>
@@ -1225,8 +1395,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Build-a-ANN-with-one-hidden-neuron">Build a ANN with one hidden neuron<a class="anchor-link" href="#Build-a-ANN-with-one-hidden-neuron">¶</a></h3>
 </div>
@@ -1263,8 +1432,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Plot-a-few-cases-to-understand">Plot a few cases to understand<a class="anchor-link" href="#Plot-a-few-cases-to-understand">¶</a></h4>
 </div>
@@ -1326,8 +1494,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Exercise:-Fit-the-data">Exercise: Fit the data<a class="anchor-link" href="#Exercise:-Fit-the-data">¶</a></h4><p>Load the toyDataSet_1.csv from the data directory. Fit the data with the above simple FFNN and plot your results.</p>
 </div>
@@ -1378,8 +1545,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Plot-the-prediction-and-the-ground-truth">Plot the prediction and the ground truth<a class="anchor-link" href="#Plot-the-prediction-and-the-ground-truth">¶</a></h4>
 </div>
@@ -1399,8 +1565,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Write-the-Loss-function">Write the Loss function<a class="anchor-link" href="#Write-the-Loss-function">¶</a></h4><p>Quantify the quality of the fitting by writing a loss function. Mean Square Error (MSE) is a good choice for regression tasks.</p>
 </div>
@@ -1432,8 +1597,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Forward-pass-function">Forward pass function<a class="anchor-link" href="#Forward-pass-function">¶</a></h4><p>Write a function for the forward propagation through an FFNN with  one input, one linear output neuron, and one hidden layers with arbitrary number of neurons.</p>
 <p>General Scheme:</p>
@@ -1489,8 +1653,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Use-the-previous-parameters-in-our-forward-propagation-function-to-fit-the-toyDataSet_1.csv.-Poot-the-resuts-and-print-the-associate-loss-function">Use the previous parameters in our forward propagation function to fit the toyDataSet_1.csv. Poot the resuts and print the associate loss function<a class="anchor-link" href="#Use-the-previous-parameters-in-our-forward-propagation-function-to-fit-the-toyDataSet_1.csv.-Poot-the-resuts-and-print-the-associate-loss-function">¶</a></h4>
 </div>
@@ -1529,8 +1692,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Exercise:-Fit-a-more-complex-dataset">Exercise: Fit a more complex dataset<a class="anchor-link" href="#Exercise:-Fit-a-more-complex-dataset">¶</a></h4><p>Load the toyDataSet_2.csv from the data directory. Fit the data with your FFNN function and plot your results.</p>
 </div>
@@ -1553,8 +1715,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Find-the-optimal-parameters">Find the optimal parameters<a class="anchor-link" href="#Find-the-optimal-parameters">¶</a></h4>
 </div>
@@ -1594,8 +1755,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Run-the-model,-plot-and-quantify-the-prediction">Run the model, plot and quantify the prediction<a class="anchor-link" href="#Run-the-model,-plot-and-quantify-the-prediction">¶</a></h4>
 </div>
@@ -1630,8 +1790,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="More-complicated-function">More complicated function<a class="anchor-link" href="#More-complicated-function">¶</a></h4><p>Explore more the functions that this simple network can fit by using more neurons. Essentially explore what function it can generate.</p>
 </div>
@@ -1741,10 +1900,9 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h2 id="3.-Tensor-Flow-and-Keras">3. Tensor Flow and Keras<a class="anchor-link" href="#3.-Tensor-Flow-and-Keras">¶</a></h2><p><strong>Keras, Sequential:</strong> [Source]
 (<a href="https://keras.io/models/sequential/">https://keras.io/models/sequential/</a>)</p>
 <p>There are many platforms that create the forward propagation (and not only) through more complex and deep architectures. They also provide the backpropagation function for training a network, that is, to find the optimal parameters for a specific task.</p>
@@ -1757,8 +1915,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Import-packages-from-keras">Import packages from keras<a class="anchor-link" href="#Import-packages-from-keras">¶</a></h4>
 </div>
@@ -1778,8 +1935,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Read-again-the-toyDataSet_2-and-define-again-the--weights-in-solution2">Read again the toyDataSet_2 and define again the  weights in solution2<a class="anchor-link" href="#Read-again-the-toyDataSet_2-and-define-again-the--weights-in-solution2">¶</a></h4>
 </div>
@@ -1823,8 +1979,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Using-TensorFlow-and-Keras-make-a-FFNN-to-fit-the-toyDataSet_2.-Use-the-same-architecture-and-weights-as-previously">Using TensorFlow and Keras make a FFNN to fit the toyDataSet_2. Use the same architecture and weights as previously<a class="anchor-link" href="#Using-TensorFlow-and-Keras-make-a-FFNN-to-fit-the-toyDataSet_2.-Use-the-same-architecture-and-weights-as-previously">¶</a></h4>
 </div>
@@ -1850,8 +2005,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Manually-set-the-parameters">Manually set the parameters<a class="anchor-link" href="#Manually-set-the-parameters">¶</a></h4>
 </div>
@@ -1884,8 +2038,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Visualize-and-quantify-the-prediction">Visualize and quantify the prediction<a class="anchor-link" href="#Visualize-and-quantify-the-prediction">¶</a></h4>
 </div>
@@ -1912,21 +2065,19 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-the-network">Train the network<a class="anchor-link" href="#Train-the-network">¶</a></h3><h4 id="Let-TensorFlow-to-find-the-optimal-weights">Let TensorFlow to find the optimal weights<a class="anchor-link" href="#Let-TensorFlow-to-find-the-optimal-weights">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Back-propagation">Back propagation<a class="anchor-link" href="#Back-propagation">¶</a></h4><p>The <strong>backward</strong> pass is the training. It is based on chain rule and updates the parameters. The optimization is done by minimizing the loss function.</p>
-<p><img src="../fig/dl.jpg" width="70%" /></p>
+<p><img src="../fig/dl.jpg" width="70%"></p>
 <h4 id="Baching,-stochastic-gradient-descent,-and-epochs">Baching, stochastic gradient descent, and epochs<a class="anchor-link" href="#Baching,-stochastic-gradient-descent,-and-epochs">¶</a></h4><p>Shufle and split the entire dataset in mini-batches help to escape from local minima</p>
-<p><img src="../fig/batching.jpg" width="70%" /></p>
+<p><img src="../fig/batching.jpg" width="70%"></p>
 </div>
 </div>
 </div>
@@ -1963,8 +2114,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Plot-training-&amp;-validation-loss-values">Plot training & validation loss values<a class="anchor-link" href="#Plot-training-&amp;-validation-loss-values">¶</a></h4>
 </div>
@@ -1985,8 +2135,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Visualize-the-prediction">Visualize the prediction<a class="anchor-link" href="#Visualize-the-prediction">¶</a></h4>
 </div>
@@ -2013,8 +2162,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Check-the-parameters">Check the parameters<a class="anchor-link" href="#Check-the-parameters">¶</a></h4>
 </div>
@@ -2036,8 +2184,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Add-more-neurons-and-also-take-a-look-during-the-training">Add more neurons and also take a look during the training<a class="anchor-link" href="#Add-more-neurons-and-also-take-a-look-during-the-training">¶</a></h4>
 </div>
@@ -2090,8 +2237,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Let's-fit-something-very-nonlinear">Let's fit something very nonlinear<a class="anchor-link" href="#Let's-fit-something-very-nonlinear">¶</a></h3>
 </div>
@@ -2123,8 +2269,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Desing now a FFNN with two-hidden layers with <em>tanh</em> activation function</p>
 </div>
@@ -2200,25 +2345,22 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr />
+<hr>
+<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Info-for-the-Tensor-Flow-2-and-Keras">Info for the Tensor Flow 2 and Keras<a class="anchor-link" href="#Info-for-the-Tensor-Flow-2-and-Keras">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Instructions-for-running-tf.keras-with-Tensorflow-2.0:">Instructions for running <code>tf.keras</code> with Tensorflow 2.0:<a class="anchor-link" href="#Instructions-for-running-tf.keras-with-Tensorflow-2.0:">¶</a></h4><ol>
 <li><p>Create a <code>conda</code> virtual environment by cloning an existing one that you know works</p>
@@ -2250,6 +2392,17 @@ tf.keras.datasets.mnist</code></pre>
 <pre><code>from tensorflow import keras
 from tensorflow.keras import layers</code></pre>
 <p>These imports do not work on some systems, however, because they pick up previous versions of <code>keras</code> and <code>tensorflow</code>. That is why I avoid them in this lab.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

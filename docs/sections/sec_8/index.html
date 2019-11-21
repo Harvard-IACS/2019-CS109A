@@ -112,9 +112,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -193,12 +308,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -211,27 +334,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -427,7 +562,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -437,11 +574,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -689,6 +839,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -727,7 +880,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -849,6 +1002,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -865,16 +1022,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -890,6 +1055,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -940,8 +1110,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1080,14 +1257,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">Standard Section 8: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost.<a class="anchor-link" href="#Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">Standard Section 8: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost.<a class="anchor-link" href="#Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
 </div>
 </div>
 </div>
@@ -1107,8 +1283,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This section will work with a spam email dataset again. Our ultimate goal is to be able to build models so that we can predict whether an email is spam or not spam based on word characteristics within each email. We will review Decision Trees, Bagging, and Random Forest methods, and introduce Boosting: Ada Boost and XGBoost.</p>
 <p>Specifically, we will:</p>
@@ -1125,10 +1300,9 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h2 id="1.-Quick-review-of-last-week">1. <em>Quick review of last week</em><a class="anchor-link" href="#1.-Quick-review-of-last-week">¶</a></h2><h4 id="The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">The Idea: Decision Trees are just flowcharts and interpretable!<a class="anchor-link" href="#The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">¶</a></h4><p>It turns out that simple flow charts can be formulated as mathematical models for classification and these models have the properties we desire;</p>
 <ul>
 <li>interpretable by humans </li>
@@ -1139,10 +1313,9 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h4 id="How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">How to build Decision Trees (the Learning Algorithm in words):<a class="anchor-link" href="#How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">¶</a></h4><p>To learn a decision tree model, we take a greedy approach:</p>
 <ol>
 <li>Start with an empty decision tree (undivided feature space) </li>
@@ -1153,32 +1326,30 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split2" src="data/split2_adj.png" width="70%" /></p>
+<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split2" src="data/split2_adj.png" width="70%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="(2)-Stopping-condition">(2) Stopping condition<a class="anchor-link" href="#(2)-Stopping-condition">¶</a></h4><p>**Not stopping while building a deeper and deeper tree = 100% training accuracy; Yet we will overfit!</p>
 <p>To prevent the <strong>overfitting</strong> from happening, we should have stopping condition.</p>
-<hr />
+<hr>
 <h4 id="How-do-we-go-from-Classification-to-Regression?">How do we go from Classification to Regression?<a class="anchor-link" href="#How-do-we-go-from-Classification-to-Regression?">¶</a></h4><ul>
 <li>For classification, we return the majority class in the points of each leaf node. </li>
 <li>For regression we return the average of the outputs for the points in each leaf node. </li>
 </ul>
-<hr />
+<hr>
 <h4 id="What-is-bagging?">What is bagging?<a class="anchor-link" href="#What-is-bagging?">¶</a></h4><p>One way to adjust for the high variance of the output of an experiment is to perform the experiment multiple times and then average the results.</p>
 <ol>
 <li><strong>Bootstrap:</strong> we generate multiple samples of training data, via bootstrapping. We train a full decision tree on each sample of data. </li>
 <li><strong>AGgregatiING</strong> for a given input, we output the averaged outputs of all the models for that input. </li>
 </ol>
 <p>This method is called <strong>Bagging: B</strong> ootstrap + <strong>AGG</strong>regat<strong>ING</strong>.</p>
-<hr />
+<hr>
 <h4 id="What-is-Random-Forest?">What is Random Forest?<a class="anchor-link" href="#What-is-Random-Forest?">¶</a></h4><ul>
 <li><strong>Many trees</strong> make a <strong>forest</strong>.</li>
 <li><strong>Many random trees</strong> make a <strong>random forest</strong>.</li>
@@ -1190,7 +1361,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>for each tree, at each split, we <strong>randomly select a set of 𝐽′ predictors from the full set of predictors.</strong> (not done in bagging)</li>
 <li>From amongst the 𝐽′  predictors, we select the optimal predictor and the optimal corresponding threshold for the split. </li>
 </ol>
-<hr />
+<hr>
 <h4 id="Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">Interesting Piazza post: why randomness in simple decision tree?<a class="anchor-link" href="#Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">¶</a></h4><p><code>"Hi there. I notice that there is a parameter called "random_state" in decision tree function and I wonder why we need randomness in simple decision tree. If we add randomness in such case, isn't it the same as random forest?"</code></p>
 <ul>
 <li>The problem of learning an optimal decision tree is known to be <strong>NP-complete</strong> under several aspects of optimality and even for simple concepts. </li>
@@ -1207,17 +1378,15 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h2 id="2.-Just-re-building-the-tree-models-of-last-week">2. Just re-building the tree models of last week<a class="anchor-link" href="#2.-Just-re-building-the-tree-models-of-last-week">¶</a></h2><h3 id="Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">Rebuild the Decision Tree model, Bagging model and Random Forest Model for comparison with Boosting methods<a class="anchor-link" href="#Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will be working with a spam email dataset. The dataset has 57 predictors with a response variable called <code>Spam</code> that indicates whether an email is spam or not spam. <strong>The goal is to be able to create a classifier or method that acts as a spam filter.</strong></p>
 <p>Link to description : <a href="https://archive.ics.uci.edu/ml/datasets/spambase">https://archive.ics.uci.edu/ml/datasets/spambase</a></p>
@@ -1312,10 +1481,9 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h3 id="Fitting-an-Optimal-Single-Decision-Tree">Fitting an Optimal Single Decision Tree<a class="anchor-link" href="#Fitting-an-Optimal-Single-Decision-Tree">¶</a></h3>
 </div>
 </div>
@@ -1354,10 +1522,9 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h3 id="Fitting-100-Single-Decision-Trees-while-Bagging">Fitting 100 Single Decision Trees while Bagging<a class="anchor-link" href="#Fitting-100-Single-Decision-Trees-while-Bagging">¶</a></h3>
 </div>
 </div>
@@ -1419,8 +1586,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Fitting-Random-Forest">Fitting Random Forest<a class="anchor-link" href="#Fitting-Random-Forest">¶</a></h3>
 </div>
@@ -1452,8 +1618,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Let's-compare-the-performance-of-our-3-models:">Let's compare the performance of our 3 models:<a class="anchor-link" href="#Let's-compare-the-performance-of-our-3-models:">¶</a></h4>
 </div>
@@ -1478,16 +1643,14 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.-Theory:-What-is-Boosting?">3. <em>Theory:</em> What is Boosting?<a class="anchor-link" href="#3.-Theory:-What-is-Boosting?">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><strong>Bagging and Random Forest:</strong><ul>
@@ -1514,18 +1677,16 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="tree_adj" src="data/gradient_boosting1.png?" width="70%" /></p>
-<hr />
-<h3 id="Illustrative-example-(from-source)">Illustrative example (from <a href="https://towardsdatascience.com/underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6fe4a8a49dbf">source</a>)<a class="anchor-link" href="#Illustrative-example-(from-source)">¶</a></h3><p><img alt="tree_adj" src="data/boosting.png" width="70%" /></p>
+<p><img alt="tree_adj" src="data/gradient_boosting1.png?" width="70%"></p>
+<hr>
+<h3 id="Illustrative-example-(from-source)">Illustrative example (from <a href="https://towardsdatascience.com/underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6fe4a8a49dbf">source</a>)<a class="anchor-link" href="#Illustrative-example-(from-source)">¶</a></h3><p><img alt="tree_adj" src="data/boosting.png" width="70%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We built multiple trees consecutively: Tree 1 -> Tree 2 -> Tree 3 - > ....</p>
 <p><strong>The size of the plus or minus singns indicates the weights of a data points for every Tree</strong>. How do we determine these weights?</p>
@@ -1541,60 +1702,56 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>The ensemble (<strong>"Final: Combination"</strong>) is a linear combination of the simple trees, and is more expressive!</li>
 <li>The ensemble (<strong>"Final: Combination"</strong>) has indeed not just one simple decision boundary line, and fits the data better.</li>
 </ul>
-<p><img alt="tree_adj" src="data/boosting_2.png?" width="70%" /></p>
+<p><img alt="tree_adj" src="data/boosting_2.png?" width="70%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-is-Ada-Boost?">What is Ada Boost?<a class="anchor-link" href="#What-is-Ada-Boost?">¶</a></h3><ul>
 <li>Ada Boost = Adaptive Boosting.</li>
 <li>AdaBoost is adaptive in the sense that subsequent weak learners are tweaked in favor of those instances misclassified by previous classifiers</li>
 </ul>
-<p><img alt="tree_adj" src="data/AdaBoost1.png" width="70%" />
-<img alt="tree_adj" src="data/AdaBoost2.png" width="70%" />
-<img alt="tree_adj" src="data/AdaBoost3.png" width="70%" /></p>
+<p><img alt="tree_adj" src="data/AdaBoost1.png" width="70%">
+<img alt="tree_adj" src="data/AdaBoost2.png" width="70%">
+<img alt="tree_adj" src="data/AdaBoost3.png" width="70%"></p>
 <p><strong>Notice that when $\hat{y}_n = 𝑦_n$, the weight $w_n$ is small; when $\hat{y}_n \neq 𝑦_n$, the weight $w_n$ is larger.</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Illustrative-Example-(from-slides)">Illustrative Example (from slides)<a class="anchor-link" href="#Illustrative-Example-(from-slides)">¶</a></h3><hr />
+<h3 id="Illustrative-Example-(from-slides)">Illustrative Example (from slides)<a class="anchor-link" href="#Illustrative-Example-(from-slides)">¶</a></h3><hr>
 <p><strong>Step1. Start with equal distribition initially</strong>
-<img alt="tree_adj" src="data/ADA2.png" width="40%" /></p>
-<hr />
+<img alt="tree_adj" src="data/ADA2.png" width="40%"></p>
+<hr>
 <p><strong>Step2. Fit a simple classifier</strong>
-<img alt="tree_adj" src="data/ADA3.png" width="40%" /></p>
-<hr />
+<img alt="tree_adj" src="data/ADA3.png" width="40%"></p>
+<hr>
 <p><strong>Step3. Update the weights</strong>
-<img alt="tree_adj" src="data/ADA4.png" width="40%" /></p>
+<img alt="tree_adj" src="data/ADA4.png" width="40%"></p>
 <p><strong>Step4. Update the classifier:</strong> First time trivial (we have no model yet.)</p>
-<hr />
+<hr>
 <p><strong>Step2. Fit a simple classifier</strong>
-<img alt="tree_adj" src="data/ADA5.png" width="40%" /></p>
+<img alt="tree_adj" src="data/ADA5.png" width="40%"></p>
 <p><strong>Step3. Update the weights:</strong> not shown.</p>
-<hr />
+<hr>
 <p><strong>Step4. Update the classifier:</strong>
-<img alt="tree_adj" src="data/ADA6.png" width="40%" /></p>
+<img alt="tree_adj" src="data/ADA6.png" width="40%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4.-Use-the-Adaboost-method-to-visualize-Bias-Variance-tradeoff.">4. Use the Adaboost method to visualize Bias-Variance tradeoff.<a class="anchor-link" href="#4.-Use-the-Adaboost-method-to-visualize-Bias-Variance-tradeoff.">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's try Boosting!</p>
 </div>
@@ -1629,8 +1786,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How does the test and training accuracy evolve with every iteration (tree)?</strong></p>
 </div>
@@ -1658,8 +1814,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What about performance?</p>
 </div>
@@ -1680,16 +1835,14 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>AdaBoost seems to be performing better than Simple Decision Trees and has a similar Test Set Accuracy performance compared to Random Forest.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Random tip:</strong> If a "for"-loop takes som time and you want to know the progress while running the loop, use: <strong>tqdm()</strong> (<a href="https://github.com/tqdm/tqdm">link</a>). No need for 1000's of <code>print(i)</code> outputs.</p>
 <p>Usage: <code>for i in tqdm( range(start,finish) ):</code></p>
@@ -1701,8 +1854,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="What-if-we-change-the-depth-of-our-AdaBoost-trees?">What if we change the depth of our AdaBoost trees?<a class="anchor-link" href="#What-if-we-change-the-depth-of-our-AdaBoost-trees?">¶</a></h4>
 </div>
@@ -1758,8 +1910,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Adaboost complexity depends on both the number of estimators and the base estimator.</p>
 <ul>
@@ -1771,8 +1922,7 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Food for Thought :</strong></p>
 <ul>
@@ -1783,16 +1933,14 @@ To <em>de-correlate the trees</em>, we:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.-Theory:-What-is-Gradient-Boosting-and-XGBoost?">5. <em>Theory:</em> What is Gradient Boosting and XGBoost?<a class="anchor-link" href="#5.-Theory:-What-is-Gradient-Boosting-and-XGBoost?">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-is-Gradient-Boosting?">What is Gradient Boosting?<a class="anchor-link" href="#What-is-Gradient-Boosting?">¶</a></h3><p>To improve its predictions, <strong>gradient boosting looks at the difference between its current approximation, and the known correct target vector, which is called the residual</strong>.</p>
 <p>The mathematics:</p>
@@ -1804,39 +1952,34 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 <li><p>To find $h$, the gradient boosting solution starts with the observation that a perfect <strong>h</strong> would imply</p>
 </li>
 </ul>
-<p>$$F_{m+1}(x)=F_{m}(x)+h(x)=y$$</p>
-<ul>
+$$F_{m+1}(x)=F_{m}(x)+h(x)=y$$<ul>
 <li>or, equivalently solving for h,</li>
 </ul>
-<p>$$h(x)=y-F_{m}(x)$$</p>
-<ul>
+$$h(x)=y-F_{m}(x)$$<ul>
 <li>Therefore, gradient boosting will fit h to the residual $y-F_{m}(x)$</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="tree_adj" src="data/gradient_boosting2.png" width="80%" /></p>
+<p><img alt="tree_adj" src="data/gradient_boosting2.png" width="80%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
-<h3 id='XGBoost:-"Long-May-She-Reign!"'>XGBoost: <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">"Long May She Reign!"</a><a class="anchor-link" href='#XGBoost:-"Long-May-She-Reign!"'>¶</a></h3><p><img alt="tree_adj" src="data/kaggle.png" width="100%" /></p>
+<hr>
+<h3 id='XGBoost:-"Long-May-She-Reign!"'>XGBoost: <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">"Long May She Reign!"</a><a class="anchor-link" href='#XGBoost:-"Long-May-She-Reign!"'>¶</a></h3><p><img alt="tree_adj" src="data/kaggle.png" width="100%"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <h3 id="What-is-XGBoost-and-why-is-it-so-good!?">What is XGBoost and why is it so good!?<a class="anchor-link" href="#What-is-XGBoost-and-why-is-it-so-good!?">¶</a></h3><ul>
 <li>Based on Gradient Boosting</li>
 <li>XGBoost = <strong>eXtreme Gradient Boosting</strong>; refers to the engineering goal to push the limit of computations resources for boosted tree algorithm</li>
@@ -1864,8 +2007,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="6.-Use-XGBoost:-Extreme-Gradient-Boosting">6. Use XGBoost: Extreme Gradient Boosting<a class="anchor-link" href="#6.-Use-XGBoost:-Extreme-Gradient-Boosting">¶</a></h2>
 </div>
@@ -1941,8 +2083,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-about-the-accuracy-performance:-AdaBoost-versus-XGBoost?">What about the accuracy performance: AdaBoost versus XGBoost?<a class="anchor-link" href="#What-about-the-accuracy-performance:-AdaBoost-versus-XGBoost?">¶</a></h3>
 </div>
@@ -1961,8 +2102,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-about-the-computing-performance:-AdaBoost-versus-XGBoost?">What about the computing performance: AdaBoost versus XGBoost?<a class="anchor-link" href="#What-about-the-computing-performance:-AdaBoost-versus-XGBoost?">¶</a></h3>
 </div>
@@ -1981,8 +2121,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="What-if-we-change-the-depth-of-our-XGBoost-trees-and-compare-to-Ada-Boost?">What if we change the depth of our XGBoost trees and compare to Ada Boost?<a class="anchor-link" href="#What-if-we-change-the-depth-of-our-XGBoost-trees-and-compare-to-Ada-Boost?">¶</a></h3>
 </div>
@@ -2069,8 +2208,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Interesting</strong>:</p>
 <ul>
@@ -2081,8 +2219,7 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>All the accuracy performances:</strong></p>
 </div>
@@ -2104,27 +2241,24 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 <p><strong>Overview of all the tree algorithms:</strong> <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">Source</a></p>
-<p><img alt="tree_adj" src="data/trees.png" width="100%" /></p>
-<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr />
+<p><img alt="tree_adj" src="data/trees.png" width="100%"></p>
+<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Optional:-Example-to-better-understand-Bias-vs-Variance-tradeoff.">Optional: Example to better understand Bias vs Variance tradeoff.<a class="anchor-link" href="#Optional:-Example-to-better-understand-Bias-vs-Variance-tradeoff.">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A central notion underlying what we've been learning in lectures and sections so far is the trade-off between overfitting and underfitting. If you remember back to Homework 3, we had a model that seemed to represent our data accurately. However, we saw that as we made it more and more accurate on the training set, it did not generalize well to unobserved data.</p>
 <p>As a different example, in face recognition algorithms, such as that on the iPhone X, a too-accurate model would be unable to identity someone who styled their hair differently that day. The reason is that our model may learn irrelevant features in the training data. On the contrary, an insufficiently trained model would not generalize well either. For example, it was recently reported that a face mask could sufficiently fool the iPhone X.</p>
@@ -2152,6 +2286,28 @@ $$F_{m+1}(x)=F_{m}(x)+h(x)$$</p>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
