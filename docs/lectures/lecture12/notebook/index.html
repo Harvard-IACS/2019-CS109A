@@ -1251,11 +1251,11 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Lecture-12-($k$-NN-Classification-and-Missingness)">Lecture 12 ($k$-NN Classification and Missingness)<a class="anchor-link" href="#Lecture-12-($k$-NN-Classification-and-Missingness)">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br></p>
-<hr>
+<h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Lecture-12-($k$-NN-Classification-and-Missingness)">Lecture 12 ($k$-NN Classification and Missingness)<a class="anchor-link" href="#Lecture-12-($k$-NN-Classification-and-Missingness)">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, and Chris Tanner<br /></p>
+<hr />
 </div>
 </div>
 </div>
@@ -1264,7 +1264,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">pl</span>
@@ -1288,7 +1288,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'Heart.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'Heart.csv'</span><span class="p">)</span>
 <span class="n">df_heart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1300,7 +1300,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span>
 <span class="n">data_y</span> <span class="o">=</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">AHD</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="s1">'No'</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
 
 
@@ -1349,7 +1349,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">phat1</span> <span class="o">=</span> <span class="n">knn1</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">phat1</span> <span class="o">=</span> <span class="n">knn1</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">phat5</span> <span class="o">=</span> <span class="n">knn5</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">phat10</span> <span class="o">=</span> <span class="n">knn10</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">phat50</span> <span class="o">=</span> <span class="n">knn50</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
@@ -1376,7 +1376,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#two predictors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#two predictors</span>
 
 <span class="n">knn1</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">knn5</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -1405,7 +1405,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Don't forget to split into train and test </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Don't forget to split into train and test </span>
 <span class="c1"># (or better yet, use cross-validation) </span>
 <span class="c1"># to determine what k is actually best!</span>
 </pre></div>
@@ -1425,7 +1425,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># There are some missing values to begin with</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># There are some missing values to begin with</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -1438,7 +1438,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">random</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">random</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">109</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[</span><span class="s2">"MaxHR"</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
 
@@ -1459,7 +1459,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create 20 missing at random observations </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create 20 missing at random observations </span>
 <span class="n">miss</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.2</span><span class="o">*</span><span class="n">df_heart</span><span class="p">[</span><span class="s2">"Sex"</span><span class="p">],</span><span class="n">n</span><span class="p">)</span>
 
 <span class="n">heart_mar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'Heart.csv'</span><span class="p">)</span>
@@ -1476,7 +1476,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create 20 missing not at random observations </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create 20 missing not at random observations </span>
 <span class="n">miss</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">df_heart</span><span class="p">[</span><span class="s2">"MaxHR"</span><span class="p">]</span><span class="o">></span><span class="n">df_heart</span><span class="p">[</span><span class="s2">"MaxHR"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span><span class="n">n</span><span class="p">)</span>
 
 <span class="n">heart_mnar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'Heart.csv'</span><span class="p">)</span>
@@ -1493,7 +1493,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sklearn is not happy when you give it missing values</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># sklearn is not happy when you give it missing values</span>
 <span class="n">knn50</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="n">data_x</span> <span class="o">=</span> <span class="n">heart_mcar</span><span class="p">[[</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'RestBP'</span><span class="p">]]</span>
@@ -1510,7 +1510,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># So let's just fill in the mean to make it happy</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># So let's just fill in the mean to make it happy</span>
 
 <span class="n">data_x</span> <span class="o">=</span> <span class="n">data_x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">data_x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
@@ -1525,7 +1525,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>

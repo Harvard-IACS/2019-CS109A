@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../style/css/hiacs.css">
+
+    <title>CS109A - </title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="..">
+      <img class="navbar-brand-logo" src="../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/calendars.html">Calendars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/videos.html">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/resources.html">Resources</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+  <h1 class="category-title"></h1>
+  <br />
+  <hr />
+  <ul class="category-list">
+    <li class="category-item">
+      <a href="../pages/cs109a-introduction-to-data-science/">CS109a: Introduction to Data Science <br></a>
+        (Jul. 17, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture1/">Lecture 1: Introduction</a>
+        (Sep. 03, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture2/">Lecture 2: Data and Data Exploration</a>
+        (Sep. 04, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab-1/">Lab 1: Python basics, YAML environments, Numpy</a>
+        (Sep. 06, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture3/">Lecture 3: Pandas and Web Scraping</a>
+        (Sep. 11, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab02/">Lab 2: Pandas and Scraping</a>
+        (Sep. 12, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section1/">S-Section 01: Introduction to Web Scraping</a>
+        (Sep. 13, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture4/">Lecture 4: Introduction to Regression</a>
+        (Sep. 16, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture5/">Lecture 5: Linear Regression</a>
+        (Sep. 18, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section1/">Advanced Section 1: Linear Algebra and Hypothesis Testing</a>
+        (Sep. 18, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab-3/">Lab 3: Matplotlib, Simple Linear Regression, kNN, array reshape</a>
+        (Sep. 19, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section2/">S-Section 02: kNN and Linear Regression</a>
+        (Sep. 20, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture6/">Lecture 6: Multiple Linear Regression, Polynomial Regression</a>
+        (Sep. 23, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture7/">Lecture 7: Model Selection and Regularization</a>
+        (Sep. 25, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section2/">Advanced Section 2: Regularization</a>
+        (Sep. 25, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab04/">Lab 4: Multiple and Polynomial Regression</a>
+        (Sep. 26, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section3/">S-Section 03: Multiple Linear and Polynomial  Regression</a>
+        (Sep. 27, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture8/">Lecture 8: Regularization and EDA</a>
+        (Sep. 30, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture9/">Lecture 9: Visualization for Communication</a>
+        (Oct. 02, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab05/">Lab 5: Exploratory Data Analysis, seaborn, more Plotting</a>
+        (Oct. 03, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section4/">S-Section 04: Regularization and Model Selection</a>
+        (Oct. 04, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture10/">Lecture 10: Logistic Regression</a>
+        (Oct. 07, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture11/">Lecture 11: Logistic Regression 2</a>
+        (Oct. 09, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section3/">Advanced Section 3: Generalized Linear Models</a>
+        (Oct. 09, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab06/">Lab 6: Logistic Regression</a>
+        (Oct. 10, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture12/">Lecture 12: KNN Classification & Imputation</a>
+        (Oct. 16, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab7/">Lab 7: kNN Classification</a>
+        (Oct. 17, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section5/">S-Section 05:  Logistic Regression, Multiple Logistic Regression, and KNN-classification</a>
+        (Oct. 18, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture14/">Lecture 14: PCA</a>
+        (Oct. 23, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section4/">Advanced Sections 4: PCA</a>
+        (Oct. 23, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab8/">Lab 8: PCA</a>
+        (Oct. 24, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section6/">S-Section 06: PCA and Logistic Regression</a>
+        (Oct. 25, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture15/">Lecture 15: Decision Trees</a>
+        (Oct. 28, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture16/">Lecture 16: Bagging, & Random Forest</a>
+        (Oct. 30, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab9/">Lab 9: Decision Trees</a>
+        (Oct. 31, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section7/">S-Section 07: Bagging and Random Forest</a>
+        (Nov. 01, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture17/">Lecture 17: Boosting Methods</a>
+        (Nov. 04, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture18/">Lecture 18: Neural Networks 1 – Perceptron and MLP</a>
+        (Nov. 06, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab10/">Lab 10: Decision Trees Part II</a>
+        (Nov. 07, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section8/">S-Section 08: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost</a>
+        (Nov. 08, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture19/">Lecture 19: NN 2: Anatomy of NN, design choices</a>
+        (Nov. 11, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture20/">Lecture 20: NN 3: Back Propagation</a>
+        (Nov. 13, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section5/">Advanced Sections 5: Decision Trees & Ensemble Methods</a>
+        (Nov. 13, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section9/">S-Section 09: Feed forward neural networks</a>
+        (Nov. 14, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab11/">Lab 11: Neural Network Basics - Introduction to tf.keras</a>
+        (Nov. 14, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture21/">Lecture 21: NN 4: Regularization methods</a>
+        (Nov. 18, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture22/">Lecture 22: Visualization for Model Interpretation</a>
+        (Nov. 20, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../a-section/a-section6/">Advanced Sections 6: Solvers</a>
+        (Nov. 20, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab12/">Lab 12: Regularization with NN</a>
+        (Nov. 21, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../sections/section10/">S-Section 10:  Feed Forward Neural Networks, Regularization, SGD Solver</a>
+        (Nov. 22, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture23/">Lecture 23:</a>
+        (Nov. 25, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../lectures/lecture24/">Lecture 24:</a>
+        (Dec. 02, 2019)
+    </li>
+    <li class="category-item">
+      <a href="../labs/lab13/">Lab 13:</a>
+        (Dec. 05, 2019)
+    </li>
+  </ul>
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>

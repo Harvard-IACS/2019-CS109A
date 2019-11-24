@@ -1263,11 +1263,11 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-9:--Feed-Forward-Neural-Networks">Standard Section 9:  Feed Forward Neural Networks<a class="anchor-link" href="#Standard-Section-9:--Feed-Forward-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-9:--Feed-Forward-Neural-Networks">Standard Section 9:  Feed Forward Neural Networks<a class="anchor-link" href="#Standard-Section-9:--Feed-Forward-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
 </div>
 </div>
 </div>
@@ -1276,7 +1276,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1314,7 +1314,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1331,7 +1331,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1350,9 +1350,9 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h2 id="1.-Review-of-the-ANN-anatomy">1. Review of the ANN <em>anatomy</em><a class="anchor-link" href="#1.-Review-of-the-ANN-anatomy">¶</a></h2><h4 id="Input,-Hidden,-and-Output-layers">Input, Hidden, and Output layers<a class="anchor-link" href="#Input,-Hidden,-and-Output-layers">¶</a></h4><p>The <strong>forward</strong> pass through an FFNN  is  a sequence of linear (affine) and nonlinear (activation) operations.</p>
-<p><img src="../fig/forward.jpg" width="70%"></p>
+<p><img src="../fig/forward.jpg" width="70%" /></p>
 </div>
 </div>
 </div>
@@ -1384,7 +1384,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-></span> <span class="nb">float</span> <span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-></span> <span class="nb">float</span> <span class="p">:</span>
     <span class="k">return</span>  <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 
 <span class="c1"># or </span>
@@ -1406,7 +1406,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># input vector</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># input vector</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># set the network parameters</span>
@@ -1443,7 +1443,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">w1</span><span class="p">,</span><span class="n">b1</span><span class="p">,</span><span class="n">w2</span><span class="p">,</span><span class="n">b2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
@@ -1505,7 +1505,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toySet_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_1.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">toySet_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_1.csv'</span><span class="p">)</span>
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">toySet_1</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">toySet_1</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1521,7 +1521,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 
 
 <span class="c1"># set the network parameters</span>
@@ -1538,7 +1538,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_1.py'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_1.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1556,7 +1556,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span><span class="s1">'or'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span><span class="s1">'or'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_model</span><span class="p">,</span><span class="s1">'-b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'FFNN'</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
@@ -1576,7 +1576,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mseLoss</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">y_prediction</span><span class="p">):</span>    
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mseLoss</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">y_prediction</span><span class="p">):</span>    
     <span class="k">return</span> <span class="p">((</span><span class="n">y_data</span> <span class="o">-</span> <span class="n">y_prediction</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     
 </pre></div>
@@ -1589,7 +1589,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Loss</span> <span class="o">=</span> <span class="n">mseLoss</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_model</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">Loss</span> <span class="o">=</span> <span class="n">mseLoss</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_model</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'MSE Loss = '</span><span class="p">,</span> <span class="n">Loss</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1616,7 +1616,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">myFFNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W1</span><span class="p">,</span> <span class="n">Wo</span> <span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">myFFNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W1</span><span class="p">,</span> <span class="n">Wo</span> <span class="p">):</span>
 
 <span class="c1">#     input dimensions  = 1</span>
 <span class="c1">#     output dimensions = 1</span>
@@ -1664,7 +1664,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">w11</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">w11</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">b11</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">w21</span>  <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b21</span>  <span class="o">=</span> <span class="mf">0.5</span>
@@ -1703,7 +1703,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toySet_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_2.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">toySet_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_2.csv'</span><span class="p">)</span>
 
 <span class="n">x_train2</span> <span class="o">=</span> <span class="n">toySet_2</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train2</span> <span class="o">=</span> <span class="n">toySet_2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1726,7 +1726,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## your code here</span>
 
 <span class="n">w11</span> <span class="o">=</span> 
 <span class="n">b11</span> <span class="o">=</span> 
@@ -1748,7 +1748,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_2.py'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_2.py'</span>
 </pre></div>
 </div>
 </div>
@@ -1766,7 +1766,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make the parameters matrices</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make the parameters matrices</span>
 <span class="c1"># First Layer</span>
 <span class="n">W1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">w11</span><span class="p">,</span><span class="n">b11</span><span class="p">],</span> <span class="p">[</span><span class="n">w12</span><span class="p">,</span><span class="n">b12</span><span class="p">]])</span>
 <span class="c1"># Output Layer (only one bias term)</span>
@@ -1801,7 +1801,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Two Neurons</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Two Neurons</span>
 
 <span class="n">w11</span> <span class="o">=</span> <span class="o">-.</span><span class="mi">8</span>
 <span class="n">b11</span> <span class="o">=</span> <span class="o">-.</span><span class="mi">1</span>
@@ -1835,7 +1835,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Three Neurons</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Three Neurons</span>
 <span class="n">w11</span> <span class="o">=</span> <span class="o">-.</span><span class="mi">1</span>
 <span class="n">b11</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span>
 
@@ -1873,7 +1873,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Random numbers between a,b</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Random numbers between a,b</span>
 <span class="c1"># (b-a) * np.random.random_sample((4, 4)) + a</span>
 <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
@@ -1902,7 +1902,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h2 id="3.-Tensor-Flow-and-Keras">3. Tensor Flow and Keras<a class="anchor-link" href="#3.-Tensor-Flow-and-Keras">¶</a></h2><p><strong>Keras, Sequential:</strong> [Source]
 (<a href="https://keras.io/models/sequential/">https://keras.io/models/sequential/</a>)</p>
 <p>There are many platforms that create the forward propagation (and not only) through more complex and deep architectures. They also provide the backpropagation function for training a network, that is, to find the optimal parameters for a specific task.</p>
@@ -1926,7 +1926,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="k">import</span> <span class="n">layers</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="k">import</span> <span class="n">layers</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="k">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="k">import</span> <span class="n">optimizers</span>
 </pre></div>
@@ -1946,7 +1946,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toySet_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_2.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">toySet_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_2.csv'</span><span class="p">)</span>
 
 <span class="n">x_train2</span> <span class="o">=</span> <span class="n">toySet_2</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train2</span> <span class="o">=</span> <span class="n">toySet_2</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1962,7 +1962,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_2.py'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load 'solutions/sol_2.py'</span>
 <span class="n">w11</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b11</span> <span class="o">=</span> <span class="o">.</span><span class="mi">25</span>
 
@@ -1990,7 +1990,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_fixedWeights'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_fixedWeights'</span><span class="p">)</span>
 
 <span class="c1"># hidden layer with 2 neurons (or nodes)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)))</span>
@@ -2016,7 +2016,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get weights </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get weights </span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Initial values of the parameters'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
@@ -2049,7 +2049,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_model_tf1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_model_tf1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train2</span><span class="p">)</span>
 
 <span class="c1"># plot the prediction and the ground truth</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">y_train2</span><span class="p">,</span><span class="s1">'or'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
@@ -2075,9 +2075,9 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Back-propagation">Back propagation<a class="anchor-link" href="#Back-propagation">¶</a></h4><p>The <strong>backward</strong> pass is the training. It is based on chain rule and updates the parameters. The optimization is done by minimizing the loss function.</p>
-<p><img src="../fig/dl.jpg" width="70%"></p>
+<p><img src="../fig/dl.jpg" width="70%" /></p>
 <h4 id="Baching,-stochastic-gradient-descent,-and-epochs">Baching, stochastic gradient descent, and epochs<a class="anchor-link" href="#Baching,-stochastic-gradient-descent,-and-epochs">¶</a></h4><p>Shufle and split the entire dataset in mini-batches help to escape from local minima</p>
-<p><img src="../fig/batching.jpg" width="70%"></p>
+<p><img src="../fig/batching.jpg" width="70%" /></p>
 </div>
 </div>
 </div>
@@ -2086,7 +2086,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_t</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_training'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_t</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_training'</span><span class="p">)</span>
 
 <span class="c1"># hidden layer with 2 neurons (or nodes)</span>
 <span class="n">model_t</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)))</span>
@@ -2105,7 +2105,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">model_t</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">'MSE'</span><span class="p">,</span><span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">)</span> 
 <span class="n">history</span> <span class="o">=</span> <span class="n">model_t</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">y_train2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -2125,7 +2125,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">],</span><span class="s1">'b'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">],</span><span class="s1">'b'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Model loss'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Loss'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Epoch'</span><span class="p">)</span>
@@ -2146,7 +2146,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_model_t</span> <span class="o">=</span> <span class="n">model_t</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_model_t</span> <span class="o">=</span> <span class="n">model_t</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train2</span><span class="p">)</span>
 
 <span class="c1"># plot the prediction and the ground truth</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">y_train2</span><span class="p">,</span><span class="s1">'.r'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
@@ -2173,7 +2173,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weights_t</span> <span class="o">=</span> <span class="n">model_t</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">weights_t</span> <span class="o">=</span> <span class="n">model_t</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"TF weights:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">weights_t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
@@ -2195,7 +2195,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_training'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'My_two_neurons_model_training'</span><span class="p">)</span>
 <span class="c1"># hidden layer with 2 neurons (or nodes)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)))</span>
 <span class="c1"># output layer, one neuron </span>
@@ -2230,7 +2230,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2248,7 +2248,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toySet_3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_3.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">toySet_3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/toyDataSet_3.csv'</span><span class="p">)</span>
 
 <span class="n">x_train3</span> <span class="o">=</span> <span class="n">toySet_3</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train3</span> <span class="o">=</span> <span class="n">toySet_3</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -2262,7 +2262,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train3</span><span class="p">,</span> <span class="n">y_train3</span><span class="p">,</span><span class="s1">'or'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train3</span><span class="p">,</span> <span class="n">y_train3</span><span class="p">,</span><span class="s1">'or'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2280,7 +2280,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'MyNet'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'MyNet'</span><span class="p">)</span>
 
 <span class="c1"># hidden layer with 20 neurons (or nodes)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'tanh'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)))</span>
@@ -2301,7 +2301,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">'MSE'</span><span class="p">,</span><span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">)</span> 
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train3</span><span class="p">,</span> <span class="n">y_train3</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -2314,7 +2314,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Log-scale is helpful since the loss decays fast</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Log-scale is helpful since the loss decays fast</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">],</span><span class="s1">'b'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Model loss'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Loss'</span><span class="p">)</span>
@@ -2329,7 +2329,7 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train3</span><span class="p">)</span>
 
 <span class="c1"># plot the prediction and the ground truth</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train3</span><span class="p">,</span> <span class="n">y_train3</span><span class="p">,</span><span class="s1">'.r'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
@@ -2347,8 +2347,8 @@ $$l_1 = \sum_i^\text{neurons} w_{1i}x+b_{1i} = w^T_1 x + b_1  = w_1 \cdot x + b_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr>
+<hr />
+<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr />
 </div>
 </div>
 </div>
@@ -2400,7 +2400,7 @@ from tensorflow.keras import layers</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>

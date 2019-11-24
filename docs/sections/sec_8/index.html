@@ -1259,11 +1259,11 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">Standard Section 8: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost.<a class="anchor-link" href="#Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">¶</a></h2><p><strong>Harvard University</strong><br>
-<strong>Fall 2019</strong><br>
-<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br>
-<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br></p>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">Standard Section 8: Review Trees and Boosting including Ada Boosting Gradient Boosting and XGBoost.<a class="anchor-link" href="#Standard-Section-8:-Review-Trees-and-Boosting-including-Ada-Boosting-Gradient-Boosting-and-XGBoost.">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Fall 2019</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas, Kevin Rader, and Chris Tanner<br />
+<strong>Section Leaders</strong>: Marios Mattheakis, Abhimanyu (Abhi) Vasishth, Robbert (Rob) Struyven<br /></p>
 </div>
 </div>
 </div>
@@ -1272,7 +1272,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1302,7 +1302,7 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h2 id="1.-Quick-review-of-last-week">1. <em>Quick review of last week</em><a class="anchor-link" href="#1.-Quick-review-of-last-week">¶</a></h2><h4 id="The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">The Idea: Decision Trees are just flowcharts and interpretable!<a class="anchor-link" href="#The-Idea:-Decision-Trees-are-just-flowcharts-and-interpretable!">¶</a></h4><p>It turns out that simple flow charts can be formulated as mathematical models for classification and these models have the properties we desire;</p>
 <ul>
 <li>interpretable by humans </li>
@@ -1315,7 +1315,7 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h4 id="How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">How to build Decision Trees (the Learning Algorithm in words):<a class="anchor-link" href="#How-to-build-Decision-Trees-(the-Learning-Algorithm-in-words):">¶</a></h4><p>To learn a decision tree model, we take a greedy approach:</p>
 <ol>
 <li>Start with an empty decision tree (undivided feature space) </li>
@@ -1328,7 +1328,7 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split2" src="data/split2_adj.png" width="70%"></p>
+<h4 id="So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">So we need a (1) splitting criterion and a (2) stopping condition:<a class="anchor-link" href="#So-we-need-a-(1)-splitting-criterion-and-a-(2)-stopping-condition:">¶</a></h4><h4 id="(1)-Splitting-criterion">(1) Splitting criterion<a class="anchor-link" href="#(1)-Splitting-criterion">¶</a></h4><p><img alt="split2" src="data/split2_adj.png" width="70%" /></p>
 </div>
 </div>
 </div>
@@ -1337,19 +1337,19 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="(2)-Stopping-condition">(2) Stopping condition<a class="anchor-link" href="#(2)-Stopping-condition">¶</a></h4><p>**Not stopping while building a deeper and deeper tree = 100% training accuracy; Yet we will overfit!</p>
 <p>To prevent the <strong>overfitting</strong> from happening, we should have stopping condition.</p>
-<hr>
+<hr />
 <h4 id="How-do-we-go-from-Classification-to-Regression?">How do we go from Classification to Regression?<a class="anchor-link" href="#How-do-we-go-from-Classification-to-Regression?">¶</a></h4><ul>
 <li>For classification, we return the majority class in the points of each leaf node. </li>
 <li>For regression we return the average of the outputs for the points in each leaf node. </li>
 </ul>
-<hr>
+<hr />
 <h4 id="What-is-bagging?">What is bagging?<a class="anchor-link" href="#What-is-bagging?">¶</a></h4><p>One way to adjust for the high variance of the output of an experiment is to perform the experiment multiple times and then average the results.</p>
 <ol>
 <li><strong>Bootstrap:</strong> we generate multiple samples of training data, via bootstrapping. We train a full decision tree on each sample of data. </li>
 <li><strong>AGgregatiING</strong> for a given input, we output the averaged outputs of all the models for that input. </li>
 </ol>
 <p>This method is called <strong>Bagging: B</strong> ootstrap + <strong>AGG</strong>regat<strong>ING</strong>.</p>
-<hr>
+<hr />
 <h4 id="What-is-Random-Forest?">What is Random Forest?<a class="anchor-link" href="#What-is-Random-Forest?">¶</a></h4><ul>
 <li><strong>Many trees</strong> make a <strong>forest</strong>.</li>
 <li><strong>Many random trees</strong> make a <strong>random forest</strong>.</li>
@@ -1361,7 +1361,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>for each tree, at each split, we <strong>randomly select a set of 𝐽′ predictors from the full set of predictors.</strong> (not done in bagging)</li>
 <li>From amongst the 𝐽′  predictors, we select the optimal predictor and the optimal corresponding threshold for the split. </li>
 </ol>
-<hr>
+<hr />
 <h4 id="Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">Interesting Piazza post: why randomness in simple decision tree?<a class="anchor-link" href="#Interesting-Piazza-post:-why-randomness-in-simple-decision-tree?">¶</a></h4><p><code>"Hi there. I notice that there is a parameter called "random_state" in decision tree function and I wonder why we need randomness in simple decision tree. If we add randomness in such case, isn't it the same as random forest?"</code></p>
 <ul>
 <li>The problem of learning an optimal decision tree is known to be <strong>NP-complete</strong> under several aspects of optimality and even for simple concepts. </li>
@@ -1380,7 +1380,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h2 id="2.-Just-re-building-the-tree-models-of-last-week">2. Just re-building the tree models of last week<a class="anchor-link" href="#2.-Just-re-building-the-tree-models-of-last-week">¶</a></h2><h3 id="Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">Rebuild the Decision Tree model, Bagging model and Random Forest Model for comparison with Boosting methods<a class="anchor-link" href="#Rebuild-the-Decision-Tree-model,-Bagging-model-and-Random-Forest-Model-for-comparison-with-Boosting-methods">¶</a></h3>
 </div>
 </div>
@@ -1398,7 +1398,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1431,7 +1431,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Dataframe and Set Column Names</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Import Dataframe and Set Column Names</span>
 <span class="n">spam_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/spam.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Column_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">spam_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Spam'</span><span class="p">]</span>
 <span class="n">spam_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
@@ -1446,7 +1446,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Let us split the dataset into a 70-30 split by using the following:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Let us split the dataset into a 70-30 split by using the following:</span>
 <span class="c1">#Split data into train and test</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">msk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spam_df</span><span class="p">))</span> <span class="o"><</span> <span class="mf">0.7</span>
@@ -1469,7 +1469,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Check Percentage of Spam in Train and Test Set</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Check Percentage of Spam in Train and Test Set</span>
 <span class="n">percentage_spam_training</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">percentage_spam_testing</span>  <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">y_test</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
                                                   
@@ -1483,7 +1483,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h3 id="Fitting-an-Optimal-Single-Decision-Tree">Fitting an Optimal Single Decision Tree<a class="anchor-link" href="#Fitting-an-Optimal-Single-Decision-Tree">¶</a></h3>
 </div>
 </div>
@@ -1493,7 +1493,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Best depth for single decision trees of last week</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Best depth for single decision trees of last week</span>
 <span class="n">best_depth</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"The best depth was found to be:"</span><span class="p">,</span> <span class="n">best_depth</span><span class="p">)</span>
 </pre></div>
@@ -1506,7 +1506,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Evalaute the performance at the best depth</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Evalaute the performance at the best depth</span>
 <span class="n">model_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">best_depth</span><span class="p">)</span>
 <span class="n">model_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -1524,7 +1524,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h3 id="Fitting-100-Single-Decision-Trees-while-Bagging">Fitting 100 Single Decision Trees while Bagging<a class="anchor-link" href="#Fitting-100-Single-Decision-Trees-while-Bagging">¶</a></h3>
 </div>
 </div>
@@ -1534,7 +1534,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_trees</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># we tried a variety of numbers here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">n_trees</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># we tried a variety of numbers here</span>
 
 <span class="c1">#Creating model</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1568,7 +1568,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Function to ensemble the prediction of each bagged decision tree model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Function to ensemble the prediction of each bagged decision tree model</span>
 <span class="k">def</span> <span class="nf">get_prediction</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">count</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">count</span><span class="o">==-</span><span class="mi">1</span> <span class="k">else</span> <span class="n">count</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">count</span><span class="p">]</span>
@@ -1597,7 +1597,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fit a Random Forest Model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Fit a Random Forest Model</span>
 <span class="c1">#Training</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">best_depth</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1629,7 +1629,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_training</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_training</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Training Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_bagging_training</span><span class="p">))</span>
@@ -1679,9 +1679,9 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="tree_adj" src="data/gradient_boosting1.png?" width="70%"></p>
-<hr>
-<h3 id="Illustrative-example-(from-source)">Illustrative example (from <a href="https://towardsdatascience.com/underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6fe4a8a49dbf">source</a>)<a class="anchor-link" href="#Illustrative-example-(from-source)">¶</a></h3><p><img alt="tree_adj" src="data/boosting.png" width="70%"></p>
+<p><img alt="tree_adj" src="data/gradient_boosting1.png?" width="70%" /></p>
+<hr />
+<h3 id="Illustrative-example-(from-source)">Illustrative example (from <a href="https://towardsdatascience.com/underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6fe4a8a49dbf">source</a>)<a class="anchor-link" href="#Illustrative-example-(from-source)">¶</a></h3><p><img alt="tree_adj" src="data/boosting.png" width="70%" /></p>
 </div>
 </div>
 </div>
@@ -1702,7 +1702,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>The ensemble (<strong>"Final: Combination"</strong>) is a linear combination of the simple trees, and is more expressive!</li>
 <li>The ensemble (<strong>"Final: Combination"</strong>) has indeed not just one simple decision boundary line, and fits the data better.</li>
 </ul>
-<p><img alt="tree_adj" src="data/boosting_2.png?" width="70%"></p>
+<p><img alt="tree_adj" src="data/boosting_2.png?" width="70%" /></p>
 </div>
 </div>
 </div>
@@ -1713,9 +1713,9 @@ To <em>de-correlate the trees</em>, we:</p>
 <li>Ada Boost = Adaptive Boosting.</li>
 <li>AdaBoost is adaptive in the sense that subsequent weak learners are tweaked in favor of those instances misclassified by previous classifiers</li>
 </ul>
-<p><img alt="tree_adj" src="data/AdaBoost1.png" width="70%">
-<img alt="tree_adj" src="data/AdaBoost2.png" width="70%">
-<img alt="tree_adj" src="data/AdaBoost3.png" width="70%"></p>
+<p><img alt="tree_adj" src="data/AdaBoost1.png" width="70%" />
+<img alt="tree_adj" src="data/AdaBoost2.png" width="70%" />
+<img alt="tree_adj" src="data/AdaBoost3.png" width="70%" /></p>
 <p><strong>Notice that when $\hat{y}_n = 𝑦_n$, the weight $w_n$ is small; when $\hat{y}_n \neq 𝑦_n$, the weight $w_n$ is larger.</strong></p>
 </div>
 </div>
@@ -1723,23 +1723,23 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Illustrative-Example-(from-slides)">Illustrative Example (from slides)<a class="anchor-link" href="#Illustrative-Example-(from-slides)">¶</a></h3><hr>
+<h3 id="Illustrative-Example-(from-slides)">Illustrative Example (from slides)<a class="anchor-link" href="#Illustrative-Example-(from-slides)">¶</a></h3><hr />
 <p><strong>Step1. Start with equal distribition initially</strong>
-<img alt="tree_adj" src="data/ADA2.png" width="40%"></p>
-<hr>
+<img alt="tree_adj" src="data/ADA2.png" width="40%" /></p>
+<hr />
 <p><strong>Step2. Fit a simple classifier</strong>
-<img alt="tree_adj" src="data/ADA3.png" width="40%"></p>
-<hr>
+<img alt="tree_adj" src="data/ADA3.png" width="40%" /></p>
+<hr />
 <p><strong>Step3. Update the weights</strong>
-<img alt="tree_adj" src="data/ADA4.png" width="40%"></p>
+<img alt="tree_adj" src="data/ADA4.png" width="40%" /></p>
 <p><strong>Step4. Update the classifier:</strong> First time trivial (we have no model yet.)</p>
-<hr>
+<hr />
 <p><strong>Step2. Fit a simple classifier</strong>
-<img alt="tree_adj" src="data/ADA5.png" width="40%"></p>
+<img alt="tree_adj" src="data/ADA5.png" width="40%" /></p>
 <p><strong>Step3. Update the weights:</strong> not shown.</p>
-<hr>
+<hr />
 <p><strong>Step4. Update the classifier:</strong>
-<img alt="tree_adj" src="data/ADA6.png" width="40%"></p>
+<img alt="tree_adj" src="data/ADA6.png" width="40%" /></p>
 </div>
 </div>
 </div>
@@ -1762,7 +1762,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fit an Adaboost Model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Fit an Adaboost Model</span>
 
 <span class="c1">#Training</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> 
@@ -1797,7 +1797,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot Iteration based score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Plot Iteration based score</span>
 <span class="n">train_scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">staged_score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">))</span>
 <span class="n">test_scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">staged_score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 
@@ -1825,7 +1825,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
@@ -1865,7 +1865,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Start Timer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Start Timer</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="c1">#Find Optimal Depth of trees for Boosting</span>
@@ -1891,7 +1891,7 @@ To <em>de-correlate the trees</em>, we:</p>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
 <span class="n">lists1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_train</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 <span class="n">lists2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_test</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists1</span><span class="p">)</span> 
@@ -1964,22 +1964,22 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="tree_adj" src="data/gradient_boosting2.png" width="80%"></p>
+<p><img alt="tree_adj" src="data/gradient_boosting2.png" width="80%" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h3 id='XGBoost:-"Long-May-She-Reign!"'>XGBoost: <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">"Long May She Reign!"</a><a class="anchor-link" href='#XGBoost:-"Long-May-She-Reign!"'>¶</a></h3><p><img alt="tree_adj" src="data/kaggle.png" width="100%"></p>
+<hr />
+<h3 id='XGBoost:-"Long-May-She-Reign!"'>XGBoost: <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">"Long May She Reign!"</a><a class="anchor-link" href='#XGBoost:-"Long-May-She-Reign!"'>¶</a></h3><p><img alt="tree_adj" src="data/kaggle.png" width="100%" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <h3 id="What-is-XGBoost-and-why-is-it-so-good!?">What is XGBoost and why is it so good!?<a class="anchor-link" href="#What-is-XGBoost-and-why-is-it-so-good!?">¶</a></h3><ul>
 <li>Based on Gradient Boosting</li>
 <li>XGBoost = <strong>eXtreme Gradient Boosting</strong>; refers to the engineering goal to push the limit of computations resources for boosted tree algorithm</li>
@@ -2018,7 +2018,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's install XGBoost</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let's install XGBoost</span>
 <span class="o">!</span> pip install xgboost
 </pre></div>
 </div>
@@ -2030,7 +2030,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
 
 <span class="c1"># Create the training and test data</span>
 <span class="n">dtrain</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
@@ -2094,7 +2094,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_XGBoost_test</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2113,7 +2113,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"AdaBoost elapsed time: </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s2">s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_adaboost</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"AdaBoost elapsed time: </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s2">s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_adaboost</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"XGBoost elapsed time: </span><span class="se">\t</span><span class="si">{:0.2f}</span><span class="s2">s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed_xgboost</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2132,7 +2132,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">model_xgboost</span><span class="p">(</span><span class="n">best_depth</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">model_xgboost</span><span class="p">(</span><span class="n">best_depth</span><span class="p">):</span>
     <span class="n">param</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'max_depth'</span><span class="p">:</span> <span class="n">best_depth</span><span class="p">,</span>  <span class="c1"># the maximum depth of each tree</span>
     <span class="s1">'eta'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># the training step for each iteration</span>
@@ -2170,7 +2170,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Find Optimal Depth of trees for Boosting</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Find Optimal Depth of trees for Boosting</span>
 <span class="n">score_train_xgb</span><span class="p">,</span> <span class="n">score_test_xgb</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">depth_start</span><span class="p">,</span> <span class="n">depth_end</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
@@ -2187,7 +2187,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Plot</span>
 <span class="n">lists1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_train_xgb</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 <span class="n">lists2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">score_test_xgb</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 <span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lists1</span><span class="p">)</span> 
@@ -2230,7 +2230,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Decision Trees:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:.2%}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_trees_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Bagging: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">acc_bagging_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Random Forest: </span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_random_forest_testing</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Ada Boost:</span><span class="se">\t</span><span class="s2">Accuracy, Testing Set </span><span class="se">\t</span><span class="s2">: </span><span class="si">{:0.2f}</span><span class="s2">%"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_boosting_test</span><span class="p">))</span>
@@ -2243,10 +2243,10 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr />
 <p><strong>Overview of all the tree algorithms:</strong> <a href="https://towardsdatascience.com/https-medium-com-vishalmorde-xgboost-algorithm-long-she-may-rein-edd9f99be63d">Source</a></p>
-<p><img alt="tree_adj" src="data/trees.png" width="100%"></p>
-<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr>
+<p><img alt="tree_adj" src="data/trees.png" width="100%" /></p>
+<h2 id="End-of-Section">End of Section<a class="anchor-link" href="#End-of-Section">¶</a></h2><hr />
 </div>
 </div>
 </div>
@@ -2294,7 +2294,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
@@ -2305,7 +2305,7 @@ $$h(x)=y-F_{m}(x)$$<ul>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 </div>
 </div>
