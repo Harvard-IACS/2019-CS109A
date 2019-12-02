@@ -1261,11 +1261,11 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
-<h2 id="Lab-12:-Building-and-Regularizing-your-first-Neural-Network">Lab 12: Building and Regularizing your first Neural Network<a class="anchor-link" href="#Lab-12:-Building-and-Regularizing-your-first-Neural-Network">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2019</strong><br />
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, Chris Tanner<br />
-<strong>Lab Instructors:</strong> Chris Tanner and Eleni Kaxiras.  <br />
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
+<h2 id="Lab-12:-Building-and-Regularizing-your-first-Neural-Network">Lab 12: Building and Regularizing your first Neural Network<a class="anchor-link" href="#Lab-12:-Building-and-Regularizing-your-first-Neural-Network">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2019</strong><br>
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader, Chris Tanner<br>
+<strong>Lab Instructors:</strong> Chris Tanner and Eleni Kaxiras.  <br>
 <strong>Authors:</strong> Eleni Kaxiras, David Sondak, and Pavlos Protopapas.</p>
 </div>
 </div>
@@ -1275,7 +1275,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1290,7 +1290,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1308,7 +1308,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
 
 <span class="c1"># TensorFlow and tf.keras</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -1367,25 +1367,25 @@ tf.keras.datasets.mnist</code></pre>
 <h2 id="Part-2:-Data-Preparation">Part 2: Data Preparation<a class="anchor-link" href="#Part-2:-Data-Preparation">¶</a></h2><h3 id="Tensors">Tensors<a class="anchor-link" href="#Tensors">¶</a></h3><p>We can think of tensors as multidimensional arrays of real numerical values; their job is to generalize matrices to multiple dimensions.</p>
 <ul>
 <li><p><strong>scalar</strong> = just a number = rank 0 tensor  ($a$ ∈ $F$,)
-<br /><br /></p>
+<br><br></p>
 </li>
 <li><p><strong>vector</strong> = 1D array = rank 1 tensor ( $x = (\;x_1,...,x_i\;)⊤$ ∈ $F^n$ )
-<br /><br /></p>
+<br><br></p>
 </li>
 <li><p><strong>matrix</strong> = 2D array = rank 2 tensor ( $\textbf{X} = [a_{ij}] ∈ F^{m×n}$ )
-<br /><br /></p>
+<br><br></p>
 </li>
 <li><p><strong>3D array</strong> = rank 3 tensor ( $\mathscr{X} =[t_{i,j,k}]∈F^{m×n×l}$ )
-<br /><br /></p>
+<br><br></p>
 </li>
 <li><p><strong>$\mathscr{N}$D array</strong> = rank $\mathscr{N}$ tensor ( $\mathscr{T} =[t_{i1},...,t_{i\mathscr{N}}]∈F^{n_1×...×n_\mathscr{N}}$ ) <-- <strong>Things start to get complicated here...</strong></p>
 </li>
 </ul>
 <h4 id="Tensor-indexing">Tensor indexing<a class="anchor-link" href="#Tensor-indexing">¶</a></h4><p>We can create subarrays by fixing some of the given tensor’s indices. We can create a vector by fixing all but one index. A 2D matrix is created when fixing all but two indices. For example, for a third order tensor the vectors are
-<br /><br />
-$\mathscr{X}[:,j,k]$ = $\mathscr{X}[j,k]$ (column), <br />
-$\mathscr{X}[i,:,k]$ = $\mathscr{X}[i,k]$ (row), and <br />
-$\mathscr{X}[i,j,:]$ = $\mathscr{X}[i,j]$ (tube) <br /></p>
+<br><br>
+$\mathscr{X}[:,j,k]$ = $\mathscr{X}[j,k]$ (column), <br>
+$\mathscr{X}[i,:,k]$ = $\mathscr{X}[i,k]$ (row), and <br>
+$\mathscr{X}[i,j,:]$ = $\mathscr{X}[i,j]$ (tube) <br></p>
 <h4 id="Tensor-multiplication">Tensor multiplication<a class="anchor-link" href="#Tensor-multiplication">¶</a></h4><p>We can multiply one matrix with another as long as the sizes are compatible ((n × m) × (m × p) = n × p), and also multiply an entire matrix by a constant. Numpy <code>numpy.dot</code> performs a matrix multiplication which is straightforward when we have 2D or 1D arrays. But what about > 3D arrays? The function will choose according to the matching dimentions but if we want to choose we should use <code>tensordot</code>, but, again, we <strong>do not need tensordot</strong> for this class.</p>
 </div>
 </div>
@@ -1409,7 +1409,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 
 <span class="c1"># load and show the image</span>
 <span class="n">FILE</span> <span class="o">=</span> <span class="s1">'../fig/Reese_Witherspoon.jpg'</span>
@@ -1435,7 +1435,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># we want to show each color channel</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we want to show each color channel</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">subplot</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">axes</span><span class="p">):</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'uint8'</span><span class="p">)</span>
@@ -1460,7 +1460,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">img</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">img</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">*</span> <span class="mi">2</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
 </pre></div>
@@ -1513,7 +1513,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># set the seed for reproducability of results</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set the seed for reproducability of results</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 </pre></div>
@@ -1541,7 +1541,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get the data from keras - how convenient!</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the data from keras - how convenient!</span>
 <span class="n">fashion_mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span>
 
 <span class="c1"># load the data splitted in train and test! how nice!</span>
@@ -1574,7 +1574,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># choose one image to look at</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># choose one image to look at</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1586,7 +1586,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># take a look at the array shapes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># take a look at the array shapes</span>
 <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1605,7 +1605,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
 </pre></div>
 </div>
 </div>
@@ -1623,7 +1623,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
 </pre></div>
 </div>
 </div>
@@ -1634,7 +1634,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># print a summary of your model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print a summary of your model</span>
 <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1646,7 +1646,7 @@ pip install pillow</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># use this cool `tf.keras` method to visualize the layers of your network</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># use this cool `tf.keras` method to visualize the layers of your network</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_model</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="c1">#to_file='model.png', # if you want to save the image</span>
@@ -1672,10 +1672,10 @@ pip install pillow</code></pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="4.-Fit-the-model-to-the-train-set-(also-using-a-validation-set)">4. Fit the model to the train set (also using a validation set)<a class="anchor-link" href="#4.-Fit-the-model-to-the-train-set-(also-using-a-validation-set)">¶</a></h4><p>This is the part that takes the longest in terms of time and where having GPUs helps.</p>
-<hr />
-<p><strong>ep·och</strong> <br />
-noun: epoch; plural noun: epochs. A period of time in history or a person's life, typically one marked by notable events or particular characteristics. Examples: "the Victorian epoch", "my Neural Netwok's epochs". <br /></p>
-<hr />
+<hr>
+<p><strong>ep·och</strong> <br>
+noun: epoch; plural noun: epochs. A period of time in history or a person's life, typically one marked by notable events or particular characteristics. Examples: "the Victorian epoch", "my Neural Netwok's epochs". <br></p>
+<hr>
 </div>
 </div>
 </div>
@@ -1684,7 +1684,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># type your code here along with instructor</span>
 </pre></div>
 </div>
@@ -1704,7 +1704,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># save the model so you do not have to run the code everytime</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># save the model so you do not have to run the code everytime</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'fashion_model.h5'</span><span class="p">)</span>
 
 <span class="c1"># Recreate the exact same model purely from the file</span>
@@ -1726,7 +1726,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
 
 
 
@@ -1750,7 +1750,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1761,7 +1761,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># plot accuracy and loss for the test set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot accuracy and loss for the test set</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
@@ -1794,7 +1794,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># type your code here along with instructor</span>
 
 
 
@@ -1818,7 +1818,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">y_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -1839,7 +1839,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># code source: https://www.tensorflow.org/tutorials/keras/classification</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># code source: https://www.tensorflow.org/tutorials/keras/classification</span>
 <span class="k">def</span> <span class="nf">plot_image</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">predictions_array</span><span class="p">,</span> <span class="n">true_label</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
     <span class="n">predictions_array</span><span class="p">,</span> <span class="n">true_label</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="n">predictions_array</span><span class="p">,</span> <span class="n">true_label</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -1880,7 +1880,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plot_image</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">)</span>
@@ -1896,7 +1896,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="8.-Try-our-model-on-a-sandal-from-the-Kanye-West-collection!">8. Try our model on a sandal from the Kanye West collection!<a class="anchor-link" href="#8.-Try-our-model-on-a-sandal-from-the-Kanye-West-collection!">¶</a></h4><p>Let's see if our network can generalize beyond the MNIST fashion dataset. Let's give it a trendy shoe and see what it predicts. Here is the image:</p>
-<p><img alt="shoe" height="150" src="../fig/kanye_shoe.jpg" width="150" /><br /></p>
+<p><img alt="shoe" height="150" src="../fig/kanye_shoe.jpg" width="150"><br></p>
 <div class="exercise"><b>In class discussion : What kinds of images can our model predict?</b></div><p><strong>Buzzword</strong>: Generalization</p>
 </div>
 </div>
@@ -1906,7 +1906,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let'see the tensor shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let'see the tensor shape</span>
 <span class="n">shoe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'../fig/kanye_28.jpg'</span><span class="p">))</span>
 <span class="n">shoe</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -1919,7 +1919,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># We need to delete the other 2 channels and make the image B&W.; </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We need to delete the other 2 channels and make the image B&W.; </span>
 <span class="n">shoe</span> <span class="o">=</span> <span class="n">shoe</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">shoe</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -1932,7 +1932,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">shoe</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'a cool shoe'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -1953,7 +1953,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Add the image to a batch where it's the only member.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add the image to a batch where it's the only member.</span>
 <span class="n">shoe_batch</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">shoe</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">shoe_batch</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -1966,7 +1966,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># write the code to predict here</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># write the code to predict here</span>
 </pre></div>
 </div>
 </div>
@@ -1985,7 +1985,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">boot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'../fig/random_boot.png'</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'../fig/random_boot.png'</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">boot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'random boot from web'</span><span class="p">)</span>
@@ -2000,7 +2000,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make into one channel</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make into one channel</span>
 <span class="n">boot</span> <span class="o">=</span> <span class="n">boot</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">boot</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -2013,7 +2013,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">boots</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">boot</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boots</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">boot</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">boot</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2025,7 +2025,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">predictions_single</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">boots</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictions_single</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">boots</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">predictions_single</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions_single</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">class_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions_single</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
 </pre></div>
@@ -2038,7 +2038,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if it's either a sneaker or a boot we are good</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># if it's either a sneaker or a boot we are good</span>
 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions_single</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'We did better this time!'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2048,7 +2048,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">¶</a></h3><p>Let's try adding a regularizer in our model. For more see <code>tf.keras</code> <a href="https://www.tensorflow.org/api_docs/python/tf/keras/regularizers">regularizers</a>.<br /></p>
+<h3 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">¶</a></h3><p>Let's try adding a regularizer in our model. For more see <code>tf.keras</code> <a href="https://www.tensorflow.org/api_docs/python/tf/keras/regularizers">regularizers</a>.<br></p>
 <ol>
 <li>Norm penalties: <code>kernel_regularizer= tf.keras.regularizers.l2(l=0.1)</code></li>
 <li>Early stopping via <code>tf.keras.callbacks</code>. Callbacks provide a way to interact with the model while it's training and inforce some decisions automatically. Callbacks need to be instantiated and are added to the <code>.fit()</code> function via the <code>callbacks</code> argument.</li>
@@ -2062,7 +2062,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># callbacks</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># callbacks</span>
 <span class="c1"># watch validation loss and be "patient" for 50 epochs of no improvement</span>
 <span class="c1">#es = tf.keras.callbacks.EarlyStopping(monitor='val_loss', verbose=1, patience=30)</span>
 
@@ -2097,7 +2097,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">model_regular</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">model_regular</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'Test accuracy for regularized model=</span><span class="si">{test_accuracy}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2109,7 +2109,7 @@ noun: epoch; plural noun: epochs. A period of time in history or a person's life
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># plot accuracy and loss for the test set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot accuracy and loss for the test set</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_regular</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>

@@ -1,4 +1,4 @@
-Title: Lecture 23:
+Title: Lecture 23: Experimental Design & Testing I
 Category: lectures
 Date: 2019-11-25
 Author: 
@@ -8,19 +8,5 @@ Tages: ADD TAGS HERE
 
 ## Lecture
 
-- [Lecture X: [pptx]
-
-
-## Section
-
-- [S-Section X: [Notebook]]
-
-
-## Advanced Section
-
-- [Advanced Section: [pptx]]
-
-
-## Lab
-
-- [Lab X: [Notebook]]
+- [Lecture 23: Experimental Design & Testing I [pdf]]({attach}presentation/Lecture23_ABTesting1.pdf)
+- [Lecture 23: Experimental Design & Testing I [pptx]]({attach}presentation/Lecture23_ABTesting1.pdf)
