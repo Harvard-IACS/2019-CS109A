@@ -16,6 +16,6 @@ Tags: Data, Data Exploration, Descriptive Statistics
 
 ## Lab
 
-- [Lab 1: Introduction to Python and its Libraries]({static}../../labs/lab01/notebook/cs109a_lab1_intro.ipynb)
+- [Lab 1: Introduction to Python and its Libraries]({filename}../../labs/lab01/notebook/cs109a_lab1_intro.ipynb)
 
 <hr>

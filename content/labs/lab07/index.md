@@ -8,5 +8,5 @@ Tages: kNN
 
 ## Notebooks
 
-- [Lab 7 - KNN Classification]({static}notebooks/cs109a_lab7_knnclassification_imputation.ipynb)
-- [Lab 7 - KNN Classification]({static}notebooks/cs109a_lab7_knnclassification_imputation_solutions.ipynb)
+- [Lab 7 - KNN Classification]({filename}notebooks/cs109a_lab7_knnclassification_imputation.ipynb)
+- [Lab 7 - KNN Classification]({filename}notebooks/cs109a_lab7_knnclassification_imputation_solutions.ipynb)

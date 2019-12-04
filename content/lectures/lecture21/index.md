@@ -22,5 +22,5 @@ Tages: ADD TAGS HERE
 
 ## Lab
 
-- [Lab 12: Regularization with NN]({static}../../notes/lab12_NN.ipynb)
+- [Lab 12: Regularization with NN]({filename}../../notes/lab12_NN.ipynb)
 

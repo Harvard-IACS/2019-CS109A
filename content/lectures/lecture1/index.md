@@ -11,6 +11,6 @@ Tags: Introduction, data science process, logistics
 
 - [Lecture 1: Introduction [pptx]]({attach}presentation/Lecture1_Introduction.pptx )
 - [Lecture 1: Introduction [pdf]]({attach}presentation/Lecture1_Introduction.pdf )
-- [Lecture 1: Data Science Demo [Notebook]]({static}notes/Lecture1_Notebook.ipynb)
+- [Lecture 1: Data Science Demo [Notebook]]({filename}notes/Lecture1_Notebook.ipynb)
 
 <hr>

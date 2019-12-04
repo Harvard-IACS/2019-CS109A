@@ -14,6 +14,6 @@ Tages: ADD TAGS HERE
 
 ## Lab
 
-- [Lab 11: Neural Network Basics - Introduction to tf.keras]({static}../../notes/lab11_MLP_solutions_part1.ipynb)
+- [Lab 11: Neural Network Basics - Introduction to tf.keras]({filename}../../notes/lab11_MLP_solutions_part1.ipynb)
 
 

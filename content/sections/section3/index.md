@@ -7,5 +7,5 @@ Tags:  multiple linear regression, polynomial regression, categorical variables,
 
 ## Jupyter Notebooks
 
-- [S-Section 3: Multiple Linear Regression and Polynomial Regression ]({static}notebook/cs109a_section_3.ipynb)
+- [S-Section 3: Multiple Linear Regression and Polynomial Regression ]({filename}notebook/cs109a_section_3.ipynb)
 

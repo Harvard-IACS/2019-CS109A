@@ -19,5 +19,5 @@ Tags: KNN, imputation,classification
 
 
 ## Lab
-- [Lab 7 - KNN Classification]({static}../../labs/lab07/notebooks/cs109a_lab7_knnclassification_imputation.ipynb)
-- [Lab 7 - KNN Classification]({static}../../labs/lab07/notebooks/cs109a_lab7_knnclassification_imputation_solutions.ipynb)
+- [Lab 7 - KNN Classification]({filename}../../labs/lab07/notebooks/cs109a_lab7_knnclassification_imputation.ipynb)
+- [Lab 7 - KNN Classification]({filename}../../labs/lab07/notebooks/cs109a_lab7_knnclassification_imputation_solutions.ipynb)

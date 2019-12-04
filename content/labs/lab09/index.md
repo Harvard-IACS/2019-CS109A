@@ -8,4 +8,4 @@ Tags: decision trees, trees, regression trees, bagging, entropy, information gai
 
 ## Notebooks
 
-- [Lab 9: Decision Trees]({static}notes/cs109a_Lab9_Decision_Trees.ipynb)
+- [Lab 9: Decision Trees]({filename}notes/cs109a_Lab9_Decision_Trees.ipynb)

@@ -17,12 +17,12 @@ Tags: Boosting
 
 ## Advanced Section
 
-- [Advanced Sections 5: Decision Trees & Ensemble Methods [pdf]]({attach}../../a-section/a-sec5/presentation/Adv_Section5_Slides_Ensembles.pdf )
-- [Advanced Sections 5: Decision Trees & Ensemble Methods [pptx]]({attach}../../a-section/a-sec5/presentation/Adv_Section5_Slides_Ensembles.pptx )
+- [Advanced Sections 5: Decision Trees & Ensemble Methods [PDF]]({attach}../../a-section/a-sec5/presentation/Adv_Section5_Slides_Ensembles.pdf )
+- [Advanced Sections 5: Decision Trees & Ensemble Methods [PPTX]]({attach}../../a-section/a-sec5/presentation/Adv_Section5_Slides_Ensembles.pptx )
 
 ## Lab
 
 - [Lab 10 Slides: Decision Trees Part II (PPTX)]({attach}presentation/lab10_adaboost.pptx)
 - [Lab 10 Slides: Decision Trees Part II (PDF)]({attach}presentation/lab10_adaboost.pdf)
-- [Lab 10: Decision Trees Part II]({static}../../labs/lab10/notes/cs109a_Lab10_Boosting.ipynb)
+- [Lab 10: Decision Trees Part II]({filename}../../labs/lab10/notes/cs109a_Lab10_Boosting.ipynb)
 

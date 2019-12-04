@@ -11,4 +11,4 @@ Tages: decision trees, trees, bias, variance, bagging, boosting, gradient boosti
 - [Lab 10 Slides: Multiple and Polynomial Regression (PDF)]({attach}presentation/lab10_adaboost.pdf)
 
 ## Jupyter Notebooks
-- [Lab 10: Decision Trees]({static}notes/cs109a_Lab10_Boosting.ipynb)
+- [Lab 10: Decision Trees]({filename}notes/cs109a_Lab10_Boosting.ipynb)

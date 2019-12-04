@@ -7,5 +7,5 @@ Tags:  knn k-Nearest Neighbors (kNN), linear regression, sklearn, statsmodels, c
 
 ## Jupyter Notebooks
 
-- [S-Section 2: kNN and Linear Regression]({static}notebook/cs109a_section_2.ipynb)
+- [S-Section 2: kNN and Linear Regression]({filename}notebook/cs109a_section_2.ipynb)
 
