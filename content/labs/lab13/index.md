@@ -1,14 +1,9 @@
-Title: Lab 10: Decision Trees Part II
+Title: Lab 13: Making websites!
 Category: labs
-Date: 2019-11-07
+Date: 2019-12-05
 Author: Chris Tanner
-Slug: lab10
-Tages: decision trees, trees, bias, variance, bagging, boosting, gradient boosting, adaboost
-
-
-## Slides
-- [Lab 10 Slides: Multiple and Polynomial Regression (PPTX)]({attach}presentation/lab10_adaboost.pptx)
-- [Lab 10 Slides: Multiple and Polynomial Regression (PDF)]({attach}presentation/lab10_adaboost.pdf)
+Slug: lab13
+Tages: websites, web pages, http, html, google sites, wix, www
 
 ## Jupyter Notebooks
-- [Lab 10: Decision Trees]({static}notes/cs109a_Lab10_Boosting.ipynb)
+- [Lab 13: Making Websites]({filename}notes/cs109a_Lab13_Websites.ipynb)
