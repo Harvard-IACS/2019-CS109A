@@ -22,7 +22,7 @@ Tags: Boosting
 
 ## Lab
 
-- [Lab 10 Slides: Decision Trees Part II (PPTX)]({attach}presentation/lab10_adaboost.pptx)
-- [Lab 10 Slides: Decision Trees Part II (PDF)]({attach}presentation/lab10_adaboost.pdf)
+- [Lab 10 Slides: Decision Trees Part II (PPTX)]({attach}../../labs/lab10/presentation/lab10_adaboost.pptx)
+- [Lab 10 Slides: Decision Trees Part II (PDF)]({attach}../../labs/lab10/presentation/lab10_adaboost.pdf)
 - [Lab 10: Decision Trees Part II]({filename}../../labs/lab10/notes/cs109a_Lab10_Boosting.ipynb)
 

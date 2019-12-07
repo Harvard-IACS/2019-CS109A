@@ -13,14 +13,14 @@ Tages: ADD TAGS HERE
 
 ## Section
 
-- [S-Section 10: Feed forward neural networks,  Regularization, SGD Solver]({filename}../../notebook/cs109a_section_10.ipynb)
+- [S-Section 10: Feed forward neural networks,  Regularization, SGD Solver]({filename}../../sections/section10/notebook/cs109a_section_10.ipynb)
 
 ## Advanced Section
 
-- [Advanced Sections 6: Solvers [pdf]]({attach}../../presentation/Adv_Section6_Slides_ConvergingNNs.pdf)
-- [Advanced Sections 6: Solvers [pptx]]({attach}../../presentation/Adv_Section6_Slides_ConvergingNNs.pptx)
+- [Advanced Sections 6: Solvers [pdf]]({attach}../..//a-section/a-sec6/presentation/Adv_Section6_Slides_ConvergingNNs.pdf)
+- [Advanced Sections 6: Solvers [pptx]]({attach}../..//a-section/a-sec6/presentation/Adv_Section6_Slides_ConvergingNNs.pptx)
 
 ## Lab
 
-- [Lab 12: Regularization with NN]({filename}../../notes/lab12_NN.ipynb)
+- [Lab 12: Regularization with NN]({filename}../../labs/lab12/notes/lab12_NN.ipynb)
 

@@ -10,6 +10,5 @@ Tages: ADD TAGS HERE
 
 - [Lecture 24: Experimental Design & Testing II [pdf]]({attach}presentation/Lecture24_ABTesting2.pdf)
 - [Lecture 24: Experimental Design & Testing II [pptx]]({attach}presentation/Lecture24_ABTesting2.pptx)
-
 - [Lecture 24: Review [pdf]]({attach}presentation/Lecture24_Review.pdf)
 - [Lecture 24: Review [pptx]]({attach}presentation/Lecture24_Review.pptx)

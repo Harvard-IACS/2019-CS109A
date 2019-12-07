@@ -11,7 +11,7 @@ Tags: Data, Data Exploration, Descriptive Statistics
 
 - [Lecture 2: Data [pptx]]({attach}presentation/Lecture2_Data.pptx )
 - [Lecture 2: Data [pdf]]({attach}presentation/Lecture2_Data.pdf )
-- [Lecture 2: Data Science Demo [Notebook]]({static}notes/Lecture2_Notebook.ipynb)
+- [Lecture 2: Data Science Demo [Notebook]]({filename}notes/Lecture2_Notebook.ipynb)
 
 
 ## Lab

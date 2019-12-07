@@ -13,9 +13,9 @@ Tages: ADD TAGS HERE
 
 ## Section
 
-- [S-Section 9: Feed forward neural networks]({filename}../../notebook/cs109a_section_9.ipynb)
+- [S-Section 9: Feed forward neural networks]({filename}../../sections/section9/notebook/cs109a_section_9.ipynb)
 
 
 ## Lab
 
-- [Lab 11: Neural Network Basics - Introduction to tf.keras]({filename}../../notes/lab11_MLP_solutions_part1.ipynb)
+- [Lab 11: Neural Network Basics - Introduction to tf.keras]({filename}../../labs/lab11/notes/lab11_MLP_solutions_part1.ipynb)

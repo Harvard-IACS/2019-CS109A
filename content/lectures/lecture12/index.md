@@ -15,7 +15,7 @@ Tags: KNN, imputation,classification
 
 ## Section
 
-- [S-Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification ]({static}../../sections/section5/notebook/cs109a_section_5.ipynb)
+- [S-Section 5: Logistic Regression, Multiple Logistic Regression, and KNN-classification ]({filename}../../sections/section5/notebook/cs109a_section_5.ipynb)
 
 
 ## Lab

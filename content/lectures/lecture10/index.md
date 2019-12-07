@@ -10,5 +10,5 @@ Tages: logistic, regression, classification, binary, categorical, likelihood, od
 
 - [Lecture 10: Logistic Regression [PDF]]({attach}presentation/Lecture10_LogisticRegression.pdf)
 - [Lecture 10: Logistic Regression [PPTX]]({attach}presentation/Lecture10_LogisticRegression.pptx)
-- [Lecture 10: Logistic Regression [Notebook]]({attach}presentation/Lecture10.ipynb)
+- [Lecture 10: Logistic Regression [Notebook]]({filename}presentation/Lecture10.ipynb)
 - [Data Directory]({attach}data/)

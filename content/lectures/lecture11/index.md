@@ -20,7 +20,7 @@ Tages: logistic, regression, classification, likelihood, multiclass, multinomial
 - [Advanced Section: Generalized Linear Models [pdf]]({attach}../../a-section/a-section3/presentation/Adv_Section3_GLMs.pdf)
 - [Advanced Section: Generalized Linear Models [pptx]]({attach}../../a-section/a-section3/presentation/Adv_Section3_GLMs.pptx)
 - [Advanced Section: Generalized Linear Models: Demo Notebook [ipynb]]({filename}../../a-section/a-section3/notebook/a_sec3_GLM.ipynb)
-- [Advanced Section: Generalized Linear Models: Demo Data [ipynb]]({filename}../../a-section/a-section3/notebook/Challenger.csv)
+- [Advanced Section: Generalized Linear Models: Demo Data]({filename}../../a-section/a-section3/notebook/Challenger.csv)
 
 
 ## Lab
