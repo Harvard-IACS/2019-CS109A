@@ -1,9 +1,9 @@
 Title: Lecture 20: NN 3: Back Propagation
 Category: lectures
 Date: 2019-11-13
-Author: 
+Author: Pavlos Protopapas
 Slug: lecture20
-Tages: ADD TAGS HERE
+Tages: Artificial Neural Networks (ANN), Back Propagation, Optimizers
 
 
 ## Lecture

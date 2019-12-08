@@ -1,9 +1,9 @@
 Title: Lecture 21: NN 4: Regularization methods
 Category: lectures
 Date: 2019-11-18
-Author: 
+Author: Pavlos Protopapas
 Slug: lecture21
-Tages: ADD TAGS HERE
+Tages: Artificial Neural Networks (ANN), Norm Penalties, Data Augmentation, Sparse Representation, Regularization, Bootstrap-Aggregating (Bagging), Dropout, Artificial Neural Network Optimization
 
 
 ## Lecture

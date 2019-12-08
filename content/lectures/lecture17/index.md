@@ -3,7 +3,7 @@ Category: lectures
 Date: 2019-11-04
 Author: Pavlos Protopapas
 Slug: lecture17
-Tags: Boosting
+Tags: Boosting, Gradient Descent, AdaBoost
 
 
 ## Lecture

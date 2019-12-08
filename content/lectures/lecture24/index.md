@@ -1,9 +1,9 @@
 Title: Lecture 24: Experimental Design & Testing II
 Category: lectures
 Date: 2019-12-02
-Author: 
+Author: Kevin Rader & Pavlos Protopapas
 Slug: lecture24
-Tages: ADD TAGS HERE
+Tages: AB Testing, Adaptive Experimental Design, Course Review
 
 
 ## Lecture

@@ -1,9 +1,9 @@
 Title: Lecture 22: Visualization for Model Interpretation
 Category: lectures
 Date: 2019-11-20
-Author: 
+Author: Kevin Rader 
 Slug: lecture22
-Tages: ADD TAGS HERE
+Tages: Variable Importance, Interpretation through Predictions, Including Uncertainity
 
 
 ## Lecture
