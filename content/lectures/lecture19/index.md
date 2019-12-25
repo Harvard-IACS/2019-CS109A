@@ -2,7 +2,7 @@ Title: Lecture 19: NN 2: Anatomy of NN, design choices
 Category: lectures
 Date: 2019-11-11
 Author: Pavlos Protopapas
-Slug: lecture19
+Slug: lecture19x
 Tages: Artificial Neural Networks (ANN), Activation Functions, Loss Function, Output Units, Perceptron, Multilayer Perceptron (MLP), Universal Approximitation Theorem
 
 

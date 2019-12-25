@@ -2,7 +2,7 @@ Title: Lab 10: Decision Trees Part II
 Category: labs
 Date: 2019-11-07
 Author: Chris Tanner
-Slug: lab10
+Slug: lab10x
 Tages: decision trees, trees, bias, variance, bagging, boosting, gradient boosting, adaboost
 
 
